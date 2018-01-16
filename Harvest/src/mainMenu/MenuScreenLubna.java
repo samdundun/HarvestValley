@@ -21,6 +21,9 @@ public class MenuScreenLubna extends ClickableScreen implements Runnable {
 		Graphic back = new Graphic(0,0,1,"resources/background.png");
 		viewObjects.add(back);
 
+		
+		//Graphic obj = new Graphic(getWidth()/2,getHeight()/2,1,"resources/objective.png");
+		//viewObjects.add(obj);
 	}
 
 	@Override
