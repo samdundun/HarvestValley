@@ -9,6 +9,7 @@ import javax.swing.JFrame;
 
 import guiTeacher.components.Action;
 import guiTeacher.components.Button;
+import guiTeacher.components.Graphic;
 import guiTeacher.components.StyledComponent;
 import guiTeacher.components.TextBox;
 import guiTeacher.components.TextLabel;
@@ -27,6 +28,7 @@ public class BuyingScreen extends FullFunctionScreen implements FileRequester{
 	private TextBox price;
 	private TextLabel amount;
 	private TextLabel gold;
+	private Graphic grid;
 
 
 
@@ -38,6 +40,7 @@ public class BuyingScreen extends FullFunctionScreen implements FileRequester{
 	@Override
 	public void initAllObjects(List<Visible> viewObjects) {
 		StyledComponent.setButtonOutline(true);
+		setBackground(new Color(252,226,148));
 		
 		buying = new Button(40, 40, 100, 40, "BUYING", new Action() {
 
@@ -60,7 +63,13 @@ public class BuyingScreen extends FullFunctionScreen implements FileRequester{
 
 			}
 		});
+		selling.setBackground(Color.red);
+		selling.setActiveBorderColor(Color.white);
+		selling.setCurve(0, 0);
+		selling.update();
 		viewObjects.add(selling);
+		grid = new Graphic(60,180, "resources/inventory.png");
+		viewObjects.add(grid);
 
 	}
 
