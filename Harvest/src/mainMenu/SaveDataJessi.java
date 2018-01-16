@@ -6,4 +6,5 @@ public class SaveDataJessi implements java.io.Serializable {
 
     public String name;
     public int hp;
+    private int items;
 }
