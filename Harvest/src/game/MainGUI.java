@@ -15,7 +15,7 @@ public class MainGUI extends GUIApplication {
 	}
 
 	public static void main(String[] args) {
-		MainGUI m = new MainGUI(864, 540);
+		MainGUI m = new MainGUI(880, 560);
 		Thread go = new Thread(m);
 		go.start();
 	}
