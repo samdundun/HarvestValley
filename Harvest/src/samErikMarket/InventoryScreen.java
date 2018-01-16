@@ -33,6 +33,8 @@ public class InventoryScreen extends FullFunctionScreen {
 		StyledComponent.setButtonOutline(true);
 		setBackground(new Color(224,120,8));
 		
+		invent = new Inventory();
+		
 		amount = new TextLabel(40,60,100,100,"Amount:");
 		viewObjects.add(amount);
 		gold = new TextLabel(500,60,100,100,"Gold:");
@@ -68,7 +70,22 @@ public class InventoryScreen extends FullFunctionScreen {
 		
 		grid = new Graphic(60,180, "resources/inventory.png");
 		viewObjects.add(grid);
+		
+		addItems(0);
+	}
 
+	private void addItems(int index) {
+
+		Item i = invent.getItem(index);
+		//x value for all books
+		int x = 50;
+		i.setX(x);
+		//add book to screen
+		addObject(i);
+//		//mark book as having been added
+//		b.setOnShelf(true);
+//		//adjust y-values of all books
+//		arrangeStack();
 	}
 
 }

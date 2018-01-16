@@ -11,15 +11,17 @@ public class Item extends ClickableGraphic implements Clickable{
 
 	private String name;
 	private String image;
+	private String description;
 	private int value;
 	private boolean selected;
 	private Color color;
 	
-	public Item(String name, int value, String imageLocation, int x, int y) {
-		super(x, y, 30, 30, imageLocation);
+	public Item(String name, String description, int value, String imageLocation) {
+		super(0,0, 30, 30, imageLocation);
 		this.name = name;
 		this.image = imageLocation;
 		this.value = value;
+		this.description = description;
 		this.selected = false;
 		this.color = new Color(100+(int)(100*Math.random()),100+(int)(100*Math.random()),100+(int)(100*Math.random()));
 		update();
@@ -59,6 +61,14 @@ public class Item extends ClickableGraphic implements Clickable{
 
 	public boolean isSelected() {
 		return selected;
+	}
+	
+	public String getDescription() {
+		return description;
+	}
+	
+	public String getName() {
+		return name;
 	}
 
 	
