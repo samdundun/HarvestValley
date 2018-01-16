@@ -28,4 +28,4 @@ public class SaveScreenMimi extends ClickableScreen {
 	}
 
 }
-//the pop up screen asking if you want to save the currency and inventory is a separate screen.
+//the pop up asking if you want to save the currency and inventory is a separate screen.
