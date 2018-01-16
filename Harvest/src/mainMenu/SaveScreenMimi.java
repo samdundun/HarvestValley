@@ -23,7 +23,7 @@ public class SaveScreenMimi extends ClickableScreen {
 		viewObjects.add(back);
 		harval = new TextArea(830, 400, 500, 500, "HARVEST VALLEY");
 		harval.setCustomTextColor(Color.white);
-		harval.update();
+		harval.update();//143
 		viewObjects.add(harval);
 	}
 
