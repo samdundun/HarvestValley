@@ -7,5 +7,4 @@ public class AnimalProduceJenny {
 	public AnimalProduceJenny(String produce) {
 		this.produce = produce;
 	}
-
 }
