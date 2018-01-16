@@ -10,7 +10,6 @@ import guiTeacher.userInterfaces.FullFunctionScreen;
 public class FarmScreenAll extends FullFunctionScreen {
 	
 	private Graphic back;
-	private ArrayList<CropJane> crops;
 
 	public FarmScreenAll(int width, int height) {
 		super(width, height);
