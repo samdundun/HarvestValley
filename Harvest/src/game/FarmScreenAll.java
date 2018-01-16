@@ -19,5 +19,4 @@ public class FarmScreenAll extends FullFunctionScreen {
 		back = new Graphic(0, 0, "resources/farm.PNG");
 		viewObjects.add(back);
 	}
-
 }
