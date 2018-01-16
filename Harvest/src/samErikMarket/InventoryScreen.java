@@ -1,30 +1,28 @@
 package samErikMarket;
 
-import java.io.File;
-import java.util.ArrayList;
+import java.awt.Color;
 import java.util.List;
 
-import javax.swing.JFrame;
-
+import guiTeacher.components.Action;
 import guiTeacher.components.Button;
+import guiTeacher.components.Graphic;
+import guiTeacher.components.StyledComponent;
 import guiTeacher.components.TextBox;
-import guiTeacher.interfaces.FileRequester;
+import guiTeacher.components.TextLabel;
 import guiTeacher.interfaces.Visible;
 import guiTeacher.userInterfaces.FullFunctionScreen;
 
-public class InventoryScreen extends FullFunctionScreen implements FileRequester{
+public class InventoryScreen extends FullFunctionScreen {
 
-	private static final long serialVersionUID = 7548071104587737267L;
-	ArrayList<Inventory> a;
-	private Button buying;
-	private Button selling;
-	private Button exchange;
 	private TextBox description;
-	private TextBox price;
-	private textLabel
+	private TextLabel amount;
+	private TextLabel gold;
+	private Button eat;
+	private Button discard;
+	private Graphic grid;
 	
-	
-	
+	private Inventory invent;
+
 	public InventoryScreen(int width, int height) {
 		super(width, height);
 		// TODO Auto-generated constructor stub
@@ -32,20 +30,45 @@ public class InventoryScreen extends FullFunctionScreen implements FileRequester
 
 	@Override
 	public void initAllObjects(List<Visible> viewObjects) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void setFile(File f) {
-		// TODO Auto-generated method stub
+		StyledComponent.setButtonOutline(true);
+		setBackground(new Color(224,120,8));
 		
-	}
+		amount = new TextLabel(40,60,100,100,"Amount:");
+		viewObjects.add(amount);
+		gold = new TextLabel(500,60,100,100,"Gold:");
+		viewObjects.add(gold);
 
-	@Override
-	public JFrame getWindow() {
-		// TODO Auto-generated method stub
-		return null;
+		discard = new Button(600, 500, 100, 40, "DISCARD", new Action() {
+
+			@Override
+			public void act() {
+				// TODO Auto-generated method stub
+
+			}
+		});
+		discard.setBackground(Color.red);
+		discard.setActiveBorderColor(Color.white);
+		discard.setCurve(0, 0);
+		discard.update();
+		viewObjects.add(discard);
+		
+		eat = new Button(460, 500, 100, 40, "EAT", new Action() {
+
+			@Override
+			public void act() {
+				// TODO Auto-generated method stub
+
+			}
+		});
+		eat.setBackground(Color.red);
+		eat.setActiveBorderColor(Color.white);
+		eat.setCurve(0, 0);
+		eat.update();
+		viewObjects.add(eat);
+		
+		grid = new Graphic(60,180, "resources/inventory.png");
+		viewObjects.add(grid);
+
 	}
 
 }
