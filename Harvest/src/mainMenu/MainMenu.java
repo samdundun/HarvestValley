@@ -14,7 +14,7 @@ public class MainMenu extends GUIApplication {
 		MenuScreenLubna screen = new MenuScreenLubna(getWidth(), getHeight());
 		setScreen(screen);
 	}
-	
+
 	public static void main(String[] args) {
 		MainMenu s = new MainMenu(800,600);
 		Thread runner = new Thread(s);
