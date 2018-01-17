@@ -20,7 +20,7 @@ public class AnimalJenny {
 		return src;
 	}
 	
-	public String getProduce() {
-		return src;
+	public AnimalProduceJenny getProduce() {
+		return produce;
 	}
 }
