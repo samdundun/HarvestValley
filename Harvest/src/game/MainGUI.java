@@ -3,7 +3,6 @@ package game;
 import guiTeacher.GUIApplication;
 
 public class MainGUI extends GUIApplication {
-
 	
 	public MainGUI(int width, int height) {
 		super(width, height);
@@ -16,9 +15,8 @@ public class MainGUI extends GUIApplication {
 	}
 
 	public static void main(String[] args) {
-		MainGUI m = new MainGUI(880, 557);
+		MainGUI m = new MainGUI(820, 520);
 		Thread go = new Thread(m);
 		go.start();
 	}
-
 }

@@ -23,14 +23,13 @@ public class FarmScreenAll extends FullFunctionScreen {
 		back = new Graphic(0, 0, "resources/farm.PNG");
 		viewObjects.add(back);
 
-		menuJenny = new Button(5, 510, 80, 30, "Menu", new Color(230, 235, 210), null);
+		menuJenny = new Button(5, 470, 80, 30, "Menu", new Color(230, 235, 210), null);
 		viewObjects.add(menuJenny);
 		
-		shopJenny = new Button(90, 510, 80, 30, "Shop",new Color(230, 235, 210), null);
+		shopJenny = new Button(90, 470, 80, 30, "Shop", new Color(230, 235, 210), null);
 		viewObjects.add(shopJenny);
 		
-		itemJane = new Button(175, 510, 80, 30, "Inventory", new Color(230, 235, 210), null);
+		itemJane = new Button(175, 470, 80, 30, "Inventory", new Color(230, 235, 210), null);
 		viewObjects.add(itemJane);
-
 	}
 }
