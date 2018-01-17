@@ -38,7 +38,7 @@ public class ObjectivesJessi extends ClickableScreen implements Runnable {
 			e.printStackTrace();
 		}
 		viewObjects.add(x);
-		
+		//
 		
 		
 		
