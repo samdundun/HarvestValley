@@ -19,7 +19,7 @@ public class Inventory {
 		//maker.menu();
 	}
 
-	private void add() {
+	public void add() {
 		String name = null;
 		String description = null;
 		int value = 0;
@@ -29,7 +29,22 @@ public class Inventory {
 //		author = getStringInput();
 //		displayMessage("Please enter the number of pages.");
 //		pages = getIntegerInput();
-		addItem(new Item("Corn", "Fresh to eat", 10,"resources/pig.jpg"));
+		addItem(new Item("Corn", "Fresh to eat", 10,"resources/Corn.png"));
+		addItem(new Item("Corn", "Fresh to eat", 10,"resources/Corn.png"));
+		addItem(new Item("Corn", "Fresh to eat", 10,"resources/Corn.png"));
+		addItem(new Item("Corn", "Fresh to eat", 10,"resources/Corn.png"));
+		addItem(new Item("Corn", "Fresh to eat", 10,"resources/Corn.png"));
+		addItem(new Item("Corn", "Fresh to eat", 10,"resources/Corn.png"));
+		addItem(new Item("Corn", "Fresh to eat", 10,"resources/Corn.png"));
+		addItem(new Item("Corn", "Fresh to eat", 10,"resources/Corn.png"));
+		addItem(new Item("Corn", "Fresh to eat", 10,"resources/Corn.png"));
+		addItem(new Item("Corn", "Fresh to eat", 10,"resources/Corn.png"));
+		addItem(new Item("Corn", "Fresh to eat", 10,"resources/Corn.png"));
+		addItem(new Item("Corn", "Fresh to eat", 10,"resources/Corn.png"));
+		addItem(new Item("Corn", "Fresh to eat", 10,"resources/Corn.png"));
+		addItem(new Item("Corn", "Fresh to eat", 10,"resources/Corn.png"));
+		addItem(new Item("Corn", "Fresh to eat", 10,"resources/Corn.png"));
+		addItem(new Item("Corn", "Fresh to eat", 10,"resources/Corn.png"));
 	}
 	
 	private static void displayMessage(String message){
@@ -48,11 +63,11 @@ public class Inventory {
 		return items.get(index);
 	}
 	
-	public void addItem(Item b){
-		items.add(b);
+	public void addItem(Item i){
+		items.add(i);
 	}
 	
-	public void removeItem(Item b) {
-		items.remove(b);
+	public void removeItem(Item i) {
+		items.remove(i);
 	}
 }
