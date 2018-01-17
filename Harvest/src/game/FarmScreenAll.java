@@ -14,6 +14,7 @@ public class FarmScreenAll extends FullFunctionScreen {
 	private Button shopJenny;
 	private Button menuJenny;
 	private Button itemJane;
+	private ImageTextButton sleepAlex;
 
 	public FarmScreenAll(int width, int height) {
 		super(width, height);
@@ -31,6 +32,9 @@ public class FarmScreenAll extends FullFunctionScreen {
 		
 		itemJane = new Button(175, 510, 80, 30, "Inventory", new Color(230, 235, 210), null);
 		viewObjects.add(itemJane);
+		
+		sleepAlex = new ImageTextButton("Click here","sleep.png", 0, 0, 150, 150, null);
+		viewObjects.add(sleepAlex);
 
 	}
 }
