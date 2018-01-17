@@ -10,6 +10,7 @@ import guiTeacher.userInterfaces.FullFunctionScreen;
 public class FarmScreenAll extends FullFunctionScreen {
 	
 	private Graphic back;
+	private Button shopJenny;
 
 	public FarmScreenAll(int width, int height) {
 		super(width, height);
@@ -18,5 +19,7 @@ public class FarmScreenAll extends FullFunctionScreen {
 	public void initAllObjects(List<Visible> viewObjects) {
 		back = new Graphic(0, 0, "resources/farm.PNG");
 		viewObjects.add(back);
+		
+		
 	}
 }
