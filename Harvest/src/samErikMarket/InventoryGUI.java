@@ -16,16 +16,11 @@ public class InventoryGUI extends GUIApplication {
 	}
 
 	public void initScreen() {
-		InventoryScreen screen = new InventoryScreen(getWidth(), getHeight());
-		setScreen(screen);
 		buy = new BuyingScreen(getWidth(), getHeight());
 		sell = new SellingScreen(getWidth(), getHeight());
-<<<<<<< HEAD
 		InventoryScreen whatever = new InventoryScreen(getWidth(),getHeight());
 		setScreen(whatever);
-=======
 		setScreen(buy);
->>>>>>> branch 'market' of https://github.com/samdundun/HarvestValley.git
 
 	}
 
