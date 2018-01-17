@@ -24,12 +24,13 @@ public class MainMenu extends GUIApplication {
 			e.printStackTrace();
 		}
 		MenuScreenLubna screen = new MenuScreenLubna(getWidth(), getHeight());
-
+		
+		
 		ChooseGenderScreen screen2 = new ChooseGenderScreen(getWidth(), getHeight());
 		setScreen(screen2);
 
 		SaveScreenMimi savemimi = new SaveScreenMimi(getWidth(), getHeight());
-		setScreen(screen);
+		setScreen(savemimi);
 
 	}
 	
