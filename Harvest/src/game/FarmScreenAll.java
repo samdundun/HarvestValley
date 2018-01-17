@@ -15,6 +15,7 @@ public class FarmScreenAll extends FullFunctionScreen {
 	private Button menuJenny;
 	private Button itemJane;
 	private ImageTextButton sleepAlex;
+	private ArrayList<CropJane> farmPatch;
 
 	public FarmScreenAll(int width, int height) {
 		super(width, height);
@@ -23,11 +24,11 @@ public class FarmScreenAll extends FullFunctionScreen {
 	public void initAllObjects(List<Visible> viewObjects) {
 		back = new Graphic(0, 0, "resources/farm.PNG");
 		viewObjects.add(back);
-
-		menuJenny = new Button(5, 510, 80, 30, "Menu", new Color(230, 235, 210), null);
-		viewObjects.add(menuJenny);
 		
-		shopJenny = new Button(90, 510, 80, 30, "Shop",new Color(230, 235, 210), null);
+		menuJenny = new Button(5, 470, 80, 30, "Menu", new Color(230, 235, 210), null);
+		viewObjects.add(menuJenny);
+
+		shopJenny = new Button(90, 470, 80, 30, "Shop", new Color(230, 235, 210), null);
 		viewObjects.add(shopJenny);
 		
 		itemJane = new Button(175, 510, 80, 30, "Inventory", new Color(230, 235, 210), null);
@@ -35,6 +36,15 @@ public class FarmScreenAll extends FullFunctionScreen {
 		
 		sleepAlex = new ImageTextButton("Click here","sleep.png", 0, 0, 150, 150, null);
 		viewObjects.add(sleepAlex);
+		
+		itemJane = new Button(175, 470, 80, 30, "Inventory", new Color(230, 235, 210), null);
+		viewObjects.add(itemJane);
+	}
 
+	private void addfarmingPatch(List<Visible> viewObjects) {
+		for(int i=0; i<farmPatch.size(); i++) {
+			
+		}
+		
 	}
 }
