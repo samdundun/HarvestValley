@@ -32,8 +32,6 @@ public class MainMenu extends GUIApplication {
 
 
 	}
-	
-	
 
 	public static void main(String[] args) {
 		MainMenu s = new MainMenu(870,550);

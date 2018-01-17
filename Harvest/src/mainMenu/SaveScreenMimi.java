@@ -11,7 +11,9 @@ import guiTeacher.userInterfaces.ClickableScreen;
 
 public class SaveScreenMimi extends ClickableScreen {
 	
-	private TextArea harval;
+	//the pop up asking if you want to save the currency and inventory is a separate screen.
+	
+	private TextArea save;
 
 	public SaveScreenMimi(int width, int height) {
 		super(width, height);
@@ -25,9 +27,15 @@ public class SaveScreenMimi extends ClickableScreen {
 //		harval.setCustomTextColor(Color.black);
 //		harval.update();//143
 //		viewObjects.add(harval);
-		Graphic title = new Graphic(150, 60, 600, 600, "resources/harvestvalley.png");
+		Graphic title = new Graphic(240, 40, 400, 400, "resources/harvestvalley.png");
 		viewObjects.add(title);
+		// put a box behind this text
+		save = new TextArea(135, 200, 600, 250, "You are about to save the items in your inventory and your current amount of money. Progress made in the farm and barn will not be saved. Continue?");
+		save.setCustomTextColor(Color.black);
+		save.update();//143
+		viewObjects.add(save);
+		Graphic exit = new Graphic(500, 430, 100, 100, "resources/exitButton.png");
+		viewObjects.add(exit);
 	}
 
 }
-//the pop up asking if you want to save the currency and inventory is a separate screen.
