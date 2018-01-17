@@ -39,13 +39,12 @@ public class MainMenu extends GUIApplication {
 		SaveScreenMimi savemimi = new SaveScreenMimi(getWidth(), getHeight());
 		
 		
-		ObjectivesJessi objectives = new ObjectivesJessi(getWidth(), getHeight());
+		//ObjectivesJessi objectives = new ObjectivesJessi(getWidth(), getHeight());
 	
 		
-		setScreen(objectives);
+		//setScreen(objectives);
 //143
 
-		MenuScreenLubna screen = new MenuScreenLubna(getWidth(), getHeight());
 		SaveScreenMimi savemimi = new SaveScreenMimi(getWidth(), getHeight());
 		setScreen(screen);
 
@@ -55,9 +54,6 @@ public class MainMenu extends GUIApplication {
 
 		game = new MainMenu(870,550);
 		Thread runner = new Thread(game);
-
-		MainMenu s = new MainMenu(800,600);
-		Thread runner = new Thread(s);
 
 		runner.start();
 	}
