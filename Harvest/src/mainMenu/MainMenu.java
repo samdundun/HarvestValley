@@ -30,6 +30,7 @@ public class MainMenu extends GUIApplication {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+
 		MenuScreenLubna screen = new MenuScreenLubna(getWidth(), getHeight());
 		nextScreen = new PlaceHolderScreen(getWidth(),getHeight());
 		
@@ -43,13 +44,21 @@ public class MainMenu extends GUIApplication {
 		
 		setScreen(objectives);
 
+
+		MenuScreenLubna screen = new MenuScreenLubna(getWidth(), getHeight());
+		SaveScreenMimi savemimi = new SaveScreenMimi(getWidth(), getHeight());
+		setScreen(screen);
+
 	}
-	
-	
 
 	public static void main(String[] args) {
+
 		game = new MainMenu(870,550);
 		Thread runner = new Thread(game);
+
+		MainMenu s = new MainMenu(800,600);
+		Thread runner = new Thread(s);
+
 		runner.start();
 	}
 
