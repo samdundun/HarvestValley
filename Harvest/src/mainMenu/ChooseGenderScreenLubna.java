@@ -1,17 +1,23 @@
 package mainMenu;
 
+import java.awt.Color;
+import java.awt.Graphics2D;
 import java.util.List;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
+
+import guiTeacher.components.Action;
+import guiTeacher.components.CustomImageButton;
 import guiTeacher.components.Graphic;
+import guiTeacher.interfaces.DrawInstructions;
 import guiTeacher.interfaces.Visible;
 import guiTeacher.userInterfaces.ClickableScreen;
 
 public class ChooseGenderScreenLubna extends ClickableScreen implements Runnable {
 
-//	CustomImageButton
-	private Graphic girl;
-	private Graphic boy;
+
+	private ImageButton girl;
+	private ImageButton boy;
 	private Graphic back;
+	private Graphic title;
 
 	public ChooseGenderScreenLubna(int width, int height) {
 		super(width, height);
@@ -33,10 +39,28 @@ public class ChooseGenderScreenLubna extends ClickableScreen implements Runnable
 	public void initAllObjects(List<Visible> viewObjects) {
 		back = new Graphic(0,0,getWidth(),getHeight(),"resources/background.png");
 		viewObjects.add(back);
-		girl = new Graphic(265,350, 150,150,"resources/girlButton.png");
+		girl = new ImageButton(260,350,150,150,"resources/girlButton.png",new Action() {
+			
+			@Override
+			public void act() {
+				MainMenu.isGirl = true;
+				MainMenu.game.setScreen(MainMenu.nextScreen);
+				
+			}
+		});
 		viewObjects.add(girl);
-		boy = new Graphic(470,350, 150,150,"resources/boyButton.png");
+		boy = new ImageButton(470,350, 150,150,"resources/boyButton.png", new Action() {
+			
+			@Override
+			public void act() {
+				MainMenu.isGirl= false;
+				MainMenu.game.setScreen(MainMenu.nextScreen);
+				
+			}
+		});
 		viewObjects.add(boy);
+		title = new Graphic(150, 60, 600, 600, "resources/harvestvalley.png");
+		viewObjects.add(title);
 	}
 
 	@Override
