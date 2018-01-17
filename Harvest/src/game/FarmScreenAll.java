@@ -32,13 +32,29 @@ public class FarmScreenAll extends FullFunctionScreen {
 		
 		itemJane = new Button(175, 470, 80, 30, "Inventory", new Color(230, 235, 210), null);
 		viewObjects.add(itemJane);
+		addfarmingPatchJane(viewObjects);
 
 	}
 
-	private void addfarmingPatch(List<Visible> viewObjects) {
-		for(int i=0; i<farmPatch.size(); i++) {
-			
+	private void addfarmingPatchJane(List<Visible> viewObjects) {
+		int start = 545;
+		int space = 77;
+		for(int i=0; i<9; i++) {
+			if(i<3) {
+			CropJane patch= new CropJane(start+(i*70), 235, 65, 50, "Plant Here", Color.BLACK, null);
+			//farmPatch.add(patch);
+			viewObjects.add(patch);
+			}
+			else if(i>=3&&i<6) {
+				CropJane patch= new CropJane(start+((i-3)*70), 235+space, 65, 50, "Plant Here", Color.BLACK, null);
+				//farmPatch.add(patch);
+				viewObjects.add(patch);
+			}
+			else {
+				CropJane patch= new CropJane(start+((i-6)*70), 248+space+space, 65, 50, "Plant Here", Color.BLACK, null);
+				//farmPatch.add(patch);
+				viewObjects.add(patch);
+			}
 		}
-		
 	}
 }
