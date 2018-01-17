@@ -31,7 +31,7 @@ public class ChooseGenderScreen extends ClickableScreen implements Runnable {
 
 	@Override
 	public void initAllObjects(List<Visible> viewObjects) {
-		back = new Graphic(0,0,getWidth(),getHeight,"resources/background.png");
+		back = new Graphic(0,0,getWidth(),getHeight(),"resources/background.png");
 		viewObjects.add(back);
 		girl = new Graphic(350,350, 150,150,"resources/girlButton.png");
 		viewObjects.add(girl);
