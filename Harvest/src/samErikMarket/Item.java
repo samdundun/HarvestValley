@@ -17,7 +17,7 @@ public class Item extends ClickableGraphic implements Clickable{
 	private Color color;
 	
 	public Item(String name, String description, int value, String imageLocation) {
-		super(0,0, 30, 30, imageLocation);
+		super(0,0, 48, 48, imageLocation);
 		this.name = name;
 		this.image = imageLocation;
 		this.value = value;

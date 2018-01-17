@@ -71,11 +71,37 @@ public class InventoryScreen extends FullFunctionScreen {
 		grid = new Graphic(60,180, "resources/inventory.png");
 		viewObjects.add(grid);
 		
-		addItems(0);
+//		addItems(0);
+		
+//		Item corn = new Item("Corn", "Fresh to eat", 10,"resources/Corn.png");
+//		corn.setX(90);
+//		corn.setY(200);
+//		viewObjects.add(corn);
+//		Item tomato = new Item("Corn", "Fresh to eat", 10,"resources/Tomato.png");
+//		tomato.setX(138);
+//		tomato.setY(200);
+//		viewObjects.add(tomato);
+		
+		invent.add();
+		int move = 1;
+		int width = 48;
+		int startingHeight = 200;
+		int height = 48;
+		for(Item i:invent.getItems()) {
+			i.setX(40+move*width);
+			i.setY(startingHeight);
+			move++;
+			if(move == 13){
+				move = 1;
+				startingHeight = startingHeight+height;
+			}
+			viewObjects.add(i);
+		}
+		
 	}
 
 	private void addItems(int index) {
-
+		System.out.println(invent.getItem(index));
 		Item i = invent.getItem(index);
 		//x value for all books
 		int x = 50;

@@ -13,7 +13,7 @@ public class InventoryGUI extends GUIApplication {
 
 	@Override
 	public void initScreen() {
-		BuyingScreen screen = new BuyingScreen(getWidth(), getHeight());
+		InventoryScreen screen = new InventoryScreen(getWidth(), getHeight());
 		setScreen(screen);
 
 	}
