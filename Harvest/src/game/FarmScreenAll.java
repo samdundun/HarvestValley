@@ -31,5 +31,6 @@ public class FarmScreenAll extends FullFunctionScreen {
 		
 		itemJane = new Button(175, 510, 80, 30, "Inventory", new Color(230, 235, 210), null);
 		viewObjects.add(itemJane);
+
 	}
 }

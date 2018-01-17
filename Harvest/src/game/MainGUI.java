@@ -4,6 +4,7 @@ import guiTeacher.GUIApplication;
 
 public class MainGUI extends GUIApplication {
 
+	
 	public MainGUI(int width, int height) {
 		super(width, height);
 		setVisible(true);
