@@ -10,6 +10,7 @@ import javax.swing.JFrame;
 import guiTeacher.components.Action;
 import guiTeacher.components.Button;
 import guiTeacher.components.Graphic;
+import guiTeacher.components.Pane;
 import guiTeacher.components.StyledComponent;
 import guiTeacher.components.TextArea;
 import guiTeacher.components.TextBox;
@@ -64,7 +65,6 @@ public class BuyingScreen extends FullFunctionScreen implements FileRequester{
 
 			}
 		});
-		System.out.println(InventoryGUI.sell);
 		selling.setBackground(Color.red);
 		selling.setActiveBorderColor(Color.white);
 		selling.setCurve(0, 0);
@@ -72,9 +72,24 @@ public class BuyingScreen extends FullFunctionScreen implements FileRequester{
 		viewObjects.add(selling);
 		grid = new Graphic(60,180, "resources/inventory.png");
 		viewObjects.add(grid);
-		description = new TextArea(60,400,100,100,"Insert Description here");
-		description.setBackground(Color.red);
+		price = new TextArea(60,400,100,100,"Price :");
+		viewObjects.add(price);
+		description = new TextArea(500,400,100,100, "INSERT DESCRIPTION");
+		description.update();
 		viewObjects.add(description);
+		exchange = new Button(300, 400, 100, 40, "BUY 1", new Action() {
+
+			@Override
+			public void act() {
+				
+
+			}
+		});
+		exchange.setBackground(Color.red);
+		exchange.setActiveBorderColor(Color.white);
+		exchange.setCurve(0, 0);
+		exchange.update();
+		viewObjects.add(exchange);
 		
 
 	}
