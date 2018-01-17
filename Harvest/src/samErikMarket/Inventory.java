@@ -15,36 +15,36 @@ public class Inventory {
 	public static void main(String[] args){
 		Inventory invent = new Inventory();
 		in = new Scanner(System.in);
-		invent.add();
-		//maker.menu();
 	}
 
-	public void add() {
-		String name = null;
-		String description = null;
-		int value = 0;
-//		displayMessage("Please enter a title");
-//		title = getStringInput();
-//		displayMessage("Please enter an author");
-//		author = getStringInput();
-//		displayMessage("Please enter the number of pages.");
-//		pages = getIntegerInput();
+	public void addBasics() {	
+		/**
+		 * strawberries
+		 * corn
+		 * tomato
+		 * potato
+		 * pepper
+		 * seeds^^
+		 */
 		addItem(new Item("Corn", "Fresh to eat", 10,"resources/Corn.png"));
+		addItem(new Item("Corn", "Fresh to eat", 10,"resources/Tomato.png"));
 		addItem(new Item("Corn", "Fresh to eat", 10,"resources/Corn.png"));
+		addItem(new Item("Corn", "Fresh to eat", 10,"resources/Tomato.png"));
 		addItem(new Item("Corn", "Fresh to eat", 10,"resources/Corn.png"));
+		addItem(new Item("Corn", "Fresh to eat", 10,"resources/Tomato.png"));
 		addItem(new Item("Corn", "Fresh to eat", 10,"resources/Corn.png"));
+		addItem(new Item("Corn", "Fresh to eat", 10,"resources/Tomato.png"));
 		addItem(new Item("Corn", "Fresh to eat", 10,"resources/Corn.png"));
+		addItem(new Item("Corn", "Fresh to eat", 10,"resources/Tomato.png"));
 		addItem(new Item("Corn", "Fresh to eat", 10,"resources/Corn.png"));
+		addItem(new Item("Corn", "Fresh to eat", 10,"resources/Tomato.png"));
 		addItem(new Item("Corn", "Fresh to eat", 10,"resources/Corn.png"));
+		addItem(new Item("Corn", "Fresh to eat", 10,"resources/Tomato.png"));
 		addItem(new Item("Corn", "Fresh to eat", 10,"resources/Corn.png"));
-		addItem(new Item("Corn", "Fresh to eat", 10,"resources/Corn.png"));
-		addItem(new Item("Corn", "Fresh to eat", 10,"resources/Corn.png"));
-		addItem(new Item("Corn", "Fresh to eat", 10,"resources/Corn.png"));
-		addItem(new Item("Corn", "Fresh to eat", 10,"resources/Corn.png"));
-		addItem(new Item("Corn", "Fresh to eat", 10,"resources/Corn.png"));
-		addItem(new Item("Corn", "Fresh to eat", 10,"resources/Corn.png"));
-		addItem(new Item("Corn", "Fresh to eat", 10,"resources/Corn.png"));
-		addItem(new Item("Corn", "Fresh to eat", 10,"resources/Corn.png"));
+	}
+	
+	public void sort() {
+		//sort items in the inventory to take into account the quantities
 	}
 	
 	private static void displayMessage(String message){

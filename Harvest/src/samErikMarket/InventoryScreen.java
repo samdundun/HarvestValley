@@ -70,22 +70,18 @@ public class InventoryScreen extends FullFunctionScreen {
 		
 		grid = new Graphic(60,180, "resources/inventory.png");
 		viewObjects.add(grid);
-		
-//		addItems(0);
-		
-//		Item corn = new Item("Corn", "Fresh to eat", 10,"resources/Corn.png");
-//		corn.setX(90);
-//		corn.setY(200);
-//		viewObjects.add(corn);
-//		Item tomato = new Item("Corn", "Fresh to eat", 10,"resources/Tomato.png");
-//		tomato.setX(138);
-//		tomato.setY(200);
-//		viewObjects.add(tomato);
-		
-		invent.add();
+		/*TODO
+		figure out how to display quantity, price, etc when image is hovered over
+		play around with the items class
+		items should change opacity when clicked on or hovered over
+		**/
+		invent.addBasics();
+		//how other classes will add items to the inventory
+		invent.addItem(new Item("Corn", "Fresh to eat", 10,"resources/Corn.png"));
+		invent.addItem(new Item("Corn", "Fresh to eat", 10,"resources/Corn.png"));
 		int move = 1;
 		int width = 48;
-		int startingHeight = 200;
+		int startingHeight = 202;
 		int height = 48;
 		for(Item i:invent.getItems()) {
 			i.setX(40+move*width);
@@ -98,20 +94,6 @@ public class InventoryScreen extends FullFunctionScreen {
 			viewObjects.add(i);
 		}
 		
-	}
-
-	private void addItems(int index) {
-		System.out.println(invent.getItem(index));
-		Item i = invent.getItem(index);
-		//x value for all books
-		int x = 50;
-		i.setX(x);
-		//add book to screen
-		addObject(i);
-//		//mark book as having been added
-//		b.setOnShelf(true);
-//		//adjust y-values of all books
-//		arrangeStack();
 	}
 
 }
