@@ -12,8 +12,7 @@ public class CropJane extends Button {
 			
 			@Override
 			public void act() {
-				
-				
+				//setScreen to inventory
 			}
 		});
 		// TODO Auto-generated constructor stub
