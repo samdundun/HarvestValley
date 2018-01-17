@@ -6,14 +6,14 @@ import guiTeacher.components.Graphic;
 import guiTeacher.interfaces.Visible;
 import guiTeacher.userInterfaces.ClickableScreen;
 
-public class ChooseGenderScreen extends ClickableScreen implements Runnable {
+public class ChooseGenderScreenLubna extends ClickableScreen implements Runnable {
 
 //	CustomImageButton
 	private Graphic girl;
 	private Graphic boy;
 	private Graphic back;
 
-	public ChooseGenderScreen(int width, int height) {
+	public ChooseGenderScreenLubna(int width, int height) {
 		super(width, height);
 		Thread app = new Thread(this);
 		app.start();
@@ -33,9 +33,9 @@ public class ChooseGenderScreen extends ClickableScreen implements Runnable {
 	public void initAllObjects(List<Visible> viewObjects) {
 		back = new Graphic(0,0,getWidth(),getHeight(),"resources/background.png");
 		viewObjects.add(back);
-		girl = new Graphic(350,350, 150,150,"resources/girlButton.png");
+		girl = new Graphic(265,350, 150,150,"resources/girlButton.png");
 		viewObjects.add(girl);
-		boy = new Graphic(550,350, 150,150,"resources/boyButton.png");
+		boy = new Graphic(470,350, 150,150,"resources/boyButton.png");
 		viewObjects.add(boy);
 	}
 

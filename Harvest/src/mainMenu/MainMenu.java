@@ -25,11 +25,11 @@ public class MainMenu extends GUIApplication {
 		}
 		MenuScreenLubna screen = new MenuScreenLubna(getWidth(), getHeight());
 
-		ChooseGenderScreen screen2 = new ChooseGenderScreen(getWidth(), getHeight());
-		setScreen(screen2);
+		ChooseGenderScreenLubna screen2 = new ChooseGenderScreenLubna(getWidth(), getHeight());
+		setScreen(screen);
 
 		SaveScreenMimi savemimi = new SaveScreenMimi(getWidth(), getHeight());
-		setScreen(screen);
+		//setScreen(screen);
 
 	}
 	
