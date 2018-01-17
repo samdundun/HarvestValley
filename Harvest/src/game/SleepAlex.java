@@ -10,7 +10,9 @@ import guiTeacher.components.Action;
 import guiTeacher.components.Button;
 import guiTeacher.components.ImageTextButton;
 
-public class SleepAlex extends ImageTextButton{
+public class SleepAlex extends ImageTextButton {//can use ImageTextButton, CustomImageButton, ClickableGraphic
+	
+	//Holiday card is in orcmathGui version2.2
 	
 	private Action action;
 	//Image icon;
