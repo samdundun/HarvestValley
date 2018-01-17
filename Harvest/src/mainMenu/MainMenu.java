@@ -5,9 +5,16 @@ import java.io.File;
 
 import guiTeacher.GUIApplication;
 import guiTeacher.components.StyledComponent;
+import guiTeacher.userInterfaces.Screen;
 
 public class MainMenu extends GUIApplication {
-
+	
+	public static MainMenu game;
+	public static boolean isGirl;
+	public static ChooseGenderScreenLubna screen2;
+	public static Screen nextScreen;
+	
+	
 	public MainMenu(int width, int height) {
 		super(width, height);
 		setVisible(true);
@@ -24,20 +31,25 @@ public class MainMenu extends GUIApplication {
 			e.printStackTrace();
 		}
 		MenuScreenLubna screen = new MenuScreenLubna(getWidth(), getHeight());
-
-		ChooseGenderScreenLubna screen2 = new ChooseGenderScreenLubna(getWidth(), getHeight());
+		nextScreen = new PlaceHolderScreen(getWidth(),getHeight());
+		
+		screen2 = new ChooseGenderScreenLubna(getWidth(), getHeight());
 
 		SaveScreenMimi savemimi = new SaveScreenMimi(getWidth(), getHeight());
-		setScreen(savemimi);
-
+		
+		
+		ObjectivesJessi objectives = new ObjectivesJessi(getWidth(), getHeight());
+	
+		
+		setScreen(objectives);
 
 	}
 	
 	
 
 	public static void main(String[] args) {
-		MainMenu s = new MainMenu(870,550);
-		Thread runner = new Thread(s);
+		game = new MainMenu(870,550);
+		Thread runner = new Thread(game);
 		runner.start();
 	}
 
