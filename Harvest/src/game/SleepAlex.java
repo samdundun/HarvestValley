@@ -8,34 +8,24 @@ import javax.swing.ImageIcon;
 
 import guiTeacher.components.Action;
 import guiTeacher.components.Button;
+import guiTeacher.components.ClickableGraphic;
 import guiTeacher.components.ImageTextButton;
 
-public class SleepAlex extends ImageTextButton {//can use ImageTextButton, CustomImageButton, ClickableGraphic
+public class SleepAlex extends ClickableGraphic {//can use ImageTextButton, CustomImageButton, ClickableGraphic
 	
 	//Holiday card is in orcmathGui version2.2
-	
+	// Day-In-review should contain
+	/*
+	 * Total crops planted
+	 * Total animals purchased
+	 * Total animal products created
+	 * 
+	 * */
 	private Action action;
-	//Image icon;
-	ImageIcon icon = createImageIcon("sleep.png",
-            "Click here");
-	ImageIcon myicon = new ImageIcon("sleep.png");
 
-	public SleepAlex(String text, Image icon, int x, int y, int width, int height, Action action) {
-		super("Click here",icon, 0, 0, 150, 150, action);
-		this.icon = icon;
-		update();
-	}
-	
-	public void update(Graphics2D g) {
-		super.update(g);
-		if(icon != null){
-			g.drawImage(icon, 2, 0, null);
-		}
-	}
-	
-	public ImageIcon createImageIcon(String path, String description) {
-		java.net.URL imgURL = getClass().getResource(path);
-		return new ImageIcon(imgURL, description);
+	public SleepAlex(int x, int y, int w, int h, String imageLocation, Action action) {
+		super(0, 0, 150, 150, "sleep.png");
+		this.action = action;
 	}
 
 	public static void main(String[] args) {
