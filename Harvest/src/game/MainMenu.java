@@ -29,14 +29,14 @@ public class MainMenu extends GUIApplication {
 
 	@Override
 	public void initScreen() {
-		try {
-			File fontFile = new File("resources/burnstown dam.ttf");
-			Font font = Font.createFont(Font.TRUETYPE_FONT, fontFile);
-			Font baseFont=font.deriveFont(36f);
-			StyledComponent.setBaseFont(baseFont);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+//		try {
+//			File fontFile = new File("resources/burnstown dam.ttf");
+//			Font font = Font.createFont(Font.TRUETYPE_FONT, fontFile);
+//			Font baseFont=font.deriveFont(36f);
+//			StyledComponent.setBaseFont(baseFont);
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
 
 		 screen = new MenuScreenLubna(getWidth(), getHeight());
 		farmScreen = new FarmScreenAll(getWidth(),getHeight());
