@@ -19,12 +19,13 @@ public class SleepAlex extends ClickableGraphic {//can use ImageTextButton, Cust
 	 * Total crops planted
 	 * Total animals purchased
 	 * Total animal products created
+	 * Total crops created
 	 * 
 	 * */
 	private Action action;
 
 	public SleepAlex(int x, int y, int w, int h, String imageLocation, Action action) {
-		super(0, 0, 150, 150, "sleep.png");
+		super(0, 0, 150, 150, null);
 		this.action = action;
 	}
 
