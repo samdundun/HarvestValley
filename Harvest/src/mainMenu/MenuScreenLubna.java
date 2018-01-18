@@ -2,6 +2,7 @@ package mainMenu;
 
 import java.util.List;
 
+import guiTeacher.components.Action;
 import guiTeacher.components.Graphic;
 import guiTeacher.interfaces.Visible;
 import guiTeacher.userInterfaces.ClickableScreen;
@@ -9,6 +10,10 @@ import guiTeacher.userInterfaces.ClickableScreen;
 public class MenuScreenLubna extends ClickableScreen implements Runnable {
 
 	private Graphic title;
+	private ImageButton newGame;
+	private ImageButton load;
+	private ImageButton exit;
+	private ImageButton obj;
 
 	public MenuScreenLubna(int width, int height) {
 		super(width, height);
@@ -23,6 +28,46 @@ public class MenuScreenLubna extends ClickableScreen implements Runnable {
 		title = new Graphic(150, 60, 600, 600, "resources/harvestvalley.png");
 		viewObjects.add(title);
 
+		newGame = new ImageButton(260,350,150,150,"resources/newButton.png",new Action() {
+			
+			@Override
+			public void act() {
+				MainMenu.isNew = true;
+				MainMenu.game.setScreen(MainMenu.nextScreen);
+				
+			}
+		});
+		viewObjects.add(newGame);
+		load = new ImageButton(470,350, 150,150,"resources/loadButton.png", new Action() {
+			
+			@Override
+			public void act() {
+				MainMenu.isLoad= false;
+				MainMenu.game.setScreen(MainMenu.nextScreen);
+				
+			}
+		});
+		viewObjects.add(load);
+		exit = new ImageButton(470,350, 150,150,"resources/exitButton.png", new Action() {
+			
+			@Override
+			public void act() {
+				MainMenu.isExit= false;
+				MainMenu.game.setScreen(MainMenu.nextScreen);
+				
+			}
+		});
+		viewObjects.add(exit);
+		obj = new ImageButton(470,350, 150,150,"resources/objective.png", new Action() {
+			
+			@Override
+			public void act() {
+				MainMenu.isObj= false;
+				MainMenu.game.setScreen(MainMenu.nextScreen);
+				
+			}
+		});
+		viewObjects.add(obj);
 	}
 
 	@Override

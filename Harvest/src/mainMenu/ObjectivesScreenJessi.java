@@ -20,9 +20,9 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ObjectivesJessi extends ClickableScreen implements Runnable {
+public class ObjectivesScreenJessi extends ClickableScreen implements Runnable {
 
-	public ObjectivesJessi(int width, int height) {
+	public ObjectivesScreenJessi(int width, int height) {
 		super(width, height);
 	}
 	
@@ -31,7 +31,7 @@ public class ObjectivesJessi extends ClickableScreen implements Runnable {
 		Graphic back = new Graphic(0,0,.5,"resources/background.png");
 		viewObjects.add(back);
 		
-		TextBox y = new TextBox(100, 100, 10, 100, "");
+		//TextBox y = new TextBox(100, 100, 10, 100, "");
 		//y.set
 		TextArea x = new TextArea(140, 180, getWidth()/2, 400, "HARVEST VALLEY INSTRUCTIONS");
 		x.setCustomTextColor(new Color(240,240,255));

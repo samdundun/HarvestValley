@@ -11,6 +11,10 @@ public class MainMenu extends GUIApplication {
 	
 	public static MainMenu game;
 	public static boolean isGirl;
+	public static boolean isNew;
+	public static boolean isLoad;
+	public static boolean isExit;
+	public static boolean isObj;
 	public static ChooseGenderScreenLubna screen2;
 	public static Screen nextScreen;
 	
@@ -39,7 +43,7 @@ public class MainMenu extends GUIApplication {
 		SaveScreenMimi savemimi = new SaveScreenMimi(getWidth(), getHeight());
 		
 		
-		ObjectivesJessi objectives = new ObjectivesJessi(getWidth(), getHeight());
+		ObjectivesScreenJessi objectives = new ObjectivesScreenJessi(getWidth(), getHeight());
 
 		setScreen(screen2);
 
