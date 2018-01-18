@@ -19,6 +19,7 @@ public class FarmScreenAll extends FullFunctionScreen {
 
 	public FarmScreenAll(int width, int height) {
 		super(width, height);
+		farmPatch = new ArrayList<CropJane>();
 	}
 
 	public void initAllObjects(List<Visible> viewObjects) {
@@ -31,11 +32,9 @@ public class FarmScreenAll extends FullFunctionScreen {
 		shopJenny = new Button(90, 470, 80, 30, "Shop", new Color(230, 235, 210), null);
 		viewObjects.add(shopJenny);
 		
-		itemJane = new Button(175, 510, 80, 30, "Inventory", new Color(230, 235, 210), null);
-		viewObjects.add(itemJane);
 		
-		sleepAlex = new ImageTextButton("Click here","sleep.png", 0, 0, 150, 150, null);
-		viewObjects.add(sleepAlex);
+//		sleepAlex = new ImageTextButton("Click here","sleep.png", 0, 0, 150, 150, null);
+//		viewObjects.add(sleepAlex);
 		
 		itemJane = new Button(175, 470, 80, 30, "Inventory", new Color(230, 235, 210), null);
 		viewObjects.add(itemJane);
@@ -45,22 +44,22 @@ public class FarmScreenAll extends FullFunctionScreen {
 	}
 
 	private void addfarmingPatchJane(List<Visible> viewObjects) {
-		int start = 545;
+		int start = 547;
 		int space = 77;
 		for(int i=0; i<9; i++) {
 			if(i<3) {
-			CropJane patch= new CropJane(start+(i*70), 235, 65, 50, "Plant Here", Color.BLACK, null);
-			//farmPatch.add(patch);
+			CropJane patch= new CropJane(start+(i*68), 235, 63, 50, "", Color.BLACK, null);
+			farmPatch.add(patch);
 			viewObjects.add(patch);
 			}
 			else if(i>=3&&i<6) {
-				CropJane patch= new CropJane(start+((i-3)*70), 235+space, 65, 50, "Plant Here", Color.BLACK, null);
-				//farmPatch.add(patch);
+				CropJane patch= new CropJane(start+((i-3)*68), 235+space, 63, 50, "", Color.BLACK, null);
+				farmPatch.add(patch);
 				viewObjects.add(patch);
 			}
 			else {
-				CropJane patch= new CropJane(start+((i-6)*70), 248+space+space, 65, 50, "Plant Here", Color.BLACK, null);
-				//farmPatch.add(patch);
+				CropJane patch= new CropJane(start+((i-6)*68), 248+space+space, 63, 50, "", Color.BLACK, null);
+				farmPatch.add(patch);
 				viewObjects.add(patch);
 			}
 		}

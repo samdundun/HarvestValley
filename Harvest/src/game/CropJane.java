@@ -8,14 +8,18 @@ import guiTeacher.components.Button;
 public class CropJane extends Button {
 
 	public CropJane(int x, int y, int w, int h, String text, Color color, Action action) {
-		super(x, y, w, h, "Plant here", new Color(200, 125, 10), new Action() {
+		super(x, y, w, h, text, new Color(200, 125, 10), new Action() {
 			
 			@Override
 			public void act() {
-				//setScreen to inventory
+				getSeedSelection();
+			}
+
+			private void getSeedSelection() {
+				// TODO Auto-generated method stub
+				
 			}
 		});
-		// TODO Auto-generated constructor stub
 	}
 
 	public CropJane(int x, int y, int w, int h, String text, Action action) {
