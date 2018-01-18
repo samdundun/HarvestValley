@@ -10,7 +10,7 @@ public class PlantJane {
 	private plantProduceJane produce;
 	
 	public PlantJane() {
-		// TODO Auto-generated constructor stub
+		
 	}
 
 }
