@@ -16,8 +16,6 @@ public class InventoryGUI extends GUIApplication {
 	}
 
 	public void initScreen() {
-		InventoryScreen screen = new InventoryScreen(getWidth(), getHeight());
-		setScreen(screen);
 		buy = new BuyingScreen(getWidth(), getHeight());
 		sell = new SellingScreen(getWidth(), getHeight());
 		InventoryScreen whatever = new InventoryScreen(getWidth(),getHeight());
