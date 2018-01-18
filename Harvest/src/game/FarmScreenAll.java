@@ -48,22 +48,22 @@ public class FarmScreenAll extends FullFunctionScreen {
 	}
 
 	private void addfarmingPatchJane(List<Visible> viewObjects) {
-		int start = 547;
+		int start = 593;
 		int space = 77;
 		for(int i=0; i<9; i++) {
 			if(i<3) {
-			CropJane patch= new CropJane(start+(i*68), 235, 63, 50, "", Color.BLACK, null);
-			farmPatch.add(patch);
+			CropJane patch= new CropJane(start+(i*68), 253, 63, 50, "", Color.BLACK, null);
+			//farmPatch.add(patch);
 			viewObjects.add(patch);
 			}
 			else if(i>=3&&i<6) {
-				CropJane patch= new CropJane(start+((i-3)*68), 235+space, 63, 50, "", Color.BLACK, null);
-				farmPatch.add(patch);
+				CropJane patch= new CropJane(start+((i-3)*68), 260+space, 63, 50, "", Color.BLACK, null);
+				//farmPatch.add(patch);
 				viewObjects.add(patch);
 			}
 			else {
-				CropJane patch= new CropJane(start+((i-6)*68), 248+space+space, 63, 50, "", Color.BLACK, null);
-				farmPatch.add(patch);
+				CropJane patch= new CropJane(start+((i-6)*68), 278+space+space, 63, 50, "", Color.BLACK, null);
+				//farmPatch.add(patch);
 				viewObjects.add(patch);
 			}
 		}
