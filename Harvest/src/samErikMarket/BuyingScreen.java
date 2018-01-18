@@ -26,7 +26,7 @@ public class BuyingScreen extends FullFunctionScreen implements FileRequester{
 	private Button buying;
 	private Button selling;
 	private Button exchange;
-	private Button description;
+	private TextArea description;
 	private TextArea price;
 	private TextLabel amount;
 	private TextLabel gold;
@@ -78,16 +78,9 @@ public class BuyingScreen extends FullFunctionScreen implements FileRequester{
 		price = new TextArea(60,400,100,100,"Price :");
 		viewObjects.add(price);
 		
-		description = new Button(450,400,250,150, "INSERT DESCRIPTION", new Action() {
-			
-			@Override
-			public void act() {
-				// TODO Auto-generated method stub
-				
-			}
-		});
+		
+		description = new TextArea(450, 400, 100, 100, "SELECT AN ITEM");
 		description.setBackground(new Color(130,199,165));
-		description.setCurve(0, 0);
 		description.update();
 		viewObjects.add(description);
 		
