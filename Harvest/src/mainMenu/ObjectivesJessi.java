@@ -8,17 +8,12 @@ import guiTeacher.userInterfaces.Screen;
 import java.util.List;
 
 import guiTeacher.components.*;
-=======
+
 import guiTeacher.components.Graphic;
 import guiTeacher.components.TextArea;
 import guiTeacher.components.TextBox;
 import guiTeacher.interfaces.Visible;
 import guiTeacher.userInterfaces.ClickableScreen;
->>>>>>> branch 'menu' of https://github.com/samdundun/HarvestValley.git
-
-<<<<<<< HEAD
-public class ObjectivesJessi extends Screen {
-=======
 import java.awt.Color;
 import java.awt.Font;
 import java.io.File;

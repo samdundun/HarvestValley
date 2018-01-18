@@ -39,14 +39,9 @@ public class MainMenu extends GUIApplication {
 		SaveScreenMimi savemimi = new SaveScreenMimi(getWidth(), getHeight());
 		
 		
-		//ObjectivesJessi objectives = new ObjectivesJessi(getWidth(), getHeight());
-	
-		
-		//setScreen(objectives);
-//143
+		ObjectivesJessi objectives = new ObjectivesJessi(getWidth(), getHeight());
 
-		SaveScreenMimi savemimi = new SaveScreenMimi(getWidth(), getHeight());
-		setScreen(screen);
+		setScreen(screen2);
 
 	}
 
