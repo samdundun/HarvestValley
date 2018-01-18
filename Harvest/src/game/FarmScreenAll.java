@@ -30,17 +30,38 @@ public class FarmScreenAll extends FullFunctionScreen {
 		back = new Graphic(0, 0, "resources/farm.PNG");
 		viewObjects.add(back);
 		
-		menuJenny = new Button(5, 470, 80, 30, "Menu", new Color(230, 235, 210), null);
+		menuJenny = new Button(5, 470, 80, 30, "Menu", new Color(230, 235, 210), new Action() {
+			
+			@Override
+			public void act() {
+				MainMenu.game.setScreen(MainMenu.screen);
+				
+			}
+		});
 		viewObjects.add(menuJenny);
 
-		shopJenny = new Button(90, 470, 80, 30, "Shop", new Color(230, 235, 210), null);
+		shopJenny = new Button(90, 470, 80, 30, "Shop", new Color(230, 235, 210), new Action() {
+			
+			@Override
+			public void act() {
+				MainMenu.game.setScreen(MainMenu.shop);
+				
+			}
+		});
 		viewObjects.add(shopJenny);
 		
 		
 //		sleepAlex = new ImageTextButton("Click here","sleep.png", 0, 0, 150, 150, null);
 //		viewObjects.add(sleepAlex);
 		
-		itemJane = new Button(175, 470, 80, 30, "Inventory", new Color(230, 235, 210), null);
+		itemJane = new Button(175, 470, 80, 30, "Inventory", new Color(230, 235, 210), new Action() {
+			
+			@Override
+			public void act() {
+				MainMenu.game.setScreen(MainMenu.inventory);
+				
+			}
+		});
 		viewObjects.add(itemJane);
 		addfarmingPatchJane(viewObjects);
 ;

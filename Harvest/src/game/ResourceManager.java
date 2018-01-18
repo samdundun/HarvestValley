@@ -1,4 +1,4 @@
-package mainMenu;
+package game;
 
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;

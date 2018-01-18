@@ -1,4 +1,4 @@
-package mainMenu;
+package game;
 
 import java.awt.Font;
 import java.io.File;
@@ -16,8 +16,11 @@ public class MainMenu extends GUIApplication {
 	public static boolean isExit;
 	public static boolean isObj;
 	public static ChooseGenderScreenLubna screen2;
-	public static Screen nextScreen;
-	
+	public static FarmScreenAll farmScreen;
+	public static BuyingScreen shop;
+	public static SellingScreen sell;
+	public static MenuScreenLubna screen;
+	public static InventoryScreen inventory;
 	
 	public MainMenu(int width, int height) {
 		super(width, height);
@@ -35,10 +38,12 @@ public class MainMenu extends GUIApplication {
 			e.printStackTrace();
 		}
 
-		MenuScreenLubna screen = new MenuScreenLubna(getWidth(), getHeight());
-		nextScreen = new PlaceHolderScreen(getWidth(),getHeight());
-		
+		 screen = new MenuScreenLubna(getWidth(), getHeight());
+		farmScreen = new FarmScreenAll(getWidth(),getHeight());
+		shop = new BuyingScreen(getWidth(),getHeight());
 		screen2 = new ChooseGenderScreenLubna(getWidth(), getHeight());
+		inventory = new InventoryScreen(getWidth(), getHeight());
+		sell = new SellingScreen(getWidth(), getHeight());
 
 		SaveScreenMimi savemimi = new SaveScreenMimi(getWidth(), getHeight());
 		

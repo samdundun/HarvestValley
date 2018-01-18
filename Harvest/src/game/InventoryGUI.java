@@ -1,4 +1,4 @@
-package samErikMarket;
+package game;
 
 import guiTeacher.GUIApplication;
 

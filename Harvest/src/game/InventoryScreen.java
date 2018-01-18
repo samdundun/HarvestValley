@@ -1,4 +1,4 @@
-package samErikMarket;
+package game;
 
 import java.awt.Color;
 import java.util.List;

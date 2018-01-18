@@ -1,4 +1,4 @@
-package mainMenu;
+package game;
 
 public class SaveDataJessi implements java.io.Serializable {
 
