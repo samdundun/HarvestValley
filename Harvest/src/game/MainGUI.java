@@ -1,5 +1,22 @@
 package game;
 
-public class MainGUI {
+import guiTeacher.GUIApplication;
 
+public class MainGUI extends GUIApplication {
+	
+	public MainGUI(int width, int height) {
+		super(width, height);
+		setVisible(true);
+	}
+
+	public void initScreen() {
+		FarmScreenAll screen = new FarmScreenAll(getWidth(), getHeight());
+		setScreen(screen);
+	}
+
+	public static void main(String[] args) {
+		MainGUI m = new MainGUI(820, 520);
+		Thread go = new Thread(m);
+		go.start();
+	}
 }
