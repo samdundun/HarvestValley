@@ -17,7 +17,7 @@ public class MainMenu extends GUIApplication {
 	public static boolean isObj;
 	public static ChooseGenderScreenLubna screen2;
 	public static Screen nextScreen;
-	
+	public static ObjectivesScreenJessi objectives;
 	
 	public MainMenu(int width, int height) {
 		super(width, height);
@@ -42,8 +42,7 @@ public class MainMenu extends GUIApplication {
 
 		SaveScreenMimi savemimi = new SaveScreenMimi(getWidth(), getHeight());
 		
-		
-		ObjectivesScreenJessi objectives = new ObjectivesScreenJessi(getWidth(), getHeight());
+		objectives = new ObjectivesScreenJessi(getWidth(), getHeight());
 
 		setScreen(screen);
 

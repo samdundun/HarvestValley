@@ -29,7 +29,9 @@ public class MenuScreenLubna extends ClickableScreen implements Runnable {
 		viewObjects.add(title);
 
 		newGame = new ImageButton(200,350,150,150,"resources/newButton.png",new Action() {
-			
+			/**
+			 * mimi's part?
+			 */
 			@Override
 			public void act() {
 				MainMenu.isNew = true;
@@ -42,6 +44,9 @@ public class MenuScreenLubna extends ClickableScreen implements Runnable {
 			
 			@Override
 			public void act() {
+				/**
+				 * lubna's part.
+				 */
 				MainMenu.isLoad= false;
 				MainMenu.game.setScreen(MainMenu.nextScreen);
 				
@@ -49,7 +54,11 @@ public class MenuScreenLubna extends ClickableScreen implements Runnable {
 		});
 		viewObjects.add(load);
 		exit = new ImageButton(600,350, 150,150,"resources/exitButton.png", new Action() {
-			
+			/*
+			 * lubna's part.
+			 * (non-Javadoc)
+			 * @see guiTeacher.components.Action#act()
+			 */
 			@Override
 			public void act() {
 				MainMenu.isExit= false;
@@ -59,11 +68,15 @@ public class MenuScreenLubna extends ClickableScreen implements Runnable {
 		});
 		viewObjects.add(exit);
 		obj = new ImageButton(750,480, 60,60,"resources/objective.png", new Action() {
-			
+			/*
+			 * jessi's part.
+			 * (non-Javadoc)
+			 * @see guiTeacher.components.Action#act()
+			 */
 			@Override
 			public void act() {
 				MainMenu.isObj= false;
-				MainMenu.game.setScreen(MainMenu.nextScreen);
+				MainMenu.game.setScreen(MainMenu.objectives);
 				
 			}
 		});
