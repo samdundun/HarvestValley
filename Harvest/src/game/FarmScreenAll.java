@@ -16,6 +16,8 @@ public class FarmScreenAll extends FullFunctionScreen {
 	private Button itemJane;
 	private ImageTextButton sleepAlex;
 	private ArrayList<CropJane> farmPatch;
+	
+	private int animalLimit;
 
 	public FarmScreenAll(int width, int height) {
 		super(width, height);
@@ -23,6 +25,8 @@ public class FarmScreenAll extends FullFunctionScreen {
 	}
 
 	public void initAllObjects(List<Visible> viewObjects) {
+		animalLimit = 5;
+		
 		back = new Graphic(0, 0, "resources/farm.PNG");
 		viewObjects.add(back);
 		
