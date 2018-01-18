@@ -28,17 +28,17 @@ public class MenuScreenLubna extends ClickableScreen implements Runnable {
 		title = new Graphic(150, 60, 600, 600, "resources/harvestvalley.png");
 		viewObjects.add(title);
 
-		newGame = new ImageButton(260,350,150,150,"resources/newButton.png",new Action() {
+		newGame = new ImageButton(200,350,150,150,"resources/newButton.png",new Action() {
 			
 			@Override
 			public void act() {
 				MainMenu.isNew = true;
-				MainMenu.game.setScreen(MainMenu.nextScreen);
+				MainMenu.game.setScreen(MainMenu.screen2);
 				
 			}
 		});
 		viewObjects.add(newGame);
-		load = new ImageButton(470,350, 150,150,"resources/loadButton.png", new Action() {
+		load = new ImageButton(400,350, 150,150,"resources/loadButton.png", new Action() {
 			
 			@Override
 			public void act() {
@@ -48,7 +48,7 @@ public class MenuScreenLubna extends ClickableScreen implements Runnable {
 			}
 		});
 		viewObjects.add(load);
-		exit = new ImageButton(470,350, 150,150,"resources/exitButton.png", new Action() {
+		exit = new ImageButton(600,350, 150,150,"resources/exitButton.png", new Action() {
 			
 			@Override
 			public void act() {
@@ -58,7 +58,7 @@ public class MenuScreenLubna extends ClickableScreen implements Runnable {
 			}
 		});
 		viewObjects.add(exit);
-		obj = new ImageButton(470,350, 150,150,"resources/objective.png", new Action() {
+		obj = new ImageButton(750,480, 60,60,"resources/objective.png", new Action() {
 			
 			@Override
 			public void act() {

@@ -45,7 +45,7 @@ public class MainMenu extends GUIApplication {
 		
 		ObjectivesScreenJessi objectives = new ObjectivesScreenJessi(getWidth(), getHeight());
 
-		setScreen(screen2);
+		setScreen(screen);
 
 	}
 
