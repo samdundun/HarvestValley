@@ -48,7 +48,7 @@ public class MainMenu extends GUIApplication {
 		inventory = new InventoryScreen(getWidth(), getHeight());
 		sell = new SellingScreen(getWidth(), getHeight());
 		placeHolder = new PlaceHolderScreen(getWidth(), getHeight());
-		//don't delete the place holder.
+		//don't delete the place holder please.
 
 		 saveMimi = new SaveScreenMimi(getWidth(), getHeight());
 		
