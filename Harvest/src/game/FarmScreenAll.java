@@ -53,7 +53,11 @@ public class FarmScreenAll extends FullFunctionScreen {
 		});
 		viewObjects.add(shopJenny);
 		
+<<<<<<< HEAD
 		sleepAlex = new ImageButton(100, 100, 150, 150, "resouces/sleep.png", null);
+=======
+		sleepAlex = new ImageButton(814, 493, 39, 39, "resources/sleep.png", null);
+>>>>>>> branch 'farm' of https://github.com/samdundun/HarvestValley.git
 		viewObjects.add(sleepAlex);
 		
 		itemJane = new Button(175, 500, 80, 30, "Inventory", new Color(230, 235, 210), new Action() {
