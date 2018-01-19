@@ -44,7 +44,7 @@ public class ChooseGenderScreenLubna extends ClickableScreen implements Runnable
 			@Override
 			public void act() {
 				MainMenu.isGirl = true;
-				MainMenu.game.setScreen(MainMenu.nextScreen);
+				MainMenu.game.setScreen(MainMenu.farmScreen);
 				
 			}
 		});
@@ -54,7 +54,7 @@ public class ChooseGenderScreenLubna extends ClickableScreen implements Runnable
 			@Override
 			public void act() {
 				MainMenu.isGirl= false;
-				MainMenu.game.setScreen(MainMenu.nextScreen);
+				MainMenu.game.setScreen(MainMenu.farmScreen);
 				
 			}
 		});
