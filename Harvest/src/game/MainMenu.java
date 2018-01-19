@@ -23,6 +23,7 @@ public class MainMenu extends GUIApplication {
 	public static ObjectivesScreenJessi objectives;
 	public static InventoryScreen inventory;
 	public static PlaceHolderScreen placeHolder;
+	public static SaveScreenMimi saveMimi;
 	
 	public MainMenu(int width, int height) {
 		super(width, height);
@@ -47,8 +48,9 @@ public class MainMenu extends GUIApplication {
 		inventory = new InventoryScreen(getWidth(), getHeight());
 		sell = new SellingScreen(getWidth(), getHeight());
 		placeHolder = new PlaceHolderScreen(getWidth(), getHeight());
+		//don't delete the place holder.
 
-		SaveScreenMimi savemimi = new SaveScreenMimi(getWidth(), getHeight());
+		 saveMimi = new SaveScreenMimi(getWidth(), getHeight());
 		
 		
 		objectives = new ObjectivesScreenJessi(getWidth(), getHeight());

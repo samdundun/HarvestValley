@@ -44,6 +44,7 @@ public class MenuScreenLubna extends ClickableScreen implements Runnable {
 			public void act() {
 				MainMenu.isLoad= true;
 				MainMenu.game.setScreen(MainMenu.farmScreen);
+				//using farmScreen rn but eventually will use the saved info.
 				
 			}
 		});
@@ -54,7 +55,7 @@ public class MenuScreenLubna extends ClickableScreen implements Runnable {
 			public void act() {
 				MainMenu.isExit= true;
 				MainMenu.game.setScreen(MainMenu.placeHolder);
-				
+				// place holder, idk how to exit the java program.
 			}
 		});
 		viewObjects.add(exit);
