@@ -28,10 +28,8 @@ public class MenuScreenLubna extends ClickableScreen implements Runnable {
 		title = new Graphic(150, 60, 600, 600, "resources/harvestvalley.png");
 		viewObjects.add(title);
 
-		newGame = new ImageButton(200,350,150,150,"resources/newButton.png",new Action() {
-			/**
-			 * mimi's part?
-			 */
+		newGame = new ImageButton(180,350,150,150,"resources/newButton.png",new Action() {
+			
 			@Override
 			public void act() {
 				MainMenu.isNew = true;
@@ -40,42 +38,32 @@ public class MenuScreenLubna extends ClickableScreen implements Runnable {
 			}
 		});
 		viewObjects.add(newGame);
-		load = new ImageButton(400,350, 150,150,"resources/loadButton.png", new Action() {
+		load = new ImageButton(380,350, 150,150,"resources/loadButton.png", new Action() {
 			
 			@Override
 			public void act() {
-				/**
-				 * lubna's part.
-				 */
-				MainMenu.isLoad= false;
-				MainMenu.game.setScreen(MainMenu.nextScreen);
+				MainMenu.isLoad= true;
+				MainMenu.game.setScreen(MainMenu.farmScreen);
+				//using farmScreen rn but eventually will use the saved info.
 				
 			}
 		});
 		viewObjects.add(load);
-		exit = new ImageButton(600,350, 150,150,"resources/exitButton.png", new Action() {
-			/*
-			 * lubna's part.
-			 * (non-Javadoc)
-			 * @see guiTeacher.components.Action#act()
-			 */
+		exit = new ImageButton(580,350, 150,150,"resources/exitButton.png", new Action() {
+			
 			@Override
 			public void act() {
-				MainMenu.isExit= false;
-				MainMenu.game.setScreen(MainMenu.nextScreen);
-				
+				MainMenu.isExit= true;
+				MainMenu.game.setScreen(MainMenu.placeHolder);
+				// place holder, i don't know how to exit the java program.
 			}
 		});
 		viewObjects.add(exit);
 		obj = new ImageButton(750,480, 60,60,"resources/objective.png", new Action() {
-			/*
-			 * jessi's part.
-			 * (non-Javadoc)
-			 * @see guiTeacher.components.Action#act()
-			 */
+			
 			@Override
 			public void act() {
-				MainMenu.isObj= false;
+				MainMenu.isObj= true;
 				MainMenu.game.setScreen(MainMenu.objectives);
 				
 			}
