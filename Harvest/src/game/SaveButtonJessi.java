@@ -1,4 +1,4 @@
-package mainMenu;
+package game;
 
 import guiTeacher.components.Action;
 
