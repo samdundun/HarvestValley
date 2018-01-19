@@ -6,11 +6,10 @@ import guiTeacher.components.Action;
 import guiTeacher.components.Button;
 
 public class CropJane extends Button {
-
+	
 	public CropJane(int x, int y, int w, int h, String text, Color color, Action action) {
 		super(x, y, w, h, text, new Color(200, 125, 10), new Action() {
-			
-			@Override
+		
 			public void act() {
 				getSeedSelection();
 			}

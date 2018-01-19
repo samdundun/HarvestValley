@@ -14,6 +14,7 @@ public class FarmScreenAll extends FullFunctionScreen {
 	private Button shopJenny;
 	private Button menuJenny;
 	private Button itemJane;
+	private SeedSelectionPane pane;
 
 	private ImageButton sleepAlex;
 	private ArrayList<CropJane> farmPatch;
@@ -28,7 +29,8 @@ public class FarmScreenAll extends FullFunctionScreen {
 	public void initAllObjects(List<Visible> viewObjects) {
 		animalLimit = 5;
 		farmPatch = new ArrayList<CropJane>();
-
+		//pane = new SeedSelectionPane(this, 100, 100, 200, 200);
+		//viewObjects.add(pane);
 		back = new Graphic(0, 0, "resources/farm.PNG");
 		viewObjects.add(back);
 
@@ -51,8 +53,8 @@ public class FarmScreenAll extends FullFunctionScreen {
 		});
 		viewObjects.add(shopJenny);
 		
-		//sleepAlex = new ImageButton(100, 100, 150, 150, "resouces/sleep.png", null);
-		//viewObjects.add(sleepAlex);
+		sleepAlex = new ImageButton(100, 100, 150, 150, "resouces/sleep.png", null);
+		viewObjects.add(sleepAlex);
 		
 		itemJane = new Button(175, 500, 80, 30, "Inventory", new Color(230, 235, 210), new Action() {
 
