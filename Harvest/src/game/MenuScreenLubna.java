@@ -54,7 +54,7 @@ public class MenuScreenLubna extends ClickableScreen implements Runnable {
 			@Override
 			public void act() {
 				MainMenu.isExit= true;
-				MainMenu.game.setScreen(MainMenu.placeHolder);
+				System.exit(0);
 				// place holder, i don't know how to exit the java program.
 			}
 		});
