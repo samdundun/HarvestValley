@@ -42,7 +42,6 @@ public class FarmScreenAll extends FullFunctionScreen {
 
 		shopJenny = new Button(90, 500, 80, 30, "Shop", new Color(230, 235, 210), new Action() {
 			
-			@Override
 			public void act() {
 				MainMenu.game.setScreen(MainMenu.shop);
 				
