@@ -32,7 +32,7 @@ public class FarmScreenAll extends FullFunctionScreen {
 		
 		menuJenny = new Button(5, 500, 80, 30, "Menu", new Color(230, 235, 210), new Action() {
 			
-			@Override
+
 			public void act() {
 				MainMenu.game.setScreen(MainMenu.screen);
 				
