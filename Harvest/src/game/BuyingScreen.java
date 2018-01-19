@@ -32,6 +32,10 @@ public class BuyingScreen extends FullFunctionScreen implements FileRequester{
 	private TextLabel gold;
 	private Graphic grid;
 	private Button exit;
+	
+	private int priceLevel;
+	private int goldAmount;
+	private int amountLevel;
 
 
 
@@ -90,7 +94,7 @@ public class BuyingScreen extends FullFunctionScreen implements FileRequester{
 		grid = new Graphic(100,180, "resources/inventory.png");
 		viewObjects.add(grid);
 		
-		price = new TextArea(100,400,100,100,"Price :");
+		price = new TextArea(100,400,100,100,"Price :" + priceLevel);
 		viewObjects.add(price);
 		
 		
