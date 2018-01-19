@@ -88,7 +88,7 @@ public class SellingScreen extends FullFunctionScreen implements FileRequester{
 		exit.update();
 		viewObjects.add(exit);
 		
-		exchange = new Button(300, 400, 100, 40, "SELL 1", new Action() {
+		exchange = new Button(360, 400, 100, 40, "SELL 1", new Action() {
 
 			@Override
 			public void act() {
