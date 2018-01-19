@@ -57,6 +57,8 @@ public class MainMenu extends GUIApplication {
 
 		setScreen(screen);
 
+	
+
 	}
 
 	public static void main(String[] args) {

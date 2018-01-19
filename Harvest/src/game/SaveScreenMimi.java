@@ -1,10 +1,12 @@
 package game;
 
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.beans.PropertyChangeListener;
 import java.util.List;
 
 import guiTeacher.components.Graphic;
-import guiTeacher.components.TextArea;
+import guiTeacher.components.*;
 import guiTeacher.components.TextField;
 import guiTeacher.interfaces.Visible;
 import guiTeacher.userInterfaces.ClickableScreen;
@@ -14,6 +16,7 @@ public class SaveScreenMimi extends ClickableScreen {
 	//the pop up asking if you want to save the currency and inventory is a separate screen.
 	
 	private TextArea save;
+	private ImageButton exit;
 
 	public SaveScreenMimi(int width, int height) {
 		super(width, height);
@@ -30,11 +33,19 @@ public class SaveScreenMimi extends ClickableScreen {
 		Graphic title = new Graphic(240, 40, 400, 400, "resources/harvestvalley.png");
 		viewObjects.add(title);
 		// put a box behind this text
-		save = new TextArea(135, 200, 600, 250, "You are about to save the items in your inventory and your current amount of money. Progress made in the farm and barn will not be saved. Continue?");
+		save = new TextArea(135, 190, 600, 230, "You have saved the items in your inventory and your current amount of money. Progress made in the farm and barn cannot be saved.");
 		save.setCustomTextColor(Color.black);
 		save.update();//143
 		viewObjects.add(save);
-		Graphic exit = new Graphic(500, 430, 100, 100, "resources/exitButton.png");
+//		Graphic exit = new Graphic(390, 430, 100, 100, "resources/exitButton.png");
+//		viewObjects.add(exit);
+		exit = new ImageButton(370, 410, 150, 150, "resources/exitButton.png",new Action() {
+			
+			@Override
+			public void act() {
+				MainMenu.game.setScreen(MainMenu.placeHolder); // placeholder screen. replace this with the farm/barn screen.
+			}
+		});
 		viewObjects.add(exit);
 	}
 
