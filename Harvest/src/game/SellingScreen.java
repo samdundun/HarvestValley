@@ -29,6 +29,7 @@ public class SellingScreen extends FullFunctionScreen implements FileRequester{
 	private TextLabel amount;
 	private TextLabel gold;
 	private Graphic grid;
+	private Button exit;
 
 
 
@@ -42,7 +43,7 @@ public class SellingScreen extends FullFunctionScreen implements FileRequester{
 		StyledComponent.setButtonOutline(true);
 		setBackground(new Color(252,226,148));
 		
-		buying = new Button(60, 40, 100, 40, "BUYING", new Action() {
+		buying = new Button(100, 40, 100, 40, "BUYING", new Action() {
 
 			@Override
 			public void act() {
@@ -55,7 +56,7 @@ public class SellingScreen extends FullFunctionScreen implements FileRequester{
 		buying.setCurve(0, 0);
 		buying.update();
 		viewObjects.add(buying);
-		selling = new Button(200, 40, 100, 40, "SELLING", new Action() {
+		selling = new Button(240, 40, 100, 40, "SELLING", new Action() {
 
 			@Override
 			public void act() {
@@ -68,8 +69,36 @@ public class SellingScreen extends FullFunctionScreen implements FileRequester{
 		selling.setCurve(0, 0);
 		selling.update();
 		viewObjects.add(selling);
-		grid = new Graphic(60,180, "resources/inventory.png");
+		grid = new Graphic(100,180, "resources/inventory.png");
 		viewObjects.add(grid);
+		
+		exit = new Button(750, 40, 40, 40, "X", new Action() {
+
+			@Override
+			public void act() {
+				MainMenu.game.setScreen(MainMenu.farmScreen);
+
+			}
+		});
+		exit.setBackground(Color.red);
+		exit.setActiveBorderColor(Color.white);
+		exit.setCurve(0, 0);
+		exit.update();
+		viewObjects.add(exit);
+		
+		exchange = new Button(300, 400, 100, 40, "SELL 1", new Action() {
+
+			@Override
+			public void act() {
+				
+
+			}
+		});
+		exchange.setBackground(Color.red);
+		exchange.setActiveBorderColor(Color.white);
+		exchange.setCurve(0, 0);
+		exchange.update();
+		viewObjects.add(exchange);
 
 	}
 
