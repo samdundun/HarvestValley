@@ -14,7 +14,7 @@ public class FarmScreenAll extends FullFunctionScreen {
 	private Button shopJenny;
 	private Button menuJenny;
 	private Button itemJane;
-	private ImageTextButton sleepAlex;
+	private ImageButton sleepAlex;
 	private ArrayList<CropJane> farmPatch;
 	
 	private int animalLimit;
@@ -30,7 +30,7 @@ public class FarmScreenAll extends FullFunctionScreen {
 		back = new Graphic(0, 0, "resources/farm.PNG");
 		viewObjects.add(back);
 		
-		menuJenny = new Button(5, 470, 80, 30, "Menu", new Color(230, 235, 210), new Action() {
+		menuJenny = new Button(5, 500, 80, 30, "Menu", new Color(230, 235, 210), new Action() {
 			
 			@Override
 			public void act() {
@@ -40,7 +40,7 @@ public class FarmScreenAll extends FullFunctionScreen {
 		});
 		viewObjects.add(menuJenny);
 
-		shopJenny = new Button(90, 470, 80, 30, "Shop", new Color(230, 235, 210), new Action() {
+		shopJenny = new Button(90, 500, 80, 30, "Shop", new Color(230, 235, 210), new Action() {
 			
 			@Override
 			public void act() {
@@ -51,10 +51,10 @@ public class FarmScreenAll extends FullFunctionScreen {
 		viewObjects.add(shopJenny);
 		
 		
-//		sleepAlex = new ImageTextButton("Click here","sleep.png", 0, 0, 150, 150, null);
-//		viewObjects.add(sleepAlex);
+		/*sleepAlex = new ImageButton(100, 100, 150, 150, "resouces/sleep.png", null);
+		viewObjects.add(sleepAlex);*/
 		
-		itemJane = new Button(175, 470, 80, 30, "Inventory", new Color(230, 235, 210), new Action() {
+		itemJane = new Button(175, 500, 80, 30, "Inventory", new Color(230, 235, 210), new Action() {
 			
 			@Override
 			public void act() {
