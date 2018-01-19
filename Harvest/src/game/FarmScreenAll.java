@@ -78,12 +78,12 @@ public class FarmScreenAll extends FullFunctionScreen {
 			}
 			else if(i>=3&&i<6) {
 				CropJane patch= new CropJane(start+((i-3)*68), 260+space, 63, 50, "", Color.BLACK, null);
-				//farmPatch.add(patch);
+				farmPatch.add(patch);
 				viewObjects.add(patch);
 			}
 			else {
 				CropJane patch= new CropJane(start+((i-6)*68), 278+space+space, 63, 50, "", Color.BLACK, null);
-				//farmPatch.add(patch);
+				farmPatch.add(patch);
 				viewObjects.add(patch);
 			}
 		}
