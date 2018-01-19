@@ -20,7 +20,8 @@ public class InventoryScreen extends FullFunctionScreen {
 	private Button eat;
 	private Button discard;
 	private Graphic grid;
-	
+	private Button exit;
+
 	private Inventory invent;
 
 	public InventoryScreen(int width, int height) {
@@ -32,15 +33,15 @@ public class InventoryScreen extends FullFunctionScreen {
 	public void initAllObjects(List<Visible> viewObjects) {
 		StyledComponent.setButtonOutline(true);
 		setBackground(new Color(224,120,8));
-		
+
 		invent = new Inventory();
-		
-		amount = new TextLabel(40,60,100,100,"Amount:");
+
+		amount = new TextLabel(100,60,100,100,"Amount:");
 		viewObjects.add(amount);
-		gold = new TextLabel(500,60,100,100,"Gold:");
+		gold = new TextLabel(540,60,100,100,"Gold:");
 		viewObjects.add(gold);
 
-		discard = new Button(600, 500, 100, 40, "DISCARD", new Action() {
+		discard = new Button(600, 400, 100, 40, "DISCARD", new Action() {
 
 			@Override
 			public void act() {
@@ -53,8 +54,8 @@ public class InventoryScreen extends FullFunctionScreen {
 		discard.setCurve(0, 0);
 		discard.update();
 		viewObjects.add(discard);
-		
-		eat = new Button(460, 500, 100, 40, "EAT", new Action() {
+
+		eat = new Button(460, 400, 100, 40, "EAT", new Action() {
 
 			@Override
 			public void act() {
@@ -67,14 +68,14 @@ public class InventoryScreen extends FullFunctionScreen {
 		eat.setCurve(0, 0);
 		eat.update();
 		viewObjects.add(eat);
-		
-		grid = new Graphic(60,180, "resources/inventory.png");
+
+		grid = new Graphic(100,180, "resources/inventory.png");
 		viewObjects.add(grid);
 		/*TODO
 		figure out how to display quantity, price, etc when image is hovered over
 		play around with the items class
 		items should change opacity when clicked on or hovered over
-		**/
+		 **/
 		invent.addBasics();
 		//how other classes will add items to the inventory
 		invent.addItem(new Item("Corn", "Fresh to eat", 10,"resources/Corn.png"));
@@ -84,7 +85,7 @@ public class InventoryScreen extends FullFunctionScreen {
 		int startingHeight = 202;
 		int height = 48;
 		for(Item i:invent.getItems()) {
-			i.setX(40+move*width);
+			i.setX(80+move*width);
 			i.setY(startingHeight);
 			move++;
 			if(move == 13){
@@ -93,7 +94,21 @@ public class InventoryScreen extends FullFunctionScreen {
 			}
 			viewObjects.add(i);
 		}
-		
+
+		exit = new Button(750, 40, 40, 40, "X", new Action() {
+
+			@Override
+			public void act() {
+				MainMenu.game.setScreen(MainMenu.farmScreen);
+
+			}
+		});
+		exit.setBackground(Color.red);
+		exit.setActiveBorderColor(Color.white);
+		exit.setCurve(0, 0);
+		exit.update();
+		viewObjects.add(exit);
+
 	}
 
 }

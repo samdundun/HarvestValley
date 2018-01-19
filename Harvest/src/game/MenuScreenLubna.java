@@ -28,7 +28,7 @@ public class MenuScreenLubna extends ClickableScreen implements Runnable {
 		title = new Graphic(150, 60, 600, 600, "resources/harvestvalley.png");
 		viewObjects.add(title);
 
-		newGame = new ImageButton(200,350,150,150,"resources/newButton.png",new Action() {
+		newGame = new ImageButton(180,350,150,150,"resources/newButton.png",new Action() {
 			
 			@Override
 			public void act() {
@@ -38,23 +38,24 @@ public class MenuScreenLubna extends ClickableScreen implements Runnable {
 			}
 		});
 		viewObjects.add(newGame);
-		load = new ImageButton(400,350, 150,150,"resources/loadButton.png", new Action() {
+		load = new ImageButton(380,350, 150,150,"resources/loadButton.png", new Action() {
 			
 			@Override
 			public void act() {
-				MainMenu.isLoad= false;
-				MainMenu.game.setScreen(MainMenu.nextScreen);
+				MainMenu.isLoad= true;
+				MainMenu.game.setScreen(MainMenu.farmScreen);
+				//using farmScreen rn but eventually will use the saved info.
 				
 			}
 		});
 		viewObjects.add(load);
-		exit = new ImageButton(600,350, 150,150,"resources/exitButton.png", new Action() {
+		exit = new ImageButton(580,350, 150,150,"resources/exitButton.png", new Action() {
 			
 			@Override
 			public void act() {
-				MainMenu.isExit= false;
-				MainMenu.game.setScreen(MainMenu.nextScreen);
-				
+				MainMenu.isExit= true;
+				MainMenu.game.setScreen(MainMenu.placeHolder);
+				// place holder, i don't know how to exit the java program.
 			}
 		});
 		viewObjects.add(exit);
@@ -62,8 +63,8 @@ public class MenuScreenLubna extends ClickableScreen implements Runnable {
 			
 			@Override
 			public void act() {
-				MainMenu.isObj= false;
-				MainMenu.game.setScreen(MainMenu.nextScreen);
+				MainMenu.isObj= true;
+				MainMenu.game.setScreen(MainMenu.objectives);
 				
 			}
 		});

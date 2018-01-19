@@ -21,18 +21,18 @@ public class FarmScreenAll extends FullFunctionScreen {
 
 	public FarmScreenAll(int width, int height) {
 		super(width, height);
-		farmPatch = new ArrayList<CropJane>();
 	}
 
 	public void initAllObjects(List<Visible> viewObjects) {
 		animalLimit = 5;
+		farmPatch = new ArrayList<CropJane>();
 		
 		back = new Graphic(0, 0, "resources/farm.PNG");
 		viewObjects.add(back);
 		
 		menuJenny = new Button(5, 500, 80, 30, "Menu", new Color(230, 235, 210), new Action() {
 			
-			@Override
+
 			public void act() {
 				MainMenu.game.setScreen(MainMenu.screen);
 				
@@ -42,7 +42,6 @@ public class FarmScreenAll extends FullFunctionScreen {
 
 		shopJenny = new Button(90, 500, 80, 30, "Shop", new Color(230, 235, 210), new Action() {
 			
-			@Override
 			public void act() {
 				MainMenu.game.setScreen(MainMenu.shop);
 				
@@ -74,17 +73,17 @@ public class FarmScreenAll extends FullFunctionScreen {
 		for(int i=0; i<9; i++) {
 			if(i<3) {
 			CropJane patch= new CropJane(start+(i*68), 253, 63, 50, "", Color.BLACK, null);
-			//farmPatch.add(patch);
+			farmPatch.add(patch);
 			viewObjects.add(patch);
 			}
 			else if(i>=3&&i<6) {
 				CropJane patch= new CropJane(start+((i-3)*68), 260+space, 63, 50, "", Color.BLACK, null);
-				//farmPatch.add(patch);
+				farmPatch.add(patch);
 				viewObjects.add(patch);
 			}
 			else {
 				CropJane patch= new CropJane(start+((i-6)*68), 278+space+space, 63, 50, "", Color.BLACK, null);
-				//farmPatch.add(patch);
+				farmPatch.add(patch);
 				viewObjects.add(patch);
 			}
 		}

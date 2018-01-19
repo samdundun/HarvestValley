@@ -1,4 +1,4 @@
-package game;
+package samErikMarket;
 
 import java.awt.Color;
 import java.io.File;
@@ -26,16 +26,11 @@ public class BuyingScreen extends FullFunctionScreen implements FileRequester{
 	private Button buying;
 	private Button selling;
 	private Button exchange;
-	private TextArea description;
+	private CustomArea description;
 	private TextArea price;
 	private TextLabel amount;
 	private TextLabel gold;
 	private Graphic grid;
-	private Button exit;
-	
-	private int priceLevel;
-	private int goldAmount;
-	private int amountLevel;
 
 
 
@@ -49,7 +44,7 @@ public class BuyingScreen extends FullFunctionScreen implements FileRequester{
 		StyledComponent.setButtonOutline(true);
 		setBackground(new Color(252,226,148));
 		
-		buying = new Button(100, 40, 100, 40, "BUYING", new Action() {
+		buying = new Button(60, 40, 100, 40, "BUYING", new Action() {
 
 			@Override
 			public void act() {
@@ -63,11 +58,11 @@ public class BuyingScreen extends FullFunctionScreen implements FileRequester{
 		buying.update();
 		viewObjects.add(buying);
 		
-		selling = new Button(240, 40, 100, 40, "SELLING", new Action() {
+		selling = new Button(200, 40, 100, 40, "SELLING", new Action() {
 
 			@Override
 			public void act() {
-				MainMenu.game.setScreen(MainMenu.sell);
+				InventoryGUI.market.setScreen(InventoryGUI.sell);
 
 			}
 		});
@@ -77,28 +72,14 @@ public class BuyingScreen extends FullFunctionScreen implements FileRequester{
 		selling.update();
 		viewObjects.add(selling);
 		
-		exit = new Button(750, 40, 40, 40, "X", new Action() {
-
-			@Override
-			public void act() {
-				MainMenu.game.setScreen(MainMenu.farmScreen);
-
-			}
-		});
-		exit.setBackground(Color.red);
-		exit.setActiveBorderColor(Color.white);
-		exit.setCurve(0, 0);
-		exit.update();
-		viewObjects.add(exit);
-		
-		grid = new Graphic(100,180, "resources/inventory.png");
+		grid = new Graphic(60,180, "resources/inventory.png");
 		viewObjects.add(grid);
 		
-		price = new TextArea(100,400,100,100,"Price :" + priceLevel);
+		price = new TextArea(60,400,100,100,"Price :");
 		viewObjects.add(price);
 		
 		
-		description = new TextArea(490, 400, 100, 100, "SELECT AN ITEM");
+		description = new CustomArea(450, 400, 100, 100, "SELECT AN ITEM");
 		description.setBackground(new Color(130,199,165));
 		description.update();
 		viewObjects.add(description);

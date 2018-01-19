@@ -20,7 +20,10 @@ public class MainMenu extends GUIApplication {
 	public static BuyingScreen shop;
 	public static SellingScreen sell;
 	public static MenuScreenLubna screen;
+	public static ObjectivesScreenJessi objectives;
 	public static InventoryScreen inventory;
+	public static PlaceHolderScreen placeHolder;
+	public static SaveScreenMimi saveMimi;
 	
 	public MainMenu(int width, int height) {
 		super(width, height);
@@ -44,11 +47,13 @@ public class MainMenu extends GUIApplication {
 		screen2 = new ChooseGenderScreenLubna(getWidth(), getHeight());
 		inventory = new InventoryScreen(getWidth(), getHeight());
 		sell = new SellingScreen(getWidth(), getHeight());
+		placeHolder = new PlaceHolderScreen(getWidth(), getHeight());
+		//don't delete the place holder please.
 
-		SaveScreenMimi savemimi = new SaveScreenMimi(getWidth(), getHeight());
+		 saveMimi = new SaveScreenMimi(getWidth(), getHeight());
 		
 		
-		ObjectivesScreenJessi objectives = new ObjectivesScreenJessi(getWidth(), getHeight());
+		objectives = new ObjectivesScreenJessi(getWidth(), getHeight());
 
 		setScreen(screen);
 
