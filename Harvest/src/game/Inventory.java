@@ -26,21 +26,20 @@ public class Inventory {
 		 * pepper
 		 * seeds^^
 		 */
-		addItem(new Item("Corn", "Fresh to eat", 10,"resources/Corn.png"));
-		addItem(new Item("Corn", "Fresh to eat", 10,"resources/Tomato.png"));
-		addItem(new Item("Corn", "Fresh to eat", 10,"resources/Corn.png"));
-		addItem(new Item("Corn", "Fresh to eat", 10,"resources/Tomato.png"));
-		addItem(new Item("Corn", "Fresh to eat", 10,"resources/Corn.png"));
-		addItem(new Item("Corn", "Fresh to eat", 10,"resources/Tomato.png"));
-		addItem(new Item("Corn", "Fresh to eat", 10,"resources/Corn.png"));
-		addItem(new Item("Corn", "Fresh to eat", 10,"resources/Tomato.png"));
-		addItem(new Item("Corn", "Fresh to eat", 10,"resources/Corn.png"));
-		addItem(new Item("Corn", "Fresh to eat", 10,"resources/Tomato.png"));
-		addItem(new Item("Corn", "Fresh to eat", 10,"resources/Corn.png"));
-		addItem(new Item("Corn", "Fresh to eat", 10,"resources/Tomato.png"));
-		addItem(new Item("Corn", "Fresh to eat", 10,"resources/Corn.png"));
-		addItem(new Item("Corn", "Fresh to eat", 10,"resources/Tomato.png"));
-		addItem(new Item("Corn", "Fresh to eat", 10,"resources/Corn.png"));
+		addItem(new Item("Corn", "Fresh to eat", 10,0));
+		addItem(new Item("Corn", "Fresh to eat", 10,1));
+		addItem(new Item("Corn", "Fresh to eat", 10,0));
+		addItem(new Item("Corn", "Fresh to eat", 10,1));
+		addItem(new Item("Corn", "Fresh to eat", 10,0));
+		addItem(new Item("Corn", "Fresh to eat", 10,1));
+		addItem(new Item("Corn", "Fresh to eat", 10,0));
+		addItem(new Item("Corn", "Fresh to eat", 10,1));
+		addItem(new Item("Corn", "Fresh to eat", 10,0));
+		addItem(new Item("Corn", "Fresh to eat", 10,1));
+		addItem(new Item("Corn", "Fresh to eat", 10,0));
+		addItem(new Item("Corn", "Fresh to eat", 10,1));
+		addItem(new Item("Corn", "Fresh to eat", 10,0));
+		addItem(new Item("Corn", "Fresh to eat", 10,1));
 	}
 	
 	public void sort() {

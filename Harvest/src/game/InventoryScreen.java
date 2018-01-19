@@ -78,8 +78,8 @@ public class InventoryScreen extends FullFunctionScreen {
 		 **/
 		invent.addBasics();
 		//how other classes will add items to the inventory
-		invent.addItem(new Item("Corn", "Fresh to eat", 10,"resources/Corn.png"));
-		invent.addItem(new Item("Corn", "Fresh to eat", 10,"resources/Corn.png"));
+		invent.addItem(new Item("Corn", "Fresh to eat", 10,0));
+		invent.addItem(new Item("Corn", "Fresh to eat", 10,0));
 		int move = 1;
 		int width = 48;
 		int startingHeight = 202;
