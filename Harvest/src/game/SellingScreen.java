@@ -24,12 +24,14 @@ public class SellingScreen extends FullFunctionScreen implements FileRequester{
 	private Button buying;
 	private Button selling;
 	private Button exchange;
-	private TextBox description;
-	private TextBox price;
+	private CustomArea description;
+	private CustomArea price;
 	private TextLabel amount;
 	private TextLabel gold;
 	private Graphic grid;
 	private Button exit;
+	
+	private int priceLevel;
 
 
 
@@ -99,6 +101,13 @@ public class SellingScreen extends FullFunctionScreen implements FileRequester{
 		exchange.setCurve(0, 0);
 		exchange.update();
 		viewObjects.add(exchange);
+		
+		price = new CustomArea(100,400,250,125,"Price :" + priceLevel);
+		viewObjects.add(price);
+		
+		
+		description = new CustomArea(490, 400, 250, 125, "SELECT AN ITEM");
+		viewObjects.add(description);
 
 	}
 
