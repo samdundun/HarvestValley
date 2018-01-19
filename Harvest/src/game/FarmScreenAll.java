@@ -29,8 +29,9 @@ public class FarmScreenAll extends FullFunctionScreen {
 	public void initAllObjects(List<Visible> viewObjects) {
 		animalLimit = 5;
 		farmPatch = new ArrayList<CropJane>();
-		//pane = new SeedSelectionPane(this, 100, 100, 200, 200);
-		//viewObjects.add(pane);
+		pane = new SeedSelectionPane(this, 100, 100, 200, 200);
+		pane.update();
+		viewObjects.add(pane);
 		back = new Graphic(0, 0, "resources/farm.PNG");
 		viewObjects.add(back);
 
@@ -53,11 +54,7 @@ public class FarmScreenAll extends FullFunctionScreen {
 		});
 		viewObjects.add(shopJenny);
 		
-<<<<<<< HEAD
-		sleepAlex = new ImageButton(100, 100, 150, 150, "resouces/sleep.png", null);
-=======
 		sleepAlex = new ImageButton(814, 493, 39, 39, "resources/sleep.png", null);
->>>>>>> branch 'farm' of https://github.com/samdundun/HarvestValley.git
 		viewObjects.add(sleepAlex);
 		
 		itemJane = new Button(175, 500, 80, 30, "Inventory", new Color(230, 235, 210), new Action() {

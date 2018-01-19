@@ -6,16 +6,13 @@ import java.awt.RenderingHints;
 import java.util.ArrayList;
 import java.util.List;
 
-import guiPlayer.CustomPane;
-import guiTeacher.components.Action;
-import guiTeacher.components.Button;
-import guiTeacher.components.Pane;
-import guiTeacher.components.TextArea;
+import guiTeacher.components.*;
 import guiTeacher.interfaces.FocusController;
 import guiTeacher.interfaces.Visible;
 
 public class SeedSelectionPane extends Pane {
 
+	private TextLabel label;
 	public SeedSelectionPane(FocusController focusController, int x, int y, int width, int height) {
 		super(focusController, x, y, width, height);
 		// TODO Auto-generated constructor stub
@@ -36,8 +33,7 @@ public class SeedSelectionPane extends Pane {
 	public void initAllObjects(List<Visible> viewObjects){
 		label = new TextArea(0,0,10,10,"This is a sample alert message. The entire red box is one pane. All of the text and the buttons move as one unit. Click 'OK' to watch this in action");
 		
-		viewObjects.add(okButton);
-		viewObjects.add(cancel);
+		viewObjects.add(label);
 	}
 
 }
