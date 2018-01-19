@@ -77,7 +77,7 @@ public class BuyingScreen extends FullFunctionScreen implements FileRequester{
 		selling.update();
 		viewObjects.add(selling);
 		
-		exit = new Button(740, 40, 40, 40, "X", new Action() {
+		exit = new Button(750, 40, 40, 40, "X", new Action() {
 
 			@Override
 			public void act() {
