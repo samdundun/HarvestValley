@@ -21,11 +21,11 @@ public class FarmScreenAll extends FullFunctionScreen {
 
 	public FarmScreenAll(int width, int height) {
 		super(width, height);
-		farmPatch = new ArrayList<CropJane>();
 	}
 
 	public void initAllObjects(List<Visible> viewObjects) {
 		animalLimit = 5;
+		farmPatch = new ArrayList<CropJane>();
 		
 		back = new Graphic(0, 0, "resources/farm.PNG");
 		viewObjects.add(back);
@@ -74,7 +74,7 @@ public class FarmScreenAll extends FullFunctionScreen {
 		for(int i=0; i<9; i++) {
 			if(i<3) {
 			CropJane patch= new CropJane(start+(i*68), 253, 63, 50, "", Color.BLACK, null);
-			//farmPatch.add(patch);
+			farmPatch.add(patch);
 			viewObjects.add(patch);
 			}
 			else if(i>=3&&i<6) {
