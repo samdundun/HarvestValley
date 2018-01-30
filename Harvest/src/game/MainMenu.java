@@ -4,6 +4,7 @@ import java.awt.Font;
 import java.io.File;
 
 import guiTeacher.GUIApplication;
+import guiTeacher.components.Graphic;
 import guiTeacher.components.StyledComponent;
 import guiTeacher.userInterfaces.Screen;
 
@@ -27,6 +28,7 @@ public class MainMenu extends GUIApplication {
 	
 	public MainMenu(int width, int height) {
 		super(width, height);
+		setIconImage(new Graphic(0, 0, 25, 25, "resources/icon.png").getImage());
 		setVisible(true);
 	}
 
