@@ -13,7 +13,11 @@ import guiTeacher.interfaces.DrawInstructions;
 
 public class Item extends CustomImageButton implements Clickable{
 	
+<<<<<<< HEAD
 	public static final Graphic[] veggies = {new Graphic(0,0,48,48,"resources/Corn.png"), new Graphic(0,0,48,48,"resources/Tomato.png")};
+=======
+	public static final Graphic[] veggies = {new Graphic(0,0,48,48,"resources/Corn.png")};
+>>>>>>> refs/heads/develop
 	
 	private String name;
 	private String description;
