@@ -18,6 +18,8 @@ import java.util.List;
 public class ObjectivesScreenJessi extends ClickableScreen implements Runnable {
 
 	private Button exit;
+	private Thread[] rules;
+	private ArrayList obj;
 
 	public ObjectivesScreenJessi(int width, int height) {
 		super(width, height);
@@ -69,6 +71,7 @@ public class ObjectivesScreenJessi extends ClickableScreen implements Runnable {
 	public static void main(String args[]) {
 		
 		ArrayList<String> obj = new ArrayList<String>();
+		
 		
 		for(int i = 0; i < obj.size(); i++) {
 			 System.out.println("Rule #" + i + " : " + obj.get(i));
