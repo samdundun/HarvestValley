@@ -53,13 +53,8 @@ public class FarmScreenAll extends FullFunctionScreen {
 			}
 		});
 		viewObjects.add(shopJenny);
-<<<<<<< HEAD
 		
 		sleepAlex = new ImageButton(815, 493, 39, 39, "resources/sleep.png", null);
-=======
-		
-		sleepAlex = new ImageButton(815, 493, 39, 39, "resources/sleep.png", null);
->>>>>>> refs/heads/farm
 		viewObjects.add(sleepAlex);
 		
 		itemJane = new Button(175, 500, 80, 30, "Inventory", new Color(230, 235, 210), new Action() {
