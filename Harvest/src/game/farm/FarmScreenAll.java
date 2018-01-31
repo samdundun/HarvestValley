@@ -23,7 +23,7 @@ public class FarmScreenAll extends FullFunctionScreen {
 	private Action action;
 
 	private int animalLimit;
-	private ArrayList<ImageButton> animalBox;
+	private ArrayList<BoxJenny> animalBox;
 
 	public FarmScreenAll(int width, int height) {
 		super(width, height);
@@ -32,7 +32,8 @@ public class FarmScreenAll extends FullFunctionScreen {
 	public void initAllObjects(List<Visible> viewObjects) {
 		animalLimit = 5;
 		farmPatch = new ArrayList<CropJane>();
-		
+		animalBox = new ArrayList<BoxJenny>();
+
 		back = new Graphic(0, 0, "resources/farm.PNG");
 		viewObjects.add(back);
 
@@ -51,10 +52,10 @@ public class FarmScreenAll extends FullFunctionScreen {
 			}
 		});
 		viewObjects.add(shopJenny);
-		
+
 		sleepAlex = new ImageButton(815, 493, 39, 39, "resources/sleep.png", null);
 		viewObjects.add(sleepAlex);
-		
+
 		itemJane = new Button(175, 500, 80, 30, "Inventory", new Color(230, 235, 210), new Action() {
 			public void act() {
 				MainMenu.game.setScreen(MainMenu.inventory);
@@ -62,12 +63,31 @@ public class FarmScreenAll extends FullFunctionScreen {
 			}
 		});
 		viewObjects.add(itemJane);
-		
+
 		addfarmingPatchJane(viewObjects);
+		addAnimalBox(viewObjects);
+
 		pane = new SeedSelectionPaneJane(this, 100, 100, 200, 200);
 		pane.update();
 		viewObjects.add(pane);
 		pane.setVisible(false);
+	}
+
+	private void addAnimalBox(List<Visible> viewObjects) {
+		int start = 20;
+		int space = 150;
+		for(int i = 0; i < animalLimit; i++) {
+			if(i < 3) {
+				BoxJenny box = new BoxJenny(start + (i*68), 200, 100, 100, "resources/wool.png", null);
+				animalBox.add(box);
+				viewObjects.add(box);
+			}
+			else{
+				BoxJenny box = new BoxJenny(start + ((i-3)*68), 200 + space, 100, 100, "resources/wool.png", null);
+				animalBox.add(box);
+				viewObjects.add(box);
+			}
+		}
 	}
 
 	private void addfarmingPatchJane(List<Visible> viewObjects) {
