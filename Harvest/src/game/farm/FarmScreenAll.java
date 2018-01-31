@@ -4,11 +4,9 @@ import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 
-import game.mainScreen.ImageButton;
 import guiTeacher.components.*;
 import guiTeacher.interfaces.Visible;
 import guiTeacher.userInterfaces.FullFunctionScreen;
-import harvest.MainMenu;
 
 public class FarmScreenAll extends FullFunctionScreen {
 
@@ -31,9 +29,6 @@ public class FarmScreenAll extends FullFunctionScreen {
 	public void initAllObjects(List<Visible> viewObjects) {
 		animalLimit = 5;
 		farmPatch = new ArrayList<CropJane>();
-		pane = new SeedSelectionPane(this, 100, 100, 200, 200);
-		pane.update();
-		viewObjects.add(pane);
 		back = new Graphic(0, 0, "resources/farm.PNG");
 		viewObjects.add(back);
 
@@ -69,8 +64,9 @@ public class FarmScreenAll extends FullFunctionScreen {
 		});
 		viewObjects.add(itemJane);
 		addfarmingPatchJane(viewObjects);
-		;
-
+		pane = new SeedSelectionPane(this, 100, 100, 200, 200);
+		pane.update();
+		viewObjects.add(pane);
 	}
 
 	private void addfarmingPatchJane(List<Visible> viewObjects) {
