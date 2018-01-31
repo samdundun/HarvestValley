@@ -23,6 +23,7 @@ public class FarmScreenAll extends FullFunctionScreen {
 	private Action action;
 
 	private int animalLimit;
+	private ArrayList<ImageButton> animalBox;
 
 	public FarmScreenAll(int width, int height) {
 		super(width, height);
@@ -31,12 +32,11 @@ public class FarmScreenAll extends FullFunctionScreen {
 	public void initAllObjects(List<Visible> viewObjects) {
 		animalLimit = 5;
 		farmPatch = new ArrayList<CropJane>();
+		
 		back = new Graphic(0, 0, "resources/farm.PNG");
 		viewObjects.add(back);
 
 		menuJenny = new Button(5, 500, 80, 30, "Menu", new Color(230, 235, 210), new Action() {
-
-
 			public void act() {
 				MainMenu.game.setScreen(MainMenu.screen);
 
@@ -45,7 +45,6 @@ public class FarmScreenAll extends FullFunctionScreen {
 		viewObjects.add(menuJenny);
 
 		shopJenny = new Button(90, 500, 80, 30, "Shop", new Color(230, 235, 210), new Action() {
-
 			public void act() {
 				MainMenu.game.setScreen(MainMenu.shop);
 
@@ -57,14 +56,13 @@ public class FarmScreenAll extends FullFunctionScreen {
 		viewObjects.add(sleepAlex);
 		
 		itemJane = new Button(175, 500, 80, 30, "Inventory", new Color(230, 235, 210), new Action() {
-
-			@Override
 			public void act() {
 				MainMenu.game.setScreen(MainMenu.inventory);
 
 			}
 		});
 		viewObjects.add(itemJane);
+		
 		addfarmingPatchJane(viewObjects);
 		pane = new SeedSelectionPane(this, 100, 100, 200, 200);
 		pane.update();
