@@ -13,17 +13,14 @@ import guiTeacher.interfaces.DrawInstructions;
 
 public class Item extends CustomImageButton implements Clickable{
 	
-<<<<<<< HEAD
-	public static final Graphic[] items = {new Graphic(0,0,48,48,"resources/cornseeds.png"),new Graphic(0,0,48,48,"resources/pepperseeds.png"),new Graphic(0,0,48,48,"resources/potatoseeds.png"),new Graphic(0,0,48,48,"resources/strawberryseeds.png"),new Graphic(0,0,48,48,"resources/tomatoseeds.png"),new Graphic(0,0,48,48,"resources/wheatseeds.png"), new Graphic(0,0,48,48,"resources/Corn.png"),new Graphic(0,0,48,48,"resources/Tomato.png"),};
-=======
-	public static final Graphic[] veggies = {new Graphic(0,0,48,48,"resources/cornseeds.png"),
+
+	public static final Graphic[] items = {new Graphic(0,0,48,48,"resources/cornseeds.png"),
 			new Graphic(0,0,48,48,"resources/pepperseeds.png"),new Graphic(0,0,48,48,"resources/potatoseeds.png"),
 			new Graphic(0,0,48,48,"resources/strawberryseeds.png"),new Graphic(0,0,48,48,"resources/tomatoseeds.png"),
 			new Graphic(0,0,48,48,"resources/wheatseeds.png"), new Graphic(0,0,48,48,"resources/Corn.png"),
 			new Graphic(0,0,48,48,"resources/Pepper.png"),new Graphic(0,0,48,48,"resources/Potato.png"),
 			new Graphic(0,0,48,48,"resources/Strawberry.png"),new Graphic(0,0,48,48,"resources/Tomato.png"),
 			new Graphic(0,0,48,48,"resources/Wheat.png")};
->>>>>>> branch 'market' of https://github.com/samdundun/HarvestValley.git
 	
 	private String name;
 	private int image;

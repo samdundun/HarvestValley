@@ -9,11 +9,8 @@ public class Inventory {
 
 	public static Scanner in;
 	private ArrayList<Item> items;
-<<<<<<< HEAD
-	private ArrayList<Integer> amount;
-=======
 	private int[] amount = {0,0,0,0,0,0,0,0,0,0,0,0};
->>>>>>> branch 'market' of https://github.com/samdundun/HarvestValley.git
+
 	
 	//image index
 	//cornseed,pepperseed,potatoseed,strawberryseed,tomatoseed,wheatseed,corn,pepper,potato,strawberry,tomato,wheat
@@ -52,21 +49,21 @@ public class Inventory {
 		
 	}
 	
-<<<<<<< HEAD
+
 //	public void sort() {
 //		for(int i = 0; i < items.size();i++) {
 //			amount.get(items.get(i).getImageIndex())++;
 //		}
 //		
 //	}
-=======
+
 	public void sort() {
 		for(int i = 0; i < items.size();i++) {
 			items.get(i).setAmount(amount[items.get(i).getImageIndex()]++);
 		}
 		
 	}
->>>>>>> branch 'market' of https://github.com/samdundun/HarvestValley.git
+
 	
 	private static void displayMessage(String message){
 		System.out.println(message);
