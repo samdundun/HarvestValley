@@ -1,8 +1,9 @@
-package game;
+package game.mainScreen;
 
 
 import guiTeacher.interfaces.Visible;
 import guiTeacher.userInterfaces.Screen;
+import harvest.MainMenu;
 
 import java.util.List;
 
@@ -15,9 +16,14 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ObjectivesScreenJessi extends ClickableScreen implements Runnable {
+public class ObjectivesScreenJessi extends ClickableScreen implements Runnable, MessageDisplayerJessi  {
 
 	private Button exit;
+	
+//	List<Thread> clients = new ArrayList<Thread>();
+//	Thread client = new Thread(new ClientThread(socket));
+//	client.start(); 
+//	clients.add(client);
 
 	public ObjectivesScreenJessi(int width, int height) {
 		super(width, height);
@@ -78,6 +84,7 @@ public class ObjectivesScreenJessi extends ClickableScreen implements Runnable {
 
 
 	}
+
 
 
 }

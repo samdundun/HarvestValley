@@ -1,4 +1,4 @@
-package game;
+package game.mainScreen;
 
 import guiTeacher.components.Action;
 
@@ -8,6 +8,7 @@ import java.awt.RenderingHints;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import game.market.Inventory;
 import guiTeacher.components.*;
 
 public class SaveDataJessi {
