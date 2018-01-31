@@ -15,7 +15,7 @@ import harvest.MainMenu;
 
 public class InventoryScreen extends FullFunctionScreen {
 
-	private TextLabel description;
+	private CustomArea description;
 	private TextLabel amount;
 	private TextLabel gold;
 	private Button eat;
@@ -25,6 +25,10 @@ public class InventoryScreen extends FullFunctionScreen {
 
 	private Inventory invent;
 
+	public static final Item[] items = {new Item("Corn Seeds", "Great crop to grow all year round", 100, 0),new Item("Pepper Seeds", "Yes", 100, 1),new Item("Potato Seeds", "Yes", 100, 1),new Item("Strawberry Seeds", "Yes", 100, 1),new Item("Tomato Seeds", "Yes", 100, 1),new Item("Wheat Seeds", "Yes", 100, 1)};
+
+	
+	
 	public InventoryScreen(int width, int height) {
 		super(width, height);
 		// TODO Auto-generated constructor stub
@@ -37,7 +41,7 @@ public class InventoryScreen extends FullFunctionScreen {
 
 		invent = new Inventory();
 
-		description = new TextLabel(100,400,100,100,"Description");
+		description = new CustomArea(100,400,300,150,"Description");
 		//somehow change description to the item that is highlighted
 		viewObjects.add(description);
 		
@@ -83,15 +87,26 @@ public class InventoryScreen extends FullFunctionScreen {
 		 **/
 		invent.addBasics();
 		//how other classes will add items to the inventory
-		invent.addItem(new Item("Corn", "Fresh to eat", 10,0));
-		invent.addItem(new Item("Corn", "Fresh to eat", 10,0));
-		invent.addItem(new Item("Corn", "Fresh to eat", 10,0));
-		invent.addItem(new Item("Corn", "Fresh to eat", 10,1));
+		invent.addItem(new Item("Corn", "Corn \nFresh to eat", 10,6));
+		invent.addItem(new Item("Corn", "Corn \nFresh to eat", 10,6));
+		invent.addItem(new Item("Corn", "Corn \nFresh to eat", 10,6));
+		invent.addItem(new Item("Tomato", "Tomato \nGreat for salads", 10,10));
+	
 		int move = 1;
 		int width = 48;
 		int startingHeight = 202;
 		int height = 48;
+		
 		for(Item i:invent.getItems()) {
+			i.setAction(new Action() {
+				
+				@Override
+				public void act() {
+					description.setText(i.getDescription());
+					amount.setText(Integer.toString(i.getAmount()));
+				}
+			});
+			
 			i.setX(80+move*width);
 			i.setY(startingHeight);
 			move++;
