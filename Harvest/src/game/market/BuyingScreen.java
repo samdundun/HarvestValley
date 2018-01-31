@@ -37,7 +37,8 @@ public class BuyingScreen extends FullFunctionScreen implements FileRequester{
 	private int priceLevel;
 	private int goldAmount;
 	private int amountLevel;
-
+	
+	public static final Item[] items = {new Item("Corn Seeds", "Great crop to grow all year round", 100, 0),new Item("Pepper Seeds", "Yes", 100, 1),new Item("Potato Seeds", "Yes", 100, 1),new Item("Strawberry Seeds", "Yes", 100, 1),new Item("Tomato Seeds", "Yes", 100, 1),new Item("Wheat Seeds", "Yes", 100, 1)};
 
 
 	public BuyingScreen(int width, int height) {
@@ -115,6 +116,31 @@ public class BuyingScreen extends FullFunctionScreen implements FileRequester{
 		exchange.setCurve(0, 0);
 		exchange.update();
 		viewObjects.add(exchange);
+		
+		int move = 1;
+		int width = 48;
+		int startingHeight = 202;
+		int height = 48;
+		
+		for(int i = 0; i < items.length; i++) {
+			Item z = items[i];
+			z.setAction(new Action() {
+				
+				@Override
+				public void act() {
+					description.setText(z.getDescription());
+					
+				}
+			});
+			z.setX(80+move*width);
+			z.setY(startingHeight);
+			move++;
+			if(move == 13){
+				move = 1;
+				startingHeight = startingHeight+height;
+			}
+			viewObjects.add(z);
+		}
 		
 
 	}
