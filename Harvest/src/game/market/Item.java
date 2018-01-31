@@ -13,7 +13,13 @@ import guiTeacher.interfaces.DrawInstructions;
 
 public class Item extends CustomImageButton implements Clickable{
 	
-	public static final Graphic[] veggies = {new Graphic(0,0,48,48,"resources/cornseeds.png"),new Graphic(0,0,48,48,"resources/pepperseeds.png"),new Graphic(0,0,48,48,"resources/potatoseeds.png"),new Graphic(0,0,48,48,"resources/strawberryseeds.png"),new Graphic(0,0,48,48,"resources/tomatoseeds.png"),new Graphic(0,0,48,48,"resources/wheatseeds.png"), new Graphic(0,0,48,48,"resources/Corn.png"),new Graphic(0,0,48,48,"resources/Tomato.png"),};
+	public static final Graphic[] veggies = {new Graphic(0,0,48,48,"resources/cornseeds.png"),
+			new Graphic(0,0,48,48,"resources/pepperseeds.png"),new Graphic(0,0,48,48,"resources/potatoseeds.png"),
+			new Graphic(0,0,48,48,"resources/strawberryseeds.png"),new Graphic(0,0,48,48,"resources/tomatoseeds.png"),
+			new Graphic(0,0,48,48,"resources/wheatseeds.png"), new Graphic(0,0,48,48,"resources/Corn.png"),
+			new Graphic(0,0,48,48,"resources/Pepper.png"),new Graphic(0,0,48,48,"resources/Potato.png"),
+			new Graphic(0,0,48,48,"resources/Strawberry.png"),new Graphic(0,0,48,48,"resources/Tomato.png"),
+			new Graphic(0,0,48,48,"resources/Wheat.png")};
 	
 	private String name;
 	private int image;
@@ -21,7 +27,9 @@ public class Item extends CustomImageButton implements Clickable{
 	private int value;
 	private boolean selected;
 	private Color color;
-
+	private int amount;
+	
+	
 	public static final int HEIGHT = 48;
 	public static final int WIDTH = 48;
 	//CO
@@ -90,6 +98,15 @@ public class Item extends CustomImageButton implements Clickable{
 	public int getImageIndex() {
 		return image;
 	}
+
+	public int getAmount() {
+		return amount;
+	}
+
+	public void setAmount(int amount) {
+		this.amount = amount;
+	}
+	
 
 	//	public Item(int x, int y, double scale, String imageLocation) {
 	//		super(x, y, scale, imageLocation);

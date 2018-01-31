@@ -3,15 +3,19 @@ package game.market;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import guiTeacher.components.Graphic;
+
 public class Inventory {
 
 	public static Scanner in;
 	private ArrayList<Item> items;
-	private ArrayList<Integer> amount =;
+	private int[] amount = {0,0,0,0,0,0,0,0,0,0,0,0};
 	
+	//image index
+	//cornseed,pepperseed,potatoseed,strawberryseed,tomatoseed,wheatseed,corn,pepper,potato,strawberry,tomato,wheat
+	// 0           1          2            3             4          5      6    7       8       9         10    11
 	public Inventory() {
 		items = new ArrayList<Item>();
-		amount = new ArrayList<Integer>();
 	}
 	
 	public static void main(String[] args){
@@ -29,21 +33,24 @@ public class Inventory {
 		 * wheat
 		 * seeds^^
 		 */
-		addItem(new Item("Corn", "Fresh to eat", 10,0));
-		addItem(new Item("Corn", "Fresh to eat", 10,1));
-		addItem(new Item("Corn", "Fresh to eat", 10,0));
-		addItem(new Item("Corn", "Fresh to eat", 10,1));
-		addItem(new Item("Corn", "Fresh to eat", 10,0));
-		addItem(new Item("Corn", "Fresh to eat", 10,1));
-		addItem(new Item("Corn", "Fresh to eat", 10,0));
-		addItem(new Item("Corn", "Fresh to eat", 10,1));
-		addItem(new Item("Corn", "Fresh to eat", 10,0));
-		addItem(new Item("Corn", "Fresh to eat", 10,1));
+		addItem(new Item("Corn", "Corn \nFresh to eat", 10,6));
+		addItem(new Item("Tomato", "Tomato \nGreat for salads", 10,10));
+		addItem(new Item("Corn", "Corn \nFresh to eat", 10,6));
+		addItem(new Item("Tomato", "Tomato \nGreat for salads", 10,10));
+		addItem(new Item("Corn", "Corn \nFresh to eat", 10,6));
+		addItem(new Item("Tomato", "Tomato \nGreat for salads", 10,10));
+		addItem(new Item("Corn", "Corn \nFresh to eat", 10,6));
+		addItem(new Item("Tomato", "Tomato \nGreat for salads", 10,10));
+		addItem(new Item("Corn", "Corn \nFresh to eat", 10,6));
+		addItem(new Item("Tomato", "Tomato \nGreat for salads", 10,10));
+		addItem(new Item("Corn", "Corn \nFresh to eat", 10,6));
+		addItem(new Item("Tomato", "Tomato \nGreat for salads", 10,10));
+		
 	}
 	
 	public void sort() {
 		for(int i = 0; i < items.size();i++) {
-			amount.get(items.get(i).getImageIndex())++;
+			items.get(i).setAmount(amount[items.get(i).getImageIndex()]++);
 		}
 		
 	}
@@ -70,5 +77,9 @@ public class Inventory {
 	
 	public void removeItem(Item i) {
 		items.remove(i);
+	}
+	
+	public int[] getAmountArray() {
+		return amount;
 	}
 }
