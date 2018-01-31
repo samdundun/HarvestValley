@@ -12,9 +12,12 @@ import guiTeacher.interfaces.Visible;
 
 public class SeedSelectionPaneJane extends Pane {
 
-	private TextLabel label;
-	public SeedSelectionPaneJane(FocusController focusController, int x, int y, int width, int height) {
-		super(focusController, x, y, width, height);
+	private Button cancel;
+	private Button select;
+	private static final int _WIDTH = 250;
+	private static final int _HEIGHT = 200;
+	public SeedSelectionPaneJane(FocusController focusController, int x, int y) {
+		super(focusController, x, y, _WIDTH, _HEIGHT);
 		// TODO Auto-generated constructor stub
 	}
 
@@ -31,9 +34,24 @@ public class SeedSelectionPaneJane extends Pane {
 	}
 
 	public void initAllObjects(List<Visible> viewObjects){
-		label = new TextArea(0,0,10,10,"This is a sample alert message. The entire red box is one pane. All of the text and the buttons move as one unit. Click 'OK' to watch this in action");
-		
-		viewObjects.add(label);
+		select= new Button(5,_HEIGHT - 43, 50, 20, "Select",Color.GRAY, new Action() {
+
+			@Override
+			public void act() {
+				SeedSelectionPaneJane.this.setVisible(false);
+
+			}
+		});
+		viewObjects.add(select);
+		cancel= new Button(70,_HEIGHT - 43, 50, 20, "Cancel",Color.GRAY, new Action() {
+
+			@Override
+			public void act() {
+				FarmScreenAll.pane.setVisible(false);
+
+			}
+		});
+		viewObjects.add(cancel);
 	}
 
 }

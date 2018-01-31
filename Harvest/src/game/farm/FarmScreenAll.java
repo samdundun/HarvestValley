@@ -66,7 +66,7 @@ public class FarmScreenAll extends FullFunctionScreen {
 		});
 		viewObjects.add(itemJane);
 		addfarmingPatchJane(viewObjects);
-		pane = new SeedSelectionPaneJane(this, 100, 100, 200, 200);
+		pane = new SeedSelectionPaneJane(this, 400, 300);
 		pane.update();
 		viewObjects.add(pane);
 		pane.setVisible(false);
