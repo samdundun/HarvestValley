@@ -16,7 +16,7 @@ public class FarmScreenAll extends FullFunctionScreen {
 	private Button shopJenny;
 	private Button menuJenny;
 	private Button itemJane;
-	private SeedSelectionPane pane;
+	public static SeedSelectionPaneJane pane;
 
 	private ImageButton sleepAlex;
 	private ArrayList<CropJane> farmPatch;
@@ -64,9 +64,10 @@ public class FarmScreenAll extends FullFunctionScreen {
 		viewObjects.add(itemJane);
 		
 		addfarmingPatchJane(viewObjects);
-		pane = new SeedSelectionPane(this, 100, 100, 200, 200);
+		pane = new SeedSelectionPaneJane(this, 100, 100, 200, 200);
 		pane.update();
 		viewObjects.add(pane);
+		pane.setVisible(false);
 	}
 
 	private void addfarmingPatchJane(List<Visible> viewObjects) {
