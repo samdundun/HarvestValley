@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 import java.beans.PropertyChangeListener;
 import java.util.List;
 
+import game.MainMenu;
 import guiTeacher.components.Graphic;
 import guiTeacher.components.*;
 import guiTeacher.components.TextField;

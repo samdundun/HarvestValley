@@ -7,6 +7,7 @@ import java.util.List;
 
 import javax.swing.JFrame;
 
+import game.MainMenu;
 import guiTeacher.components.Action;
 import guiTeacher.components.Button;
 import guiTeacher.components.Graphic;
@@ -18,7 +19,6 @@ import guiTeacher.components.TextLabel;
 import guiTeacher.interfaces.FileRequester;
 import guiTeacher.interfaces.Visible;
 import guiTeacher.userInterfaces.FullFunctionScreen;
-import mainScreen.MainMenu;
 
 public class BuyingScreen extends FullFunctionScreen implements FileRequester{
 

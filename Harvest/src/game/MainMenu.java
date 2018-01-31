@@ -1,4 +1,4 @@
-package mainScreen;
+package game;
 
 import java.awt.Font;
 import java.io.File;
@@ -8,6 +8,11 @@ import guiTeacher.GUIApplication;
 import guiTeacher.components.Graphic;
 import guiTeacher.components.StyledComponent;
 import guiTeacher.userInterfaces.Screen;
+import mainScreen.ChooseGenderScreenLubna;
+import mainScreen.MenuScreenLubna;
+import mainScreen.ObjectivesScreenJessi;
+import mainScreen.PlaceHolderScreen;
+import mainScreen.SaveScreenMimi;
 import market.BuyingScreen;
 import market.InventoryScreen;
 import market.SellingScreen;

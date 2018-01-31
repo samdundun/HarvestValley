@@ -4,11 +4,11 @@ import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 
+import game.MainMenu;
 import guiTeacher.components.*;
 import guiTeacher.interfaces.Visible;
 import guiTeacher.userInterfaces.FullFunctionScreen;
 import mainScreen.ImageButton;
-import mainScreen.MainMenu;
 
 public class FarmScreenAll extends FullFunctionScreen {
 

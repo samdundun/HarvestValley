@@ -2,6 +2,7 @@ package mainScreen;
 
 import java.util.List;
 
+import game.MainMenu;
 import guiTeacher.components.Action;
 import guiTeacher.components.Graphic;
 import guiTeacher.interfaces.Visible;
