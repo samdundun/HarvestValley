@@ -13,7 +13,7 @@ import guiTeacher.interfaces.DrawInstructions;
 
 public class Item extends CustomImageButton implements Clickable{
 	
-	public static final Graphic[] veggies = {new Graphic(0,0,48,48,"resources/cornseeds.png"),new Graphic(0,0,48,48,"resources/pepperseeds.png"),new Graphic(0,0,48,48,"resources/potatoseeds.png"),new Graphic(0,0,48,48,"resources/strawberryseeds.png"),new Graphic(0,0,48,48,"resources/tomatoseeds.png"),new Graphic(0,0,48,48,"resources/wheatseeds.png"), new Graphic(0,0,48,48,"resources/Corn.png"),new Graphic(0,0,48,48,"resources/Tomato.png"),};
+	public static final Graphic[] items = {new Graphic(0,0,48,48,"resources/cornseeds.png"),new Graphic(0,0,48,48,"resources/pepperseeds.png"),new Graphic(0,0,48,48,"resources/potatoseeds.png"),new Graphic(0,0,48,48,"resources/strawberryseeds.png"),new Graphic(0,0,48,48,"resources/tomatoseeds.png"),new Graphic(0,0,48,48,"resources/wheatseeds.png"), new Graphic(0,0,48,48,"resources/Corn.png"),new Graphic(0,0,48,48,"resources/Tomato.png"),};
 	
 	private String name;
 	private int image;
@@ -28,7 +28,7 @@ public class Item extends CustomImageButton implements Clickable{
 	public Item(String name, String description, int value, int imageIndex) {
 		super(0,0,48,48,new DrawInstructions() {
 
-			Graphic image = veggies[imageIndex];
+			Graphic image = items[imageIndex];
 
 			@Override
 			public void draw(Graphics2D g, boolean highlight) {
@@ -60,6 +60,14 @@ public class Item extends CustomImageButton implements Clickable{
 		this.selected = false;
 		this.color = new Color(100+(int)(100*Math.random()),100+(int)(100*Math.random()),100+(int)(100*Math.random()));
 		update();
+	}
+
+	public int getValue() {
+		return value;
+	}
+
+	public void setValue(int value) {
+		this.value = value;
 	}
 
 	public String toString(){

@@ -38,7 +38,7 @@ public class BuyingScreen extends FullFunctionScreen implements FileRequester{
 	private int goldAmount;
 	private int amountLevel;
 	
-	public static final Item[] items = {new Item("Corn Seeds", "Great crop to grow all year round", 100, 0),new Item("Pepper Seeds", "Yes", 100, 1),new Item("Potato Seeds", "Yes", 100, 1),new Item("Strawberry Seeds", "Yes", 100, 1),new Item("Tomato Seeds", "Yes", 100, 1),new Item("Wheat Seeds", "Yes", 100, 1)};
+	public static final Item[] items = {new Item("Corn Seeds", "Great crop to grow all year round\nGrowth time: x days", 100, 0),new Item("Pepper Seeds", "Spicy\nGrowth time: x days", 100, 1),new Item("Potato Seeds", "Just like me\nGrowth time: x days", 100, 2),new Item("Strawberry Seeds", "Sweeter than you\nGrowth time: x days", 100, 3),new Item("Tomato Seeds", "Make some good ketchup\nGrowth time: x days", 100, 4),new Item("Wheat Seeds", "Not weed\nGrowth time: x days", 100, 5)};
 
 
 	public BuyingScreen(int width, int height) {
@@ -128,7 +128,8 @@ public class BuyingScreen extends FullFunctionScreen implements FileRequester{
 				
 				@Override
 				public void act() {
-					description.setText(z.getDescription());
+					description.setText(z.getName() + "\n" + z.getDescription());
+					price.setText("Price: "+ z.getValue());
 					
 				}
 			});

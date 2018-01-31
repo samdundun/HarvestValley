@@ -7,7 +7,7 @@ public class Inventory {
 
 	public static Scanner in;
 	private ArrayList<Item> items;
-	private ArrayList<Integer> amount =;
+	private ArrayList<Integer> amount;
 	
 	public Inventory() {
 		items = new ArrayList<Item>();
@@ -41,12 +41,12 @@ public class Inventory {
 		addItem(new Item("Corn", "Fresh to eat", 10,1));
 	}
 	
-	public void sort() {
-		for(int i = 0; i < items.size();i++) {
-			amount.get(items.get(i).getImageIndex())++;
-		}
-		
-	}
+//	public void sort() {
+//		for(int i = 0; i < items.size();i++) {
+//			amount.get(items.get(i).getImageIndex())++;
+//		}
+//		
+//	}
 	
 	private static void displayMessage(String message){
 		System.out.println(message);
