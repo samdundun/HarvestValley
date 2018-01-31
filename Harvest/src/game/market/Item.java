@@ -34,7 +34,7 @@ public class Item extends CustomImageButton implements Clickable{
 			public void draw(Graphics2D g, boolean highlight) {
 				if(highlight){
 					float scaleFactor = 0.9f;
-					//RescaleOp op = new RescaleOp(scaleFactor, 0, null);
+					//RescaleOp op = new RescaleOp(scaleFactor, 0, null)
 					//BufferedImage light = op.filter(image.getImage(), null);
 					g.drawImage(image.getImage(), 0, 0, null);
 					g.setColor(new Color(0,0,0,30));

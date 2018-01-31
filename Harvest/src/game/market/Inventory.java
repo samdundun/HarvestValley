@@ -7,7 +7,7 @@ public class Inventory {
 
 	public static Scanner in;
 	private ArrayList<Item> items;
-	private ArrayList<Integer> amount = ;
+	private ArrayList<Integer> amount =;
 	
 	public Inventory() {
 		items = new ArrayList<Item>();
