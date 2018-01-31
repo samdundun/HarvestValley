@@ -6,7 +6,10 @@ import guiTeacher.userInterfaces.Screen;
 import harvest.MainMenu;
 
 import java.util.List;
+import java.util.Scanner;
 
+import game.market.Inventory;
+import game.market.Item;
 import guiTeacher.components.*;
 import guiTeacher.interfaces.Visible;
 import guiTeacher.userInterfaces.ClickableScreen;
@@ -19,14 +22,11 @@ import java.util.List;
 public class ObjectivesScreenJessi extends ClickableScreen implements Runnable, MessageDisplayerJessi  {
 
 	private Button exit;
-	
-//	List<Thread> clients = new ArrayList<Thread>();
-//	Thread client = new Thread(new ClientThread(socket));
-//	client.start(); 
-//	clients.add(client);
-
+	public static Scanner in;
+	private ArrayList<String> rules;
 	public ObjectivesScreenJessi(int width, int height) {
 		super(width, height);
+		rules = new ArrayList<String>();
 	}
 	
 	@Override
@@ -73,16 +73,14 @@ public class ObjectivesScreenJessi extends ClickableScreen implements Runnable, 
 	}
 
 	public static void main(String args[]) {
+		//ObjectivesScreenJessi rules = new ObjectivesScreenJessi();
+		in = new Scanner(System.in);
+	}
+
+	@Override
+	public void showline() {
 		
-//		ArrayList<String> obj = new ArrayList<String>();
-//		
-//		
-//		for(int i = 0; i < obj.size(); i++) {
-//			 System.out.println("Rule #" + i + " : " + obj.get(i));
-//
-//		}
-
-
+		
 	}
 
 
