@@ -1,4 +1,4 @@
-package market;
+package game.market;
 
 import java.util.ArrayList;
 import java.util.Scanner;

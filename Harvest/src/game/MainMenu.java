@@ -3,19 +3,19 @@ package game;
 import java.awt.Font;
 import java.io.File;
 
-import farm.FarmScreenAll;
+import game.farm.FarmScreenAll;
+import game.mainScreen.ChooseGenderScreenLubna;
+import game.mainScreen.MenuScreenLubna;
+import game.mainScreen.ObjectivesScreenJessi;
+import game.mainScreen.PlaceHolderScreen;
+import game.mainScreen.SaveScreenMimi;
+import game.market.BuyingScreen;
+import game.market.InventoryScreen;
+import game.market.SellingScreen;
 import guiTeacher.GUIApplication;
 import guiTeacher.components.Graphic;
 import guiTeacher.components.StyledComponent;
 import guiTeacher.userInterfaces.Screen;
-import mainScreen.ChooseGenderScreenLubna;
-import mainScreen.MenuScreenLubna;
-import mainScreen.ObjectivesScreenJessi;
-import mainScreen.PlaceHolderScreen;
-import mainScreen.SaveScreenMimi;
-import market.BuyingScreen;
-import market.InventoryScreen;
-import market.SellingScreen;
 
 public class MainMenu extends GUIApplication {
 	

@@ -1,4 +1,4 @@
-package mainScreen;
+package game.mainScreen;
 
 public class SaveDataJessi implements java.io.Serializable {
 

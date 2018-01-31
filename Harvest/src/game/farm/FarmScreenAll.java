@@ -1,14 +1,14 @@
-package farm;
+package game.farm;
 
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 
 import game.MainMenu;
+import game.mainScreen.ImageButton;
 import guiTeacher.components.*;
 import guiTeacher.interfaces.Visible;
 import guiTeacher.userInterfaces.FullFunctionScreen;
-import mainScreen.ImageButton;
 
 public class FarmScreenAll extends FullFunctionScreen {
 

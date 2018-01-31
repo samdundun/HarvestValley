@@ -1,4 +1,4 @@
-package mainScreen;
+package game.mainScreen;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package market;
+package game.market;
 
 import java.awt.Color;
 import java.io.File;
@@ -11,14 +11,16 @@ import game.MainMenu;
 import guiTeacher.components.Action;
 import guiTeacher.components.Button;
 import guiTeacher.components.Graphic;
+import guiTeacher.components.Pane;
 import guiTeacher.components.StyledComponent;
+import guiTeacher.components.TextArea;
 import guiTeacher.components.TextBox;
 import guiTeacher.components.TextLabel;
 import guiTeacher.interfaces.FileRequester;
 import guiTeacher.interfaces.Visible;
 import guiTeacher.userInterfaces.FullFunctionScreen;
 
-public class SellingScreen extends FullFunctionScreen implements FileRequester{
+public class BuyingScreen extends FullFunctionScreen implements FileRequester{
 
 	private static final long serialVersionUID = 7548071104587737267L;
 	ArrayList<Inventory> a;
@@ -26,17 +28,19 @@ public class SellingScreen extends FullFunctionScreen implements FileRequester{
 	private Button selling;
 	private Button exchange;
 	private CustomArea description;
-	private CustomArea price;
+	private TextArea price;
 	private TextLabel amount;
 	private TextLabel gold;
 	private Graphic grid;
 	private Button exit;
 	
 	private int priceLevel;
+	private int goldAmount;
+	private int amountLevel;
 
 
 
-	public SellingScreen(int width, int height) {
+	public BuyingScreen(int width, int height) {
 		super(width, height);
 		// TODO Auto-generated constructor stub
 	}
@@ -50,30 +54,29 @@ public class SellingScreen extends FullFunctionScreen implements FileRequester{
 
 			@Override
 			public void act() {
-				MainMenu.game.setScreen(MainMenu.shop);
-
-			}
-		});
-		buying.setBackground(Color.red);
-		buying.setActiveBorderColor(Color.white);
-		buying.setCurve(0, 0);
-		buying.update();
-		viewObjects.add(buying);
-		selling = new Button(240, 40, 100, 40, "SELLING", new Action() {
-
-			@Override
-			public void act() {
 				// TODO Auto-generated method stub
 
 			}
 		});
-		selling.setBackground(new Color(102,0,0));
+		buying.setBackground(new Color(102,0,0));
+		buying.setActiveBorderColor(Color.white);
+		buying.setCurve(0, 0);
+		buying.update();
+		viewObjects.add(buying);
+		
+		selling = new Button(240, 40, 100, 40, "SELLING", new Action() {
+
+			@Override
+			public void act() {
+				MainMenu.game.setScreen(MainMenu.sell);
+
+			}
+		});
+		selling.setBackground(Color.red);
 		selling.setActiveBorderColor(Color.white);
 		selling.setCurve(0, 0);
 		selling.update();
 		viewObjects.add(selling);
-		grid = new Graphic(100,180, "resources/inventory.png");
-		viewObjects.add(grid);
 		
 		exit = new Button(750, 40, 40, 40, "X", new Action() {
 
@@ -89,7 +92,17 @@ public class SellingScreen extends FullFunctionScreen implements FileRequester{
 		exit.update();
 		viewObjects.add(exit);
 		
-		exchange = new Button(360, 400, 100, 40, "SELL 1", new Action() {
+		grid = new Graphic(100,180, "resources/inventory.png");
+		viewObjects.add(grid);
+		
+		price = new CustomArea(100,400,250,125,"Price :" + priceLevel);
+		viewObjects.add(price);
+		
+		
+		description = new CustomArea(490, 400, 250, 125, "SELECT AN ITEM");
+		viewObjects.add(description);
+		
+		exchange = new Button(360, 400, 100, 40, "BUY 1", new Action() {
 
 			@Override
 			public void act() {
@@ -103,12 +116,6 @@ public class SellingScreen extends FullFunctionScreen implements FileRequester{
 		exchange.update();
 		viewObjects.add(exchange);
 		
-		price = new CustomArea(100,400,250,125,"Price :" + priceLevel);
-		viewObjects.add(price);
-		
-		
-		description = new CustomArea(490, 400, 250, 125, "SELECT AN ITEM");
-		viewObjects.add(description);
 
 	}
 

@@ -1,4 +1,4 @@
-package mainScreen;
+package game.mainScreen;
 
 
 import guiTeacher.components.Action;

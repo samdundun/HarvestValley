@@ -1,4 +1,4 @@
-package market;
+package game.market;
 
 import java.awt.Color;
 import java.awt.Graphics2D;

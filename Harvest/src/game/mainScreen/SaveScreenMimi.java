@@ -1,4 +1,4 @@
-package mainScreen;
+package game.mainScreen;
 
 import java.awt.Color;
 import java.awt.event.ActionEvent;

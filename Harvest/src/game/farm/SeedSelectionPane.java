@@ -1,4 +1,4 @@
-package farm;
+package game.farm;
 
 import java.awt.Color;
 import java.awt.Graphics2D;

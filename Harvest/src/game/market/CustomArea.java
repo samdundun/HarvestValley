@@ -1,4 +1,4 @@
-package market;
+package game.market;
 
 import java.awt.BasicStroke;
 import java.awt.Color;
