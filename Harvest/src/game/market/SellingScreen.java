@@ -32,6 +32,8 @@ public class SellingScreen extends FullFunctionScreen implements FileRequester{
 	private Graphic grid;
 	private Button exit;
 	
+	private Inventory invent;
+	
 	private int priceLevel;
 
 
@@ -45,6 +47,8 @@ public class SellingScreen extends FullFunctionScreen implements FileRequester{
 	public void initAllObjects(List<Visible> viewObjects) {
 		StyledComponent.setButtonOutline(true);
 		setBackground(new Color(252,226,148));
+		
+		invent = new Inventory();
 		
 		buying = new Button(100, 40, 100, 40, "BUYING", new Action() {
 
@@ -110,6 +114,26 @@ public class SellingScreen extends FullFunctionScreen implements FileRequester{
 		description = new CustomArea(490, 400, 250, 125, "SELECT AN ITEM");
 		viewObjects.add(description);
 
+		invent.addBasics();
+		//how other classes will add items to the inventory
+		invent.addItem(new Item("Corn", "Fresh to eat", 10,0));
+		invent.addItem(new Item("Corn", "Fresh to eat", 10,0));
+		invent.addItem(new Item("Corn", "Fresh to eat", 10,0));
+		invent.addItem(new Item("Corn", "Fresh to eat", 10,1));
+		int move = 1;
+		int width = 48;
+		int startingHeight = 202;
+		int height = 48;
+		for(Item i:invent.getItems()) {
+			i.setX(80+move*width);
+			i.setY(startingHeight);
+			move++;
+			if(move == 13){
+				move = 1;
+				startingHeight = startingHeight+height;
+			}
+			viewObjects.add(i);
+		}
 	}
 
 	@Override

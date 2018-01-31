@@ -38,6 +38,7 @@ public class InventoryScreen extends FullFunctionScreen {
 		invent = new Inventory();
 
 		description = new TextLabel(100,400,100,100,"Description");
+		//somehow change description to the item that is highlighted
 		viewObjects.add(description);
 		
 		amount = new TextLabel(100,60,100,100,"Amount:");

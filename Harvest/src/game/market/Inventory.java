@@ -7,9 +7,11 @@ public class Inventory {
 
 	public static Scanner in;
 	private ArrayList<Item> items;
+	private ArrayList<Integer> amount = ;
 	
 	public Inventory() {
 		items = new ArrayList<Item>();
+		amount = new ArrayList<Integer>();
 	}
 	
 	public static void main(String[] args){
@@ -24,6 +26,7 @@ public class Inventory {
 		 * tomato
 		 * potato
 		 * pepper
+		 * wheat
 		 * seeds^^
 		 */
 		addItem(new Item("Corn", "Fresh to eat", 10,0));
@@ -39,7 +42,10 @@ public class Inventory {
 	}
 	
 	public void sort() {
-		//sort items in the inventory to take into account the quantities
+		for(int i = 0; i < items.size();i++) {
+			amount.get(items.get(i).getImageIndex())++;
+		}
+		
 	}
 	
 	private static void displayMessage(String message){

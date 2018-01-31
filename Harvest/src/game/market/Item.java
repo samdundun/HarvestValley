@@ -34,12 +34,13 @@ public class Item extends CustomImageButton implements Clickable{
 			public void draw(Graphics2D g, boolean highlight) {
 				if(highlight){
 					float scaleFactor = 0.9f;
-					//					RescaleOp op = new RescaleOp(scaleFactor, 0, null);
-					//					BufferedImage light = op.filter(image.getImage(), null);
+					//RescaleOp op = new RescaleOp(scaleFactor, 0, null);
+					//BufferedImage light = op.filter(image.getImage(), null);
 					g.drawImage(image.getImage(), 0, 0, null);
 					g.setColor(new Color(0,0,0,30));
 					g.fillRect(0, 0, WIDTH, HEIGHT);
-					//					bufferedImage = op.filter(image.getImage(), null);
+					//bufferedImage = op.filter(image.getImage(), null);
+
 				}
 				else {
 					g.drawImage(image.getImage(), 0, 0, null);
@@ -84,6 +85,10 @@ public class Item extends CustomImageButton implements Clickable{
 
 	public String getName() {
 		return name;
+	}
+	
+	public int getImageIndex() {
+		return image;
 	}
 
 	//	public Item(int x, int y, double scale, String imageLocation) {
