@@ -3,7 +3,6 @@ package game.market;
 import java.awt.Color;
 import java.util.List;
 
-import game.MainMenu;
 import guiTeacher.components.Action;
 import guiTeacher.components.Button;
 import guiTeacher.components.Graphic;
@@ -12,6 +11,7 @@ import guiTeacher.components.TextBox;
 import guiTeacher.components.TextLabel;
 import guiTeacher.interfaces.Visible;
 import guiTeacher.userInterfaces.FullFunctionScreen;
+import harvest.MainMenu;
 
 public class InventoryScreen extends FullFunctionScreen {
 

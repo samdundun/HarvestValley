@@ -4,13 +4,13 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 import java.util.List;
 
-import game.MainMenu;
 import guiTeacher.components.Action;
 import guiTeacher.components.CustomImageButton;
 import guiTeacher.components.Graphic;
 import guiTeacher.interfaces.DrawInstructions;
 import guiTeacher.interfaces.Visible;
 import guiTeacher.userInterfaces.ClickableScreen;
+import harvest.MainMenu;
 
 public class ChooseGenderScreenLubna extends ClickableScreen implements Runnable {
 

@@ -2,11 +2,11 @@ package game.mainScreen;
 
 import java.util.List;
 
-import game.MainMenu;
 import guiTeacher.components.Action;
 import guiTeacher.components.Graphic;
 import guiTeacher.interfaces.Visible;
 import guiTeacher.userInterfaces.ClickableScreen;
+import harvest.MainMenu;
 
 public class MenuScreenLubna extends ClickableScreen implements Runnable {
 
