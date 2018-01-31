@@ -15,7 +15,7 @@ import harvest.MainMenu;
 
 public class InventoryScreen extends FullFunctionScreen {
 
-	private TextBox description;
+	private TextLabel description;
 	private TextLabel amount;
 	private TextLabel gold;
 	private Button eat;
@@ -37,6 +37,9 @@ public class InventoryScreen extends FullFunctionScreen {
 
 		invent = new Inventory();
 
+		description = new TextLabel(100,400,100,100,"Description");
+		viewObjects.add(description);
+		
 		amount = new TextLabel(100,60,100,100,"Amount:");
 		viewObjects.add(amount);
 		gold = new TextLabel(540,60,100,100,"Gold:");
