@@ -13,13 +13,19 @@ import guiTeacher.interfaces.DrawInstructions;
 
 public class Item extends CustomImageButton implements Clickable{
 	
-<<<<<<< HEAD
+
 	public static final Graphic[] veggies = {new Graphic(0,0,48,48,"resources/Corn.png"), new Graphic(0,0,48,48,"resources/Tomato.png")};
-=======
+
 	public static final Graphic[] veggies = {new Graphic(0,0,48,48,"resources/Corn.png")};
->>>>>>> refs/heads/develop
+
+	public static final Graphic[] veggies = {new Graphic(0,0,48,48,"resources/Corn.png"),new Graphic(0,0,48,48,"resources/Tomato.png")};
+
 	
 	private String name;
+
+
+	private int image;
+
 	private String description;
 	private int value;
 	private int imageLocation;
@@ -28,11 +34,18 @@ public class Item extends CustomImageButton implements Clickable{
 
 	public static final int HEIGHT = 48;
 	public static final int WIDTH = 48;
-	//CO
+	//
 	public Item(String name, String description, int value, int index) {
+
+	public Item(String name, String description, int value, int imageIndex) {
+
 		super(0,0,48,48,new DrawInstructions() {
 
+
 			Graphic image = veggies[index];
+
+			Graphic image = veggies[imageIndex];
+
 
 			@Override
 			public void draw(Graphics2D g, boolean highlight) {
@@ -57,6 +70,9 @@ public class Item extends CustomImageButton implements Clickable{
 		},null);
 		//		super(0,0, 48, 48, imageLocation);
 		this.name = name;
+
+		this.image = imageIndex;
+
 		this.value = value;
 		this.description = description;
 		this.imageLocation = index;

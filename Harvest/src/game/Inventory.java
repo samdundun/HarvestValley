@@ -36,10 +36,12 @@ public class Inventory {
 		addItem(new Item("Corn", "Fresh to eat", 10,1));
 		addItem(new Item("Corn", "Fresh to eat", 10,0));
 		addItem(new Item("Corn", "Fresh to eat", 10,1));
+
 		addItem(new Item("Corn", "Fresh to eat", 10,0));
 		addItem(new Item("Corn", "Fresh to eat", 10,1));
 		addItem(new Item("Corn", "Fresh to eat", 10,0));
 		addItem(new Item("Corn", "Fresh to eat", 10,1));
+
 	}
 	
 	public void sort() {
