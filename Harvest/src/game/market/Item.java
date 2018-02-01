@@ -33,7 +33,7 @@ public class Item extends CustomImageButton implements Clickable{
 	
 	public static final int HEIGHT = 48;
 	public static final int WIDTH = 48;
-	//CO
+	
 	public Item(String name, String description, int value, int imageIndex) {
 		super(0,0,48,48,new DrawInstructions() {
 
