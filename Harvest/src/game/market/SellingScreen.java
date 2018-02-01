@@ -125,6 +125,13 @@ public class SellingScreen extends FullFunctionScreen implements FileRequester{
 		int startingHeight = 202;
 		int height = 48;
 		for(Item i:invent.getItems()) {
+			i.setAction(new Action() {	
+				@Override
+				public void act() {
+					description.setText(i.getDescription());
+					amount.setText("Amount: " + Integer.toString(i.getAmount()));
+				}
+			});
 			i.setX(80+move*width);
 			i.setY(startingHeight);
 			move++;
