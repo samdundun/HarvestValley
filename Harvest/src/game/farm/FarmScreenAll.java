@@ -65,19 +65,15 @@ public class FarmScreenAll extends FullFunctionScreen {
 		viewObjects.add(itemJane);
 
 		addfarmingPatchJane(viewObjects);
-<<<<<<< HEAD
+		addAnimalBoxJenny(viewObjects);
+		
 		pane = new SeedSelectionPaneJane(this, 400, 300);
-=======
-		addAnimalBox(viewObjects);
-
-		pane = new SeedSelectionPaneJane(this, 100, 100, 200, 200);
->>>>>>> branch 'farm' of https://github.com/samdundun/HarvestValley.git
 		pane.update();
 		viewObjects.add(pane);
 		pane.setVisible(false);
 	}
 
-	private void addAnimalBox(List<Visible> viewObjects) {
+	private void addAnimalBoxJenny(List<Visible> viewObjects) {
 		int start = 20;
 		int space = 150;
 		for(int i = 0; i < animalLimit; i++) {
