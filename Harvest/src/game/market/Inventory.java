@@ -59,9 +59,11 @@ public class Inventory {
 
 	public void sort() {
 		for(int i = 0; i < items.size();i++) {
-			items.get(i).setAmount(amount[items.get(i).getImageIndex()]++);
+			amount[items.get(i).getImageIndex()]++;
 		}
-		
+		for(int j = 0; j < items.size();j++) {
+			items.get(j).setAmount(amount[items.get(j).getImageIndex()]);
+		}
 	}
 
 	

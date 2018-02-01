@@ -103,7 +103,7 @@ public class InventoryScreen extends FullFunctionScreen {
 				@Override
 				public void act() {
 					description.setText(i.getDescription());
-					amount.setText(Integer.toString(i.getAmount()));
+					amount.setText("Amount: " + Integer.toString(i.getAmount()));
 				}
 			});
 			
@@ -131,6 +131,7 @@ public class InventoryScreen extends FullFunctionScreen {
 		exit.update();
 		viewObjects.add(exit);
 
+		invent.sort();
 	}
 
 }
