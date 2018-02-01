@@ -81,7 +81,7 @@ public class InventoryScreen extends FullFunctionScreen {
 		grid = new Graphic(100,180, "resources/inventory.png");
 		viewObjects.add(grid);
 		/*TODO
-		figure out how to display quantity, price, etc when image is hovered over
+		figure out how to display quantity, price, etc when image is hovered ove
 		play around with the items class
 		items should change opacity when clicked on or hovered over
 		 **/

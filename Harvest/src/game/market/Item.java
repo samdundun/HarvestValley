@@ -59,7 +59,7 @@ public class Item extends CustomImageButton implements Clickable{
 				//				g.fillRect(22, 0, WIDTH-23, HEIGHT-1);
 				//				g.setColor(Color.black);
 				//				g.drawString(name, 26, HEIGHT/2-6);
-				//				g.drawRect(22, 0, WIDTH-23, HEIGHT-1);
+				//				g.drawRect(22, 0, WIDTH-23, HEIGHT-1)
 			}
 		},null);
 		//		super(0,0, 48, 48, imageLocation);
