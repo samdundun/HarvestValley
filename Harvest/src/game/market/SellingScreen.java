@@ -119,12 +119,19 @@ public class SellingScreen extends FullFunctionScreen implements FileRequester{
 //		invent.addItem(new Item("Corn", "Fresh to eat", 10,0));
 //		invent.addItem(new Item("Corn", "Fresh to eat", 10,0));
 //		invent.addItem(new Item("Corn", "Fresh to eat", 10,0));
-//		invent.addItem(new Item("Corn", "Fresh to eat", 10,1));
+//		invent.addItem(new Item("Corn", "Fresh to eat", 10,1))
 		int move = 1;
 		int width = 48;
 		int startingHeight = 202;
 		int height = 48;
 		for(Item i:invent.getItems()) {
+			i.setAction(new Action() {	
+				@Override
+				public void act() {
+					description.setText(i.getDescription());
+					amount.setText("Amount: " + Integer.toString(i.getAmount()));
+				}
+			});
 			i.setX(80+move*width);
 			i.setY(startingHeight);
 			move++;
