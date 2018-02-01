@@ -97,7 +97,9 @@ public class InventoryScreen extends FullFunctionScreen {
 		int startingHeight = 202;
 		int height = 48;
 		
+		invent.sort();
 		for(Item i:invent.getItems()) {
+			//only print new items
 			i.setAction(new Action() {
 				
 				@Override
@@ -106,15 +108,22 @@ public class InventoryScreen extends FullFunctionScreen {
 					amount.setText("Amount: " + Integer.toString(i.getAmount()));
 				}
 			});
-			
-			i.setX(80+move*width);
-			i.setY(startingHeight);
-			move++;
-			if(move == 13){
-				move = 1;
-				startingHeight = startingHeight+height;
+			if(i.getAmount() > 0 && i.isAdded() == false) {
+				i.setAdded(true);
+				for(Item it:invent.getItems()) {
+					if(it.getImageIndex() == i.getImageIndex()) {
+						it.setAdded(true);
+					}
+				}
+				i.setX(80+move*width);
+				i.setY(startingHeight);
+				move++;
+				if(move == 13){
+					move = 1;
+					startingHeight = startingHeight+height;
+				}
+				viewObjects.add(i);
 			}
-			viewObjects.add(i);
 		}
 
 		exit = new Button(750, 40, 40, 40, "X", new Action() {
@@ -130,8 +139,6 @@ public class InventoryScreen extends FullFunctionScreen {
 		exit.setCurve(0, 0);
 		exit.update();
 		viewObjects.add(exit);
-
-		invent.sort();
 	}
 
 }
