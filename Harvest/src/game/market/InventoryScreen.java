@@ -25,7 +25,13 @@ public class InventoryScreen extends FullFunctionScreen {
 
 	private Inventory invent;
 
-	public static final Item[] items = {new Item("Corn Seeds", "Great crop to grow all year round", 100, 0),new Item("Pepper Seeds", "Yes", 100, 1),new Item("Potato Seeds", "Yes", 100, 1),new Item("Strawberry Seeds", "Yes", 100, 1),new Item("Tomato Seeds", "Yes", 100, 1),new Item("Wheat Seeds", "Yes", 100, 1)};
+	public static final Item[] items = {new Item("Corn Seeds", "Great crop to grow all year round", 100, 0),
+			new Item("Pepper Seeds", "Yes", 100, 1),new Item("Potato Seeds", "Yes", 100, 1),
+			new Item("Strawberry Seeds", "Yes", 100, 1),new Item("Tomato Seeds", "Yes", 100, 1),
+			new Item("Wheat Seeds", "Yes", 100, 1),new Item("Corn", "Corn \nFresh to eat", 10,6),
+			new Item("Pepper","Pepper \nSupah Hot Fire",20,7),new Item("Potato","Potato \nTime to make french fries",10,8),
+			new Item("Strawberry","Strawberry \nStraw + Berry??",10,9),new Item("Tomato", "Tomato \nGreat for salads", 10,10),
+			new Item("Wheat","Wheat \nJust plain old wheat",10,11)};
 
 	
 	
@@ -87,10 +93,10 @@ public class InventoryScreen extends FullFunctionScreen {
 		 **/
 		invent.addBasics();
 		//how other classes will add items to the inventory
-		invent.addItem(new Item("Corn", "Corn \nFresh to eat", 10,6));
-		invent.addItem(new Item("Corn", "Corn \nFresh to eat", 10,6));
-		invent.addItem(new Item("Corn", "Corn \nFresh to eat", 10,6));
-		invent.addItem(new Item("Tomato", "Tomato \nGreat for salads", 10,10));
+		invent.addItem(items[6]);
+		invent.addItem(items[6]);
+		invent.addItem(items[6]);
+		invent.addItem(items[10]);
 	
 		int move = 1;
 		int width = 48;

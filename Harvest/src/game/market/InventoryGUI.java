@@ -19,7 +19,7 @@ public class InventoryGUI extends GUIApplication {
 		buy = new BuyingScreen(getWidth(), getHeight());
 		sell = new SellingScreen(getWidth(), getHeight());
 		InventoryScreen whatever = new InventoryScreen(getWidth(),getHeight());
-		setScreen(whatever);
+		setScreen(sell);
 
 	}
 
