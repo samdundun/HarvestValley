@@ -61,12 +61,6 @@ public class BuyingScreen extends FullFunctionScreen implements FileRequester{
 
 			@Override
 			public void act() {
-				for(int i = 0; i < items.length; i++) {
-					if(items[i].isSelected()) {
-						invent.addItem(items[i]);
-					}
-				}
-				invent.save();
 
 			}
 		});
@@ -118,7 +112,12 @@ public class BuyingScreen extends FullFunctionScreen implements FileRequester{
 
 			@Override
 			public void act() {
-				
+				for(int i = 0; i < items.length; i++) {
+					if(items[i].isSelected()) {
+						invent.addItem(items[i]);
+					}
+				}
+				invent.save();
 
 			}
 		});
