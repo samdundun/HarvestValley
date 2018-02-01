@@ -12,6 +12,7 @@ public class CropJane extends Button {
 		
 			public void act() {
 				FarmScreenAll.pane.setVisible(true);
+				FarmScreenAll.pane.update();
 			}
 
 			
