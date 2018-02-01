@@ -68,7 +68,7 @@ public class ObjectivesScreenJessi extends ClickableScreen implements Runnable, 
 
 	@Override
 	public void showline() {
-		//for the andrioid app
+		//for the andrioid appd
 		
 	}
 
