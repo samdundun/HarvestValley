@@ -29,6 +29,7 @@ public class Item extends CustomImageButton implements Clickable{
 	private boolean selected;
 	private Color color;
 	private int amount;
+	private boolean added;
 	
 	
 	public void setSelected(boolean selected) {
@@ -62,7 +63,7 @@ public class Item extends CustomImageButton implements Clickable{
 				//				g.fillRect(22, 0, WIDTH-23, HEIGHT-1);
 				//				g.setColor(Color.black);
 				//				g.drawString(name, 26, HEIGHT/2-6);
-				//				g.drawRect(22, 0, WIDTH-23, HEIGHT-1);
+				//				g.drawRect(22, 0, WIDTH-23, HEIGHT-1)
 			}
 		},null);
 		//		super(0,0, 48, 48, imageLocation);
@@ -71,6 +72,7 @@ public class Item extends CustomImageButton implements Clickable{
 		this.value = value;
 		this.description = description;
 		this.selected = false;
+		this.added = false;
 		this.color = new Color(100+(int)(100*Math.random()),100+(int)(100*Math.random()),100+(int)(100*Math.random()));
 		update();
 	}
@@ -120,6 +122,13 @@ public class Item extends CustomImageButton implements Clickable{
 		this.amount = amount;
 	}
 	
+	public boolean isAdded() {
+		return added;
+	}
+
+	public void setAdded(boolean added) {
+		this.added = added;
+	}
 
 	//	public Item(int x, int y, double scale, String imageLocation) {
 	//		super(x, y, scale, imageLocation);
