@@ -74,16 +74,16 @@ public class FarmScreenAll extends FullFunctionScreen {
 	}
 
 	private void addAnimalBoxJenny(List<Visible> viewObjects) {
-		int start = 20;
+		int start = 40;
 		int space = 150;
 		for(int i = 0; i < animalLimit; i++) {
 			if(i < 3) {
-				BoxJenny box = new BoxJenny(start + (i*68), 200, 100, 100, "resources/wool.png", null);
+				BoxJenny box = new BoxJenny(start + (i * 130), 150, 100, 100, "resources/wool.png", null);
 				animalBox.add(box);
 				viewObjects.add(box);
 			}
 			else{
-				BoxJenny box = new BoxJenny(start + ((i-3)*68), 200 + space, 100, 100, "resources/wool.png", null);
+				BoxJenny box = new BoxJenny(start + ((i-3) * 130), 150 + space, 100, 100, "resources/wool.png", null);
 				animalBox.add(box);
 				viewObjects.add(box);
 			}
