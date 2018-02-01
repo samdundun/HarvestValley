@@ -32,6 +32,10 @@ public class Item extends CustomImageButton implements Clickable{
 	private boolean added;
 	
 	
+	public void setSelected(boolean selected) {
+		this.selected = selected;
+	}
+
 	public static final int HEIGHT = 48;
 	public static final int WIDTH = 48;
 	
@@ -82,7 +86,7 @@ public class Item extends CustomImageButton implements Clickable{
 	}
 
 	public String toString(){
-		return name+","+image+","+value;
+		return name+","+ description + "," +image+","+value;
 	}
 	//
 	//
