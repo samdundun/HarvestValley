@@ -17,10 +17,10 @@ public class Item extends CustomImageButton implements Clickable{
 	public static final Graphic[] items = {new Graphic(0,0,48,48,"resources/cornseeds.png"),
 			new Graphic(0,0,48,48,"resources/pepperseeds.png"),new Graphic(0,0,48,48,"resources/potatoseeds.png"),
 			new Graphic(0,0,48,48,"resources/strawberryseeds.png"),new Graphic(0,0,48,48,"resources/tomatoseeds.png"),
-			new Graphic(0,0,48,48,"resources/wheatseeds.png"), new Graphic(0,0,48,48,"resources/Corn.png"),
-			new Graphic(0,0,48,48,"resources/Pepper.png"),new Graphic(0,0,48,48,"resources/Potato.png"),
-			new Graphic(0,0,48,48,"resources/Strawberry.png"),new Graphic(0,0,48,48,"resources/Tomato.png"),
-			new Graphic(0,0,48,48,"resources/Wheat.png")};
+			new Graphic(0,0,48,48,"resources/wheatseeds.png"), new Graphic(0,0,48,48,"resources/corn.png"),
+			new Graphic(0,0,48,48,"resources/pepper.png"),new Graphic(0,0,48,48,"resources/potato.png"),
+			new Graphic(0,0,48,48,"resources/strawberry.png"),new Graphic(0,0,48,48,"resources/tomato.png"),
+			new Graphic(0,0,48,48,"resources/wheat.png")};
 	
 	private String name;
 	private int image;
