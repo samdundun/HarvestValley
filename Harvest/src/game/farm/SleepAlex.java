@@ -4,6 +4,7 @@ import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.ImageIcon;
@@ -33,10 +34,18 @@ public class SleepAlex extends FullFunctionScreen implements FileRequester {//ca
 	private int milk;
 	private int sheep;
 	private int wool;
-	private int pig;
+	private int pigs;
 	private int pork;
 	private int chicken;
 	private int eggs;
+	
+	private ArrayList<String> cropAnimalNames = new ArrayList<String>();
+	//{"tomato","wheat","strawberry","corn","potato","pepper","cows","sheep","pigs","chicken"};
+	private ArrayList<Integer> cropAnimalCount = new ArrayList<Integer>();
+	//{tomato,wheat,strawberry,corn,potato,pepper,cows,sheep,pigs,chicken};
+	
+	//private ArrayList<String> crops = new ArrayList<String>(6);
+	//private ArrayList<String> animals = new ArrayList<String>(4);
 	
 	private boolean IsCropPlanted;
 	private boolean IsAnimalPurchased;
@@ -51,8 +60,36 @@ public class SleepAlex extends FullFunctionScreen implements FileRequester {//ca
 	 * Total crops created
 	 * */
 
-	public void AnimalCropSelected(String animalCrop) {
+	public void addNamesAndCountToArray() {
+		cropAnimalNames.add("tomato");
+		cropAnimalNames.add("wheat");
+		cropAnimalNames.add("strawberry");
+		cropAnimalNames.add("corn");
+		cropAnimalNames.add("potato");
+		cropAnimalNames.add("pepper");
+		cropAnimalNames.add("cows");
+		cropAnimalNames.add("sheep");
+		cropAnimalNames.add("pigs");
+		cropAnimalNames.add("chicken");
 		
+		cropAnimalCount.add(tomato);
+		cropAnimalCount.add(wheat);
+		cropAnimalCount.add(strawberry);
+		cropAnimalCount.add(corn);
+		cropAnimalCount.add(potato);
+		cropAnimalCount.add(pepper);
+		cropAnimalCount.add(cows);
+		cropAnimalCount.add(sheep);
+		cropAnimalCount.add(pigs);
+		cropAnimalCount.add(chicken);
+	}
+	
+	public void AnimalCropSelected(String animalCrop) {
+		for(int i = 0;i < cropAnimalNames.size();i++) {
+			if(animalCrop.equals(cropAnimalNames.get(i))) {
+				cropAnimalCount.get(i);
+			}
+		}
 	}
 	
 	public SleepAlex(int width, int height) {
