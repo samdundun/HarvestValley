@@ -48,7 +48,7 @@ public class SleepAlex extends FullFunctionScreen implements FileRequester {//ca
 	private ArrayList<Integer> cropAnimalCount = new ArrayList<Integer>();
 	//{tomato,wheat,strawberry,corn,potato,pepper,cows,sheep,pigs,chicken};
 	
-	private ArrayList<Integer> cashFromCrop = new ArrayList<Integer>();
+	private ArrayList<Integer> cashFromCropAnimalProducts = new ArrayList<Integer>();
 	
 	//private ArrayList<String> crops = new ArrayList<String>(6);
 	//private ArrayList<String> animals = new ArrayList<String>(4);
@@ -102,6 +102,13 @@ public class SleepAlex extends FullFunctionScreen implements FileRequester {//ca
 		cropAnimalCount.add(wool);
 		cropAnimalCount.add(pork);
 		cropAnimalCount.add(eggs);
+		
+		cashFromCropAnimalProducts.add(250);
+		cashFromCropAnimalProducts.add(500);
+		cashFromCropAnimalProducts.add(125);
+		cashFromCropAnimalProducts.add(375);
+		cashFromCropAnimalProducts.add(225);
+		cashFromCropAnimalProducts.add(75);
 	}
 	
 	//call when: 
