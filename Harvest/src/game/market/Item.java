@@ -29,12 +29,22 @@ public class Item extends CustomImageButton implements Clickable{
 	private boolean selected;
 	private Color color;
 	private int amount;
+	private boolean added;
+	private int time;
 	
 	
+	public int getTime() {
+		return time;
+	}
+
+	public void setSelected(boolean selected) {
+		this.selected = selected;
+	}
+
 	public static final int HEIGHT = 48;
 	public static final int WIDTH = 48;
-	//CO
-	public Item(String name, String description, int value, int imageIndex) {
+	
+	public Item(String name, String description, int value, int imageIndex, int time) {
 		super(0,0,48,48,new DrawInstructions() {
 
 			Graphic image = items[imageIndex];
@@ -58,7 +68,7 @@ public class Item extends CustomImageButton implements Clickable{
 				//				g.fillRect(22, 0, WIDTH-23, HEIGHT-1);
 				//				g.setColor(Color.black);
 				//				g.drawString(name, 26, HEIGHT/2-6);
-				//				g.drawRect(22, 0, WIDTH-23, HEIGHT-1);
+				//				g.drawRect(22, 0, WIDTH-23, HEIGHT-1)
 			}
 		},null);
 		//		super(0,0, 48, 48, imageLocation);
@@ -67,7 +77,9 @@ public class Item extends CustomImageButton implements Clickable{
 		this.value = value;
 		this.description = description;
 		this.selected = false;
+		this.added = false;
 		this.color = new Color(100+(int)(100*Math.random()),100+(int)(100*Math.random()),100+(int)(100*Math.random()));
+		this.time = time;
 		update();
 	}
 
@@ -80,7 +92,7 @@ public class Item extends CustomImageButton implements Clickable{
 	}
 
 	public String toString(){
-		return name+","+image+","+value;
+		return name+","+ description + "," +value+","+image + ","+time;
 	}
 	//
 	//
@@ -116,6 +128,13 @@ public class Item extends CustomImageButton implements Clickable{
 		this.amount = amount;
 	}
 	
+	public boolean isAdded() {
+		return added;
+	}
+
+	public void setAdded(boolean added) {
+		this.added = added;
+	}
 
 	//	public Item(int x, int y, double scale, String imageLocation) {
 	//		super(x, y, scale, imageLocation);

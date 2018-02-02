@@ -44,7 +44,7 @@ public class MainMenu extends GUIApplication {
 	@Override
 	public void initScreen() {
 //		try {
-//			File fontFile = new File("resources/burnstown dam.ttf");
+//			File fontFile = new File("resources/burnstown dam.ttf")
 //			Font font = Font.createFont(Font.TRUETYPE_FONT, fontFile);
 //			Font baseFont=font.deriveFont(36f);
 //			StyledComponent.setBaseFont(baseFont);

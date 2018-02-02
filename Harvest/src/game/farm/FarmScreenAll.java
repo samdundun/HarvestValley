@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import game.mainScreen.ImageButton;
+import game.market.BuyingScreen;
 import guiTeacher.components.*;
 import guiTeacher.interfaces.Visible;
 import guiTeacher.userInterfaces.FullFunctionScreen;
@@ -16,7 +17,7 @@ public class FarmScreenAll extends FullFunctionScreen {
 	private Button shopJenny;
 	private Button menuJenny;
 	private Button itemJane;
-	public static SeedSelectionPaneJane pane;
+	public  SeedSelectionPaneJane pane;
 
 	private ImageButton sleepAlex;
 	private ArrayList<CropJane> farmPatch;
@@ -67,7 +68,20 @@ public class FarmScreenAll extends FullFunctionScreen {
 		addfarmingPatchJane(viewObjects);
 		addAnimalBoxJenny(viewObjects);
 		
-		pane = new SeedSelectionPaneJane(this, 400, 300);
+		pane = new SeedSelectionPaneJane(this, 400, 300,BuyingScreen.items,new Action() {
+			
+			
+				public void act() {
+					for(int i = 0; i <BuyingScreen.items.length; i++) {
+						if(BuyingScreen.items[i].isSelected()) {
+							SeedSelectionPaneJane.setSeedSelected(i);
+						}
+					}
+//					SeedSelectionPaneJane.this.setVisible(false);
+					
+				}
+		
+		});
 		pane.update();
 		viewObjects.add(pane);
 		pane.setVisible(false);

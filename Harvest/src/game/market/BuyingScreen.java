@@ -23,7 +23,6 @@ import harvest.MainMenu;
 public class BuyingScreen extends FullFunctionScreen implements FileRequester{
 
 	private static final long serialVersionUID = 7548071104587737267L;
-	ArrayList<Inventory> a;
 	private Button buying;
 	private Button selling;
 	private Button exchange;
@@ -38,9 +37,11 @@ public class BuyingScreen extends FullFunctionScreen implements FileRequester{
 	private int goldAmount;
 	private int amountLevel;
 	
-	public static final Item[] items = {new Item("Corn Seeds", "Great crop to grow all year round\nGrowth time: 4 days", 300, 0),new Item("Pepper Seeds", "Spicy\nGrowth time: 1 days", 50, 1),
-			new Item("Potato Seeds", "Just like me\nGrowth time: 3 days", 150, 2),new Item("Strawberry Seeds", "Sweeter than you\nGrowth time: 2 days", 100, 3),
-			new Item("Tomato Seeds", "Make some good ketchup\nGrowth time: 3 days", 200, 4),new Item("Wheat Seeds", "Not weed\nGrowth time: 5 days", 400, 5)};
+	private Inventory invent;
+	
+	public static final Item[] items = {new Item("Corn Seeds", "Great crop to grow all year round", 300, 0, 4),new Item("Pepper Seeds", "Spicy", 50, 1,1),
+			new Item("Potato Seeds", "Just like me", 150, 2, 3),new Item("Strawberry Seeds", "Sweeter than you", 100, 3,2),
+			new Item("Tomato Seeds", "Make some good ketchup", 200, 4,3),new Item("Wheat Seeds", "Not weed", 400, 5,5)};
 
 
 	public BuyingScreen(int width, int height) {
@@ -50,6 +51,9 @@ public class BuyingScreen extends FullFunctionScreen implements FileRequester{
 
 	@Override
 	public void initAllObjects(List<Visible> viewObjects) {
+		
+		invent = new Inventory();
+		
 		StyledComponent.setButtonOutline(true);
 		setBackground(new Color(252,226,148));
 		
@@ -57,7 +61,6 @@ public class BuyingScreen extends FullFunctionScreen implements FileRequester{
 
 			@Override
 			public void act() {
-				// TODO Auto-generated method stub
 
 			}
 		});
@@ -109,7 +112,12 @@ public class BuyingScreen extends FullFunctionScreen implements FileRequester{
 
 			@Override
 			public void act() {
-				
+				for(int i = 0; i < items.length; i++) {
+					if(items[i].isSelected()) {
+						invent.addItem(items[i]);
+					}
+				}
+				invent.save();
 
 			}
 		});
@@ -130,8 +138,12 @@ public class BuyingScreen extends FullFunctionScreen implements FileRequester{
 				
 				@Override
 				public void act() {
-					description.setText(z.getName() + "\n" + z.getDescription());
+					description.setText(z.getName() + "\n" + z.getDescription() + "\nGrowth time : " + z.getTime());
 					price.setText("Price: "+ z.getValue());
+					for(int i = 0; i < items.length;i++) {
+						items[i].setSelected(false);
+					}
+					items[z.getImageIndex()].setSelected(true);;
 					
 				}
 			});

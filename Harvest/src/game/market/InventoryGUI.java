@@ -1,5 +1,6 @@
 package game.market;
 
+
 import guiTeacher.GUIApplication;
 
 public class InventoryGUI extends GUIApplication {

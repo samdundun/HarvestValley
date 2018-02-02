@@ -25,7 +25,13 @@ public class InventoryScreen extends FullFunctionScreen {
 
 	private Inventory invent;
 
-	public static final Item[] items = {new Item("Corn Seeds", "Great crop to grow all year round", 100, 0),new Item("Pepper Seeds", "Yes", 100, 1),new Item("Potato Seeds", "Yes", 100, 1),new Item("Strawberry Seeds", "Yes", 100, 1),new Item("Tomato Seeds", "Yes", 100, 1),new Item("Wheat Seeds", "Yes", 100, 1)};
+	public static final Item[] items = {new Item("Corn Seeds", "Great crop to grow all year round", 100, 0,4),
+			new Item("Pepper Seeds", "Yes", 100, 1,1),new Item("Potato Seeds", "Yes", 100, 2,3),
+			new Item("Strawberry Seeds", "Yes", 100, 3,2),new Item("Tomato Seeds", "Yes", 100, 4,3),
+			new Item("Wheat Seeds", "Yes", 100, 5,5),new Item("Corn", "Corn \nFresh to eat", 10,6,4),
+			new Item("Pepper","Pepper \nSupah Hot Fire",20,7,1),new Item("Potato","Potato \nTime to make french fries",10,8,3),
+			new Item("Strawberry","Strawberry \nStraw + Berry??",10,9,2),new Item("Tomato", "Tomato \nGreat for salads", 10,10,3),
+			new Item("Wheat","Wheat \nJust plain old wheat",10,11,5)};
 
 	
 	
@@ -81,23 +87,25 @@ public class InventoryScreen extends FullFunctionScreen {
 		grid = new Graphic(100,180, "resources/inventory.png");
 		viewObjects.add(grid);
 		/*TODO
-		figure out how to display quantity, price, etc when image is hovered over
+		figure out how to display quantity, price, etc when image is hovered ove
 		play around with the items class
 		items should change opacity when clicked on or hovered over
 		 **/
 		invent.addBasics();
 		//how other classes will add items to the inventory
-		invent.addItem(new Item("Corn", "Corn \nFresh to eat", 10,6));
-		invent.addItem(new Item("Corn", "Corn \nFresh to eat", 10,6));
-		invent.addItem(new Item("Corn", "Corn \nFresh to eat", 10,6));
-		invent.addItem(new Item("Tomato", "Tomato \nGreat for salads", 10,10));
+		invent.addItem(items[6]);
+		invent.addItem(items[6]);
+		invent.addItem(items[6]);
+		invent.addItem(items[10]);
 	
 		int move = 1;
 		int width = 48;
 		int startingHeight = 202;
 		int height = 48;
 		
+		invent.sort();
 		for(Item i:invent.getItems()) {
+			//only print new items
 			i.setAction(new Action() {
 				
 				@Override
@@ -106,15 +114,22 @@ public class InventoryScreen extends FullFunctionScreen {
 					amount.setText("Amount: " + Integer.toString(i.getAmount()));
 				}
 			});
-			
-			i.setX(80+move*width);
-			i.setY(startingHeight);
-			move++;
-			if(move == 13){
-				move = 1;
-				startingHeight = startingHeight+height;
+			if(i.getAmount() > 0 && i.isAdded() == false) {
+				i.setAdded(true);
+				for(Item it:invent.getItems()) {
+					if(it.getImageIndex() == i.getImageIndex()) {
+						it.setAdded(true);
+					}
+				}
+				i.setX(80+move*width);
+				i.setY(startingHeight);
+				move++;
+				if(move == 13){
+					move = 1;
+					startingHeight = startingHeight+height;
+				}
+				viewObjects.add(i);
 			}
-			viewObjects.add(i);
 		}
 
 		exit = new Button(750, 40, 40, 40, "X", new Action() {
@@ -130,8 +145,6 @@ public class InventoryScreen extends FullFunctionScreen {
 		exit.setCurve(0, 0);
 		exit.update();
 		viewObjects.add(exit);
-
-		invent.sort();
 	}
 
 }
