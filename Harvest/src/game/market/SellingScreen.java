@@ -113,6 +113,9 @@ public class SellingScreen extends FullFunctionScreen implements FileRequester{
 		
 		description = new CustomArea(490, 400, 250, 125, "SELECT AN ITEM");
 		viewObjects.add(description);
+		
+		amount = new TextLabel(100,100,100,100,"");
+		viewObjects.add(amount);
 
 		invent.addBasics();
 		//how other classes will add items to the inventory
