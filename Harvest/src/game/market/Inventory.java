@@ -19,13 +19,13 @@ public class Inventory {
 	private int[] amount = {0,0,0,0,0,0,0,0,0,0,0,0};
 	private ArrayList<Item> invent;
 
-	public static final Item[] ITEMS = {new Item("Corn Seeds", "Great crop to grow all year round", 100, 0),
-			new Item("Pepper Seeds", "Yes", 100, 1),new Item("Potato Seeds", "Yes", 100, 2),
-			new Item("Strawberry Seeds", "Yes", 100, 3),new Item("Tomato Seeds", "Yes", 100, 4),
-			new Item("Wheat Seeds", "Yes", 100, 5),new Item("Corn", "Corn \nFresh to eat", 10,6),
-			new Item("Pepper","Pepper \nSupah Hot Fire",20,7),new Item("Potato","Potato \nTime to make french fries",10,8),
-			new Item("Strawberry","Strawberry \nStraw + Berry??",10,9),new Item("Tomato", "Tomato \nGreat for salads", 10,10),
-			new Item("Wheat","Wheat \nJust plain old wheat",10,11)};
+	public static final Item[] ITEMS = {new Item("Corn Seeds", "Great crop to grow all year round", 100, 0,4),
+			new Item("Pepper Seeds", "Yes", 100, 1,1),new Item("Potato Seeds", "Yes", 100, 2,3),
+			new Item("Strawberry Seeds", "Yes", 100, 3,2),new Item("Tomato Seeds", "Yes", 100, 4,3),
+			new Item("Wheat Seeds", "Yes", 100, 5,5),new Item("Corn", "Corn \nFresh to eat", 10,6,4),
+			new Item("Pepper","Pepper \nSupah Hot Fire",20,7,1),new Item("Potato","Potato \nTime to make french fries",10,8,3),
+			new Item("Strawberry","Strawberry \nStraw + Berry??",10,9,2),new Item("Tomato", "Tomato \nGreat for salads", 10,10,3),
+			new Item("Wheat","Wheat \nJust plain old wheat",10,11,5)};
 	
 	//image index
 	//cornseed,pepperseed,potatoseed,strawberryseed,tomatoseed,wheatseed,corn,pepper,potato,strawberry,tomato,wheat
@@ -34,11 +34,6 @@ public class Inventory {
 		inventItems = new ArrayList<Item>();
 		invent = new ArrayList<Item>();
 		//load();
-	}
-
-	public static void main(String[] args){
-		Inventory invent = new Inventory();
-		in = new Scanner(System.in);
 	}
 
 	public void addBasics() {	
@@ -140,10 +135,9 @@ public class Inventory {
 			while ((line = br.readLine()) != null) {
 
 				String[] param = line.split(",");
-				//add a new Book for each line in the save file
-				invent.add(new Item(param[0],param[1],Integer.parseInt(param[2]), Integer.parseInt(param[3])));
-
-
+				System.out.print(param[0]);
+				System.out.print(param[2]);
+				invent.add(new Item(param[0],param[1],Integer.parseInt(param[2]), Integer.parseInt(param[3]), Integer.parseInt(param[4])));
 
 			}
 			br.close();

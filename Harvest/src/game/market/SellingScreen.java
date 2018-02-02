@@ -129,7 +129,7 @@ public class SellingScreen extends FullFunctionScreen implements FileRequester{
 				@Override
 				public void act() {
 					description.setText(i.getDescription());
-					amount.setText("Amount: " + Integer.toString(i.getAmount()));
+					amount.setText("Amount: " + i.getAmount());
 				}
 			});
 			i.setX(80+move*width);
