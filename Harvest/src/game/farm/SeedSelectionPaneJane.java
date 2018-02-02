@@ -18,8 +18,8 @@ public class SeedSelectionPaneJane extends Pane {
 	private Button select;
 	private Graphic grid;
 	private Inventory seedList;
-	private static final int _WIDTH = 300;
-	private static final int _HEIGHT = 250;
+	private static final int _WIDTH = 250;
+	private static final int _HEIGHT = 230;
 	public SeedSelectionPaneJane(FocusController focusController, int x, int y) {
 		super(focusController, x, y, _WIDTH, _HEIGHT);
 		// TODO Auto-generated constructor stub
@@ -32,7 +32,7 @@ public class SeedSelectionPaneJane extends Pane {
 		g.setColor(new Color(252,226,148));
 		g.fillRoundRect(0, 0, _WIDTH, _HEIGHT,15,15);
 		g.setColor(Color.black);
-		g.drawRoundRect(0, 0, _WIDTH-1,  _HEIGHT-1,15,15);
+		g.drawRoundRect(0,0, _WIDTH-1,  _HEIGHT-1,15,15);
 		//draw the objects
 		super.drawObjects(g);
 	}
@@ -47,7 +47,7 @@ public class SeedSelectionPaneJane extends Pane {
 		int startingHeight = 35;
 		int height = 48;
 		for(Item i:seedList.getItems()) {
-			i.setX(1+move*width);
+			i.setX(-2+move*width);
 			i.setY(startingHeight);
 			move++;
 			if(move == 13){
@@ -57,7 +57,7 @@ public class SeedSelectionPaneJane extends Pane {
 			viewObjects.add(i);
 		}
 		
-		select= new Button(15,_HEIGHT - 43, 60, 25, "Select",Color.lightGray, new Action() {
+		select= new Button(30,_HEIGHT - 43, 60, 25, "Select",Color.lightGray, new Action() {
 
 			@Override
 			public void act() {
@@ -66,7 +66,7 @@ public class SeedSelectionPaneJane extends Pane {
 			}
 		});
 		viewObjects.add(select);
-		cancel= new Button(100,_HEIGHT - 43, 60, 25, "Cancel",Color.lightGray, new Action() {
+		cancel= new Button(115,_HEIGHT - 43, 60, 25, "Cancel",Color.lightGray, new Action() {
 
 			@Override
 			public void act() {
