@@ -33,7 +33,7 @@ public class Inventory {
 	public Inventory() {
 		inventItems = new ArrayList<Item>();
 		invent = new ArrayList<Item>();
-		load();
+		//load();
 	}
 
 	public void addBasics() {	
