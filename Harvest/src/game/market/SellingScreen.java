@@ -55,6 +55,8 @@ public class SellingScreen extends FullFunctionScreen implements FileRequester{
 			@Override
 			public void act() {
 				MainMenu.game.setScreen(MainMenu.shop);
+				invent.load();
+				update();
 
 			}
 		});
@@ -84,6 +86,8 @@ public class SellingScreen extends FullFunctionScreen implements FileRequester{
 			@Override
 			public void act() {
 				MainMenu.game.setScreen(MainMenu.farmScreen);
+				invent.load();
+				update();
 
 			}
 		});
@@ -117,7 +121,7 @@ public class SellingScreen extends FullFunctionScreen implements FileRequester{
 		amount = new TextLabel(100,100,100,100,"");
 		viewObjects.add(amount);
 
-		invent.addBasics();
+		invent.load();
 		//how other classes will add items to the inventory
 //		invent.addItem(new Item("Corn", "Fresh to eat", 10,0));
 //		invent.addItem(new Item("Corn", "Fresh to eat", 10,0));

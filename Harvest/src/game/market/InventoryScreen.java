@@ -91,18 +91,14 @@ public class InventoryScreen extends FullFunctionScreen {
 		play around with the items class
 		items should change opacity when clicked on or hovered over
 		 **/
-		invent.addBasics();
 		//how other classes will add items to the inventory
-		invent.addItem(items[6]);
-		invent.addItem(items[6]);
-		invent.addItem(items[6]);
-		invent.addItem(items[10]);
 	
 		int move = 1;
 		int width = 48;
 		int startingHeight = 202;
 		int height = 48;
 		
+		invent.load();
 		invent.sort();
 		for(Item i:invent.getItems()) {
 			//only print new items

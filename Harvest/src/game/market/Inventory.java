@@ -15,7 +15,6 @@ import guiTeacher.components.Graphic;
 public class Inventory {
 
 	public static Scanner in;
-	private ArrayList<Item> inventItems;
 	private int[] amount = {0,0,0,0,0,0,0,0,0,0,0,0};
 	private ArrayList<Item> invent;
 
@@ -31,9 +30,8 @@ public class Inventory {
 	//cornseed,pepperseed,potatoseed,strawberryseed,tomatoseed,wheatseed,corn,pepper,potato,strawberry,tomato,wheat
 	// 0           1          2            3             4          5      6    7       8       9         10    11
 	public Inventory() {
-		inventItems = new ArrayList<Item>();
 		invent = new ArrayList<Item>();
-		//load();
+		load();
 	}
 
 	public void addBasics() {	
@@ -73,11 +71,11 @@ public class Inventory {
 	//	}
 
 	public void sort() {
-		for(int i = 0; i < inventItems.size();i++) {
-			amount[inventItems.get(i).getImageIndex()]++;
+		for(int i = 0; i < invent.size();i++) {
+			amount[invent.get(i).getImageIndex()]++;
 		}
-		for(int j = 0; j < inventItems.size();j++) {
-			inventItems.get(j).setAmount(amount[inventItems.get(j).getImageIndex()]);
+		for(int j = 0; j < invent.size();j++) {
+			invent.get(j).setAmount(amount[invent.get(j).getImageIndex()]);
 		}
 	}
 
@@ -91,27 +89,26 @@ public class Inventory {
 	}
 
 	public ArrayList<Item> getItems(){
-		return inventItems;
+		return invent;
 	}
 
 	public Item getItem(int index){
-		return inventItems.get(index);
+		return invent.get(index);
 	}
 
 	public void addItem(Item i){
-		inventItems.add(i);
 		invent.add(i);
 	}
 
 	public void removeItem(Item i) {
-		inventItems.remove(i);
+		invent.remove(i);
 	}
 
 	public int[] getAmountArray() {
 		return amount;
 	}
 
-	private void load() {
+	public void load() {
 		String fileName = "";
 		//empty the catalog to prepare for a new load
 		//use this boolean to control the while loop. The user should have multiple chances to enter a correct filename

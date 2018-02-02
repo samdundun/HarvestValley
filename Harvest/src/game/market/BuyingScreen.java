@@ -75,6 +75,8 @@ public class BuyingScreen extends FullFunctionScreen implements FileRequester{
 			@Override
 			public void act() {
 				MainMenu.game.setScreen(MainMenu.sell);
+				invent.load();
+				update();
 
 			}
 		});
