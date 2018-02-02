@@ -28,14 +28,9 @@ public class Inventory {
 	
 	//image index
 	//cornseed,pepperseed,potatoseed,strawberryseed,tomatoseed,wheatseed,corn,pepper,potato,strawberry,tomato,wheat
-<<<<<<< HEAD
 	// 0           1          2            3             4          5      6    7       8       9         10    11
 	public Inventory() {
-=======
-	// 0           1          2            3             4          5      6    7       8        9         10    11
-	public Inventory() {
-		inventItems = new ArrayList<Item>();
->>>>>>> branch 'market' of https://github.com/samdundun/HarvestValley.git
+
 		invent = new ArrayList<Item>();
 		load();
 	}

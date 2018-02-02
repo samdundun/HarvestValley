@@ -121,14 +121,11 @@ public class SellingScreen extends FullFunctionScreen implements FileRequester{
 		amount = new TextLabel(100,100,100,100,"");
 		viewObjects.add(amount);
 
-<<<<<<< HEAD
+
 		invent.load();
-=======
 		amount = new TextLabel(100,100,100,100,"");
 		viewObjects.add(amount);
 		
-		invent.addBasics();
->>>>>>> branch 'market' of https://github.com/samdundun/HarvestValley.git
 		//how other classes will add items to the inventory
 //		invent.addItem(new Item("Corn", "Fresh to eat", 10,0));
 //		invent.addItem(new Item("Corn", "Fresh to eat", 10,0));
