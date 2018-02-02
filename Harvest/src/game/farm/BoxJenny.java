@@ -10,8 +10,8 @@ import guiTeacher.interfaces.DrawInstructions;
 
 public class BoxJenny extends CustomImageButton {
 
-	public BoxJenny(int x, int y, int w, int h, String imageAddress, Action action) {
-		super(x, y, w, h, new DrawInstructions() {
+	public BoxJenny(int x, int y, String imageAddress, Action action) {
+		super(x, y, new Graphic(0,0,imageAddress).getWidth(), new Graphic(0,0,imageAddress).getHeight(), new DrawInstructions() {
 			Graphic image = new Graphic(0,0,imageAddress);
 
 			public void draw(Graphics2D g, boolean highlight) {

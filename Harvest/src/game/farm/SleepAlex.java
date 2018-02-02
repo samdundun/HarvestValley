@@ -22,14 +22,18 @@ public class SleepAlex extends FullFunctionScreen implements FileRequester {//ca
 	
 	private int numCropsPlanted;
 	private int numAnimalsPurchased;
+	private int numAnimalProducts;
+	
 	private int cropsGold;
 	private int animalsGold;
+	
 	private int tomato;
 	private int wheat;
 	private int strawberry;
 	private int corn;
 	private int potato;
 	private int pepper;
+	
 	private int cows;
 	private int milk;
 	private int sheep;
@@ -44,11 +48,14 @@ public class SleepAlex extends FullFunctionScreen implements FileRequester {//ca
 	private ArrayList<Integer> cropAnimalCount = new ArrayList<Integer>();
 	//{tomato,wheat,strawberry,corn,potato,pepper,cows,sheep,pigs,chicken};
 	
+	private ArrayList<Integer> cashFromCropAnimalProducts = new ArrayList<Integer>();
+	
 	//private ArrayList<String> crops = new ArrayList<String>(6);
 	//private ArrayList<String> animals = new ArrayList<String>(4);
 	
 	private boolean IsCropPlanted;
 	private boolean IsAnimalPurchased;
+	private boolean IsProductCreated;
 	
 	
 	//Holiday card is in orcmathGui version2.2
@@ -61,6 +68,8 @@ public class SleepAlex extends FullFunctionScreen implements FileRequester {//ca
 	 * */
 
 	public void addNamesAndCountToArray() {
+		//execute once
+		//First 6 items are crops -- Next 4 are animals -- Next 4 are animal products
 		cropAnimalNames.add("tomato");
 		cropAnimalNames.add("wheat");
 		cropAnimalNames.add("strawberry");
@@ -72,6 +81,12 @@ public class SleepAlex extends FullFunctionScreen implements FileRequester {//ca
 		cropAnimalNames.add("pigs");
 		cropAnimalNames.add("chicken");
 		
+		cropAnimalNames.add("milk");
+		cropAnimalNames.add("wool");
+		cropAnimalNames.add("pork");
+		cropAnimalNames.add("eggs");
+		
+		
 		cropAnimalCount.add(tomato);
 		cropAnimalCount.add(wheat);
 		cropAnimalCount.add(strawberry);
@@ -82,14 +97,42 @@ public class SleepAlex extends FullFunctionScreen implements FileRequester {//ca
 		cropAnimalCount.add(sheep);
 		cropAnimalCount.add(pigs);
 		cropAnimalCount.add(chicken);
+		
+		cropAnimalCount.add(milk);
+		cropAnimalCount.add(wool);
+		cropAnimalCount.add(pork);
+		cropAnimalCount.add(eggs);
+		
+		cashFromCropAnimalProducts.add(250);
+		cashFromCropAnimalProducts.add(500);
+		cashFromCropAnimalProducts.add(125);
+		cashFromCropAnimalProducts.add(375);
+		cashFromCropAnimalProducts.add(225);
+		cashFromCropAnimalProducts.add(75);
 	}
 	
-	public void AnimalCropSelected(String animalCrop) {
+	//call when: 
+	public void AnimalCropIncrement(String animalCrop) {
 		for(int i = 0;i < cropAnimalNames.size();i++) {
 			if(animalCrop.equals(cropAnimalNames.get(i))) {
-				cropAnimalCount.get(i);
+				cropAnimalCount.set(i,cropAnimalCount.get(i) + 1);
+					if(i < 6) {
+						numCropsPlanted++;
+						IsCropPlanted = true;
+					}
+					else if(i < 10 && i > 5){
+						numAnimalsPurchased++;
+						IsAnimalPurchased = true;
+					}
+					else {
+						numAnimalProducts++;
+						IsProductCreated = true;
+					}
 			}
 		}
+		
+		//if the index is low, then the item is a fruit
+		//set the boolean IsPlanted to true AND increment total number of crops or animals purchased
 	}
 	
 	public SleepAlex(int width, int height) {
