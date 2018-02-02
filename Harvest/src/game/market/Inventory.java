@@ -135,8 +135,7 @@ public class Inventory {
 			while ((line = br.readLine()) != null) {
 
 				String[] param = line.split(",");
-				System.out.print(param[0]);
-				System.out.print(param[2]);
+
 				invent.add(new Item(param[0],param[1],Integer.parseInt(param[2]), Integer.parseInt(param[3]), Integer.parseInt(param[4])));
 
 			}
