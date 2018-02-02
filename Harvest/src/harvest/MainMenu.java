@@ -70,7 +70,7 @@ public class MainMenu extends GUIApplication {
 		
 		objectives = new ObjectivesScreenJessi(getWidth(), getHeight());
 
-		setScreen(animate);
+		setScreen(screen);
 
 	
 
