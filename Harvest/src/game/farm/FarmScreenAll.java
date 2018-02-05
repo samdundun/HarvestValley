@@ -24,6 +24,7 @@ public class FarmScreenAll extends FullFunctionScreen {
 	private Action action;
 
 	private int animalLimit;
+	private int currentAnimals;
 	private ArrayList<BoxJenny> animalBox;
 
 	public FarmScreenAll(int width, int height) {
@@ -32,6 +33,7 @@ public class FarmScreenAll extends FullFunctionScreen {
 
 	public void initAllObjects(List<Visible> viewObjects) {
 		animalLimit = 5;
+		currentAnimals = 0;
 		farmPatch = new ArrayList<CropJane>();
 		animalBox = new ArrayList<BoxJenny>();
 
@@ -55,11 +57,11 @@ public class FarmScreenAll extends FullFunctionScreen {
 		viewObjects.add(shopJenny);
 
 		sleepAlex = new ImageButton(815, 493, 39, 39, "resources/sleep.png", new Action() {
-			
+
 			@Override
 			public void act() {
 				MainMenu.game.setScreen(MainMenu.sleep);
-				
+
 			}
 		});
 		viewObjects.add(sleepAlex);
@@ -73,40 +75,42 @@ public class FarmScreenAll extends FullFunctionScreen {
 		viewObjects.add(itemJane);
 
 		addfarmingPatchJane(viewObjects);
-		addAnimalBoxJenny(viewObjects);
-		
+
 		pane = new SeedSelectionPaneJane(this, 400, 300,BuyingScreen.items,new Action() {
-			
-			
-				public void act() {
-					for(int i = 0; i <BuyingScreen.items.length; i++) {
-						if(BuyingScreen.items[i].isSelected()) {
-							pane.setSeedSelected(i);
-						}
+
+
+			public void act() {
+				for(int i = 0; i <BuyingScreen.items.length; i++) {
+					if(BuyingScreen.items[i].isSelected()) {
+						pane.setSeedSelected(i);
 					}
-//					SeedSelectionPaneJane.this.setVisible(false);
-					
 				}
-		
+				//					SeedSelectionPaneJane.this.setVisible(false);
+
+			}
+
 		});
 		pane.update();
 		viewObjects.add(pane);
 		pane.setVisible(false);
 	}
 
-	private void addAnimalBoxJenny(List<Visible> viewObjects) {
+	private void addAnimalBoxJenny(List<Visible> viewObjects, String src) {
+		currentAnimals++;
 		int start = 40;
 		int space = 150;
-		for(int i = 0; i < animalLimit; i++) {
-			if(i < 3) {
-				BoxJenny box = new BoxJenny(start + (i * 130), 150, "resources/brownChicken.png", null);
-				animalBox.add(box);
-				viewObjects.add(box);
-			}
-			else{
-				BoxJenny box = new BoxJenny(start + ((i-3) * 130), 150 + space, "resources/pig.png", null);
-				animalBox.add(box);
-				viewObjects.add(box);
+		if(currentAnimals <= animalLimit) {
+			for(int i = 0; i < currentAnimals; i++) {
+				if(i < 3) {
+					BoxJenny box = new BoxJenny(start + (i * 130), 150, src, null);
+					animalBox.add(box);
+					viewObjects.add(box);
+				}
+				else{
+					BoxJenny box = new BoxJenny(start + ((i-3) * 130), 150 + space, src, null);
+					animalBox.add(box);
+					viewObjects.add(box);
+				}
 			}
 		}
 	}
