@@ -121,6 +121,9 @@ public class SleepAlex extends FullFunctionScreen implements FileRequester {//ca
 		
 		for(int i = 0; i < cashFromCropAnimalProducts.size();i++ ) {
 			//generate buying and selling prices for crops and animals automatically
+			//use 2D ArrayList
+			//create textboxes for each item of information about crops and animals
+			//have a panel that lightens all products the player can buy and darkens (perhaps an image of a lock) of all the products the user may not by.
 		}
 		
 	}
