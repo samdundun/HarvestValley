@@ -20,8 +20,8 @@ public class SelectionPaneJane extends Pane {
 	private Graphic grid;
 	private Inventory seedList;
 	private int seedSelectedInd;
-	private static final int _WIDTH = 250;
-	private static final int _HEIGHT = 230;
+	private static final int _WIDTH = 225;
+	private static final int _HEIGHT = 195;
 	
 	public SelectionPaneJane(FocusController focusController, int x, int y, Item[] selection, Action action) {
 		super(focusController, x, y, _WIDTH, _HEIGHT, listFromItems(selection));
@@ -62,14 +62,14 @@ public class SelectionPaneJane extends Pane {
 	}
 
 	public void initAllObjects(List<Visible> viewObjects){
-		grid = new Graphic(20,20,280,150, "resources/seedPane.png");
+		grid = new Graphic(11,10,280,150, "resources/seedPane.png");
 		viewObjects.add(grid);
 		
 		
-		select= new Button(30,_HEIGHT - 43, 60, 25, "Select",Color.lightGray, null); 
+		select= new Button(30,_HEIGHT - 30, 60, 25, "Select",Color.lightGray, null); 
 		viewObjects.add(select);
 		
-		cancel= new Button(115,_HEIGHT - 43, 60, 25, "Cancel",Color.lightGray, new Action() {
+		cancel= new Button(115,_HEIGHT - 30, 60, 25, "Cancel",Color.lightGray, new Action() {
 
 			public void act() {
 				SelectionPaneJane.this.setVisible(false);
