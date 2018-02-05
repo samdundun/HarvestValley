@@ -25,7 +25,7 @@ public class ObjectivesScreenJessi extends ClickableScreen implements Runnable, 
 	
 	@Override
 	public void initAllObjects(List<Visible> viewObjects) {
-		Graphic back = new Graphic(0,0,.5,"resources/background.png");
+		Graphic back = new Graphic(0,0,getWidth(),getHeight(),"resources/background.png");
 		viewObjects.add(back);
 		
 		TextArea x = new TextArea(getWidth()/2-250, 50, 800, 800, "HARVEST VALLEY INSTRUCTIONS");
@@ -41,11 +41,10 @@ public class ObjectivesScreenJessi extends ClickableScreen implements Runnable, 
 		}
 		viewObjects.add(x);
 		
-		intro = new TextBox(getWidth()/2-250, 150, 600, 400, "intro");
+		intro = new TextBox(getWidth()/2-250, 150, 580, 200, "");
 		viewObjects.add(intro);
 		
-		exit = new Button(880, 70, 40, 40, "X", new Action() {
-
+		exit = new Button(800, 70, 40, 40, "X", new Action() {
 			@Override
 			public void act() {
 				MainMenu.game.setScreen(MainMenu.screen);
@@ -53,8 +52,9 @@ public class ObjectivesScreenJessi extends ClickableScreen implements Runnable, 
 			}
 		});
 		exit.setBackground(Color.blue);
+		exit.setForeground(Color.white);
 		exit.setActiveBorderColor(Color.green);
-		exit.setCurve(0, 0);
+		exit.setCurve(10,10);
 		exit.update();
 		viewObjects.add(exit);
 

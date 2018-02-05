@@ -7,25 +7,25 @@ import guiTeacher.components.Button;
 import guiTeacher.interfaces.Visible;
 import harvest.MainMenu;
 
-public class SaveButton extends Button {
+public class SaveButtonJessi extends Button {
 
-	private Button save;
+	private ImageButton saveButton;
 	
-	public SaveButton(int x, int y, int w, int h, String text, Action action) {
+	public SaveButtonJessi(int x, int y, int w, int h, String text, Action action) {
 		super(x, y, w, h, text, action);
 		// TODO Auto-generated constructor stub
 	}
 
 	public void initAllObjects(List<Visible> viewObjects) {
-		save = new Button(260,350,150,150,"SAVE",new Action() {
+		saveButton = new ImageButton(260,350,50,50,"",new Action() {
 			
 			@Override
 			public void act() {
-				MainMenu.game.setScreen(MainMenu.screen2);
+				MainMenu.game.setScreen(MainMenu.saveMimi);
 				
 			}
 		});
-		viewObjects.add(save);
+		viewObjects.add(saveButton);
 	}
 	
 }
