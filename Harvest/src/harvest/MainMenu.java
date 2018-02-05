@@ -4,6 +4,7 @@ import java.awt.Font;
 import java.io.File;
 
 import game.farm.FarmScreenAll;
+import game.farm.SleepAlex;
 import game.mainScreen.ChooseGenderScreenLubna;
 import game.mainScreen.MenuScreenLubna;
 import game.mainScreen.ObjectivesScreenJessi;
@@ -34,6 +35,7 @@ public class MainMenu extends GUIApplication {
 	public static InventoryScreen inventory;
 	public static PlaceHolderScreen placeHolder;
 	public static SaveScreenMimi saveMimi;
+	public static SleepAlex sleep;
 	
 	public MainMenu(int width, int height) {
 		super(width, height);
@@ -53,6 +55,7 @@ public class MainMenu extends GUIApplication {
 //		}
 
 		screen = new MenuScreenLubna(getWidth(), getHeight());
+		sleep = new SleepAlex(getWidth(), getHeight());
 		farmScreen = new FarmScreenAll(getWidth(),getHeight());
 		shop = new BuyingScreen(getWidth(),getHeight());
 		screen2 = new ChooseGenderScreenLubna(getWidth(), getHeight());
@@ -61,7 +64,7 @@ public class MainMenu extends GUIApplication {
 		placeHolder = new PlaceHolderScreen(getWidth(), getHeight());
 		//don't delete the place holder please.
 
-		 saveMimi = new SaveScreenMimi(getWidth(), getHeight());
+		saveMimi = new SaveScreenMimi(getWidth(), getHeight());
 		
 		
 		objectives = new ObjectivesScreenJessi(getWidth(), getHeight());
