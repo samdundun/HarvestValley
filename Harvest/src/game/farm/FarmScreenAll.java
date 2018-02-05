@@ -24,7 +24,9 @@ public class FarmScreenAll extends FullFunctionScreen {
 
 	private int animalLimit;
 	private int currentAnimals;
+	public static SelectionPaneJane animalPane;
 	private ArrayList<BoxJenny> animalBox;
+	private Button test;
 
 	public FarmScreenAll(int width, int height) {
 		super(width, height);
@@ -38,6 +40,13 @@ public class FarmScreenAll extends FullFunctionScreen {
 
 		back = new Graphic(0, 0, "resources/farm.PNG");
 		viewObjects.add(back);
+
+		test = new Button(400, 500, 80, 30, "test", new Color(230, 235, 210), new Action() {
+			public void act() {
+				addAnimalJenny(viewObjects, "resources/pig.png");
+			}
+		});
+		viewObjects.add(test);
 
 		menuJenny = new Button(5, 500, 80, 30, "Menu", new Color(230, 235, 210), new Action() {
 			public void act() {
@@ -74,7 +83,7 @@ public class FarmScreenAll extends FullFunctionScreen {
 		viewObjects.add(itemJane);
 
 		addfarmingPatchJane(viewObjects);
-		
+
 
 		pane = new SelectionPaneJane(this, 400, 300,BuyingScreen.items,new Action() {
 
@@ -85,32 +94,47 @@ public class FarmScreenAll extends FullFunctionScreen {
 						pane.setSeedSelected(i);
 					}
 					pane.setVisible(false);
-					
-			}
+
+				}
 
 			}});
 		pane.update();
 		viewObjects.add(pane);
 		pane.setVisible(false);
+
+		animalPane = new SelectionPaneJane(this, 400, 300, AnimalProduceJenny.produce,new Action() {
+			public void act() {
+				for(int i = 0; i < AnimalProduceJenny.produce.length; i++) {
+					if(AnimalProduceJenny.produce[i].isSelected()) {
+						pane.setSeedSelected(i);
+					}
+					pane.setVisible(false);
+
+				}
+
+			}});
+		animalPane.update();
+		viewObjects.add(animalPane);
+		animalPane.setVisible(false);
 	}
 
-	private void addAnimalBoxJenny(List<Visible> viewObjects, String src) {
+	private void addAnimalJenny(List<Visible> viewObjects, String src) {
 		currentAnimals++;
 		int start = 40;
 		int space = 150;
+
 		if(currentAnimals <= animalLimit) {
-			for(int i = 0; i < currentAnimals; i++) {
-				if(i < 3) {
-					BoxJenny box = new BoxJenny(start + (i * 130), 150, src, null);
-					animalBox.add(box);
-					viewObjects.add(box);
-				}
-				else{
-					BoxJenny box = new BoxJenny(start + ((i-3) * 130), 150 + space, src, null);
-					animalBox.add(box);
-					viewObjects.add(box);
-				}
+			if(currentAnimals < 4) {
+				BoxJenny box = new BoxJenny(start + ((currentAnimals - 1) * 130), 150, src, null);
+				animalBox.add(box);
+				viewObjects.add(box);
 			}
+			else{
+				BoxJenny box = new BoxJenny(start + ((currentAnimals - 4) * 130), 150 + space, src, null);
+				animalBox.add(box);
+				viewObjects.add(box);
+			}
+
 		}
 	}
 
