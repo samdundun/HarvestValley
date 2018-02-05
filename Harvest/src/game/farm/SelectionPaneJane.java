@@ -3,6 +3,7 @@ package game.farm;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
+import java.nio.channels.SelectableChannel;
 import java.util.ArrayList;
 import java.util.List;
 import game.market.BuyingScreen;
@@ -12,23 +13,42 @@ import guiTeacher.components.*;
 import guiTeacher.interfaces.FocusController;
 import guiTeacher.interfaces.Visible;
 
-public class SeedSelectionPaneJane extends Pane {
+public class SelectionPaneJane extends Pane {
 
 	private Button cancel;
 	private Button select;
 	private Graphic grid;
 	private Inventory seedList;
 	private int seedSelectedInd;
-	private Item[] items;
-	private Action action;
 	private static final int _WIDTH = 250;
 	private static final int _HEIGHT = 230;
-	public SeedSelectionPaneJane(FocusController focusController, int x, int y, Item[] selection, Action action) {
-		super(focusController, x, y, _WIDTH, _HEIGHT);
-		items=selection;
-		this.action=action;
+	
+	public SelectionPaneJane(FocusController focusController, int x, int y, Item[] selection, Action action) {
+		super(focusController, x, y, _WIDTH, _HEIGHT, listFromItems(selection));
+		select.setAction(action);
+		int move = 1;
+		int width = 48;
+		int startingHeight = 35;
+		int height = 48;
+		for(Item i:selection) {
+			i.setX(-2+move*width);
+			i.setY(startingHeight);
+			move++;
+			if(move == 13){
+				move = 1;
+				startingHeight = startingHeight+height;
+			}
+		}
 	}
 
+	static ArrayList<Visible> listFromItems(Item[] list){
+		ArrayList<Visible> listV = new ArrayList<Visible>();
+		for(int i=0; i<list.length; i++) {
+			listV.add(list[i]);
+		}
+		return listV;
+	}
+	
 	public void update(Graphics2D g){
 		//customize the background
 		g.setRenderingHint( RenderingHints.KEY_ANTIALIASING,
@@ -44,30 +64,15 @@ public class SeedSelectionPaneJane extends Pane {
 	public void initAllObjects(List<Visible> viewObjects){
 		grid = new Graphic(20,20,280,150, "resources/seedPane.png");
 		viewObjects.add(grid);
-		int move = 1;
-		int width = 48;
-		int startingHeight = 35;
-		int height = 48;
-		for(Item i:items) {
-			i.setX(-2+move*width);
-			i.setY(startingHeight);
-			move++;
-			if(move == 13){
-				move = 1;
-				startingHeight = startingHeight+height;
-			}
-			viewObjects.add(i);
-		}
 		
 		
-		select= new Button(30,_HEIGHT - 43, 60, 25, "Select",Color.lightGray, action); 
+		select= new Button(30,_HEIGHT - 43, 60, 25, "Select",Color.lightGray, null); 
 		viewObjects.add(select);
 		
 		cancel= new Button(115,_HEIGHT - 43, 60, 25, "Cancel",Color.lightGray, new Action() {
 
-			@Override
 			public void act() {
-				SeedSelectionPaneJane.this.setVisible(false);
+				SelectionPaneJane.this.setVisible(false);
 
 			}
 		});
