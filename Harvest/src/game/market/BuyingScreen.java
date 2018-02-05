@@ -145,7 +145,7 @@ public class BuyingScreen extends FullFunctionScreen implements FileRequester{
 					for(int i = 0; i < items.length;i++) {
 						items[i].setSelected(false);
 					}
-					items[z.getImageIndex()].setSelected(true);;
+					items[z.getImageIndex()].setSelected(true);
 					
 				}
 			});

@@ -141,6 +141,10 @@ public class SellingScreen extends FullFunctionScreen implements FileRequester{
 				public void act() {
 					description.setText(i.getDescription());
 					amount.setText("Amount: " + i.getAmount());
+					for(int i = 0; i < invent.getItems().size();i++) {
+						invent.getItem(i).setSelected(false);
+					}
+					i.setSelected(true);
 				}
 			});
 			i.setX(80+move*width);
@@ -152,6 +156,7 @@ public class SellingScreen extends FullFunctionScreen implements FileRequester{
 			}
 			viewObjects.add(i);
 		}
+		
 	}
 
 	@Override

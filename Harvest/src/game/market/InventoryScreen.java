@@ -60,8 +60,14 @@ public class InventoryScreen extends FullFunctionScreen {
 
 			@Override
 			public void act() {
-				// TODO Auto-generated method stub
-
+				for(int i = 0; i < invent.getItems().size();i++) {
+					if(invent.getItem(i).isSelected()) {
+						invent.getItems().remove(i);
+						System.out.println("Tried to discard "+invent.getItem(i).isSelected() + " " + 
+						invent.getItem(i).getImageIndex());
+						amount.setText("Amount: " + Integer.toString(invent.getItem(i).getAmount()));
+					}
+				}
 			}
 		});
 		discard.setBackground(Color.red);
@@ -106,8 +112,9 @@ public class InventoryScreen extends FullFunctionScreen {
 				
 				@Override
 				public void act() {
-					description.setText(i.getDescription());
+					description.setText(i.getName()+"\n"+i.getDescription());
 					amount.setText("Amount: " + Integer.toString(i.getAmount()));
+					i.setSelected(true);
 				}
 			});
 			if(i.getAmount() > 0 && i.isAdded() == false) {

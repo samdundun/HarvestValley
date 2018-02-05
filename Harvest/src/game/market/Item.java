@@ -61,6 +61,16 @@ public class Item extends CustomImageButton implements Clickable{
 					//bufferedImage = op.filter(image.getImage(), null);
 
 				}
+				
+//				else if(selected){
+//					float scaleFactor = 1.5f;
+//					//RescaleOp op = new RescaleOp(scaleFactor, 0, null)
+//					//BufferedImage light = op.filter(image.getImage(), null);
+//					g.drawImage(image.getImage(), 0, 0, null);
+//					g.setColor(new Color(0,0,0,30));
+//					g.fillRect(0, 0, WIDTH, HEIGHT);
+//				}
+				
 				else {
 					g.drawImage(image.getImage(), 0, 0, null);
 				}
