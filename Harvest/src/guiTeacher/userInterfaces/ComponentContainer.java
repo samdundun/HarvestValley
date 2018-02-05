@@ -41,7 +41,7 @@ public abstract class ComponentContainer extends JPanel{
 	 */
 	private static final long serialVersionUID = -6466250073705673444L;
 	private List<Visible> startingObjects;
-	private List<Visible> viewObjects;
+	protected List<Visible> viewObjects;
 	private BufferedImage image;
 	private BufferedImage formerImage;//used for transitions
 	private int borderWidth;
