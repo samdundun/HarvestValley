@@ -4,6 +4,8 @@ import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 
+import game.mainScreen.BoyCharacter;
+import game.mainScreen.GirlCharacter;
 import game.mainScreen.ImageButton;
 import guiTeacher.components.*;
 import guiTeacher.interfaces.Visible;
@@ -23,6 +25,9 @@ public class FarmScreenAll extends FullFunctionScreen {
 	private Action action;
 
 	private int animalLimit;
+	
+	private BoyCharacter boy;
+	private GirlCharacter girl;
 
 	public FarmScreenAll(int width, int height) {
 		super(width, height);
@@ -69,8 +74,12 @@ public class FarmScreenAll extends FullFunctionScreen {
 		});
 		viewObjects.add(itemJane);
 		addfarmingPatchJane(viewObjects);
-		;
-
+		
+		boy = new BoyCharacter(150,190,getWidth(),getHeight());
+		viewObjects.add(boy);
+		
+		girl = new GirlCharacter(200,190,100,150);
+		viewObjects.add(girl);
 	}
 
 	private void addfarmingPatchJane(List<Visible> viewObjects) {

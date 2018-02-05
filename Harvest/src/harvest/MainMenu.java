@@ -35,7 +35,6 @@ public class MainMenu extends GUIApplication {
 	public static InventoryScreen inventory;
 	public static PlaceHolderScreen placeHolder;
 	public static SaveScreenMimi saveMimi;
-	public static GirlCharacter animate;
 	
 	
 	public MainMenu(int width, int height) {
@@ -61,7 +60,6 @@ public class MainMenu extends GUIApplication {
 		screen2 = new ChooseGenderScreenLubna(getWidth(), getHeight());
 		inventory = new InventoryScreen(getWidth(), getHeight());
 		sell = new SellingScreen(getWidth(), getHeight());
-		animate = new GirlCharacter(getWidth(), getHeight());
 		placeHolder = new PlaceHolderScreen(getWidth(), getHeight());
 		//don't delete the place holder please.
 

@@ -13,8 +13,8 @@ import guiTeacher.userInterfaces.Screen;
 
 public class GirlCharacter extends AnimatedComponent{
 	
-	public GirlCharacter(int width, int height) {
-		super(width, height, height, height);
+	public GirlCharacter(int width, int height , int height1, int height2) {
+		super(width, height, height1, height2);
 		// TODO Auto-generated constructor stub
 	}
 	
