@@ -26,18 +26,19 @@ public class SelectionPaneJane extends Pane {
 	public SelectionPaneJane(FocusController focusController, int x, int y, Item[] selection, Action action) {
 		super(focusController, x, y, _WIDTH, _HEIGHT, listFromItems(selection));
 		select.setAction(action);
-		int move = 1;
+		int move = 0;
 		int width = 48;
-		int startingHeight = 35;
+		int startingHeight =190 ;
 		int height = 48;
 		for(Item i:selection) {
-			i.setX(-2+move*width);
+			i.setX(400+move*width);
 			i.setY(startingHeight);
 			move++;
-			if(move == 13){
+			if(move == 3){
 				move = 1;
 				startingHeight = startingHeight+height;
 			}
+			viewObjects.add(i);
 		}
 	}
 
