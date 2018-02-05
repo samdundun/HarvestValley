@@ -71,9 +71,11 @@ public class InventoryScreen extends FullFunctionScreen {
 //				for(int i = 0; i < items.length; i++) {
 //					if(items[i].isSelected()) {
 //						invent.removeItem(items[i]);
+//						System.out.println("Tried to discard "+invent.getItem(i).isSelected() + " " + 
+//						invent.getItem(i).getImageIndex());
 //					}
 //				}
-				invent.save();
+				//invent.save();
 			}
 		});
 		discard.setBackground(Color.red);
