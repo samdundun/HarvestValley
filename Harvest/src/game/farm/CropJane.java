@@ -11,6 +11,8 @@ public class CropJane extends Button {
 		super(x, y, w, h, text, new Color(200, 125, 10), new Action() {
 		
 			public void act() {
+				FarmScreenAll.pane.setX(x-250);
+				FarmScreenAll.pane.setY(y-100);
 				FarmScreenAll.pane.setVisible(true);
 				FarmScreenAll.pane.update();
 			}

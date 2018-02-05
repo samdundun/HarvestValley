@@ -21,6 +21,13 @@ public class BoxJenny extends CustomImageButton {
 					g.fillRect(0, 0, image.getWidth(), image.getHeight());
 				}
 			}
-		}, action);
+		}, new Action() {
+			public void act() {
+				FarmScreenAll.animalPane.setX(x-250);
+				FarmScreenAll.animalPane.setY(y);
+				FarmScreenAll.animalPane.setVisible(true);
+				FarmScreenAll.animalPane.update();
+			}
+		});
 	}
 }
