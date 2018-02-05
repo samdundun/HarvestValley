@@ -40,12 +40,19 @@ public class SleepAlex extends FullFunctionScreen implements FileRequester {//ca
 	private int wool;
 	private int pigs;
 	private int pork;
-	private int chicken;
-	private int eggs;
+	private int brownChicken;
+	private int whiteChicken;
+	private int blackChicken;
+	private int brownEggs;
+	private int whiteEggs;
+	private int blackEggs;
 	
-	private ArrayList<String> cropAnimalNames = new ArrayList<String>();
+	private ArrayList<String> cropAnimalAndProductNames = new ArrayList<String>();
 	//{"tomato","wheat","strawberry","corn","potato","pepper","cows","sheep","pigs","chicken"};
-	private ArrayList<Integer> cropAnimalCount = new ArrayList<Integer>();
+	/*
+	 * ArrayLists will follow 
+	 * */
+	private ArrayList<Integer> cropAnimalAndProductCount = new ArrayList<Integer>();
 	//{tomato,wheat,strawberry,corn,potato,pepper,cows,sheep,pigs,chicken};
 	
 	private ArrayList<Integer> cashFromCropAnimalProducts = new ArrayList<Integer>();
@@ -70,52 +77,59 @@ public class SleepAlex extends FullFunctionScreen implements FileRequester {//ca
 	public void addNamesAndCountToArray() {
 		//execute once
 		//First 6 items are crops -- Next 4 are animals -- Next 4 are animal products
-		cropAnimalNames.add("tomato");
-		cropAnimalNames.add("wheat");
-		cropAnimalNames.add("strawberry");
-		cropAnimalNames.add("corn");
-		cropAnimalNames.add("potato");
-		cropAnimalNames.add("pepper");
-		cropAnimalNames.add("cows");
-		cropAnimalNames.add("sheep");
-		cropAnimalNames.add("pigs");
-		cropAnimalNames.add("chicken");
+		cropAnimalAndProductNames.add("tomato");
+		cropAnimalAndProductNames.add("wheat");
+		cropAnimalAndProductNames.add("strawberry");
+		cropAnimalAndProductNames.add("corn");
+		cropAnimalAndProductNames.add("potato");
+		cropAnimalAndProductNames.add("pepper");
 		
-		cropAnimalNames.add("milk");
-		cropAnimalNames.add("wool");
-		cropAnimalNames.add("pork");
-		cropAnimalNames.add("eggs");
+		cropAnimalAndProductNames.add("cows");
+		cropAnimalAndProductNames.add("sheep");
+		cropAnimalAndProductNames.add("pigs");
+		cropAnimalAndProductNames.add("brownChicken");
+		cropAnimalAndProductNames.add("whiteChicken");
+		cropAnimalAndProductNames.add("blackChicken");
 		
+		cropAnimalAndProductNames.add("milk");
+		cropAnimalAndProductNames.add("wool");
+		cropAnimalAndProductNames.add("pork");
+		cropAnimalAndProductNames.add("brownEggs");
+		cropAnimalAndProductNames.add("whiteEggs");
+		cropAnimalAndProductNames.add("blackEggs");
 		
-		cropAnimalCount.add(tomato);
-		cropAnimalCount.add(wheat);
-		cropAnimalCount.add(strawberry);
-		cropAnimalCount.add(corn);
-		cropAnimalCount.add(potato);
-		cropAnimalCount.add(pepper);
-		cropAnimalCount.add(cows);
-		cropAnimalCount.add(sheep);
-		cropAnimalCount.add(pigs);
-		cropAnimalCount.add(chicken);
+		cropAnimalAndProductCount.add(tomato);
+		cropAnimalAndProductCount.add(wheat);
+		cropAnimalAndProductCount.add(strawberry);
+		cropAnimalAndProductCount.add(corn);
+		cropAnimalAndProductCount.add(potato);
+		cropAnimalAndProductCount.add(pepper);
 		
-		cropAnimalCount.add(milk);
-		cropAnimalCount.add(wool);
-		cropAnimalCount.add(pork);
-		cropAnimalCount.add(eggs);
+		cropAnimalAndProductCount.add(cows);
+		cropAnimalAndProductCount.add(sheep);
+		cropAnimalAndProductCount.add(pigs);
+		cropAnimalAndProductCount.add(brownChicken);
+		cropAnimalAndProductCount.add(whiteChicken);
+		cropAnimalAndProductCount.add(blackChicken);
 		
-		cashFromCropAnimalProducts.add(250);
-		cashFromCropAnimalProducts.add(500);
-		cashFromCropAnimalProducts.add(125);
-		cashFromCropAnimalProducts.add(375);
-		cashFromCropAnimalProducts.add(225);
-		cashFromCropAnimalProducts.add(75);
+		cropAnimalAndProductCount.add(milk);
+		cropAnimalAndProductCount.add(wool);
+		cropAnimalAndProductCount.add(pork);
+		cropAnimalAndProductCount.add(brownEggs);
+		cropAnimalAndProductCount.add(whiteEggs);
+		cropAnimalAndProductCount.add(blackEggs);
+		
+		for(int i = 0; i < cashFromCropAnimalProducts.size();i++ ) {
+			//generate buying and selling prices for crops and animals automatically
+		}
+		
 	}
 	
 	//call when: 
 	public void AnimalCropIncrement(String animalCrop) {
-		for(int i = 0;i < cropAnimalNames.size();i++) {
-			if(animalCrop.equals(cropAnimalNames.get(i))) {
-				cropAnimalCount.set(i,cropAnimalCount.get(i) + 1);
+		for(int i = 0;i < cropAnimalAndProductNames.size();i++) {
+			if(animalCrop.equals(cropAnimalAndProductNames.get(i))) {
+				cropAnimalAndProductCount.set(i,cropAnimalAndProductCount.get(i) + 1);
 					if(i < 6) {
 						numCropsPlanted++;
 						IsCropPlanted = true;
