@@ -15,8 +15,8 @@ import harvest.MainMenu;
 
 public class InventoryScreen extends FullFunctionScreen {
 
-	private CustomArea description;
-	private TextLabel amount;
+	CustomArea description;
+	TextLabel amount;
 	private TextLabel gold;
 	private Button eat;
 	private Button discard;
@@ -33,8 +33,8 @@ public class InventoryScreen extends FullFunctionScreen {
 			new Item("Strawberry","Strawberry \nStraw + Berry??",10,9,2),new Item("Tomato", "Tomato \nGreat for salads", 10,10,3),
 			new Item("Wheat","Wheat \nJust plain old wheat",10,11,5)};
 
-	
-	
+
+
 	public InventoryScreen(int width, int height) {
 		super(width, height);
 		// TODO Auto-generated constructor stub
@@ -50,7 +50,7 @@ public class InventoryScreen extends FullFunctionScreen {
 		description = new CustomArea(100,400,300,150,"Description");
 		//somehow change description to the item that is highlighted
 		viewObjects.add(description);
-		
+
 		amount = new TextLabel(100,60,100,100,"Amount:");
 		viewObjects.add(amount);
 		gold = new TextLabel(540,60,100,100,"Gold:");
@@ -60,7 +60,12 @@ public class InventoryScreen extends FullFunctionScreen {
 
 			@Override
 			public void act() {
-				// TODO Auto-generated method stub
+				for(int i = 0; i < items.length; i++) {
+					if(items[i].isSelected()) {
+						invent.removeItem(items[i]);
+					}
+				}
+				invent.save();
 
 			}
 		});
@@ -92,22 +97,31 @@ public class InventoryScreen extends FullFunctionScreen {
 		items should change opacity when clicked on or hovered over
 		 **/
 		//how other classes will add items to the inventory
-	
+
 		int move = 1;
 		int width = 48;
 		int startingHeight = 202;
 		int height = 48;
-		
-		invent.load();
+
 		invent.sort();
 		for(Item i:invent.getItems()) {
 			//only print new items
 			i.setAction(new Action() {
-				
+
 				@Override
 				public void act() {
+					invent = new Inventory();
+					invent.sort();
 					description.setText(i.getDescription());
 					amount.setText("Amount: " + Integer.toString(i.getAmount()));
+					for(int j = 0; j < items.length;j++) {
+						items[j].setSelected(false);
+					}
+					items[i.getImageIndex()].setSelected(true);;
+
+					i.update();
+
+
 				}
 			});
 			if(i.getAmount() > 0 && i.isAdded() == false) {
@@ -132,6 +146,8 @@ public class InventoryScreen extends FullFunctionScreen {
 
 			@Override
 			public void act() {
+				amount.setText("Amount: ");
+				description.setText("");
 				MainMenu.game.setScreen(MainMenu.farmScreen);
 
 			}

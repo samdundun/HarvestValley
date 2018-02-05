@@ -42,22 +42,22 @@ public class SeedSelectionPaneJane extends Pane {
 	}
 
 	public void initAllObjects(List<Visible> viewObjects){
-		grid = new Graphic(20,20,280,150, "resources/seedPane.png");
-		viewObjects.add(grid);
-		int move = 1;
-		int width = 48;
-		int startingHeight = 35;
-		int height = 48;
-		for(Item i:items) {
-			i.setX(-2+move*width);
-			i.setY(startingHeight);
-			move++;
-			if(move == 13){
-				move = 1;
-				startingHeight = startingHeight+height;
-			}
-			viewObjects.add(i);
-		}
+//		grid = new Graphic(20,20,280,150, "resources/seedPane.png");
+//		viewObjects.add(grid);
+//		int move = 1;
+//		int width = 48;
+//		int startingHeight = 35;
+//		int height = 48;
+//		for(Item i:items) {
+//			i.setX(-2+move*width);
+//			i.setY(startingHeight);
+//			move++;
+//			if(move == 13){
+//				move = 1;
+//				startingHeight = startingHeight+height;
+//			}
+//			viewObjects.add(i);
+//		}
 		
 		select= new Button(30,_HEIGHT - 43, 60, 25, "Select",Color.lightGray, action); 
 		viewObjects.add(select);

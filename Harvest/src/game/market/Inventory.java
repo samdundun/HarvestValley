@@ -72,9 +72,19 @@ public class Inventory {
 	//	}
 
 	public void sort() {
-		for(int i = 0; i < invent.size();i++) {
-			amount[invent.get(i).getImageIndex()]++;
+		
+		for(int k = 0; k < amount.length;k++) {
+			amount[k] = 0;
 		}
+		
+		for(Item i: invent) {
+			amount[i.getImageIndex()]++;
+		}
+		
+//		for(int i = 0; i < invent.size()/2;i++) {
+//			amount[invent.get(i).getImageIndex()]++;
+//		}
+
 		for(int j = 0; j < invent.size();j++) {
 			invent.get(j).setAmount(amount[invent.get(j).getImageIndex()]);
 		}
@@ -116,7 +126,7 @@ public class Inventory {
 		boolean opened = false;
 		while(!opened){
 
-			fileName = "invent.csv";
+			fileName = "resources/invent.csv";
 			opened = read(new File(fileName));
 
 
@@ -147,7 +157,7 @@ public class Inventory {
 
 	public void save() {
 		try{    
-			FileWriter fw=new FileWriter("invent.csv");
+			FileWriter fw=new FileWriter("resources/invent.csv");
 			for(Item b: invent){
 				fw.write(b+"\n");    	
 			}
