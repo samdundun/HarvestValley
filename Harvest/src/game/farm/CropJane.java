@@ -8,10 +8,9 @@ import guiTeacher.components.Graphic;
 
 public class CropJane extends Button {
 	
-	
-	public CropJane(int x, int y, int w, int h, String text, Color color, Action action) {
+	private int index;
+	public CropJane(int x, int y, int w, int h, String text, Color color, Action action, int i) {
 		super(x, y, w, h, text, new Color(200, 125, 10), new Action() {
-		
 			public void act() {
 				FarmScreenAll.pane.setX(x-250);
 				FarmScreenAll.pane.setY(y-100);
@@ -21,11 +20,15 @@ public class CropJane extends Button {
 
 			
 		});
+		index=i;
 	}
 
 	public CropJane(int x, int y, int w, int h, String text, Action action) {
 		super(x, y, w, h, text, action);
 		// TODO Auto-generated constructor stub
 	}
-
+	
+	public int getIndex() {
+		return index;
+	}
 }

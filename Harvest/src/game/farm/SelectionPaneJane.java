@@ -28,20 +28,49 @@ public class SelectionPaneJane extends Pane {
 		select.setAction(action);
 		int move = 0;
 		int width = 48;
-		int startingHeight =190 ;
+		int startingHeight =0 ;
 		int height = 48;
+		
 		for(Item i:selection) {
-			i.setX(400+move*width);
-			i.setY(startingHeight);
+			i.setX(move*width);
+			i.setY(0);
 			move++;
 			if(move == 3){
-				move = 1;
+				move = 0;
 				startingHeight = startingHeight+height;
 			}
-			viewObjects.add(i);
+////			addObject(i);
 		}
 	}
 
+	static ArrayList<Visible> listFromChoice(int choice){
+		ArrayList<Visible> listV = new ArrayList<Visible>();
+		if (choice == 1) {
+			Graphic[] items = {new Graphic(0,0,48,48,"resources/cornseeds.png"),
+					new Graphic(0,0,48,48,"resources/pepperseeds.png"),new Graphic(0,0,48,48,"resources/potatoseeds.png"),
+					new Graphic(0,0,48,48,"resources/strawberryseeds.png"),new Graphic(0,0,48,48,"resources/tomatoseeds.png"),
+					new Graphic(0,0,48,48,"resources/wheatseeds.png"), new Graphic(0,0,48,48,"resources/corn.png"),
+					new Graphic(0,0,48,48,"resources/pepper.png"),new Graphic(0,0,48,48,"resources/potato.png"),
+					new Graphic(0,0,48,48,"resources/strawberry.png"),new Graphic(0,0,48,48,"resources/tomato.png"),
+					new Graphic(0,0,48,48,"resources/wheat.png")};
+			int move = 0;
+			int width = 48;
+			int startingHeight =0 ;
+			int height = 48;
+			for(Graphic g: items) {
+				listV.add(g);
+				g.setX(move*width);
+				g.setY(startingHeight);
+				move++;
+				if(move == 3){
+					move = 0;
+					startingHeight = startingHeight+height;
+				}
+			}
+		}
+		return listV;
+	}	
+	
 	static ArrayList<Visible> listFromItems(Item[] list){
 		ArrayList<Visible> listV = new ArrayList<Visible>();
 		for(int i=0; i<list.length; i++) {
@@ -64,7 +93,7 @@ public class SelectionPaneJane extends Pane {
 
 	public void initAllObjects(List<Visible> viewObjects){
 		grid = new Graphic(11,10,280,150, "resources/seedPane.png");
-		viewObjects.add(grid);
+		viewObjects.add(0,grid);
 		
 		
 		select= new Button(30,_HEIGHT - 30, 60, 25, "Select",Color.lightGray, null); 
@@ -79,6 +108,7 @@ public class SelectionPaneJane extends Pane {
 		});
 		viewObjects.add(cancel);
 	}
+	
 	 public int setSeedSelected(int i) {
 		 return seedSelectedInd = i;
 	 }

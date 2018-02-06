@@ -41,7 +41,7 @@ public abstract class ComponentContainer extends JPanel{
 	 */
 	private static final long serialVersionUID = -6466250073705673444L;
 	private List<Visible> startingObjects;
-	protected List<Visible> viewObjects;
+	private List<Visible> viewObjects;
 	private BufferedImage image;
 	private BufferedImage formerImage;//used for transitions
 	private int borderWidth;
@@ -276,6 +276,8 @@ public abstract class ComponentContainer extends JPanel{
 		}
 	}
 
+	
+	
 	public void moveToFront(Visible v){
 		if(viewObjects.contains(v)){
 			viewObjects.remove(v);//all other objects slide up in order
