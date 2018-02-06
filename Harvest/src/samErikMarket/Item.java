@@ -1,4 +1,4 @@
-package game.market;
+package samErikMarket;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
@@ -13,53 +13,33 @@ import guiTeacher.interfaces.DrawInstructions;
 
 public class Item extends CustomImageButton implements Clickable{
 	
-
-	public static final Graphic[] items = {new Graphic(0,0,48,48,"resources/cornseeds.png"),
-			new Graphic(0,0,48,48,"resources/pepperseeds.png"),new Graphic(0,0,48,48,"resources/potatoseeds.png"),
-			new Graphic(0,0,48,48,"resources/strawberryseeds.png"),new Graphic(0,0,48,48,"resources/tomatoseeds.png"),
-			new Graphic(0,0,48,48,"resources/wheatseeds.png"), new Graphic(0,0,48,48,"resources/corn.png"),
-			new Graphic(0,0,48,48,"resources/pepper.png"),new Graphic(0,0,48,48,"resources/potato.png"),
-			new Graphic(0,0,48,48,"resources/strawberry.png"),new Graphic(0,0,48,48,"resources/tomato.png"),
-			new Graphic(0,0,48,48,"resources/wheat.png")};
+	public static final Graphic[] veggies = {new Graphic(0,0,48,48,"resources/Corn.png")};
 	
 	private String name;
-	private int image;
 	private String description;
 	private int value;
+	private int imageLocation;
 	private boolean selected;
 	private Color color;
-	private int amount;
-	private boolean added;
-	private int time;
-	
-	
-	public int getTime() {
-		return time;
-	}
-
-	public void setSelected(boolean selected) {
-		this.selected = selected;
-	}
 
 	public static final int HEIGHT = 48;
 	public static final int WIDTH = 48;
-	
-	public Item(String name, String description, int value, int imageIndex, int time) {
+	//CO
+	public Item(String name, String description, int value, int index) {
 		super(0,0,48,48,new DrawInstructions() {
 
-			Graphic image = items[imageIndex];
+			Graphic image = veggies[index];
 
 			@Override
 			public void draw(Graphics2D g, boolean highlight) {
 				if(highlight){
 					float scaleFactor = 0.9f;
-					//RescaleOp op = new RescaleOp(scaleFactor, 0, null)
-					//BufferedImage light = op.filter(image.getImage(), null);
+					//					RescaleOp op = new RescaleOp(scaleFactor, 0, null);
+					//					BufferedImage light = op.filter(image.getImage(), null);
 					g.drawImage(image.getImage(), 0, 0, null);
 					g.setColor(new Color(0,0,0,30));
 					g.fillRect(0, 0, WIDTH, HEIGHT);
-					//bufferedImage = op.filter(image.getImage(), null);
-
+					//					bufferedImage = op.filter(image.getImage(), null);
 				}
 				else {
 					g.drawImage(image.getImage(), 0, 0, null);
@@ -68,31 +48,21 @@ public class Item extends CustomImageButton implements Clickable{
 				//				g.fillRect(22, 0, WIDTH-23, HEIGHT-1);
 				//				g.setColor(Color.black);
 				//				g.drawString(name, 26, HEIGHT/2-6);
-				//				g.drawRect(22, 0, WIDTH-23, HEIGHT-1)
+				//				g.drawRect(22, 0, WIDTH-23, HEIGHT-1);
 			}
 		},null);
 		//		super(0,0, 48, 48, imageLocation);
 		this.name = name;
-		this.image = imageIndex;
 		this.value = value;
 		this.description = description;
+		this.imageLocation = index;
 		this.selected = false;
-		this.added = false;
 		this.color = new Color(100+(int)(100*Math.random()),100+(int)(100*Math.random()),100+(int)(100*Math.random()));
-		this.time = time;
 		update();
 	}
 
-	public int getValue() {
-		return value;
-	}
-
-	public void setValue(int value) {
-		this.value = value;
-	}
-
 	public String toString(){
-		return name+","+ description + "," +value+","+image + ","+time;
+		return name+","+veggies[imageLocation]+","+value;
 	}
 	//
 	//
@@ -114,26 +84,6 @@ public class Item extends CustomImageButton implements Clickable{
 
 	public String getName() {
 		return name;
-	}
-	
-	public int getImageIndex() {
-		return image;
-	}
-
-	public int getAmount() {
-		return amount;
-	}
-
-	public void setAmount(int amount) {
-		this.amount = amount;
-	}
-	
-	public boolean isAdded() {
-		return added;
-	}
-
-	public void setAdded(boolean added) {
-		this.added = added;
 	}
 
 	//	public Item(int x, int y, double scale, String imageLocation) {

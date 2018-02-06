@@ -11,13 +11,13 @@ public class CropJane extends Button {
 		super(x, y, w, h, text, new Color(200, 125, 10), new Action() {
 		
 			public void act() {
-				getSeedSelection();
+				FarmScreenAll.pane.setX(x-250);
+				FarmScreenAll.pane.setY(y-100);
+				FarmScreenAll.pane.setVisible(true);
+				FarmScreenAll.pane.update();
 			}
 
-			private void getSeedSelection() {
-				// TODO Auto-generated method stub
-				
-			}
+			
 		});
 	}
 

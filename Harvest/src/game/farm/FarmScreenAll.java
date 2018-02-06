@@ -7,6 +7,7 @@ import java.util.List;
 import game.mainScreen.BoyCharacter;
 import game.mainScreen.GirlCharacter;
 import game.mainScreen.ImageButton;
+import game.market.BuyingScreen;
 import guiTeacher.components.*;
 import guiTeacher.interfaces.Visible;
 import guiTeacher.userInterfaces.FullFunctionScreen;
@@ -18,16 +19,20 @@ public class FarmScreenAll extends FullFunctionScreen {
 	private Button shopJenny;
 	private Button menuJenny;
 	private Button itemJane;
-	private SeedSelectionPane pane;
-
+	public static SelectionPaneJane pane;
 	private ImageButton sleepAlex;
 	private ArrayList<CropJane> farmPatch;
 	private Action action;
 
 	private int animalLimit;
-	
+
 	private BoyCharacter boy;
 	private GirlCharacter girl;
+
+	private int currentAnimals;
+	public static SelectionPaneJane animalPane;
+	private ArrayList<BoxJenny> animalBox;
+	private Button test;
 
 	public FarmScreenAll(int width, int height) {
 		super(width, height);
@@ -35,16 +40,21 @@ public class FarmScreenAll extends FullFunctionScreen {
 
 	public void initAllObjects(List<Visible> viewObjects) {
 		animalLimit = 5;
+		currentAnimals = 0;
 		farmPatch = new ArrayList<CropJane>();
-		pane = new SeedSelectionPane(this, 100, 100, 200, 200);
-		pane.update();
-		viewObjects.add(pane);
+		animalBox = new ArrayList<BoxJenny>();
+
 		back = new Graphic(0, 0, "resources/farm.PNG");
 		viewObjects.add(back);
 
+		test = new Button(400, 500, 80, 30, "test", new Color(230, 235, 210), new Action() {
+			public void act() {
+				addAnimalJenny(viewObjects, "resources/pig.png");
+			}
+		});
+		viewObjects.add(test);
+
 		menuJenny = new Button(5, 500, 80, 30, "Menu", new Color(230, 235, 210), new Action() {
-
-
 			public void act() {
 				MainMenu.game.setScreen(MainMenu.screen);
 
@@ -53,26 +63,31 @@ public class FarmScreenAll extends FullFunctionScreen {
 		viewObjects.add(menuJenny);
 
 		shopJenny = new Button(90, 500, 80, 30, "Shop", new Color(230, 235, 210), new Action() {
-
 			public void act() {
 				MainMenu.game.setScreen(MainMenu.shop);
 
 			}
 		});
 		viewObjects.add(shopJenny);
-		
-		sleepAlex = new ImageButton(815, 493, 39, 39, "resources/sleep.png", null);
-		viewObjects.add(sleepAlex);
-		
-		itemJane = new Button(175, 500, 80, 30, "Inventory", new Color(230, 235, 210), new Action() {
+
+		sleepAlex = new ImageButton(815, 493, 39, 39, "resources/sleep.png", new Action() {
 
 			@Override
+			public void act() {
+				MainMenu.game.setScreen(MainMenu.sleep);
+
+			}
+		});
+		viewObjects.add(sleepAlex);
+
+		itemJane = new Button(175, 500, 80, 30, "Inventory", new Color(230, 235, 210), new Action() {
 			public void act() {
 				MainMenu.game.setScreen(MainMenu.inventory);
 
 			}
 		});
 		viewObjects.add(itemJane);
+
 		addfarmingPatchJane(viewObjects);
 		
 		boy = new BoyCharacter(150,190,getWidth(),getHeight());
@@ -80,6 +95,63 @@ public class FarmScreenAll extends FullFunctionScreen {
 		
 		girl = new GirlCharacter(200,190,100,150);
 		viewObjects.add(girl);
+
+
+		addfarmingPatchJane(viewObjects);
+
+
+		pane = new SelectionPaneJane(this, 400, 300,BuyingScreen.items,new Action() {
+
+
+			public void act() {
+				for(int i = 0; i <BuyingScreen.items.length; i++) {
+					if(BuyingScreen.items[i].isSelected()) {
+						pane.setSeedSelected(i);
+					}
+					pane.setVisible(false);
+
+				}
+
+			}});
+		pane.update();
+		viewObjects.add(pane);
+		pane.setVisible(false);
+
+		animalPane = new SelectionPaneJane(this, 400, 300, AnimalProduceJenny.produce,new Action() {
+			public void act() {
+				for(int i = 0; i < AnimalProduceJenny.produce.length; i++) {
+					if(AnimalProduceJenny.produce[i].isSelected()) {
+						pane.setSeedSelected(i);
+					}
+					pane.setVisible(false);
+
+				}
+
+			}});
+		animalPane.update();
+		viewObjects.add(animalPane);
+		animalPane.setVisible(false);
+	}
+
+	private void addAnimalJenny(List<Visible> viewObjects, String src) {
+		currentAnimals++;
+		int start = 40;
+		int space = 150;
+
+		if(currentAnimals <= animalLimit) {
+			if(currentAnimals < 4) {
+				BoxJenny box = new BoxJenny(start + ((currentAnimals - 1) * 130), 150, src, null);
+				animalBox.add(box);
+				viewObjects.add(box);
+			}
+			else{
+				BoxJenny box = new BoxJenny(start + ((currentAnimals - 4) * 130), 150 + space, src, null);
+				animalBox.add(box);
+				viewObjects.add(box);
+			}
+
+		}
+
 	}
 
 	private void addfarmingPatchJane(List<Visible> viewObjects) {

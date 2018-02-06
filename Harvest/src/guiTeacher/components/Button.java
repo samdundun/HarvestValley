@@ -182,14 +182,5 @@ public class Button extends TextLabel implements Clickable{
 	public boolean isHovered() {
 		return hovered;
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
 
 }
