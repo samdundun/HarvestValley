@@ -44,7 +44,8 @@ public class SaveScreenMimi extends ClickableScreen {
 			
 			@Override
 			public void act() {
-				MainMenu.game.setScreen(MainMenu.placeHolder); // placeholder screen. replace this with the farm/barn screen.
+				MainMenu.isExit= true;
+				System.exit(0); // placeholder screen. replace this with the farm/barn screen.
 			}
 		});
 		viewObjects.add(exit);
