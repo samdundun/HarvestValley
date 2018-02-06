@@ -25,10 +25,9 @@ public class InventoryScreen extends FullFunctionScreen {
 
 	private Inventory invent;
 
-	public static final Item[] items = {new Item("Corn Seeds", "Great crop to grow all year round", 100, 0,4),
-			new Item("Pepper Seeds", "Yes", 100, 1,1),new Item("Potato Seeds", "Yes", 100, 2,3),
-			new Item("Strawberry Seeds", "Yes", 100, 3,2),new Item("Tomato Seeds", "Yes", 100, 4,3),
-			new Item("Wheat Seeds", "Yes", 100, 5,5),new Item("Corn", "Corn \nFresh to eat", 10,6,4),
+	public static final Item[] items = {new Item("Corn Seeds", "Great crop to grow all year round", 300, 0, 4),new Item("Pepper Seeds", "Spicy", 50, 1,1),
+			new Item("Potato Seeds", "Just like me", 150, 2, 3),new Item("Strawberry Seeds", "Sweeter than you", 100, 3,2),
+			new Item("Tomato Seeds", "Make some good ketchup", 200, 4,3),new Item("Wheat Seeds", "Not weed", 400, 5,5),new Item("Corn", "Corn \nFresh to eat", 10,6,4),
 			new Item("Pepper","Pepper \nSupah Hot Fire",20,7,1),new Item("Potato","Potato \nTime to make french fries",10,8,3),
 			new Item("Strawberry","Strawberry \nStraw + Berry??",10,9,2),new Item("Tomato", "Tomato \nGreat for salads", 10,10,3),
 			new Item("Wheat","Wheat \nJust plain old wheat",10,11,5)};
@@ -69,26 +68,28 @@ public class InventoryScreen extends FullFunctionScreen {
 //					}
 //				}
 				Item removeI = null;
-				for(Item i: invent.getItems()) {
-					System.out.println("Looking for selected item.");
+				for(Item i: items) {
+//					System.out.println("Looking for selected item.");
 					if(i.isSelected()) {
-						removeI = i;
-						System.out.println("Found item " + i);
+						for(Item it: invent.getItems()) {
+							 if(i.getImageIndex() == it.getImageIndex()) {
+								 //removeI has to be an item from the inventory array to remove it
+								 removeI = it;
+							 }
+						}
 						invent.getAmountArray()[i.getImageIndex()]--;
-						i.setAmount(i.getAmount()-1);
-						amount.setText("Amount: " + Integer.toString(i.getAmount()));
+						amount.setText("Amount: " + invent.getAmountArray()[i.getImageIndex()]);
 					}
 				}
-
-				invent.removeItem(removeI);
-//				for(int i = 0; i < items.length; i++) {
-//					if(items[i].isSelected()) {
-//						invent.removeItem(items[i]);
-//						System.out.println("Tried to discard "+invent.getItem(i).isSelected() + " " + 
-//						invent.getItem(i).getImageIndex());
-//					}
-//				}
+				//System.out.println(removeI);
+				invent.getItems().remove(removeI);
+				//invent.removeItem(removeI);
+				System.out.println(invent.getItems());
 				invent.save();
+				//inventory removes icon once 0 hits
+				//bug when after amount = 0, when you try to buy it goes back to the original amount + 1
+				MainMenu.game.inventory = new InventoryScreen(getWidth(),getHeight());
+				MainMenu.game.inventory.update();
 			}
 		});
 		discard.setBackground(Color.red);
@@ -138,21 +139,21 @@ public class InventoryScreen extends FullFunctionScreen {
 				@Override
 				public void act() {
 					description.setText(i.getName()+"\n"+i.getDescription());
-//					invent = new Inventory();
-//					invent.sort();
-					description.setText(i.getDescription());
-					amount.setText("Amount: " + Integer.toString(i.getAmount()));
-					i.setSelected(true);
-					for(int j = 0; j < invent.getItems().size();j++) {
-						invent.getItem(j).setSelected(false);
+					amount.setText("Amount: " + Integer.toString(invent.getAmountArray()[i.getImageIndex()]));
+//					for(int j = 0; j < invent.getItems().size();j++) {
+//						invent.getItem(j).setSelected(false);
+//					}
+					for(int k = 0; k < items.length;k++) {
+						items[k].setSelected(false);
 					}
-					i.setSelected(true);
+//					i.setSelected(true);
+					items[i.getImageIndex()].setSelected(true);
 
 					i.update();
 
 				}
 			});
-			if(i.getAmount() > 0 && i.isAdded() == false) {
+			if(invent.getAmountArray()[i.getImageIndex()] > 0 && i.isAdded() == false) {
 				i.setAdded(true);
 				for(Item it:invent.getItems()) {
 					if(it.getImageIndex() == i.getImageIndex()) {

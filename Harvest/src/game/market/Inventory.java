@@ -18,10 +18,9 @@ public class Inventory {
 	private int[] amount = {0,0,0,0,0,0,0,0,0,0,0,0};
 	private ArrayList<Item> invent;
 
-	public static final Item[] ITEMS = {new Item("Corn Seeds", "Great crop to grow all year round", 100, 0,4),
-			new Item("Pepper Seeds", "Yes", 100, 1,1),new Item("Potato Seeds", "Yes", 100, 2,3),
-			new Item("Strawberry Seeds", "Yes", 100, 3,2),new Item("Tomato Seeds", "Yes", 100, 4,3),
-			new Item("Wheat Seeds", "Yes", 100, 5,5),new Item("Corn", "Corn \nFresh to eat", 10,6,4),
+	public static final Item[] ITEMS = {new Item("Corn Seeds", "Great crop to grow all year round", 300, 0, 4),new Item("Pepper Seeds", "Spicy", 50, 1,1),
+			new Item("Potato Seeds", "Just like me", 150, 2, 3),new Item("Strawberry Seeds", "Sweeter than you", 100, 3,2),
+			new Item("Tomato Seeds", "Make some good ketchup", 200, 4,3),new Item("Wheat Seeds", "Not weed", 400, 5,5),new Item("Corn", "Corn \nFresh to eat", 10,6,4),
 			new Item("Pepper","Pepper \nSupah Hot Fire",20,7,1),new Item("Potato","Potato \nTime to make french fries",10,8,3),
 			new Item("Strawberry","Strawberry \nStraw + Berry??",10,9,2),new Item("Tomato", "Tomato \nGreat for salads", 10,10,3),
 			new Item("Wheat","Wheat \nJust plain old wheat",10,11,5)};
@@ -84,10 +83,6 @@ public class Inventory {
 //		for(int i = 0; i < invent.size()/2;i++) {
 //			amount[invent.get(i).getImageIndex()]++;
 //		}
-
-		for(int j = 0; j < invent.size();j++) {
-			invent.get(j).setAmount(amount[invent.get(j).getImageIndex()]);
-		}
 	}
 
 
@@ -113,6 +108,7 @@ public class Inventory {
 
 	public void removeItem(Item i) {
 		invent.remove(i);
+		System.out.println("Inventory class: "+ invent);
 	}
 
 	public int[] getAmountArray() {
