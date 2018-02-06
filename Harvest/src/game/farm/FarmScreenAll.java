@@ -27,7 +27,6 @@ public class FarmScreenAll extends FullFunctionScreen {
 	public static SelectionPaneJane animalPane;
 	private ArrayList<BoxJenny> animalBox;
 	private Button test;
-
 	public FarmScreenAll(int width, int height) {
 		super(width, height);
 	}

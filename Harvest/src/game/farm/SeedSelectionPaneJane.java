@@ -23,11 +23,33 @@ public class SeedSelectionPaneJane extends Pane {
 	private Action action;
 	private static final int _WIDTH = 250;
 	private static final int _HEIGHT = 230;
+	
 	public SeedSelectionPaneJane(FocusController focusController, int x, int y, Item[] selection, Action action) {
-		super(focusController, x, y, _WIDTH, _HEIGHT);
-		items=selection;
-		this.action=action;
-	}
+  		super(focusController, x, y, _WIDTH, _HEIGHT, listFromItems(selection));
+  		select.setAction(action);
+ 		int move = 0;
+  		int width = 48;
+ 		int startingHeight =190 ;
+  		int height = 48;
+  		for(Item i:selection) {
+ 			i.setX(400+move*width);
+  			i.setY(startingHeight);
+  			move++;
+ 		if(move == 3){
+  				move = 1;
+  				startingHeight = startingHeight+height;
+  			}
+ 			viewObjects.add(i);
+  		}
+  	}
+
+ 	static ArrayList<Visible> listFromItems(Item[] list){
+ 		ArrayList<Visible> listV = new ArrayList<Visible>();
+ 		for(int i=0; i<list.length; i++) {
+ 			listV.add(list[i]);
+ 		}
+ 		return listV;
+ 	}
 
 	public void update(Graphics2D g){
 		//customize the background
