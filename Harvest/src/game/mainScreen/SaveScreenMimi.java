@@ -8,19 +8,23 @@ import java.util.List;
 import guiTeacher.components.Graphic;
 import guiTeacher.components.*;
 import guiTeacher.components.TextField;
+import guiTeacher.interfaces.FocusController;
 import guiTeacher.interfaces.Visible;
 import guiTeacher.userInterfaces.ClickableScreen;
 import harvest.MainMenu;
 
-public class SaveScreenMimi extends ClickableScreen {
+public class SaveScreenMimi extends Pane {
 	
+	private static FocusController FarmScreenAll;
 	//the pop up asking if you want to save the currency and inventory is a separate screen.
 	
-	private TextArea save;
-	private ImageButton exit;
+	private TextArea text;
+	private Button exit;
+	private Button save;
+	private SavePaneMimi SavePaneMimi;
 
 	public SaveScreenMimi(int width, int height) {
-		super(width, height);
+		super(FarmScreenAll, width, height, height, height);
 	}
 
 	@Override
@@ -34,21 +38,28 @@ public class SaveScreenMimi extends ClickableScreen {
 		Graphic title = new Graphic(240, 40, 400, 400, "resources/harvestvalley.png");
 		viewObjects.add(title);
 		// put a box behind this text
-		save = new TextArea(135, 190, 600, 230, "You have saved the items in your inventory and your current amount of money. Progress made in the farm and barn cannot be saved.");
-		save.setCustomTextColor(Color.black);
-		save.update();//143
-		viewObjects.add(save);
+		text = new TextArea(135, 190, 600, 230, "You have saved the items in your inventory and your current amount of money. Progress made in the farm and barn cannot be saved.");
+		text.setCustomTextColor(Color.black);
+//		save.update();//143
+//		viewObjects.add(save);
 //		Graphic exit = new Graphic(390, 430, 100, 100, "resources/exitButton.png");
 //		viewObjects.add(exit);
-		exit = new ImageButton(690, 410, 150, 150, "resources/exitButton.png",new Action() {
+//		exit = new ImageButton(690, 410, 150, 150, "resources/exitButton.png",new Action() {
+//			
+//			@Override
+//			public void act() {
+//				MainMenu.isExit= true;
+//				System.exit(0); // placeholder screen. replace this with the farm/barn screen.
+//			}
+//		});
+//		viewObjects.add(exit);
+		exit = new Button (690, 410, 150, 150, "OK", Color.red, new Action() {
 			
 			@Override
 			public void act() {
-				MainMenu.isExit= true;
-				System.exit(0); // placeholder screen. replace this with the farm/barn screen.
+				SavePaneMimi.setVisible(false);
 			}
 		});
-		viewObjects.add(exit);
 		
 		
 	}
