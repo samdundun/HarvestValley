@@ -21,19 +21,18 @@ public class FarmScreenAll extends FullFunctionScreen {
 	public static SelectionPaneJane pane;
 	private ImageButton sleepAlex;
 	private ArrayList<CropJane> farmPatch;
-	private Action action;
 
-	private int animalLimit;
+	private static final int animalLimit = 5;
 	private int currentAnimals;
 	public static SelectionPaneJane animalPane;
 	private ArrayList<BoxJenny> animalBox;
 	private Button test;
+	
 	public FarmScreenAll(int width, int height) {
 		super(width, height);
 	}
 
 	public void initAllObjects(List<Visible> viewObjects) {
-		animalLimit = 5;
 		currentAnimals = 0;
 		farmPatch = new ArrayList<CropJane>();
 		animalBox = new ArrayList<BoxJenny>();
@@ -47,6 +46,7 @@ public class FarmScreenAll extends FullFunctionScreen {
 			}
 		});
 		viewObjects.add(test);
+		//addAnimalJenny(viewObjects, "resources/brownChicken.png");
 
 		menuJenny = new Button(5, 500, 80, 30, "Menu", new Color(230, 235, 210), new Action() {
 			public void act() {
@@ -129,7 +129,7 @@ public class FarmScreenAll extends FullFunctionScreen {
 
 		if(currentAnimals <= animalLimit) {
 			if(currentAnimals < 4) {
-				BoxJenny box = new BoxJenny(start + ((currentAnimals - 1) * 130), 150, src, null);
+				BoxJenny box = new BoxJenny(start + ((currentAnimals - 1) * 130), 150, "resources/cow.png", null);
 				animalBox.add(box);
 				viewObjects.add(box);
 			}
@@ -138,7 +138,6 @@ public class FarmScreenAll extends FullFunctionScreen {
 				animalBox.add(box);
 				viewObjects.add(box);
 			}
-
 		}
 	}
 
