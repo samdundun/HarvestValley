@@ -55,7 +55,9 @@ public class SleepAlex extends FullFunctionScreen implements FileRequester {//ca
 	private ArrayList<Integer> cropAnimalAndProductCount = new ArrayList<Integer>();
 	//{tomato,wheat,strawberry,corn,potato,pepper,cows,sheep,pigs,chicken};
 	
-	private ArrayList<Integer> cashFromCropAnimalProducts = new ArrayList<Integer>();
+	private ArrayList<Integer> cashFromCropAnimalProducts = new ArrayList<Integer>(12);
+	private ArrayList<Integer> sellingPriceCropAnimalProducts = new ArrayList<Integer>(12);
+	
 	
 	//private ArrayList<String> crops = new ArrayList<String>(6);
 	//private ArrayList<String> animals = new ArrayList<String>(4);
@@ -120,12 +122,24 @@ public class SleepAlex extends FullFunctionScreen implements FileRequester {//ca
 		cropAnimalAndProductCount.add(blackEggs);
 		
 		for(int i = 0; i < cashFromCropAnimalProducts.size();i++ ) {
-			//generate buying and selling prices for crops and animals automatically
-			//use 2D ArrayList
-			//create textboxes for each item of information about crops and animals
-			//have a panel that lightens all products the player can buy and darkens (perhaps an image of a lock) of all the products the user may not by.
+			int buyingPrice = 50;
+			cashFromCropAnimalProducts.set(i, buyingPrice);
+			buyingPrice+=50;
 		}
 		
+		for(int i = 0; i < sellingPriceCropAnimalProducts.size();i++ ) {
+			int sellingPrice = 60;
+			sellingPriceCropAnimalProducts.set(i, sellingPrice);
+			sellingPrice+=60;
+		}
+			//create textboxes or clickable boxes for each item of information about crops and animals
+			//have a panel that lightens all products the player can buy and darkens (perhaps an image of a lock) of all the products the user may not by.
+			//create a class that makes an image lighten or darken w/ a lock image under specific game conditions
+	}
+	
+	public void initObjectsInfo(List<Visible> viewObjects) {
+		//create an array of images AND place them strategically
+		//ensure proper spacing
 	}
 	
 	//call when: 
