@@ -60,14 +60,27 @@ public class InventoryScreen extends FullFunctionScreen {
 
 			@Override
 			public void act() {
-				for(int i = 0; i < invent.getItems().size();i++) {
-					if(invent.getItem(i).isSelected()) {
-						invent.getItems().remove(i);
-						System.out.println("Tried to discard "+invent.getItem(i).isSelected() + " " + 
-						invent.getItem(i).getImageIndex());
-						amount.setText("Amount: " + Integer.toString(invent.getItem(i).getAmount()));
+//				for(int i = 0; i < invent.getItems().size();i++) {
+//					if(invent.getItem(i).isSelected()) {
+//						invent.getItems().remove(i);
+//						System.out.println("Tried to discard "+invent.getItem(i).isSelected() + " " + 
+//						invent.getItem(i).getImageIndex());
+//						amount.setText("Amount: " + Integer.toString(invent.getItem(i).getAmount()));
+//					}
+//				}
+				Item removeI = null;
+				for(Item i: invent.getItems()) {
+					System.out.println("Looking for selected item.");
+					if(i.isSelected()) {
+						removeI = i;
+						System.out.println("Found item " + i);
+						invent.getAmountArray()[i.getImageIndex()]--;
+						i.setAmount(i.getAmount()-1);
+						amount.setText("Amount: " + Integer.toString(i.getAmount()));
 					}
 				}
+
+				invent.removeItem(removeI);
 //				for(int i = 0; i < items.length; i++) {
 //					if(items[i].isSelected()) {
 //						invent.removeItem(items[i]);
@@ -75,7 +88,7 @@ public class InventoryScreen extends FullFunctionScreen {
 //						invent.getItem(i).getImageIndex());
 //					}
 //				}
-				//invent.save();
+				invent.save();
 			}
 		});
 		discard.setBackground(Color.red);
@@ -88,8 +101,13 @@ public class InventoryScreen extends FullFunctionScreen {
 
 			@Override
 			public void act() {
-				// TODO Auto-generated method stub
-
+//				for(Item i: invent.getItems()) {
+//					System.out.println("Looking for selected item.");
+//					if(i.isSelected()) {
+//						System.out.println("Found item " + i);
+//						//invent.removeItem(i);
+//					}
+//				}
 			}
 		});
 		eat.setBackground(Color.red);
@@ -120,15 +138,15 @@ public class InventoryScreen extends FullFunctionScreen {
 				@Override
 				public void act() {
 					description.setText(i.getName()+"\n"+i.getDescription());
-					invent = new Inventory();
-					invent.sort();
+//					invent = new Inventory();
+//					invent.sort();
 					description.setText(i.getDescription());
 					amount.setText("Amount: " + Integer.toString(i.getAmount()));
 					i.setSelected(true);
-					for(int j = 0; j < items.length;j++) {
-						items[j].setSelected(false);
+					for(int j = 0; j < invent.getItems().size();j++) {
+						invent.getItem(j).setSelected(false);
 					}
-					items[i.getImageIndex()].setSelected(true);;
+					i.setSelected(true);
 
 					i.update();
 
