@@ -13,13 +13,12 @@ import guiTeacher.userInterfaces.Screen;
 
 public class GirlCharacter extends AnimatedComponent{
 	
-	public GirlCharacter(int width, int height , int height1, int height2) {
-		super(width, height, height1, height2);
+	private static AnimatedComponent girl;
+	
+	public GirlCharacter(int x, int y , int w, int h) {
+		super(x, y, w, h);
 		// TODO Auto-generated constructor stub
 	}
-	
-	private AnimatedComponent girl;
-	
 	
 	public static void main(String[] args){
 		Sampler sample = new Sampler(800, 550);
@@ -27,16 +26,11 @@ public class GirlCharacter extends AnimatedComponent{
 		go.start();
 	}
 
-
-	public void initObjects(List<Visible> viewObjects) {
-		girl = new AnimatedComponent(0, 0, 100, 150);
-		girl.addSequence("resources/girl farmer.png",  180, 0, 0 ,100, 160, 3);
-		Thread run = new Thread(girl);
-		run.start();
-		viewObjects.add(girl);
-		
-
-		
+	
+	public static AnimatedComponent addGirl(List<Visible> viewObjects) {
+		girl = new AnimatedComponent(480, 200, 75, 125);
+		girl.addSequence("resources/girl farmer.png",180, 0, 0 ,100, 160, 3);
+		return girl;
 	}
 
 }

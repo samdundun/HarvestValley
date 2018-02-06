@@ -26,8 +26,8 @@ public class FarmScreenAll extends FullFunctionScreen {
 
 	private int animalLimit;
 
-	private BoyCharacter boy;
-	private GirlCharacter girl;
+	private AnimatedComponent boy;
+	private AnimatedComponent girl;
 
 	private int currentAnimals;
 	public static SelectionPaneJane animalPane;
@@ -90,11 +90,15 @@ public class FarmScreenAll extends FullFunctionScreen {
 
 		addfarmingPatchJane(viewObjects);
 		
-		boy = new BoyCharacter(150,190,getWidth(),getHeight());
-		viewObjects.add(boy);
+ 		boy = game.mainScreen.BoyCharacter.addBoy(viewObjects);
+ 		Thread runboi = new Thread(boy);
+ 		runboi.start();
+ 		viewObjects.add(boy);
 		
-		girl = new GirlCharacter(200,190,100,150);
-		viewObjects.add(girl);
+ 		girl = game.mainScreen.GirlCharacter.addGirl(viewObjects);
+ 		Thread rungurl = new Thread(girl);
+ 		rungurl.start();
+ 		viewObjects.add(girl);
 
 
 		addfarmingPatchJane(viewObjects);
