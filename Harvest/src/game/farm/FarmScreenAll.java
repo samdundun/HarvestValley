@@ -99,7 +99,7 @@ public class FarmScreenAll extends FullFunctionScreen {
  		girl = game.mainScreen.GirlCharacter.addGirl(viewObjects);
  		Thread rungurl = new Thread(girl);
  		rungurl.start();
-// 		viewObjects.add(girl);
+// 		/viewObjects.add(girl);
 	
  		if(harvest.MainMenu.isGirl) {
  			viewObjects.add(boy);
