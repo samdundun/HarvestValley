@@ -90,17 +90,24 @@ public class FarmScreenAll extends FullFunctionScreen {
 
 		addfarmingPatchJane(viewObjects);
 		
+		//Mainscreen team work
  		boy = game.mainScreen.BoyCharacter.addBoy(viewObjects);
  		Thread runboi = new Thread(boy);
  		runboi.start();
- 		viewObjects.add(boy);
-		
+// 		viewObjects.add(boy);
+
  		girl = game.mainScreen.GirlCharacter.addGirl(viewObjects);
  		Thread rungurl = new Thread(girl);
  		rungurl.start();
- 		viewObjects.add(girl);
-
-
+// 		viewObjects.add(girl);
+	
+ 		if(harvest.MainMenu.isGirl) {
+ 			viewObjects.add(boy);
+ 		}
+ 		else if(!harvest.MainMenu.isGirl) {
+ 			viewObjects.add(girl);
+ 		}
+ 		
 		addfarmingPatchJane(viewObjects);
 
 
