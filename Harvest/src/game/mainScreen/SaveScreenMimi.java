@@ -40,7 +40,7 @@ public class SaveScreenMimi extends ClickableScreen {
 		viewObjects.add(save);
 //		Graphic exit = new Graphic(390, 430, 100, 100, "resources/exitButton.png");
 //		viewObjects.add(exit);
-		exit = new ImageButton(370, 410, 150, 150, "resources/exitButton.png",new Action() {
+		exit = new ImageButton(690, 410, 150, 150, "resources/exitButton.png",new Action() {
 			
 			@Override
 			public void act() {
