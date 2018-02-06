@@ -6,9 +6,10 @@ import java.awt.Graphics2D;
 import guiTeacher.components.Action;
 import guiTeacher.components.CustomImageButton;
 import guiTeacher.components.Graphic;
+import guiTeacher.interfaces.Clickable;
 import guiTeacher.interfaces.DrawInstructions;
 
-public class BoxJenny extends CustomImageButton {
+public class BoxJenny extends CustomImageButton implements Clickable{
 
 	public BoxJenny(int x, int y, String imageAddress, Action action) {
 		super(x, y, new Graphic(0,0,imageAddress).getWidth(), new Graphic(0,0,imageAddress).getHeight(), new DrawInstructions() {
@@ -22,9 +23,10 @@ public class BoxJenny extends CustomImageButton {
 				}
 			}
 		}, new Action() {
+			
 			public void act() {
-				FarmScreenAll.animalPane.setX(x-250);
-				FarmScreenAll.animalPane.setY(y);
+				FarmScreenAll.animalPane.setX(x + 100);
+				FarmScreenAll.animalPane.setY(y - 100);
 				FarmScreenAll.animalPane.setVisible(true);
 				FarmScreenAll.animalPane.update();
 			}
