@@ -178,6 +178,7 @@ public class InventoryScreen extends FullFunctionScreen {
 				amount.setText("Amount: ");
 				description.setText("");
 				MainMenu.game.setScreen(MainMenu.farmScreen);
+				MainMenu.game.shop = new BuyingScreen(getWidth(),getHeight());
 
 			}
 		});
