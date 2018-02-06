@@ -10,6 +10,7 @@ import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
+import game.mainScreen.ImageButton;
 import guiTeacher.components.Action;
 import guiTeacher.components.Button;
 import guiTeacher.components.ClickableGraphic;
@@ -137,9 +138,26 @@ public class SleepAlex extends FullFunctionScreen implements FileRequester {//ca
 			//create a class that makes an image lighten or darken w/ a lock image under specific game conditions
 	}
 	
-	public void initObjectsInfo(List<Visible> viewObjects) {
+	public void addCAPImages(List<Visible> viewObjects, String imgsrc) {
 		//create an array of images AND place them strategically
 		//ensure proper spacing
+		ArrayList<ImageButton> imagesCropAnimalProducts = new ArrayList<ImageButton>();
+		viewObjects.add(imagesCropAnimalProducts.get(0));
+		
+		imagesCropAnimalProducts.add("pepperSt6.png");
+		viewObjects.add(imagesCropAnimalProducts.get(0));
+		/*
+		imagesCropAnimalProducts.add("resources/sleep.png");
+		imagesCropAnimalProducts.add("resources/sleep.png");
+		imagesCropAnimalProducts.add("resources/sleep.png");
+		imagesCropAnimalProducts.add("resources/sleep.png");
+		imagesCropAnimalProducts.add("resources/sleep.png");
+		imagesCropAnimalProducts.add("resources/sleep.png");
+		imagesCropAnimalProducts.add("resources/sleep.png");
+		imagesCropAnimalProducts.add("resources/sleep.png");
+		imagesCropAnimalProducts.add("resources/sleep.png");
+		imagesCropAnimalProducts.add("resources/sleep.png");
+		imagesCropAnimalProducts.add("resources/sleep.png");*/
 	}
 	
 	//call when: 
