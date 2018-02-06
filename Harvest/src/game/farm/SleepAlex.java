@@ -142,9 +142,20 @@ public class SleepAlex extends FullFunctionScreen implements FileRequester {//ca
 		//create an array of images AND place them strategically
 		//ensure proper spacing
 		ArrayList<ImageButton> imagesCropAnimalProducts = new ArrayList<ImageButton>();
-		viewObjects.add(imagesCropAnimalProducts.get(0));
+		ArrayList<String> imageSources  = new ArrayList<String>();
+		imageSources.add("pepperSt6.png");
 		
-		imagesCropAnimalProducts.add("pepperSt6.png");
+		for(int i = 0; i<12;i++) {
+			ImageButton holder = new ImageButton(i*75, 0, 50, 50, imageSources.get(i), new Action() {
+				
+				@Override
+				public void act() {
+					// TODO Auto-generated method stub
+					
+				}
+			});
+		}
+		
 		viewObjects.add(imagesCropAnimalProducts.get(0));
 		/*
 		imagesCropAnimalProducts.add("resources/sleep.png");
