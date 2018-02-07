@@ -20,7 +20,7 @@ public class FarmScreenAll extends FullFunctionScreen {
 	private Button itemJane;
 	public static SelectionPaneJane pane;
 	private ImageButton sleepAlex;
-	private ArrayList<CropJane> farmPatch;
+	public static ArrayList<CropJane> farmPatch;
 
 	private static final int animalLimit = 5;
 	private int currentAnimals;

@@ -13,26 +13,31 @@ public class CropJane extends Button {
 		super(x, y, w, h, text, new Color(200, 125, 10), new Action() {
 			public void act() {
 				FarmScreenAll.pane.setX(x-250);
-				FarmScreenAll.pane.setY(y-100);
+				FarmScreenAll.pane.setY(y-120);
 				FarmScreenAll.pane.setVisible(true);
 				FarmScreenAll.pane.update();
+				FarmScreenAll.pane.setIndex(i);
 			}
-
-			
 		});
 		index=i;
 	}
-	
+//	 public updateImage(Graphic img) {
+//		 
+//	 }
 	public void printSelected(int x) {
 		System.out.println(x);
 	}
 
 	public CropJane(int x, int y, int w, int h, String text, Action action) {
-		super(x, y, w, h, text, action);
+		super(x, y, w, h, text, action); 
 		// TODO Auto-generated constructor stub
 	}
 	
 	public int getIndex() {
 		return index;
+	}
+	public void setColor(Color red) {
+		this.setForeground(red);
+		
 	}
 }
