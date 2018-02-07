@@ -28,7 +28,7 @@ public class GirlCharacter extends AnimatedComponent{
 
 	
 	public static AnimatedComponent addGirl(List<Visible> viewObjects) {
-		girl = new AnimatedComponent(480, 200, 75, 125);
+		girl = new AnimatedComponent(480, 220, 50, 100);
 		girl.addSequence("resources/girl farmer.png",180, 0, 0 ,100, 160, 3);
 		return girl;
 	}
