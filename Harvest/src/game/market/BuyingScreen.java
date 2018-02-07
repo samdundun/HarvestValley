@@ -50,6 +50,7 @@ public class BuyingScreen extends FullFunctionScreen implements FileRequester{
 
 		invent = new Inventory();
 		invent.load();
+		//invent.setGold(10000);
 
 		StyledComponent.setButtonOutline(true);
 		setBackground(new Color(252,226,148));
@@ -71,9 +72,9 @@ public class BuyingScreen extends FullFunctionScreen implements FileRequester{
 
 			@Override
 			public void act() {
+				invent.save();
+				MainMenu.game.sell = new SellingScreen(getWidth(),getHeight());
 				MainMenu.game.setScreen(MainMenu.sell);
-				invent.load();
-				update();
 
 			}
 		});
@@ -117,11 +118,11 @@ public class BuyingScreen extends FullFunctionScreen implements FileRequester{
 			public void act() {
 				for(int i = 0; i < items.length; i++) {
 					if(items[i].isSelected()) {
-						if(invent.getGold()-items[i].getValue() >= 0)
+						if(invent.getGold()-items[i].getValue() >= 0) {
 							invent.setGold(invent.getGold()-items[i].getValue());
 							invent.addItem(items[i]);
 							gold.setText("Gold: "+ invent.getGold());
-							
+						}
 					}
 				}
 				invent.save();

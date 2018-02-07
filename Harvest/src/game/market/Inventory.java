@@ -25,14 +25,13 @@ public class Inventory {
 			new Item("Pepper","Pepper \nSupah Hot Fire",20,7,1),new Item("Potato","Potato \nTime to make french fries",10,8,3),
 			new Item("Strawberry","Strawberry \nStraw + Berry??",10,9,2),new Item("Tomato", "Tomato \nGreat for salads", 10,10,3),
 			new Item("Wheat","Wheat \nJust plain old wheat",10,11,5)};
-	
+
 	//image index
 	//cornseed,pepperseed,potatoseed,strawberryseed,tomatoseed,wheatseed,corn,pepper,potato,strawberry,tomato,wheat
 	// 0           1          2            3             4          5      6    7       8       9         10    11
 	public Inventory() {
 
 		invent = new ArrayList<Item>();
-		save();
 	}
 
 	public void addBasics() {	
@@ -40,17 +39,17 @@ public class Inventory {
 		addItem(ITEMS[1]);
 		addItem(ITEMS[2]);
 		addItem(ITEMS[3]);
-//		addItem(items[4]);
-//		addItem(items[5]);
-//		addItem(items[6]);
-//		addItem(items[7]);
-//		addItem(items[8]);
-//		addItem(items[9]);
-//		addItem(items[10]);
-//		addItem(items[11]);
-//		addItem(items[7]);
-//		addItem(items[8]);
-//		addItem(items[9]);
+		//		addItem(items[4]);
+		//		addItem(items[5]);
+		//		addItem(items[6]);
+		//		addItem(items[7]);
+		//		addItem(items[8]);
+		//		addItem(items[9]);
+		//		addItem(items[10]);
+		//		addItem(items[11]);
+		//		addItem(items[7]);
+		//		addItem(items[8]);
+		//		addItem(items[9]);
 		/**
 		 * strawberries
 		 * corn
@@ -72,18 +71,18 @@ public class Inventory {
 	//	}
 
 	public void sort() {
-		
+
 		for(int k = 0; k < amount.length;k++) {
 			amount[k] = 0;
 		}
-		
+
 		for(Item i: invent) {
 			amount[i.getImageIndex()]++;
 		}
-		
-//		for(int i = 0; i < invent.size()/2;i++) {
-//			amount[invent.get(i).getImageIndex()]++;
-//		}
+
+		//		for(int i = 0; i < invent.size()/2;i++) {
+		//			amount[invent.get(i).getImageIndex()]++;
+		//		}
 	}
 
 
@@ -139,11 +138,15 @@ public class Inventory {
 			BufferedReader br = new BufferedReader(fileReader);
 			while ((line = br.readLine()) != null) {
 
+
+
 				String[] param = line.split(",");
-
-				invent.add(new Item(param[0],param[1],Integer.parseInt(param[2]), Integer.parseInt(param[3]), Integer.parseInt(param[4])));
-				this.setGold(Integer.parseInt(param[5]));
-
+				if(param.length == 1) {
+					this.setGold(Integer.parseInt(param[0]));
+				}
+				else {
+					invent.add(new Item(param[0],param[1],Integer.parseInt(param[2]), Integer.parseInt(param[3]), Integer.parseInt(param[4])));
+				}
 			}
 			br.close();
 			return true;
@@ -156,8 +159,9 @@ public class Inventory {
 	public void save() {
 		try{    
 			FileWriter fw=new FileWriter("resources/invent.csv");
+			fw.write(Integer.toString(this.getGold())+"\n");
 			for(Item b: invent){
-				fw.write(b+","+Integer.toString(this.getGold())+"\n");    	
+				fw.write(b+"\n");    	
 			}
 
 			fw.close();    
@@ -175,5 +179,5 @@ public class Inventory {
 		this.gold = gold;
 	}
 
-	
+
 }
