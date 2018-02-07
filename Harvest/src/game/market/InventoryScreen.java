@@ -60,17 +60,8 @@ public class InventoryScreen extends FullFunctionScreen {
 
 			@Override
 			public void act() {
-//				for(int i = 0; i < invent.getItems().size();i++) {
-//					if(invent.getItem(i).isSelected()) {
-//						invent.getItems().remove(i);
-//						System.out.println("Tried to discard "+invent.getItem(i).isSelected() + " " + 
-//						invent.getItem(i).getImageIndex());
-//						amount.setText("Amount: " + Integer.toString(invent.getItem(i).getAmount()));
-//					}
-//				}
 				Item removeI = null;
 				for(Item i: items) {
-//					System.out.println("Looking for selected item.");
 					if(i.isSelected()) {
 						for(Item it: invent.getItems()) {
 							 if(i.getImageIndex() == it.getImageIndex()) {

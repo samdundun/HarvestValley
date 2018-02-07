@@ -36,7 +36,12 @@ public class SellingScreen extends FullFunctionScreen implements FileRequester{
 	
 	private int priceLevel;
 
-
+	public static final Item[] items = {new Item("Corn Seeds", "Great crop to grow all year round", 300, 0, 4),new Item("Pepper Seeds", "Spicy", 50, 1,1),
+			new Item("Potato Seeds", "Just like me", 150, 2, 3),new Item("Strawberry Seeds", "Sweeter than you", 100, 3,2),
+			new Item("Tomato Seeds", "Make some good ketchup", 200, 4,3),new Item("Wheat Seeds", "Not weed", 400, 5,5),new Item("Corn", "Corn \nFresh to eat", 10,6,4),
+			new Item("Pepper","Pepper \nSupah Hot Fire",20,7,1),new Item("Potato","Potato \nTime to make french fries",10,8,3),
+			new Item("Strawberry","Strawberry \nStraw + Berry??",10,9,2),new Item("Tomato", "Tomato \nGreat for salads", 10,10,3),
+			new Item("Wheat","Wheat \nJust plain old wheat",10,11,5)};
 
 	public SellingScreen(int width, int height) {
 		super(width, height);
@@ -49,7 +54,7 @@ public class SellingScreen extends FullFunctionScreen implements FileRequester{
 		setBackground(new Color(252,226,148));
 		
 		invent = new Inventory();
-		
+		//invent.load();
 		
 		buying = new Button(100, 40, 100, 40, "BUYING", new Action() {
 
@@ -66,6 +71,7 @@ public class SellingScreen extends FullFunctionScreen implements FileRequester{
 		buying.setCurve(0, 0);
 		buying.update();
 		viewObjects.add(buying);
+		
 		selling = new Button(240, 40, 100, 40, "SELLING", new Action() {
 
 			@Override
@@ -79,6 +85,7 @@ public class SellingScreen extends FullFunctionScreen implements FileRequester{
 		selling.setCurve(0, 0);
 		selling.update();
 		viewObjects.add(selling);
+		
 		grid = new Graphic(100,180, "resources/inventory.png");
 		viewObjects.add(grid);
 		
@@ -136,27 +143,65 @@ public class SellingScreen extends FullFunctionScreen implements FileRequester{
 		int width = 48;
 		int startingHeight = 202;
 		int height = 48;
+		
+		invent.sort();
 		for(Item i:invent.getItems()) {
-			i.setAction(new Action() {	
+			i.setAction(new Action() {
+
 				@Override
 				public void act() {
-					description.setText(i.getDescription());
-					amount.setText("Amount: " + i.getAmount());
-					for(int i = 0; i < invent.getItems().size();i++) {
-						invent.getItem(i).setSelected(false);
+					description.setText(i.getName()+"\n"+i.getDescription());
+					amount.setText("Amount: " + Integer.toString(invent.getAmountArray()[i.getImageIndex()]));
+
+					for(int k = 0; k < items.length;k++) {
+						items[k].setSelected(false);
 					}
-					i.setSelected(true);
+
+					items[i.getImageIndex()].setSelected(true);
+
+					i.update();
+					
 				}
 			});
-			i.setX(80+move*width);
-			i.setY(startingHeight);
-			move++;
-			if(move == 13){
-				move = 1;
-				startingHeight = startingHeight+height;
+			if(invent.getAmountArray()[i.getImageIndex()] > 0 && i.isAdded() == false) {
+				i.setAdded(true);
+				for(Item it:invent.getItems()) {
+					if(it.getImageIndex() == i.getImageIndex()) {
+						it.setAdded(true);
+					}
+				}
+				i.setX(80+move*width);
+				i.setY(startingHeight);
+				move++;
+				if(move == 13){
+					move = 1;
+					startingHeight = startingHeight+height;
+				}
+				viewObjects.add(i);
 			}
-			viewObjects.add(i);
 		}
+		
+//		for(Item i:invent.getItems()) {
+//			i.setAction(new Action() {	
+//				@Override
+//				public void act() {
+//					description.setText(i.getDescription());
+//					amount.setText("Amount: " + i.getAmount());
+//					for(int i = 0; i < invent.getItems().size();i++) {
+//						invent.getItem(i).setSelected(false);
+//					}
+//					i.setSelected(true);
+//				}
+//			});
+//			i.setX(80+move*width);
+//			i.setY(startingHeight);
+//			move++;
+//			if(move == 13){
+//				move = 1;
+//				startingHeight = startingHeight+height;
+//			}
+//			viewObjects.add(i);
+//		}
 		
 	}
 
