@@ -26,8 +26,8 @@ public class FarmScreenAll extends FullFunctionScreen {
 
 	private int animalLimit;
 
-	private AnimatedComponent boy;
-	private AnimatedComponent girl;
+	public static AnimatedComponent boy;
+	public static AnimatedComponent girl;
 
 	private int currentAnimals;
 	public static SelectionPaneJane animalPane;
@@ -101,11 +101,11 @@ public class FarmScreenAll extends FullFunctionScreen {
  		rungurl.start();
 // 		/viewObjects.add(girl);
 	
- 		if(harvest.MainMenu.isGirl) {
- 			viewObjects.add(boy);
- 		}
- 		else if(!harvest.MainMenu.isGirl) {
+ 		if(game.mainScreen.ChooseGenderScreenLubna.isActive()) {
  			viewObjects.add(girl);
+ 		}
+ 		else if(!game.mainScreen.ChooseGenderScreenLubna.isActive()) {
+ 			viewObjects.add(boy);
  		}
  		
 		addfarmingPatchJane(viewObjects);

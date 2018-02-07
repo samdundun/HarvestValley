@@ -19,6 +19,7 @@ public class ChooseGenderScreenLubna extends ClickableScreen implements Runnable
 	private ImageButton boy;
 	private Graphic back;
 	private Graphic title;
+	private static boolean girlAction; 
 
 	public ChooseGenderScreenLubna(int width, int height) {
 		super(width, height);
@@ -44,7 +45,7 @@ public class ChooseGenderScreenLubna extends ClickableScreen implements Runnable
 			
 			@Override
 			public void act() {
-				MainMenu.isGirl = true;
+				girlAction = true;
 				MainMenu.game.setScreen(MainMenu.farmScreen);
 				
 			}
@@ -54,11 +55,13 @@ public class ChooseGenderScreenLubna extends ClickableScreen implements Runnable
 			
 			@Override
 			public void act() {
-				MainMenu.isGirl= false;
+				girlAction = false;
 				MainMenu.game.setScreen(MainMenu.farmScreen);
 				
 			}
 		});
+		
+		
 		viewObjects.add(boy);
 		title = new Graphic(150, 60, 600, 600, "resources/harvestvalley.png");
 		viewObjects.add(title);
@@ -68,6 +71,15 @@ public class ChooseGenderScreenLubna extends ClickableScreen implements Runnable
 	public void run() {
 		
 
+	}
+	public static boolean isActive() {
+		if(girlAction == true) {
+		   MainMenu.isGirl= true;
+		}
+		else {
+			MainMenu.isGirl= false;
+		}
+		return MainMenu.isGirl;
 	}
 }
 
