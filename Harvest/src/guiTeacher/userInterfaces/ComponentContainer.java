@@ -276,6 +276,8 @@ public abstract class ComponentContainer extends JPanel{
 		}
 	}
 
+	
+	
 	public void moveToFront(Visible v){
 		if(viewObjects.contains(v)){
 			viewObjects.remove(v);//all other objects slide up in order

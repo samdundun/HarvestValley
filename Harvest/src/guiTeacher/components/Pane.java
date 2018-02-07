@@ -19,6 +19,7 @@ public class Pane extends ComponentContainer implements Clickable {
 	private int y;
 	protected int xRelative;
 	protected int yRelative;
+	private Graphic img;
 	private final FocusController parentScreen;
 	protected Component containingComponent;//some components like Accordion contain ScrollapblePanes
 

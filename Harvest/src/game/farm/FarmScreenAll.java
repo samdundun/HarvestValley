@@ -8,6 +8,7 @@ import game.mainScreen.BoyCharacter;
 import game.mainScreen.GirlCharacter;
 import game.mainScreen.ImageButton;
 import game.market.BuyingScreen;
+import game.market.Item;
 import guiTeacher.components.*;
 import guiTeacher.interfaces.Visible;
 import guiTeacher.userInterfaces.FullFunctionScreen;
@@ -22,37 +23,45 @@ public class FarmScreenAll extends FullFunctionScreen {
 	public static SelectionPaneJane pane;
 	private ImageButton sleepAlex;
 	private ArrayList<CropJane> farmPatch;
-	private Action action;
 
+<<<<<<< HEAD
 	private int animalLimit;
 
 	private BoyCharacter boy;
 	private GirlCharacter girl;
 
+=======
+	private static final int animalLimit = 5;
+>>>>>>> refs/heads/farm
 	private int currentAnimals;
-	public static SelectionPaneJane animalPane;
+	//public static SelectionPaneJane animalPane;
+	public static paneJenny animalPane;
 	private ArrayList<BoxJenny> animalBox;
 	private Button test;
+<<<<<<< HEAD
 
+=======
+	
+>>>>>>> refs/heads/farm
 	public FarmScreenAll(int width, int height) {
 		super(width, height);
 	}
 
 	public void initAllObjects(List<Visible> viewObjects) {
-		animalLimit = 5;
-		currentAnimals = 0;
+		currentAnimals = 2;
 		farmPatch = new ArrayList<CropJane>();
 		animalBox = new ArrayList<BoxJenny>();
 
 		back = new Graphic(0, 0, "resources/farm.PNG");
 		viewObjects.add(back);
 
-		test = new Button(400, 500, 80, 30, "test", new Color(230, 235, 210), new Action() {
-			public void act() {
-				addAnimalJenny(viewObjects, "resources/pig.png");
-			}
-		});
-		viewObjects.add(test);
+//		test = new Button(400, 500, 80, 30, "test", new Color(230, 235, 210), new Action() {
+//			public void act() {
+//				addAnimalJenny(viewObjects, "resources/pig.png");
+//			}
+//		});
+//		viewObjects.add(test);
+		addAnimalJenny(viewObjects, "resources/brownChicken.png");
 
 		menuJenny = new Button(5, 500, 80, 30, "Menu", new Color(230, 235, 210), new Action() {
 			public void act() {
@@ -99,40 +108,19 @@ public class FarmScreenAll extends FullFunctionScreen {
 
 		addfarmingPatchJane(viewObjects);
 
+		
 
-		pane = new SelectionPaneJane(this, 400, 300,BuyingScreen.items,new Action() {
-
-
-			public void act() {
-				for(int i = 0; i <BuyingScreen.items.length; i++) {
-					if(BuyingScreen.items[i].isSelected()) {
-						pane.setSeedSelected(i);
-					}
-					pane.setVisible(false);
-
-				}
-
-			}});
+		pane = new SelectionPaneJane(this, 400, 300);
 		pane.update();
 		viewObjects.add(pane);
 		pane.setVisible(false);
 
-		animalPane = new SelectionPaneJane(this, 400, 300, AnimalProduceJenny.produce,new Action() {
-			public void act() {
-				for(int i = 0; i < AnimalProduceJenny.produce.length; i++) {
-					if(AnimalProduceJenny.produce[i].isSelected()) {
-						pane.setSeedSelected(i);
-					}
-					pane.setVisible(false);
-
-				}
-
-			}});
+		animalPane = new paneJenny(this, 400, 300, "resources/wool.png");
 		animalPane.update();
 		viewObjects.add(animalPane);
 		animalPane.setVisible(false);
 	}
-
+	
 	private void addAnimalJenny(List<Visible> viewObjects, String src) {
 		currentAnimals++;
 		int start = 40;
@@ -140,7 +128,7 @@ public class FarmScreenAll extends FullFunctionScreen {
 
 		if(currentAnimals <= animalLimit) {
 			if(currentAnimals < 4) {
-				BoxJenny box = new BoxJenny(start + ((currentAnimals - 1) * 130), 150, src, null);
+				BoxJenny box = new BoxJenny(start + ((currentAnimals - 1) * 130), 150, "resources/cow.png", null);
 				animalBox.add(box);
 				viewObjects.add(box);
 			}
@@ -149,7 +137,6 @@ public class FarmScreenAll extends FullFunctionScreen {
 				animalBox.add(box);
 				viewObjects.add(box);
 			}
-
 		}
 
 	}
@@ -159,17 +146,17 @@ public class FarmScreenAll extends FullFunctionScreen {
 		int space = 77;
 		for(int i=0; i<9; i++) {
 			if(i<3) {
-				CropJane patch= new CropJane(start+(i*68), 253, 63, 50, "", Color.BLACK, null);
+				CropJane patch= new CropJane(start+(i*68), 253, 63, 50, "", Color.BLACK, null, i);
 				farmPatch.add(patch);
 				viewObjects.add(patch);
 			}
 			else if(i>=3&&i<6) {
-				CropJane patch= new CropJane(start+((i-3)*68), 260+space, 63, 50, "", Color.BLACK, null);
+				CropJane patch= new CropJane(start+((i-3)*68), 260+space, 63, 50, "", Color.BLACK, null, i);
 				farmPatch.add(patch);
 				viewObjects.add(patch);
 			}
 			else {
-				CropJane patch= new CropJane(start+((i-6)*68), 278+space+space, 63, 50, "", Color.BLACK, null);
+				CropJane patch= new CropJane(start+((i-6)*68), 278+space+space, 63, 50, "", Color.BLACK, null,i);
 				farmPatch.add(patch);
 				viewObjects.add(patch);
 			}
