@@ -24,25 +24,16 @@ public class FarmScreenAll extends FullFunctionScreen {
 	private ImageButton sleepAlex;
 	private ArrayList<CropJane> farmPatch;
 
-<<<<<<< HEAD
-	private int animalLimit;
-
 	private BoyCharacter boy;
 	private GirlCharacter girl;
 
-=======
 	private static final int animalLimit = 5;
->>>>>>> refs/heads/farm
 	private int currentAnimals;
 	//public static SelectionPaneJane animalPane;
 	public static paneJenny animalPane;
 	private ArrayList<BoxJenny> animalBox;
 	private Button test;
-<<<<<<< HEAD
-
-=======
 	
->>>>>>> refs/heads/farm
 	public FarmScreenAll(int width, int height) {
 		super(width, height);
 	}
