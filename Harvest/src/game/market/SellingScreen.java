@@ -123,6 +123,12 @@ public class SellingScreen extends FullFunctionScreen implements FileRequester{
 						invent.getAmountArray()[i.getImageIndex()]--;
 						amount.setText("Amount: " + invent.getAmountArray()[i.getImageIndex()]);
 						invent.setGold(invent.getGold() + i.getValue());
+						if(invent.getAmountArray()[i.getImageIndex()] == 1) {
+							MainMenu.game.sell = new SellingScreen(getWidth(), getHeight());
+							MainMenu.game.setScreen(MainMenu.game.sell);
+							
+							i.setSelected(false);
+						}
 					}
 				}
 				invent.getItems().remove(removeI);
