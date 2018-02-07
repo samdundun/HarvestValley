@@ -23,62 +23,46 @@ public class SelectionPaneJane extends Pane {
 	private static final int _WIDTH = 225;
 	private static final int _HEIGHT = 195;
 	
-	public SelectionPaneJane(FocusController focusController, int x, int y, Item[] selection, Action action) {
-		super(focusController, x, y, _WIDTH, _HEIGHT, listFromItems(selection));
-		select.setAction(action);
-		int move = 0;
-		int width = 48;
-		int startingHeight =0 ;
-		int height = 48;
-		
-		for(Item i:selection) {
-			i.setX(move*width);
-			i.setY(0);
-			move++;
-			if(move == 3){
-				move = 0;
-				startingHeight = startingHeight+height;
-			}
-////			addObject(i);
-		}
+	public SelectionPaneJane(FocusController focusController, int x, int y) {
+		super(focusController, x, y, _WIDTH, _HEIGHT);
+
 	}
 
-	static ArrayList<Visible> listFromChoice(int choice){
-		ArrayList<Visible> listV = new ArrayList<Visible>();
-		if (choice == 1) {
-			Graphic[] items = {new Graphic(0,0,48,48,"resources/cornseeds.png"),
-					new Graphic(0,0,48,48,"resources/pepperseeds.png"),new Graphic(0,0,48,48,"resources/potatoseeds.png"),
-					new Graphic(0,0,48,48,"resources/strawberryseeds.png"),new Graphic(0,0,48,48,"resources/tomatoseeds.png"),
-					new Graphic(0,0,48,48,"resources/wheatseeds.png"), new Graphic(0,0,48,48,"resources/corn.png"),
-					new Graphic(0,0,48,48,"resources/pepper.png"),new Graphic(0,0,48,48,"resources/potato.png"),
-					new Graphic(0,0,48,48,"resources/strawberry.png"),new Graphic(0,0,48,48,"resources/tomato.png"),
-					new Graphic(0,0,48,48,"resources/wheat.png")};
-			int move = 0;
-			int width = 48;
-			int startingHeight =0 ;
-			int height = 48;
-			for(Graphic g: items) {
-				listV.add(g);
-				g.setX(move*width);
-				g.setY(startingHeight);
-				move++;
-				if(move == 3){
-					move = 0;
-					startingHeight = startingHeight+height;
-				}
-			}
-		}
-		return listV;
-	}	
+//	static ArrayList<Visible> listFromChoice(int choice){
+//		ArrayList<Visible> listV = new ArrayList<Visible>();
+//		if (choice == 1) {
+//			 Item[] items = {new Item("Corn Seeds", "Great crop to grow all year round", 300, 0, 4),new Item("Pepper Seeds", "Spicy", 50, 1,1),
+//						new Item("Potato Seeds", "Just like me", 150, 2, 3),new Item("Strawberry Seeds", "Sweeter than you", 100, 3,2),
+//						new Item("Tomato Seeds", "Make some good ketchup", 200, 4,3),new Item("Wheat Seeds", "Not weed", 400, 5,5)};
+//			int move = 0;
+//			int width = 48;
+//			int startingHeight =0 ;
+//			int height = 48;
+//			for(Item g: items) {
+//				listV.add(g);
+//				g.setX(move*width);
+//				g.setY(startingHeight);
+//				move++;
+//				if(move == 3){
+//					move = 0;
+//					startingHeight = startingHeight+height;
+//				}
+//			}
+//		}
+//		return listV;
+//	}	
+//	
+//	static ArrayList<Visible> listFromItems(Item[] list){
+//		ArrayList<Visible> listV = new ArrayList<Visible>();
+//		for(int i=0; i<list.length; i++) {
+//			listV.add(list[i]);
+//		}
+//		return listV;
+//	}
 	
-	static ArrayList<Visible> listFromItems(Item[] list){
-		ArrayList<Visible> listV = new ArrayList<Visible>();
-		for(int i=0; i<list.length; i++) {
-			listV.add(list[i]);
-		}
-		return listV;
-	}
 	
+
+
 	public void update(Graphics2D g){
 		//customize the background
 		g.setRenderingHint( RenderingHints.KEY_ANTIALIASING,
@@ -92,11 +76,24 @@ public class SelectionPaneJane extends Pane {
 	}
 
 	public void initAllObjects(List<Visible> viewObjects){
+		Item[] items = {new Item("Corn Seeds", "Great crop to grow all year round", 300, 0, 4),new Item("Pepper Seeds", "Spicy", 50, 1,1),
+				new Item("Potato Seeds", "Just like me", 150, 2, 3),new Item("Strawberry Seeds", "Sweeter than you", 100, 3,2),
+				new Item("Tomato Seeds", "Make some good ketchup", 200, 4,3),new Item("Wheat Seeds", "Not weed", 400, 5,5)};
 		grid = new Graphic(11,10,280,150, "resources/seedPane.png");
 		viewObjects.add(0,grid);
 		
-		
-		select= new Button(30,_HEIGHT - 30, 60, 25, "Select",Color.lightGray, null); 
+		select= new Button(30,_HEIGHT - 30, 60, 25, "Select",Color.lightGray, new Action() {
+			
+			public void act() {
+				for(int i = 0; i <BuyingScreen.items.length; i++) {
+					if(BuyingScreen.items[i].isSelected()) {
+						SelectionPaneJane.this.setSeedSelected(i);
+					}
+					SelectionPaneJane.this.setVisible(false);
+
+				}
+
+			}});
 		viewObjects.add(select);
 		
 		cancel= new Button(115,_HEIGHT - 30, 60, 25, "Cancel",Color.lightGray, new Action() {
@@ -107,7 +104,34 @@ public class SelectionPaneJane extends Pane {
 			}
 		});
 		viewObjects.add(cancel);
-	}
+		int move = 0;
+		int width = 55;
+		int startingHeight =30 ;
+		int height = 60;
+		for(int i = 0; i <items.length; i++) {
+			Item z=items[i];
+			z.setAction(new Action() {
+				
+				@Override
+				public void act() {
+					for(int i = 0; i < items.length;i++) {
+						z.setSelected(false);
+					}
+					BuyingScreen.items[z.getImageIndex()].setSelected(true);;
+					
+				}
+			});
+		
+				z.setX(35+move*width);
+				z.setY(startingHeight);
+				move++;
+				if(move == 3){
+					move = 0;
+					startingHeight = startingHeight+height;
+				}
+			viewObjects.add(z);
+			}
+		}
 	
 	 public int setSeedSelected(int i) {
 		 return seedSelectedInd = i;

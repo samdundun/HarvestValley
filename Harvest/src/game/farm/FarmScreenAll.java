@@ -86,22 +86,7 @@ public class FarmScreenAll extends FullFunctionScreen {
 
 		
 
-		pane = new SelectionPaneJane(this, 400, 300,BuyingScreen.items,new Action() {
-
-
-			public void act() {
-				for(int i = 0; i <BuyingScreen.items.length; i++) {
-					if(BuyingScreen.items[i].isSelected()) {
-						pane.setSeedSelected(i);
-					}
-					pane.setVisible(false);
-
-				}
-
-			}});
-		for(Item i : BuyingScreen.items) {
-			pane.addObject(i);
-		}
+		pane = new SelectionPaneJane(this, 400, 300);
 		pane.update();
 		viewObjects.add(pane);
 		pane.setVisible(false);
