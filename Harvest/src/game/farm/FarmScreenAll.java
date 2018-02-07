@@ -106,7 +106,7 @@ public class FarmScreenAll extends FullFunctionScreen {
 //		viewObjects.add(animalPane);
 //		animalPane.setVisible(false);
 	}
-
+	
 	private void addAnimalJenny(List<Visible> viewObjects, String src) {
 		currentAnimals++;
 		int start = 40;
