@@ -50,6 +50,7 @@ public class SellingScreen extends FullFunctionScreen implements FileRequester{
 		
 		invent = new Inventory();
 		
+		
 		buying = new Button(100, 40, 100, 40, "BUYING", new Action() {
 
 			@Override

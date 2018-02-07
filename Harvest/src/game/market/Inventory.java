@@ -31,7 +31,6 @@ public class Inventory {
 	public Inventory() {
 
 		invent = new ArrayList<Item>();
-		load();
 	}
 
 	public void addBasics() {	
