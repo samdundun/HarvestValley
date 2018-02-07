@@ -53,6 +53,7 @@ public class BuyingScreen extends FullFunctionScreen implements FileRequester{
 	public void initAllObjects(List<Visible> viewObjects) {
 		
 		invent = new Inventory();
+		invent.load();
 		
 		StyledComponent.setButtonOutline(true);
 		setBackground(new Color(252,226,148));

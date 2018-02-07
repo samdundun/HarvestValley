@@ -45,6 +45,7 @@ public class InventoryScreen extends FullFunctionScreen {
 		setBackground(new Color(224,120,8));
 
 		invent = new Inventory();
+		invent.load();
 
 		description = new CustomArea(100,400,300,150,"Description");
 		//somehow change description to the item that is highlighted
@@ -84,12 +85,11 @@ public class InventoryScreen extends FullFunctionScreen {
 				//System.out.println(removeI);
 				invent.getItems().remove(removeI);
 				//invent.removeItem(removeI);
-				System.out.println(invent.getItems());
 				invent.save();
 				//inventory removes icon once 0 hits
 				//bug when after amount = 0, when you try to buy it goes back to the original amount + 1
 				MainMenu.game.inventory = new InventoryScreen(getWidth(),getHeight());
-				MainMenu.game.inventory.update();
+				MainMenu.game.setScreen(MainMenu.game.inventory);
 			}
 		});
 		discard.setBackground(Color.red);
