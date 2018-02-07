@@ -15,11 +15,12 @@ import guiTeacher.components.Action;
 import guiTeacher.components.Button;
 import guiTeacher.components.ClickableGraphic;
 import guiTeacher.components.ImageTextButton;
+import guiTeacher.components.TextArea;
 import guiTeacher.interfaces.FileRequester;
 import guiTeacher.interfaces.Visible;
 import guiTeacher.userInterfaces.FullFunctionScreen;
 
-public class SleepAlex extends FullFunctionScreen implements FileRequester {//can use ImageTextButton, CustomImageButton, ClickableGraphic
+public class SleepAlex extends FullFunctionScreen {//can use ImageTextButton, CustomImageButton, ClickableGraphic
 	
 	private int numCropsPlanted;
 	private int numAnimalsPurchased;
@@ -59,6 +60,9 @@ public class SleepAlex extends FullFunctionScreen implements FileRequester {//ca
 	private ArrayList<Integer> cashFromCropAnimalProducts = new ArrayList<Integer>(12);
 	private ArrayList<Integer> sellingPriceCropAnimalProducts = new ArrayList<Integer>(12);
 	
+	//private ArrayList<ImageButton> imagesCropAnimalProducts = new ArrayList<ImageButton>();
+	private static ArrayList<String> imageSources  = new ArrayList<String>();
+	
 	
 	//private ArrayList<String> crops = new ArrayList<String>(6);
 	//private ArrayList<String> animals = new ArrayList<String>(4);
@@ -77,6 +81,26 @@ public class SleepAlex extends FullFunctionScreen implements FileRequester {//ca
 	 * Total crops created
 	 * */
 
+	public SleepAlex(int width, int height) {
+		super(width,height);
+	}
+	
+	public void initAllObjects(List<Visible> viewObjects) {/*
+		imageSources.add("pepperSt6.png");
+		for(int i = 0; i<imageSources.size();i++) {
+			ImageButton holder = new ImageButton(i*75, 0, 50, 50, "pepperSt6.png", new Action() {
+				//SleepAlex.getImageSources().get(i)
+				@Override
+				public void act() {
+					TextArea info = new TextArea(0, 0, 100, 100, "You have created 5 corns. You have made $50 from corn.");
+					viewObjects.add(info);
+				}
+			});
+			viewObjects.add(holder);
+		}
+*/
+	}
+	
 	public void addNamesAndCountToArray() {
 		//execute once
 		//First 6 items are crops -- Next 4 are animals -- Next 4 are animal products
@@ -138,25 +162,11 @@ public class SleepAlex extends FullFunctionScreen implements FileRequester {//ca
 			//create a class that makes an image lighten or darken w/ a lock image under specific game conditions
 	}
 	
-	public void addCAPImages(List<Visible> viewObjects, String imgsrc) {
+	private void addCAPImages(List<Visible> viewObjects) {
 		//create an array of images AND place them strategically
 		//ensure proper spacing
-		ArrayList<ImageButton> imagesCropAnimalProducts = new ArrayList<ImageButton>();
-		ArrayList<String> imageSources  = new ArrayList<String>();
 		imageSources.add("pepperSt6.png");
-		
-		for(int i = 0; i<12;i++) {
-			ImageButton holder = new ImageButton(i*75, 0, 50, 50, imageSources.get(i), new Action() {
-				
-				@Override
-				public void act() {
-					// TODO Auto-generated method stub
-					
-				}
-			});
-		}
-		
-		viewObjects.add(imagesCropAnimalProducts.get(0));
+		//create an ArrayList of string addresses or an ArrayList of ImageButtons, not both
 		/*
 		imagesCropAnimalProducts.add("resources/sleep.png");
 		imagesCropAnimalProducts.add("resources/sleep.png");
@@ -169,6 +179,20 @@ public class SleepAlex extends FullFunctionScreen implements FileRequester {//ca
 		imagesCropAnimalProducts.add("resources/sleep.png");
 		imagesCropAnimalProducts.add("resources/sleep.png");
 		imagesCropAnimalProducts.add("resources/sleep.png");*/
+		
+		for(int i = 0; i<imageSources.size();i++) {
+			ImageButton holder = new ImageButton(i*75, 0, 50, 50, SleepAlex.getImageSources().get(i), new Action() {
+				
+				@Override
+				public void act() {
+					// TODO Auto-generated method stub
+					//create a text label that has a semi-defined string -- variables will include the name of the product
+					//and buying and selling price
+					//"You have created" + num + CAP. "You have made" + cash + "from" + CAP
+				}
+			});
+			viewObjects.add(holder);
+		}
 	}
 	
 	//call when: 
@@ -194,34 +218,12 @@ public class SleepAlex extends FullFunctionScreen implements FileRequester {//ca
 		//if the index is low, then the item is a fruit
 		//set the boolean IsPlanted to true AND increment total number of crops or animals purchased
 	}
-	
-	public SleepAlex(int width, int height) {
-		super(width,height);
+
+	public static ArrayList<String> getImageSources() {
+		return imageSources;
 	}
 
-	public void act(){
-		if(action != null) action.act();
-	}
-	
-	public void setAction(Action a){
-		this.action = a;
-	}
-
-	@Override
-	public void setFile(File f) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public JFrame getWindow() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void initAllObjects(List<Visible> viewObjects) {
-		// TODO Auto-generated method stub
-		
+	public static void setImageSources(ArrayList<String> imageSources) {
+		SleepAlex.imageSources = imageSources;
 	}
 }
