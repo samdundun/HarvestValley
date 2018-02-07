@@ -22,6 +22,10 @@ public class CropJane extends Button {
 		});
 		index=i;
 	}
+	
+	public void printSelected(int x) {
+		System.out.println(x);
+	}
 
 	public CropJane(int x, int y, int w, int h, String text, Action action) {
 		super(x, y, w, h, text, action);

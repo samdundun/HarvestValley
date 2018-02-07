@@ -135,7 +135,7 @@ public class Item extends CustomImageButton implements Clickable{
 	public void setAdded(boolean added) {
 		this.added = added;
 	}
-
+	
 	//	public Item(int x, int y, double scale, String imageLocation) {
 	//		super(x, y, scale, imageLocation);
 	//		// TODO Auto-generated constructor stub
