@@ -24,7 +24,8 @@ public class FarmScreenAll extends FullFunctionScreen {
 
 	private static final int animalLimit = 5;
 	private int currentAnimals;
-	public static SelectionPaneJane animalPane;
+	//public static SelectionPaneJane animalPane;
+	public static paneJenny animalPane;
 	private ArrayList<BoxJenny> animalBox;
 	private Button test;
 	
@@ -33,20 +34,20 @@ public class FarmScreenAll extends FullFunctionScreen {
 	}
 
 	public void initAllObjects(List<Visible> viewObjects) {
-		currentAnimals = 0;
+		currentAnimals = 2;
 		farmPatch = new ArrayList<CropJane>();
 		animalBox = new ArrayList<BoxJenny>();
 
 		back = new Graphic(0, 0, "resources/farm.PNG");
 		viewObjects.add(back);
 
-		test = new Button(400, 500, 80, 30, "test", new Color(230, 235, 210), new Action() {
-			public void act() {
-				addAnimalJenny(viewObjects, "resources/pig.png");
-			}
-		});
-		viewObjects.add(test);
-		//addAnimalJenny(viewObjects, "resources/brownChicken.png");
+//		test = new Button(400, 500, 80, 30, "test", new Color(230, 235, 210), new Action() {
+//			public void act() {
+//				addAnimalJenny(viewObjects, "resources/pig.png");
+//			}
+//		});
+//		viewObjects.add(test);
+		addAnimalJenny(viewObjects, "resources/brownChicken.png");
 
 		menuJenny = new Button(5, 500, 80, 30, "Menu", new Color(230, 235, 210), new Action() {
 			public void act() {
@@ -91,20 +92,10 @@ public class FarmScreenAll extends FullFunctionScreen {
 		viewObjects.add(pane);
 		pane.setVisible(false);
 
-//		animalPane = new SelectionPaneJane(this, 400, 300, AnimalProduceJenny.produce,new Action() {
-//			public void act() {
-//				for(int i = 0; i < AnimalProduceJenny.produce.length; i++) {
-//					if(AnimalProduceJenny.produce[i].isSelected()) {
-//						pane.setSeedSelected(i);
-//					}
-//					pane.setVisible(false);
-//
-//				}
-//
-//			}});
-//		animalPane.update();
-//		viewObjects.add(animalPane);
-//		animalPane.setVisible(false);
+		animalPane = new paneJenny(this, 400, 300, "resources/wool.png");
+		animalPane.update();
+		viewObjects.add(animalPane);
+		animalPane.setVisible(false);
 	}
 
 	private void addAnimalJenny(List<Visible> viewObjects, String src) {
