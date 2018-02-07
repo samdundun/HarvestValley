@@ -25,15 +25,18 @@ public class Character implements KeyListener {
 	
 	public void keyPressed(KeyEvent e) {
 		x = getX();
-		y = getY();
+		y = getY(); 
 		if (e.getKeyCode() == KeyEvent.VK_LEFT)
 			x -= 10;
+			goil.update();
 	    else if (e.getKeyCode() == KeyEvent.VK_RIGHT)
 	    	x += 10;
+			
 	    else if (e.getKeyCode() == KeyEvent.VK_UP)
 	        y -= 10;
 	    else if (e.getKeyCode() == KeyEvent.VK_DOWN)
 	        y += 10;
+	
 	}
 
 	
