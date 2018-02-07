@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 import java.util.List;
 
+import game.farm.FarmScreenAll;
 import guiTeacher.components.Action;
 import guiTeacher.components.CustomImageButton;
 import guiTeacher.components.Graphic;
@@ -45,7 +46,8 @@ public class ChooseGenderScreenLubna extends ClickableScreen implements Runnable
 			
 			@Override
 			public void act() {
-				girlAction = true;
+				MainMenu.isGirl = true;
+				MainMenu.game.farmScreen = new FarmScreenAll(getWidth(),getHeight());
 				MainMenu.game.setScreen(MainMenu.farmScreen);
 				
 			}
@@ -55,7 +57,8 @@ public class ChooseGenderScreenLubna extends ClickableScreen implements Runnable
 			
 			@Override
 			public void act() {
-				girlAction = false;
+				MainMenu.isGirl = false;
+				MainMenu.game.farmScreen = new FarmScreenAll(getWidth(),getHeight());
 				MainMenu.game.setScreen(MainMenu.farmScreen);
 				
 			}
@@ -72,14 +75,6 @@ public class ChooseGenderScreenLubna extends ClickableScreen implements Runnable
 		
 
 	}
-	public static boolean isActive() {
-		if(girlAction == true) {
-		   MainMenu.isGirl= true;
-		}
-		else {
-			MainMenu.isGirl= false;
-		}
-		return MainMenu.isGirl;
-	}
+	//
 }
 

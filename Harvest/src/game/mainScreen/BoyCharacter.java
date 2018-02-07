@@ -26,7 +26,7 @@ public class BoyCharacter extends AnimatedComponent {
 	}
 
 	public static AnimatedComponent addBoy(List<Visible> viewObjects) {
-	boy = new AnimatedComponent(430, 200, 75, 125);
+	boy = new AnimatedComponent(480, 220, 50, 100);
 	boy.addSequence("resources/boy.png",180, 0, 0 ,100, 160, 3);
 	return boy;
 }
