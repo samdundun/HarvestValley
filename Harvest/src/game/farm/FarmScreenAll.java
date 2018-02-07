@@ -185,6 +185,7 @@ public class FarmScreenAll extends FullFunctionScreen {
 				CropJane patch= new CropJane(start+((i-6)*68), 278+space+space, 63, 50, "", Color.BLACK, null);
 				farmPatch.add(patch);
 				viewObjects.add(patch);
+				//
 			}
 		}
 	}
