@@ -1,46 +1,31 @@
 package game.mainScreen;
 
+import java.util.List;
+
 import guiTeacher.components.Action;
-
-import java.awt.Color;
-import java.awt.Graphics2D;
-import java.awt.RenderingHints;
-
-import guiTeacher.components.*;
+import guiTeacher.components.Button;
+import guiTeacher.interfaces.Visible;
+import harvest.MainMenu;
 
 public class SaveButtonJessi extends Button {
 
-	private Color color;
-
+	private ImageButton saveButton;
+	
 	public SaveButtonJessi(int x, int y, int w, int h, String text, Action action) {
 		super(x, y, w, h, text, action);
-		update();
+		// TODO Auto-generated constructor stub
+	}
+
+	public void initAllObjects(List<Visible> viewObjects) {
+		saveButton = new ImageButton(260,350,50,50,"",new Action() {
+			
+			@Override
+			public void act() {
+				MainMenu.game.setScreen(MainMenu.saveMimi);
+				
+			}
+		});
+		viewObjects.add(saveButton);
 	}
 	
-	@Override
-	public void setColor(Color color) {
-		this.setBackground(color);
-		this.color = color;
-		update();
-	}
-
-	@Override
-	public void highlight() {
-		this.setBackground(Color.black);
-		update();
-	}
-
-	@Override
-	public void dim() {
-		this.setBackground(this.color);
-		update();
-	}
-	
-	public void drawButton(Graphics2D g, boolean hover) {
-		g.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
-				RenderingHints.VALUE_ANTIALIAS_ON);
-		drawShape(g, hover);
-		g.setBackground(color);
-	}
-
 }

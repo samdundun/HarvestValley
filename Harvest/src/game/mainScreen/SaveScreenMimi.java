@@ -48,6 +48,8 @@ public class SaveScreenMimi extends ClickableScreen {
 			}
 		});
 		viewObjects.add(exit);
+		
+		
 	}
 
 }

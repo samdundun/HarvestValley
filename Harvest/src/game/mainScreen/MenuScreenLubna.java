@@ -66,6 +66,7 @@ public class MenuScreenLubna extends ClickableScreen implements Runnable {
 			public void act() {
 				MainMenu.isObj= true;
 				MainMenu.game.setScreen(MainMenu.objectives);
+				MainMenu.objectives.displayObjectives();
 				
 			}
 		});

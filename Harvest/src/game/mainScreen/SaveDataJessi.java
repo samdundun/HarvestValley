@@ -1,10 +1,23 @@
 package game.mainScreen;
 
-public class SaveDataJessi implements java.io.Serializable {
+import guiTeacher.components.Action;
 
-    private static final long serialVersionUID = 1L;
+import java.awt.Color;
+import java.awt.Graphics2D;
+import java.awt.RenderingHints;
+import java.util.ArrayList;
+import java.util.Scanner;
 
-    public String name;
-    public int hp;
-    private int items;
+import game.market.Inventory;
+import guiTeacher.components.*;
+
+public class SaveDataJessi {
+
+	public static Scanner in;
+	private ArrayList<Inventory> items;
+	
+	//make an interface.
+
+
+	
 }

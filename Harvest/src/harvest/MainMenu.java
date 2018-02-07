@@ -4,6 +4,7 @@ import java.awt.Font;
 import java.io.File;
 
 import game.farm.FarmScreenAll;
+import game.mainScreen.GirlCharacter;
 import game.farm.SleepAlex;
 import game.mainScreen.ChooseGenderScreenLubna;
 import game.mainScreen.MenuScreenLubna;
@@ -36,6 +37,7 @@ public class MainMenu extends GUIApplication {
 	public static PlaceHolderScreen placeHolder;
 	public static SaveScreenMimi saveMimi;
 	public static SleepAlex sleep;
+	
 	
 	public MainMenu(int width, int height) {
 		super(width, height);
