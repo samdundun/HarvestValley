@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 import java.util.List;
 
+import game.farm.FarmScreenAll;
 import guiTeacher.components.Action;
 import guiTeacher.components.CustomImageButton;
 import guiTeacher.components.Graphic;
@@ -19,6 +20,7 @@ public class ChooseGenderScreenLubna extends ClickableScreen implements Runnable
 	private ImageButton boy;
 	private Graphic back;
 	private Graphic title;
+	private static boolean girlAction; 
 
 	public ChooseGenderScreenLubna(int width, int height) {
 		super(width, height);
@@ -45,6 +47,7 @@ public class ChooseGenderScreenLubna extends ClickableScreen implements Runnable
 			@Override
 			public void act() {
 				MainMenu.isGirl = true;
+				MainMenu.game.farmScreen = new FarmScreenAll(getWidth(),getHeight());
 				MainMenu.game.setScreen(MainMenu.farmScreen);
 				
 			}
@@ -54,11 +57,14 @@ public class ChooseGenderScreenLubna extends ClickableScreen implements Runnable
 			
 			@Override
 			public void act() {
-				MainMenu.isGirl= false;
+				MainMenu.isGirl = false;
+				MainMenu.game.farmScreen = new FarmScreenAll(getWidth(),getHeight());
 				MainMenu.game.setScreen(MainMenu.farmScreen);
 				
 			}
 		});
+		
+		
 		viewObjects.add(boy);
 		title = new Graphic(150, 60, 600, 600, "resources/harvestvalley.png");
 		viewObjects.add(title);
@@ -69,5 +75,6 @@ public class ChooseGenderScreenLubna extends ClickableScreen implements Runnable
 		
 
 	}
+	//
 }
 
