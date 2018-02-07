@@ -15,6 +15,7 @@ public class MenuScreenLubna extends ClickableScreen implements Runnable {
 	private ImageButton load;
 	private ImageButton exit;
 	private ImageButton obj;
+//	private ImageButton save;
 
 	public MenuScreenLubna(int width, int height) {
 		super(width, height);
@@ -30,28 +31,28 @@ public class MenuScreenLubna extends ClickableScreen implements Runnable {
 		viewObjects.add(title);
 
 		newGame = new ImageButton(180,350,150,150,"resources/newButton.png",new Action() {
-			
+
 			@Override
 			public void act() {
 				MainMenu.isNew = true;
 				MainMenu.game.setScreen(MainMenu.screen2);
-				
+
 			}
 		});
 		viewObjects.add(newGame);
 		load = new ImageButton(380,350, 150,150,"resources/loadButton.png", new Action() {
-			
+
 			@Override
 			public void act() {
 				MainMenu.isLoad= true;
 				MainMenu.game.setScreen(MainMenu.farmScreen);
 				//using farmScreen rn but eventually will use the saved info.
-				
+
 			}
 		});
 		viewObjects.add(load);
 		exit = new ImageButton(580,350, 150,150,"resources/exitButton.png", new Action() {
-			
+
 			@Override
 			public void act() {
 				MainMenu.isExit= true;
@@ -61,16 +62,26 @@ public class MenuScreenLubna extends ClickableScreen implements Runnable {
 		});
 		viewObjects.add(exit);
 		obj = new ImageButton(750,480, 60,60,"resources/objective.png", new Action() {
-			
+
 			@Override
 			public void act() {
 				MainMenu.isObj= true;
 				MainMenu.game.setScreen(MainMenu.objectives);
 				MainMenu.objectives.displayObjectives();
-				
+
 			}
 		});
 		viewObjects.add(obj);
+//		save = new ImageButton(680,480, 60,60,"resources/saveButton.png", new Action() {
+//
+//			@Override
+//			public void act() {
+//				MainMenu.isSaved= true;
+//				MainMenu.game.setScreen(MainMenu.saveMimi);
+//
+//			}
+//		});
+//		viewObjects.add(save);
 	}
 
 	@Override

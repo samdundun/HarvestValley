@@ -7,13 +7,12 @@ import guiTeacher.components.AnimatedComponent;
 import guiTeacher.interfaces.Visible;
 
 /**
- * @author Lubna Khalid.
+ * @author Jessi Wu.
  */
-	
+
 public class BoyCharacter extends AnimatedComponent {
 
-	
-	 private AnimatedComponent boy;
+	private static AnimatedComponent boy;
 	public BoyCharacter(int x, int y, int w, int h) {
 		super(x, y, w, h);
 		// TODO Auto-generated constructor stub
@@ -25,13 +24,12 @@ public class BoyCharacter extends AnimatedComponent {
 		go.start();
 
 	}
-	public void initObjects(List<Visible> viewObjects) {
-		boy = new AnimatedComponent(250, 50, 100, 150);
-		boy.addSequence("resources/boy.png",180, 0, 0 ,100, 160, 3);
-		Thread runboi = new Thread(boy);
-		runboi.start();
-		viewObjects.add(boy);
+
+	public static AnimatedComponent addBoy(List<Visible> viewObjects) {
+	boy = new AnimatedComponent(480, 220, 50, 100);
+	boy.addSequence("resources/boy.png",180, 0, 0 ,100, 160, 3);
+	return boy;
+}
 	
-	}
-	}
+}
 

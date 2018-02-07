@@ -38,6 +38,7 @@ public class MainMenu extends GUIApplication {
 	public static SaveScreenMimi saveMimi;
 	public static SleepAlex sleep;
 	
+//	public static boolean isSaved;
 	
 	public MainMenu(int width, int height) {
 		super(width, height);
@@ -48,7 +49,7 @@ public class MainMenu extends GUIApplication {
 	@Override
 	public void initScreen() {
 //		try {
-//			File fontFile = new File("resources/burnstown dam.ttf")
+//			File fontFile = new File("resources/burnstown dam.ttf");
 //			Font font = Font.createFont(Font.TRUETYPE_FONT, fontFile);
 //			Font baseFont=font.deriveFont(36f);
 //			StyledComponent.setBaseFont(baseFont);
@@ -84,5 +85,6 @@ public class MainMenu extends GUIApplication {
 
 		runner.start();
 	}
+	//
 
 }

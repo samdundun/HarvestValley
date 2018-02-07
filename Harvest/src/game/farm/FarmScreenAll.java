@@ -24,8 +24,8 @@ public class FarmScreenAll extends FullFunctionScreen {
 	private ImageButton sleepAlex;
 	public static ArrayList<CropJane> farmPatch;
 
-	private BoyCharacter boy;
-	private GirlCharacter girl;
+	public static AnimatedComponent boy;
+	public static AnimatedComponent girl;
 
 	private static final int animalLimit = 5;
 	private int currentAnimals;
@@ -90,13 +90,26 @@ public class FarmScreenAll extends FullFunctionScreen {
 
 		addfarmingPatchJane(viewObjects);
 		
-		boy = new BoyCharacter(150,190,getWidth(),getHeight());
-		viewObjects.add(boy);
+		//Mainscreen team work
+		girl = game.mainScreen.GirlCharacter.addGirl(viewObjects);
+		Thread rungurl = new Thread(girl);
+		rungurl.start();
 		
-		girl = new GirlCharacter(200,190,100,150);
-		viewObjects.add(girl);
+		
+ 		boy = game.mainScreen.BoyCharacter.addBoy(viewObjects);
+ 		Thread runboi = new Thread(boy);
+ 		runboi.start();
+// 		viewObjects.add(boy);
 
-
+// 		/viewObjects.add(girl);
+	
+ 		if(MainMenu.isGirl) {
+ 			viewObjects.add(girl);
+ 		}
+ 		else if(!MainMenu.isGirl) {
+ 			viewObjects.add(boy);
+ 		}
+ 		
 		addfarmingPatchJane(viewObjects);
 
 		
@@ -150,6 +163,7 @@ public class FarmScreenAll extends FullFunctionScreen {
 				CropJane patch= new CropJane(start+((i-6)*68), 278+space+space, 63, 50, "", Color.BLACK, null,i);
 				farmPatch.add(patch);
 				viewObjects.add(patch);
+				//
 			}
 		}
 	}
