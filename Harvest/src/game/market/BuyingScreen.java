@@ -32,13 +32,9 @@ public class BuyingScreen extends FullFunctionScreen implements FileRequester{
 	private TextLabel gold;
 	private Graphic grid;
 	private Button exit;
-	
-	private int priceLevel;
-	private int goldAmount;
-	private int amountLevel;
-	
+
 	private Inventory invent;
-	
+
 	public static final Item[] items = {new Item("Corn Seeds", "Great crop to grow all year round", 300, 0, 4),new Item("Pepper Seeds", "Spicy", 50, 1,1),
 			new Item("Potato Seeds", "Just like me", 150, 2, 3),new Item("Strawberry Seeds", "Sweeter than you", 100, 3,2),
 			new Item("Tomato Seeds", "Make some good ketchup", 200, 4,3),new Item("Wheat Seeds", "Not weed", 400, 5,5)};
@@ -51,13 +47,13 @@ public class BuyingScreen extends FullFunctionScreen implements FileRequester{
 
 	@Override
 	public void initAllObjects(List<Visible> viewObjects) {
-		
+
 		invent = new Inventory();
 		invent.load();
-		
+
 		StyledComponent.setButtonOutline(true);
 		setBackground(new Color(252,226,148));
-		
+
 		buying = new Button(100, 40, 100, 40, "BUYING", new Action() {
 
 			@Override
@@ -70,7 +66,7 @@ public class BuyingScreen extends FullFunctionScreen implements FileRequester{
 		buying.setCurve(0, 0);
 		buying.update();
 		viewObjects.add(buying);
-		
+
 		selling = new Button(240, 40, 100, 40, "SELLING", new Action() {
 
 			@Override
@@ -86,7 +82,7 @@ public class BuyingScreen extends FullFunctionScreen implements FileRequester{
 		selling.setCurve(0, 0);
 		selling.update();
 		viewObjects.add(selling);
-		
+
 		exit = new Button(750, 40, 40, 40, "X", new Action() {
 
 			@Override
@@ -101,24 +97,31 @@ public class BuyingScreen extends FullFunctionScreen implements FileRequester{
 		exit.setCurve(0, 0);
 		exit.update();
 		viewObjects.add(exit);
-		
+
 		grid = new Graphic(100,180, "resources/inventory.png");
 		viewObjects.add(grid);
-		
-		price = new CustomArea(100,400,250,125,"Price :" + priceLevel);
+
+		price = new CustomArea(100,400,250,125,"Price :" );
 		viewObjects.add(price);
 		
-		
+		gold = new TextLabel(100,100,100,100,"Gold: "+ invent.getGold());
+		viewObjects.add(gold);
+
+
 		description = new CustomArea(490, 400, 250, 125, "SELECT AN ITEM");
 		viewObjects.add(description);
-		
+
 		exchange = new Button(360, 400, 100, 40, "BUY 1", new Action() {
 
 			@Override
 			public void act() {
 				for(int i = 0; i < items.length; i++) {
 					if(items[i].isSelected()) {
-						invent.addItem(items[i]);
+						if(invent.getGold()-items[i].getValue() >= 0)
+							invent.setGold(invent.getGold()-items[i].getValue());
+							invent.addItem(items[i]);
+							gold.setText("Gold: "+ invent.getGold());
+							
 					}
 				}
 				invent.save();
@@ -130,16 +133,16 @@ public class BuyingScreen extends FullFunctionScreen implements FileRequester{
 		exchange.setCurve(0, 0);
 		exchange.update();
 		viewObjects.add(exchange);
-		
+
 		int move = 1;
 		int width = 48;
 		int startingHeight = 202;
 		int height = 48;
-		
+
 		for(int i = 0; i < items.length; i++) {
 			Item z = items[i];
 			z.setAction(new Action() {
-				
+
 				@Override
 				public void act() {
 					description.setText(z.getName() + "\n" + z.getDescription() + "\nGrowth time : " + z.getTime());
@@ -148,7 +151,7 @@ public class BuyingScreen extends FullFunctionScreen implements FileRequester{
 						items[i].setSelected(false);
 					}
 					items[z.getImageIndex()].setSelected(true);
-					
+
 				}
 			});
 			z.setX(80+move*width);
@@ -160,7 +163,7 @@ public class BuyingScreen extends FullFunctionScreen implements FileRequester{
 			}
 			viewObjects.add(z);
 		}
-		
+
 
 	}
 

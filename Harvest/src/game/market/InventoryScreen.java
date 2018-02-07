@@ -53,7 +53,7 @@ public class InventoryScreen extends FullFunctionScreen {
 
 		amount = new TextLabel(100,60,100,100,"Amount:");
 		viewObjects.add(amount);
-		gold = new TextLabel(540,60,100,100,"Gold:");
+		gold = new TextLabel(540,60,100,100,"Gold:"+invent.getGold());
 		viewObjects.add(gold);
 
 		discard = new Button(600, 400, 100, 40, "DISCARD", new Action() {

@@ -17,6 +17,7 @@ public class Inventory {
 	public static Scanner in;
 	private int[] amount = {0,0,0,0,0,0,0,0,0,0,0,0};
 	private ArrayList<Item> invent;
+	private int gold;
 
 	public static final Item[] ITEMS = {new Item("Corn Seeds", "Great crop to grow all year round", 300, 0, 4),new Item("Pepper Seeds", "Spicy", 50, 1,1),
 			new Item("Potato Seeds", "Just like me", 150, 2, 3),new Item("Strawberry Seeds", "Sweeter than you", 100, 3,2),
@@ -31,6 +32,7 @@ public class Inventory {
 	public Inventory() {
 
 		invent = new ArrayList<Item>();
+		save();
 	}
 
 	public void addBasics() {	
@@ -140,6 +142,7 @@ public class Inventory {
 				String[] param = line.split(",");
 
 				invent.add(new Item(param[0],param[1],Integer.parseInt(param[2]), Integer.parseInt(param[3]), Integer.parseInt(param[4])));
+				this.setGold(Integer.parseInt(param[5]));
 
 			}
 			br.close();
@@ -154,7 +157,7 @@ public class Inventory {
 		try{    
 			FileWriter fw=new FileWriter("resources/invent.csv");
 			for(Item b: invent){
-				fw.write(b+"\n");    	
+				fw.write(b+","+Integer.toString(this.getGold())+"\n");    	
 			}
 
 			fw.close();    
@@ -162,6 +165,14 @@ public class Inventory {
 		}catch(IOException e){
 			System.out.println("An IOException was thrown. \nCheck to see that the directory where you tried to save the file actually exists.");
 		}
+	}
+
+	public int getGold() {
+		return gold;
+	}
+
+	public void setGold(int gold) {
+		this.gold = gold;
 	}
 
 	
