@@ -73,18 +73,9 @@ public class PaneJenny extends Pane {
 	}
 	
 	public void updateImg(List<Visible> viewObjects) {
-		img = new Graphic((getWidth()/2) + 90, getHeight() - 100, getSrc());
+		img = new Graphic(getX() + (_), getY() + 50, getSrc());
 		viewObjects.add(img);
 	}
-	
-	public int getHeight() {
-		return _HEIGHT;
-	}
-	
-	public int getWidth() {
-		return _WIDTH;
-	}
-	
 	public String getSrc() {
 		return src;
 	}
