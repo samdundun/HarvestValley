@@ -2,16 +2,18 @@ package game.farm;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
+import java.util.List;
 
 import guiTeacher.components.Action;
 import guiTeacher.components.CustomImageButton;
 import guiTeacher.components.Graphic;
 import guiTeacher.interfaces.Clickable;
 import guiTeacher.interfaces.DrawInstructions;
+import guiTeacher.interfaces.Visible;
 
 public class BoxJenny extends CustomImageButton implements Clickable{
 
-	public BoxJenny(int x, int y, String imageAddress, Action action) {
+	public BoxJenny(int x, int y, String imageAddress, Action action, List<Visible> viewObjects) {
 		super(x, y, new Graphic(0,0,imageAddress).getWidth(), new Graphic(0,0,imageAddress).getHeight(), new DrawInstructions() {
 			Graphic image = new Graphic(0,0,imageAddress);
 
@@ -27,6 +29,8 @@ public class BoxJenny extends CustomImageButton implements Clickable{
 			public void act() {
 				FarmScreenAll.animalPane.setX(x + 100);
 				FarmScreenAll.animalPane.setY(y - 100);
+				FarmScreenAll.animalPane.setSrc("wool");
+				FarmScreenAll.animalPane.updateImg(viewObjects);
 				FarmScreenAll.animalPane.setVisible(true);
 				FarmScreenAll.animalPane.update();
 			}

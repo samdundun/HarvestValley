@@ -5,6 +5,7 @@ import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.util.ArrayList;
 import java.util.List;
+import game.farm.FarmScreenAll;
 
 import game.market.BuyingScreen;
 import game.market.Item;
@@ -15,7 +16,7 @@ import guiTeacher.components.Pane;
 import guiTeacher.interfaces.FocusController;
 import guiTeacher.interfaces.Visible;
 
-public class paneJenny extends Pane {
+public class PaneJenny extends Pane {
 
 	private static final int _WIDTH = 225;
 	private static final int _HEIGHT = 195;
@@ -25,7 +26,7 @@ public class paneJenny extends Pane {
 	private Graphic img;
 	private String src;
 
-	public paneJenny(FocusController focusController, int x, int y, String src) {
+	public PaneJenny(FocusController focusController, int x, int y) {
 		super(focusController, x, y, _WIDTH, _HEIGHT);
 	}
 
@@ -42,10 +43,12 @@ public class paneJenny extends Pane {
 	}
 
 	public void initAllObjects(List<Visible> viewObjects){
+		setSrc("milk");
+		
 		harvest = new Button(35, _HEIGHT - 30, 60, 25, "Harvest", Color.lightGray, new Action() {
 
 			public void act() {
-				paneJenny.this.setVisible(false);
+				PaneJenny.this.setVisible(false);
 			}
 		});
 		viewObjects.add(harvest);
@@ -53,9 +56,23 @@ public class paneJenny extends Pane {
 		cancel = new Button(120, _HEIGHT - 30, 60, 25, "Cancel", Color.lightGray, new Action() {
 
 			public void act() {
-				paneJenny.this.setVisible(false);
+				img.setVisible(false);
+				PaneJenny.this.setVisible(false);
 			}
 		});
 		viewObjects.add(cancel);
+	}
+	
+	public void updateImg(List<Visible> viewObjects) {
+		img = new Graphic(_WIDTH + 240, _HEIGHT - 100, getSrc());
+		viewObjects.add(img);
+	}
+	
+	public String getSrc() {
+		return src;
+	}
+
+	public void setSrc(String src) {
+		this.src = "resources/" + src + ".png";
 	}
 }
