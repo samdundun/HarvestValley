@@ -13,6 +13,7 @@ import guiTeacher.components.Action;
 import guiTeacher.components.Button;
 import guiTeacher.components.Graphic;
 import guiTeacher.components.Pane;
+import guiTeacher.components.TextLabel;
 import guiTeacher.interfaces.FocusController;
 import guiTeacher.interfaces.Visible;
 
@@ -25,9 +26,14 @@ public class PaneJenny extends Pane {
 	private Button cancel;
 	private Graphic img;
 	private String src;
+	private TextLabel label;
+	private int x;
+	private int y;
 
 	public PaneJenny(FocusController focusController, int x, int y) {
 		super(focusController, x, y, _WIDTH, _HEIGHT);
+		this.x = x;
+		this.y = y;
 	}
 
 	public void update(Graphics2D g){
@@ -61,11 +67,22 @@ public class PaneJenny extends Pane {
 			}
 		});
 		viewObjects.add(cancel);
+		
+		label = new TextLabel(15, 0, 150, 50, "You can harvest (one):");
+		viewObjects.add(label);
 	}
 	
 	public void updateImg(List<Visible> viewObjects) {
-		img = new Graphic(_WIDTH + 240, _HEIGHT - 100, getSrc());
+		img = new Graphic((getWidth()/2) + 90, getHeight() - 100, getSrc());
 		viewObjects.add(img);
+	}
+	
+	public int getHeight() {
+		return _HEIGHT;
+	}
+	
+	public int getWidth() {
+		return _WIDTH;
 	}
 	
 	public String getSrc() {
