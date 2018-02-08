@@ -42,7 +42,6 @@ public class BuyingScreen extends FullFunctionScreen implements FileRequester{
 
 	public BuyingScreen(int width, int height) {
 		super(width, height);
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
@@ -146,7 +145,7 @@ public class BuyingScreen extends FullFunctionScreen implements FileRequester{
 
 				@Override
 				public void act() {
-					description.setText(z.getName() + "\n" + z.getDescription() + "\nGrowth time : " + z.getTime());
+					description.setText(z.getName() + "\n" + z.getDescription() + "\nGrowth time : " + z.getTime() + " Days");
 					price.setText("Price: "+ z.getValue());
 					for(int i = 0; i < items.length;i++) {
 						items[i].setSelected(false);

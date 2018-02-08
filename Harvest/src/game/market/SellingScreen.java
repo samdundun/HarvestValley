@@ -71,15 +71,18 @@ public class SellingScreen extends FullFunctionScreen implements FileRequester{
 		buying.update();
 		viewObjects.add(buying);
 		
-		gold = new TextLabel(540,60,100,100,"Gold: "+invent.getGold());
+		gold = new TextLabel(100,100,100,100,"Gold: "+invent.getGold());
 		viewObjects.add(gold);
+		
+		amount = new TextLabel(100,150,100,100,"Amount:");
+		viewObjects.add(amount);
+		
 		
 		selling = new Button(240, 40, 100, 40, "SELLING", new Action() {
 
 			@Override
 			public void act() {
-				// TODO Auto-generated method stub
-
+				
 			}
 		});
 		selling.setBackground(new Color(102,0,0));
@@ -116,26 +119,23 @@ public class SellingScreen extends FullFunctionScreen implements FileRequester{
 					if(i.isSelected()) {
 						for(Item it: invent.getItems()) {
 							 if(i.getImageIndex() == it.getImageIndex()) {
-								 //removeI has to be an item from the inventory array to remove it
 								 removeI = it;
 							 }
 						}
 						invent.getAmountArray()[i.getImageIndex()]--;
 						amount.setText("Amount: " + invent.getAmountArray()[i.getImageIndex()]);
 						invent.setGold(invent.getGold() + i.getValue());
-						if(invent.getAmountArray()[i.getImageIndex()] == 1) {
-							MainMenu.game.sell = new SellingScreen(getWidth(), getHeight());
-							MainMenu.game.setScreen(MainMenu.game.sell);
-							
-							i.setSelected(false);
-						}
 					}
 				}
 				invent.getItems().remove(removeI);
-				//invent.removeItem(removeI);
 				invent.save();
+				for(Item i: items) {
+					if(i.isSelected() && invent.getAmountArray()[i.getImageIndex()] == 0) {
+						MainMenu.game.sell = new SellingScreen(getWidth(),getHeight());
+						MainMenu.game.setScreen(MainMenu.game.sell);
+					}
+				}
 				gold.setText("Gold: "+ invent.getGold());
-				MainMenu.game.setScreen(MainMenu.sell);
 				System.out.println(invent.getGold());
 			}
 		});
@@ -145,15 +145,12 @@ public class SellingScreen extends FullFunctionScreen implements FileRequester{
 		exchange.update();
 		viewObjects.add(exchange);
 		
-		price = new CustomArea(100,400,250,125,"Price :");
+		price = new CustomArea(100,400,250,125,"Selling Price :");
 		viewObjects.add(price);
 		
 		
 		description = new CustomArea(490, 400, 250, 125, "Description");
 		viewObjects.add(description);
-		
-		amount = new TextLabel(100,100,100,100,"Amount:");
-		viewObjects.add(amount);
 		
 		int move = 1;
 		int width = 48;
@@ -166,8 +163,8 @@ public class SellingScreen extends FullFunctionScreen implements FileRequester{
 
 				@Override
 				public void act() {
-					description.setText(i.getName()+"\n"+i.getDescription());
-					price.setText("Price: "+ i.getValue());
+					description.setText(i.getName()+"\n"+i.getDescription() + "\nGrowth time : " + i.getTime() + " Days");
+					price.setText("Selling Price: "+ i.getValue());
 					amount.setText("Amount: " + Integer.toString(invent.getAmountArray()[i.getImageIndex()]));
 
 					for(int k = 0; k < items.length;k++) {

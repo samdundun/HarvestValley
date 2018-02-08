@@ -36,7 +36,6 @@ public class InventoryScreen extends FullFunctionScreen {
 
 	public InventoryScreen(int width, int height) {
 		super(width, height);
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
@@ -47,8 +46,7 @@ public class InventoryScreen extends FullFunctionScreen {
 		invent = new Inventory();
 		invent.load();
 
-		description = new CustomArea(100,400,300,150,"Description");
-		//somehow change description to the item that is highlighted
+		description = new CustomArea(100,400,300,100,"Description");
 		viewObjects.add(description);
 
 		amount = new TextLabel(100,60,100,100,"Amount:");
@@ -65,7 +63,6 @@ public class InventoryScreen extends FullFunctionScreen {
 					if(i.isSelected()) {
 						for(Item it: invent.getItems()) {
 							 if(i.getImageIndex() == it.getImageIndex()) {
-								 //removeI has to be an item from the inventory array to remove it
 								 removeI = it;
 							 }
 						}
@@ -73,14 +70,15 @@ public class InventoryScreen extends FullFunctionScreen {
 						amount.setText("Amount: " + invent.getAmountArray()[i.getImageIndex()]);
 					}
 				}
-				//System.out.println(removeI);
 				invent.getItems().remove(removeI);
-				//invent.removeItem(removeI);
 				invent.save();
-				//inventory removes icon once 0 hits
-				//bug when after amount = 0, when you try to buy it goes back to the original amount + 1
-				MainMenu.game.inventory = new InventoryScreen(getWidth(),getHeight());
-				MainMenu.game.setScreen(MainMenu.game.inventory);
+
+				for(Item i: items) {
+					if(i.isSelected() && invent.getAmountArray()[i.getImageIndex()] == 0) {
+						MainMenu.game.inventory = new InventoryScreen(getWidth(),getHeight());
+						MainMenu.game.setScreen(MainMenu.game.inventory);
+					}
+				}
 			}
 		});
 		discard.setBackground(Color.red);
@@ -93,13 +91,7 @@ public class InventoryScreen extends FullFunctionScreen {
 
 			@Override
 			public void act() {
-//				for(Item i: invent.getItems()) {
-//					System.out.println("Looking for selected item.");
-//					if(i.isSelected()) {
-//						System.out.println("Found item " + i);
-//						//invent.removeItem(i);
-//					}
-//				}
+
 			}
 		});
 		eat.setBackground(Color.red);
@@ -110,12 +102,6 @@ public class InventoryScreen extends FullFunctionScreen {
 
 		grid = new Graphic(100,180, "resources/inventory.png");
 		viewObjects.add(grid);
-		/*TODO
-		figure out how to display quantity, price, etc when image is hovered ove
-		play around with the items class
-		items should change opacity when clicked on or hovered over
-		 **/
-		//how other classes will add items to the inventory
 
 		int move = 1;
 		int width = 48;
@@ -124,20 +110,17 @@ public class InventoryScreen extends FullFunctionScreen {
 
 		invent.sort();
 		for(Item i:invent.getItems()) {
-			//only print new items
 			i.setAction(new Action() {
 
 				@Override
 				public void act() {
-					description.setText(i.getName()+"\n"+i.getDescription());
+					description.setText(i.getName()+"\n"+i.getDescription()  + "\nGrowth time : " + i.getTime() + " Days");
 					amount.setText("Amount: " + Integer.toString(invent.getAmountArray()[i.getImageIndex()]));
-//					for(int j = 0; j < invent.getItems().size();j++) {
-//						invent.getItem(j).setSelected(false);
-//					}
+
 					for(int k = 0; k < items.length;k++) {
 						items[k].setSelected(false);
 					}
-//					i.setSelected(true);
+
 					items[i.getImageIndex()].setSelected(true);
 
 					i.update();
