@@ -14,11 +14,13 @@ import game.mainScreen.ImageButton;
 import guiTeacher.components.Action;
 import guiTeacher.components.Button;
 import guiTeacher.components.ClickableGraphic;
+import guiTeacher.components.Graphic;
 import guiTeacher.components.ImageTextButton;
 import guiTeacher.components.TextArea;
 import guiTeacher.interfaces.FileRequester;
 import guiTeacher.interfaces.Visible;
 import guiTeacher.userInterfaces.FullFunctionScreen;
+import harvest.MainMenu;
 
 public class SleepAlex extends FullFunctionScreen {//can use ImageTextButton, CustomImageButton, ClickableGraphic
 	
@@ -48,6 +50,8 @@ public class SleepAlex extends FullFunctionScreen {//can use ImageTextButton, Cu
 	private int brownEggs;
 	private int whiteEggs;
 	private int blackEggs;
+	
+	private ImageButton holder;
 	
 	private ArrayList<String> cropAnimalAndProductNames = new ArrayList<String>();
 	//{"tomato","wheat","strawberry","corn","potato","pepper","cows","sheep","pigs","chicken"};
@@ -85,11 +89,10 @@ public class SleepAlex extends FullFunctionScreen {//can use ImageTextButton, Cu
 		super(width,height);
 	}
 	
-	public void initAllObjects(List<Visible> viewObjects) {/*
-		imageSources.add("pepperSt6.png");
+	public void initAllObjects(List<Visible> viewObjects) {
+		/*imageSources.add("pepperSt6.png");
 		for(int i = 0; i<imageSources.size();i++) {
-			ImageButton holder = new ImageButton(i*75, 0, 50, 50, "pepperSt6.png", new Action() {
-				//SleepAlex.getImageSources().get(i)
+			holder = new ImageButton(260,350,150,150, "pepperSt6.png", new Action() {
 				@Override
 				public void act() {
 					TextArea info = new TextArea(0, 0, 100, 100, "You have created 5 corns. You have made $50 from corn.");
@@ -97,8 +100,22 @@ public class SleepAlex extends FullFunctionScreen {//can use ImageTextButton, Cu
 				}
 			});
 			viewObjects.add(holder);
-		}
-*/
+		}*/
+		Graphic backgroundOne = new Graphic(0, 0,getWidth(),getHeight(), "resources/nightSky.png");
+		viewObjects.add(backgroundOne);
+		Graphic backgroundTwo = new Graphic(100, 0,getWidth(),getHeight(), "resources/nightSky.png");
+		viewObjects.add(backgroundTwo);
+		/*holder = new ImageButton(180,350,150,150,"resources/nightSky.png",new Action() {
+
+			@Override
+			public void act() {
+				//MainMenu.isNew = true;
+				//MainMenu.game.setScreen(MainMenu.screen2);
+				TextArea info = new TextArea(0, 0, 100, 100, "You have created 5 corns. You have made $50 from corn.");
+				viewObjects.add(info);
+			}
+		});
+		viewObjects.add(holder);*/
 	}
 	
 	public void addNamesAndCountToArray() {
