@@ -20,6 +20,7 @@ public class FarmScreenAll extends FullFunctionScreen {
 	private Button shopJenny;
 	private Button menuJenny;
 	private Button itemJane;
+	private Button saveJessi;
 	public static SelectionPaneJane pane;
 	private ImageButton sleepAlex;
 	private ArrayList<CropJane> farmPatch;
@@ -90,6 +91,15 @@ public class FarmScreenAll extends FullFunctionScreen {
 
 		addfarmingPatchJane(viewObjects);
 		
+		saveJessi = new Button(260, 500, 80, 30, "Save", new Color(230, 235, 210), new Action() {
+			public void act() {
+				MainMenu.game.setScreen(MainMenu.saveMimi);
+
+			}
+		});
+		viewObjects.add(saveJessi);
+
+		
 		//Mainscreen team work
 		girl = game.mainScreen.GirlCharacter.addGirl(viewObjects);
 		Thread rungurl = new Thread(girl);
@@ -144,7 +154,7 @@ public class FarmScreenAll extends FullFunctionScreen {
 		}
 
 	}
-
+//
 	private void addfarmingPatchJane(List<Visible> viewObjects) {
 		int start = 593;
 		int space = 77;
