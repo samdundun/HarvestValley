@@ -129,7 +129,7 @@ public class SelectionPaneJane extends Pane {
 				for(int i = 0; i <items.length; i++) {
 					if(items[i].isSelected()) {
 						SelectionPaneJane.this.setSeedSelected(i);
-						FarmScreenAll.farmPatch.get(index).setColor(Color.red);
+						//FarmScreenAll.farmPatch.get(index).setImage(items[i].getImageIndex()));
 						SelectionPaneJane.this.setVisible(false);
 					}
 				}
