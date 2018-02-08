@@ -16,7 +16,7 @@ public class Character implements KeyListener {
 	private static AnimatedComponent boy;
 	private int x;
 	private int y; 
-	public Character() {
+	public Character(int x,int y) {
 		boy = game.farm.FarmScreenAll.boy;
 		girl = game.farm.FarmScreenAll.girl;
 //		x = 430;
@@ -25,11 +25,18 @@ public class Character implements KeyListener {
 		this.y = y;
 	}
 	
+	
+	
 	public void updateCharacter() {
 		if(MainMenu.isGirl == true) {
+
+			girl.setX(x);
+			girl.setY(y);
 			girl.update();
 		}
 		else {
+			boy.setX(x);
+			boy.setY(y);
 			boy.update();
 		}
 	}
@@ -38,6 +45,7 @@ public class Character implements KeyListener {
 		y = getY(); 
 		if (e.getKeyCode() == KeyEvent.VK_LEFT) {
 			x -= 10;
+			System.out.println("asdfasd");
 			updateCharacter();
 		}
 	    else if (e.getKeyCode() == KeyEvent.VK_RIGHT) {

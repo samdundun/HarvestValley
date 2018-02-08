@@ -1,6 +1,7 @@
 package game.farm;
 
 import java.awt.Color;
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,12 +34,17 @@ public class FarmScreenAll extends FullFunctionScreen {
 	public static paneJenny animalPane;
 	private ArrayList<BoxJenny> animalBox;
 	private Button test;
+	KeyEvent e;
+	
 	
 	public FarmScreenAll(int width, int height) {
 		super(width, height);
 	}
 
 	public void initAllObjects(List<Visible> viewObjects) {
+		
+		game.mainScreen.Character c = new game.mainScreen.Character(0,0);
+		
 		currentAnimals = 2;
 		farmPatch = new ArrayList<CropJane>();
 		animalBox = new ArrayList<BoxJenny>();
