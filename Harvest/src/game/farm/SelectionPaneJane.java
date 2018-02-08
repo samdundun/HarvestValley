@@ -20,6 +20,7 @@ public class SelectionPaneJane extends Pane {
 	private Graphic grid;
 	private Inventory seedList;
 	private int seedSelectedInd;
+	private int index;
 	private static final int _WIDTH = 225;
 	private static final int _HEIGHT = 210;
 
@@ -125,11 +126,11 @@ public class SelectionPaneJane extends Pane {
 		select= new Button(35,_HEIGHT - 30, 60, 25, "Select",Color.lightGray, new Action() {
 
 			public void act() {
-				for(int i = 0; i <BuyingScreen.items.length; i++) {
+				for(int i = 0; i <items.length; i++) {
 					if(items[i].isSelected()) {
 						SelectionPaneJane.this.setSeedSelected(i);
+						//FarmScreenAll.farmPatch.get(index).setImage(items[i].getImageIndex()));
 						SelectionPaneJane.this.setVisible(false);
-
 					}
 				}
 				label.setText("Please select an item");
@@ -143,5 +144,10 @@ public class SelectionPaneJane extends Pane {
 	}
 	public int getSeedSelected() {
 		return seedSelectedInd;
+	}
+
+	public void setIndex(int i) {
+		index=i;
+		
 	}
 }
