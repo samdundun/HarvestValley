@@ -150,17 +150,20 @@ public class FarmScreenAll extends FullFunctionScreen {
 		int space = 77;
 		for(int i=0; i<9; i++) {
 			if(i<3) {
-				CropJane patch= new CropJane(start+(i*68), 253, 63, 50, "",new Color(200, 125, 10), null, i);
+				CropJane patch= new CropJane(start+(i*68), 253, 63, 50, "",new Color(200, 125, 10), null, i, new CropImage());
+				patch.update();
 				farmPatch.add(patch);
 				viewObjects.add(patch);
 			}
 			else if(i>=3&&i<6) {
-				CropJane patch= new CropJane(start+((i-3)*68), 260+space, 63, 50,"",new Color(200, 125, 10), null, i);
+				CropJane patch= new CropJane(start+((i-3)*68), 260+space, 63, 50,"",new Color(200, 125, 10), null, i, new CropImage());
+				patch.update();
 				farmPatch.add(patch);
 				viewObjects.add(patch);
 			}
 			else {
-				CropJane patch= new CropJane(start+((i-6)*68), 278+space+space, 63, 50, "",new Color(200, 125, 10), null,i);
+				CropJane patch= new CropJane(start+((i-6)*68), 278+space+space, 63, 50, "",new Color(200, 125, 10), null,i, new CropImage());
+				patch.update();
 				farmPatch.add(patch);
 				viewObjects.add(patch);
 				//
