@@ -48,7 +48,6 @@ public class PaneJenny extends Pane {
 
 	public void initAllObjects(List<Visible> viewObjects){
 		setSrc("milk");
-		
 		harvest = new Button(35, _HEIGHT - 30, 60, 25, "Harvest", Color.lightGray, new Action() {
 
 			public void act() {
@@ -74,6 +73,7 @@ public class PaneJenny extends Pane {
 		img = new Graphic(getX() + (_WIDTH - 160), getY() + 50, getSrc());
 		viewObjects.add(img);
 	}
+	
 	public String getSrc() {
 		return src;
 	}
