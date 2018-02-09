@@ -9,7 +9,7 @@ import guiTeacher.interfaces.DrawInstructions;
 public class CropImage implements DrawInstructions {
 
 	private int index;
-	Graphic image = new Graphic(0,0,63,50,"resources/farmPatch.PNG");
+	Graphic image = new Graphic(0,0,63,50,"resources/test.png");
 	
 	public CropImage() {
 		index=-1;
@@ -22,20 +22,30 @@ public class CropImage implements DrawInstructions {
 				//RescaleOp op = new RescaleOp(scaleFactor, 0, null)
 				//BufferedImage light = op.filter(image.getImage(), null);
 				g.setColor(new Color(0,0,0,30));
-//				g.drawImage(image.getImage(), 0, 0, null);
-				if(index!=-1) {
-					System.out.println("test "+index);	
-					g.drawImage(PlantJane.plants[index].getImage(), 0, 0, null);
-				}
 				g.fillRect(0, 0, 63, 50);
+					if(index==-1) {
+						//g.drawImage(image.getImage(), 0, 0, null);
+					}	
+					else if(index==0&& index==5) {
+						g.drawImage(PlantJane.plants[index].getImage(), 35, 0, null);
+					}
+					else {
+						g.drawImage(PlantJane.plants[index].getImage(), 15, 0, null);
+					}
 				//bufferedImage = op.filter(image.getImage(), null);
 
 			}
 			else {
-//				g.drawImage(image.getImage(), 0, 0, null);
-				if(index!=-1) {
-					g.drawImage(PlantJane.plants[index].getImage(), 0, 0, null);
+				if(index==-1) {
+					//g.drawImage(image.getImage(), 0, 0, null);
 				}
+				else if(index==0&& index==5) {
+					g.drawImage(PlantJane.plants[index].getImage(), 35, 0, null);
+				}
+				else {
+					g.drawImage(PlantJane.plants[index].getImage(), 15, 0, null);
+				}
+					
 			}
 			//				g.setColor(new Color(100+(int)(100*Math.random()),100+(int)(100*Math.random()),100+(int)(100*Math.random())));
 			//				g.fillRect(22, 0, WIDTH-23, HEIGHT-1);

@@ -87,6 +87,7 @@ public class SelectionPaneJane extends Pane {
 
 			public void act() {
 				SelectionPaneJane.this.setVisible(false);
+				FarmScreenAll.disableButton(true);
 
 			}
 		});
@@ -129,8 +130,48 @@ public class SelectionPaneJane extends Pane {
 				for(int i = 0; i <items.length; i++) {
 					if(items[i].isSelected()) {
 						SelectionPaneJane.this.setSeedSelected(i);
+						FarmScreenAll.farmPatch.get(index).setTime(items[i].getTime());
 						FarmScreenAll.farmPatch.get(index).crop(items[i].getImageIndex());
 						SelectionPaneJane.this.setVisible(false);
+						FarmScreenAll.farmPatch.get(index).setAction(new Action() {
+							
+							@Override
+							public void act() {
+								int dayLeft =FarmScreenAll.farmPatch.get(index).getLength()-FarmScreenAll.farmPatch.get(index).getCurrentTime();
+								FarmScreenAll.plantPane.setX(FarmScreenAll.farmPatch.get(index).getX()-250);
+								FarmScreenAll.plantPane.setY(FarmScreenAll.farmPatch.get(index).getY()-120);
+								FarmScreenAll.plantPane.setVisible(true);
+								//FarmScreenAll.plantPane.updateImg("resources/corn.png");
+								if(FarmScreenAll.farmPatch.get(index).getLength()!=FarmScreenAll.farmPatch.get(index).getCurrentTime()) {
+									FarmScreenAll.plantPane.getLabel().setText(dayLeft+" days until harvest");
+								FarmScreenAll.plantPane.getHarvest().setAction(new Action() {
+									@Override
+									public void act() {
+										FarmScreenAll.plantPane.getLabel().setText("Crop is not ready yet");
+										
+									}
+								});
+								}
+								else {
+									FarmScreenAll.plantPane.getLabel().setText("Crop is ready to harvest");
+									FarmScreenAll.plantPane.getHarvest().setAction(new Action() {
+										
+										@Override
+										public void act() {
+											FarmScreenAll.farmPatch.get(index).harvest(PlantJane.plants.length-1);
+											FarmScreenAll.plantPane.setVisible(false);
+											FarmScreenAll.disableButton(true);
+											//Inventory.invent.add(items[seedSelectedInd]);
+										}
+									} );
+								}
+								FarmScreenAll.plantPane.getItem().setText(items[seedSelectedInd].getName());
+								FarmScreenAll.plantPane.update();
+								FarmScreenAll.disableButton(false);
+								
+							}
+						});
+						FarmScreenAll.disableButton(true);
 					}
 				}
 				label.setText("Please select an item");

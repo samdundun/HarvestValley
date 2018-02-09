@@ -34,6 +34,7 @@ public class FarmScreenAll extends FullFunctionScreen {
 	
 
 	private Button test;
+	public static PaneJenny plantPane;
 	
 	public FarmScreenAll(int width, int height) {
 		super(width, height);
@@ -121,6 +122,11 @@ public class FarmScreenAll extends FullFunctionScreen {
 		animalPane.update();
 		viewObjects.add(animalPane);
 		animalPane.setVisible(false);
+		
+		plantPane = new PaneJenny(this, 400, 300);
+		plantPane.update();
+		viewObjects.add(plantPane);
+		plantPane.setVisible(false);
 	}
 	
 	private void addAnimalJenny(List<Visible> viewObjects, String src) {
@@ -167,5 +173,12 @@ public class FarmScreenAll extends FullFunctionScreen {
 				//
 			}
 		}
+	}
+
+	public static void disableButton(boolean b) {
+		for(int i=0; i<farmPatch.size(); i++) {
+			farmPatch.get(i).setEnabled(b);
+		}
+		
 	}
 }
