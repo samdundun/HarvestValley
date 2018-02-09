@@ -23,6 +23,7 @@ public class SelectionPaneJane extends Pane {
 	private int index;
 	private static final int _WIDTH = 225;
 	private static final int _HEIGHT = 210;
+	private Inventory invent;
 
 	public SelectionPaneJane(FocusController focusController, int x, int y) {
 		super(focusController, x, y, _WIDTH, _HEIGHT);
@@ -77,6 +78,8 @@ public class SelectionPaneJane extends Pane {
 	}
 
 	public void initAllObjects(List<Visible> viewObjects){
+		invent = new Inventory();
+		invent.load();
 		Item[] items = {new Item("Corn Seeds", "Great crop to grow all year round", 300, 0, 4),new Item("Pepper Seeds", "Spicy", 50, 1,1),
 				new Item("Potato Seeds", "Just like me", 150, 2, 3),new Item("Strawberry Seeds", "Sweeter than you", 100, 3,2),
 				new Item("Tomato Seeds", "Make some good ketchup", 200, 4,3),new Item("Wheat Seeds", "Not weed", 400, 5,5)};
@@ -161,7 +164,8 @@ public class SelectionPaneJane extends Pane {
 											FarmScreenAll.farmPatch.get(index).harvest(PlantJane.plants.length-1);
 											FarmScreenAll.plantPane.setVisible(false);
 											FarmScreenAll.disableButton(true);
-											//Inventory.invent.add(items[seedSelectedInd]);
+											invent.addItem(items[seedSelectedInd]);
+											invent.save();
 										}
 									} );
 								}
