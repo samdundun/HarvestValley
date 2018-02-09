@@ -123,7 +123,7 @@ public class SleepAlex extends FullFunctionScreen {//can use ImageTextButton, Cu
 			});
 			viewObjects.add(holder);
 		}
-		back = new Button(getWidth()-100, getHeight()-100,100, 100, Color.blue, new Action() {
+		back = new Button(getWidth()-100, getHeight()-100,100, 100, "",Color.blue, new Action() {
 			public void act() {
 				
 			}
