@@ -3,13 +3,10 @@ package game.farm;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
-import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.List;
 import game.farm.FarmScreenAll;
 
-import game.market.BuyingScreen;
-import game.market.Item;
 import guiTeacher.components.Action;
 import guiTeacher.components.Button;
 import guiTeacher.components.Graphic;
@@ -28,10 +25,8 @@ public class PaneJenny extends Pane {
 	private Graphic img;
 	private String src;
 	private TextLabel label;
-	private TextLabel item;
 	private int x;
 	private int y;
-	private List<Visible> viewObjects;
 
 	public PaneJenny(FocusController focusController, int x, int y) {
 		super(focusController, x, y, _WIDTH, _HEIGHT);
@@ -53,12 +48,10 @@ public class PaneJenny extends Pane {
 
 	public void initAllObjects(List<Visible> viewObjects){
 		setSrc("milk");
-		this.viewObjects=viewObjects;
 		harvest = new Button(35, _HEIGHT - 30, 60, 25, "Harvest", Color.lightGray, new Action() {
 
 			public void act() {
 				PaneJenny.this.setVisible(false);
-				FarmScreenAll.disableButton(true);
 			}
 		});
 		viewObjects.add(harvest);
@@ -68,44 +61,24 @@ public class PaneJenny extends Pane {
 			public void act() {
 				img.setVisible(false);
 				PaneJenny.this.setVisible(false);
-				FarmScreenAll.disableButton(true);
 			}
 		});
 		viewObjects.add(cancel);
 		
-		label = new TextLabel(15, 0, 200, 50, "You can harvest (one):");
+		label = new TextLabel(15, 0, 150, 50, "You can harvest (one):");
 		viewObjects.add(label);
-		item = new TextLabel(20, 80, 200, 50, "Item");
-		viewObjects.add(item);
-		img = new Graphic(getX() , getY() + 50, getSrc());
-		viewObjects.add(img);
 	}
 	
 	public void updateImg(List<Visible> viewObjects) {
-				img = new Graphic(_WIDTH + 240, _HEIGHT - 100, getSrc());
-				img = new Graphic((getWidth()/2) + 90, getHeight() - 100, getSrc());
-		 		viewObjects.add(img);
-		 	}
+		img = new Graphic(getX() + (_WIDTH - 160), getY() + 50, getSrc());
+		viewObjects.add(img);
+	}
+	
 	public String getSrc() {
 		return src;
 	}
 
 	public void setSrc(String src) {
 		this.src = "resources/" + src + ".png";
-	}
-	
-	public Button getHarvest() {
-		return harvest;
-	}
-
-	public Graphic getImg() {
-		return img;
-	}
-
-	public TextLabel getLabel() {
-		return label;
-	}
-	public TextLabel getItem() {
-		return item;
 	}
 }
