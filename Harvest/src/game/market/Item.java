@@ -14,13 +14,19 @@ import guiTeacher.interfaces.DrawInstructions;
 public class Item extends CustomImageButton implements Clickable{
 	
 
-	public static final Graphic[] items = {new Graphic(0,0,48,48,"resources/cornseeds.png"),
+	public static final Graphic[] ITEMS = {new Graphic(0,0,48,48,"resources/cornseeds.png"),
 			new Graphic(0,0,48,48,"resources/pepperseeds.png"),new Graphic(0,0,48,48,"resources/potatoseeds.png"),
 			new Graphic(0,0,48,48,"resources/strawberryseeds.png"),new Graphic(0,0,48,48,"resources/tomatoseeds.png"),
 			new Graphic(0,0,48,48,"resources/wheatseeds.png"), new Graphic(0,0,48,48,"resources/corn.png"),
 			new Graphic(0,0,48,48,"resources/pepper.png"),new Graphic(0,0,48,48,"resources/potato.png"),
 			new Graphic(0,0,48,48,"resources/strawberry.png"),new Graphic(0,0,48,48,"resources/tomato.png"),
-			new Graphic(0,0,48,48,"resources/wheat.png")};
+			new Graphic(0,0,48,48,"resources/wheat.png"),new Graphic(0,0,48,48,"resources/brownChicken.png"),
+			new Graphic(0,0,48,48,"resources/whiteChicken.png"),new Graphic(0,0,48,48,"resources/blackChicken.png"),
+			new Graphic(0,0,48,48,"resources/sheep.png"),new Graphic(0,0,48,48,"resources/cow.png"),
+			new Graphic(0,0,48,48,"resources/pig.png"),new Graphic(0,0,48,48,"resources/brownEgg.png"),
+			new Graphic(0,0,48,48,"resources/whiteEgg.png"),new Graphic(0,0,48,48,"resources/blackEgg.png"),
+			new Graphic(0,0,48,48,"resources/wool.png"),new Graphic(0,0,48,48,"resources/milk.png"),
+			new Graphic(0,0,48,48,"resources/meat.png")};
 	
 	private String name;
 	private int image;
@@ -47,7 +53,7 @@ public class Item extends CustomImageButton implements Clickable{
 	public Item(String name, String description, int value, int imageIndex, int time) {
 		super(0,0,48,48,new DrawInstructions() {
 
-			Graphic image = items[imageIndex];
+			Graphic image = ITEMS[imageIndex];
 
 			@Override
 			public void draw(Graphics2D g, boolean highlight) {
