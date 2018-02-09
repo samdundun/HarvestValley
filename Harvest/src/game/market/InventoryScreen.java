@@ -18,7 +18,6 @@ public class InventoryScreen extends FullFunctionScreen {
 	CustomArea description;
 	TextLabel amount;
 	private TextLabel gold;
-	private Button eat;
 	private Button discard;
 	private Graphic grid;
 	private Button exit;
@@ -30,7 +29,12 @@ public class InventoryScreen extends FullFunctionScreen {
 			new Item("Tomato Seeds", "Make some good ketchup", 200, 4,3),new Item("Wheat Seeds", "Not weed", 400, 5,5),new Item("Corn", "Corn \nFresh to eat", 10,6,4),
 			new Item("Pepper","Pepper \nSupah Hot Fire",20,7,1),new Item("Potato","Potato \nTime to make french fries",10,8,3),
 			new Item("Strawberry","Strawberry \nStraw + Berry??",10,9,2),new Item("Tomato", "Tomato \nGreat for salads", 10,10,3),
-			new Item("Wheat","Wheat \nJust plain old wheat",10,11,5)};
+			new Item("Wheat","Wheat \nJust plain old wheat",10,11,5),new Item("Brown Chicken", "Cluck cluck", 250, 12,1),new Item("White Chicken", "Cluck cluck", 250, 13,1),
+			new Item("Black Chicken", "Cluck cluck", 250, 14,1),new Item("Sheep", "BAAAAAAAAAAAH", 350, 15,2),
+			new Item("Cow", "Mooooooo", 500, 16,2),new Item("Pig", "SNORT SNORT", 250, 17,1),
+			new Item("Brown Eggs", "", 300, 18, 0),new Item("White Eggs", "", 50, 19,0),
+			new Item("Black Eggs", "", 150, 20, 0),new Item("Wool", "", 100, 21,0),
+			new Item("Milk", "", 200, 22,0),new Item("Meat", "", 400, 23,0)};
 
 
 
@@ -86,19 +90,6 @@ public class InventoryScreen extends FullFunctionScreen {
 		discard.setCurve(0, 0);
 		discard.update();
 		viewObjects.add(discard);
-
-		eat = new Button(460, 400, 100, 40, "EAT", new Action() {
-
-			@Override
-			public void act() {
-
-			}
-		});
-		eat.setBackground(Color.red);
-		eat.setActiveBorderColor(Color.white);
-		eat.setCurve(0, 0);
-		eat.update();
-		viewObjects.add(eat);
 
 		grid = new Graphic(100,180, "resources/inventory.png");
 		viewObjects.add(grid);
