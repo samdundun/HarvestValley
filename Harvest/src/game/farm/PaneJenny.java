@@ -27,6 +27,7 @@ public class PaneJenny extends Pane {
 	private TextLabel label;
 	private int x;
 	private int y;
+	private TextLabel item;
 
 	public PaneJenny(FocusController focusController, int x, int y) {
 		super(focusController, x, y, _WIDTH, _HEIGHT);
@@ -61,12 +62,16 @@ public class PaneJenny extends Pane {
 			public void act() {
 				img.setVisible(false);
 				PaneJenny.this.setVisible(false);
+				FarmScreenAll.disableButton(true);
 			}
 		});
 		viewObjects.add(cancel);
 		
 		label = new TextLabel(15, 0, 150, 50, "You can harvest (one):");
 		viewObjects.add(label);
+		
+		item = new TextLabel(15, 50, 150, 50, "");
+		viewObjects.add(item);
 	}
 	
 	public void updateImg(List<Visible> viewObjects) {
@@ -80,5 +85,20 @@ public class PaneJenny extends Pane {
 
 	public void setSrc(String src) {
 		this.src = "resources/" + src + ".png";
+	}
+
+	public TextLabel getLabel() {
+		// TODO Auto-generated method stub
+		return label;
+	}
+
+	public Button getHarvest() {
+		// TODO Auto-generated method stub
+		return harvest;
+	}
+
+	public TextLabel getItem() {
+		// TODO Auto-generated method stub
+		return item;
 	}
 }

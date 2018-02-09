@@ -152,6 +152,8 @@ public class SelectionPaneJane extends Pane {
 								int dayLeft =FarmScreenAll.farmPatch.get(index).getLength()-FarmScreenAll.farmPatch.get(index).getCurrentTime();
 								FarmScreenAll.plantPane.setX(FarmScreenAll.farmPatch.get(index).getX()-250);
 								FarmScreenAll.plantPane.setY(FarmScreenAll.farmPatch.get(index).getY()-120);
+								FarmScreenAll.plantPane.setSrc("corn");
+								FarmScreenAll.plantPane.updateImg(viewObjects);
 								FarmScreenAll.plantPane.setVisible(true);
 								//FarmScreenAll.plantPane.updateImg("resources/corn.png");
 								if(FarmScreenAll.farmPatch.get(index).getLength()!=FarmScreenAll.farmPatch.get(index).getCurrentTime()) {
