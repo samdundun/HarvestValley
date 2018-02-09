@@ -66,7 +66,7 @@ public class PaneJenny extends Pane {
 		cancel = new Button(120, _HEIGHT - 30, 60, 25, "Cancel", Color.lightGray, new Action() {
 
 			public void act() {
-				//img.setVisible(false);
+				img.setVisible(false);
 				PaneJenny.this.setVisible(false);
 				FarmScreenAll.disableButton(true);
 			}
@@ -77,8 +77,8 @@ public class PaneJenny extends Pane {
 		viewObjects.add(label);
 		item = new TextLabel(20, 80, 200, 50, "Item");
 		viewObjects.add(item);
-//		img = new Graphic(getX() , getY() + 50, getSrc());
-//		viewObjects.add(img);
+		img = new Graphic(getX() , getY() + 50, getSrc());
+		viewObjects.add(img);
 	}
 	
 	public void updateImg(List<Visible> viewObjects) {

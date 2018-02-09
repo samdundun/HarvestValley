@@ -18,7 +18,6 @@ public class InventoryScreen extends FullFunctionScreen {
 	CustomArea description;
 	TextLabel amount;
 	private TextLabel gold;
-	private Button eat;
 	private Button discard;
 	private Graphic grid;
 	private Button exit;
@@ -86,19 +85,6 @@ public class InventoryScreen extends FullFunctionScreen {
 		discard.setCurve(0, 0);
 		discard.update();
 		viewObjects.add(discard);
-
-		eat = new Button(460, 400, 100, 40, "EAT", new Action() {
-
-			@Override
-			public void act() {
-
-			}
-		});
-		eat.setBackground(Color.red);
-		eat.setActiveBorderColor(Color.white);
-		eat.setCurve(0, 0);
-		eat.update();
-		viewObjects.add(eat);
 
 		grid = new Graphic(100,180, "resources/inventory.png");
 		viewObjects.add(grid);
