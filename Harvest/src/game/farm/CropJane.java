@@ -55,7 +55,6 @@ public class CropJane extends CustomImageButton {
 	public void startGrowing() {
 		Thread grower = new Thread(new Runnable() {
 
-			@Override
 			public void run() {
 				currentTime=0;
 				for(int i = 0; i< length; i++) {
