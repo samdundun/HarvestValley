@@ -29,7 +29,6 @@ public class BoxJenny extends CustomImageButton implements Clickable{
 			public void act() {
 				FarmScreenAll.animalPane.setX(x + 100);
 				FarmScreenAll.animalPane.setY(y - 100);
-				FarmScreenAll.animalPane.setSrc("wool");
 				FarmScreenAll.animalPane.updateImg(viewObjects);
 				FarmScreenAll.animalPane.setVisible(true);
 				FarmScreenAll.animalPane.update();
