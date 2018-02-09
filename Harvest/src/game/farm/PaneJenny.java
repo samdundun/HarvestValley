@@ -81,20 +81,11 @@ public class PaneJenny extends Pane {
 //		viewObjects.add(img);
 	}
 	
-	public void updateImg(String src) {
-		img = new Graphic(getX() , getY() + 50, src);
-		this.viewObjects.add(img);
-		cancel.setAction(new Action() {
-			
-			@Override
-			public void act() {
-				img.setVisible(false);
-				PaneJenny.this.setVisible(false);
-				FarmScreenAll.disableButton(true);
-				
-			}
-		});
-	}
+	public void updateImg(List<Visible> viewObjects) {
+				img = new Graphic(_WIDTH + 240, _HEIGHT - 100, getSrc());
+				img = new Graphic((getWidth()/2) + 90, getHeight() - 100, getSrc());
+		 		viewObjects.add(img);
+		 	}
 	public String getSrc() {
 		return src;
 	}
