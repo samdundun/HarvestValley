@@ -9,7 +9,7 @@ import guiTeacher.interfaces.DrawInstructions;
 public class CropImage implements DrawInstructions {
 
 	private int index;
-	Graphic image = new Graphic(0,0,63,50,"resources/test.png");
+	private Graphic image; 
 	
 	public CropImage() {
 		index=-1;
@@ -17,6 +17,7 @@ public class CropImage implements DrawInstructions {
 
 	
 	public void draw(Graphics2D g, boolean highlight) {
+		image = new Graphic(0,0,63,50,"resources/farmPatch.png");
 		if(highlight){
 				float scaleFactor = 0.9f;
 				//RescaleOp op = new RescaleOp(scaleFactor, 0, null)
