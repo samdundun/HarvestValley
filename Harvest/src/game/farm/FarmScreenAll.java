@@ -8,6 +8,7 @@ import game.mainScreen.BoyCharacter;
 import game.mainScreen.GirlCharacter;
 import game.mainScreen.ImageButton;
 import game.market.BuyingScreen;
+import game.market.InventoryScreen;
 import game.market.Item;
 import guiTeacher.components.*;
 import guiTeacher.interfaces.Visible;
@@ -66,6 +67,7 @@ public class FarmScreenAll extends FullFunctionScreen {
 
 		shopJenny = new Button(90, 500, 80, 30, "Shop", new Color(230, 235, 210), new Action() {
 			public void act() {
+				MainMenu.game.shop = new BuyingScreen(getWidth(),getHeight());
 				MainMenu.game.setScreen(MainMenu.shop);
 
 			}
@@ -84,6 +86,7 @@ public class FarmScreenAll extends FullFunctionScreen {
 
 		itemJane = new Button(175, 500, 80, 30, "Inventory", new Color(230, 235, 210), new Action() {
 			public void act() {
+				MainMenu.game.inventory = new InventoryScreen(getWidth(),getHeight());
 				MainMenu.game.setScreen(MainMenu.inventory);
 
 			}
