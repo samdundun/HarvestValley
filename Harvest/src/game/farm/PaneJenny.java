@@ -71,7 +71,7 @@ public class PaneJenny extends Pane {
 		label = new TextLabel(15, 0, 150, 50, "You can harvest (one):");
 		viewObjects.add(label);
 		
-		item = new TextLabel(15, 50, 150, 50, "");
+		item = new TextLabel(80, 100, 150, 50, "");
 		viewObjects.add(item);
 	}
 	
