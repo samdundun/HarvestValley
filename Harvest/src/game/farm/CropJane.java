@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 
 import game.mainScreen.ImageButton;
+import game.market.Inventory;
 import game.market.Item;
 import guiTeacher.components.Action;
 import guiTeacher.components.Button;
@@ -20,6 +21,7 @@ public class CropJane extends CustomImageButton {
 	private int stage;
 	private int time;
 	private int currentTime;
+	private Inventory invent;
 	
 	public CropJane(int x, int y, int w, int h, String text, Color color, Action action, int i, CropImage image) {
 		super(x, y, w, h,image, new Action() {
@@ -37,6 +39,7 @@ public class CropJane extends CustomImageButton {
 	}
 	
 	public void crop(int i) {
+		changeAction();
 		imageIndx=i;
 		if(i==5) {
 			length=5;
@@ -48,6 +51,53 @@ public class CropJane extends CustomImageButton {
 		update();
 		startGrowing();
 	}
+	private void changeAction() {
+		invent = new Inventory();
+		invent.load();
+		this.setAction(new Action() {
+			
+			@Override
+			public void act() {
+				int dayLeft =FarmScreenAll.farmPatch.get(index).getLength()-FarmScreenAll.farmPatch.get(index).getCurrentTime();
+				FarmScreenAll.plantPane.setX(FarmScreenAll.farmPatch.get(index).getX()-250);
+				FarmScreenAll.plantPane.setY(FarmScreenAll.farmPatch.get(index).getY()-120);
+				FarmScreenAll.plantPane.setSrc("corn");
+				FarmScreenAll.plantPane.updateImg(FarmScreenAll.getView());
+				FarmScreenAll.plantPane.setVisible(true);
+				//FarmScreenAll.plantPane.updateImg("resources/corn.png");
+				if(FarmScreenAll.farmPatch.get(index).getLength()!=FarmScreenAll.farmPatch.get(index).getCurrentTime()) {
+					FarmScreenAll.plantPane.getLabel().setText(dayLeft+" days until harvest");
+				FarmScreenAll.plantPane.getHarvest().setAction(new Action() {
+					@Override
+					public void act() {
+						FarmScreenAll.plantPane.getLabel().setText("Crop is not ready yet");
+						
+					}
+				});
+				}
+				else {
+					FarmScreenAll.plantPane.getLabel().setText("Crop is ready to harvest");
+					FarmScreenAll.plantPane.getHarvest().setAction(new Action() {
+						
+						@Override
+						public void act() {
+							FarmScreenAll.farmPatch.get(index).harvest(PlantJane.plants.length-1);
+							FarmScreenAll.plantPane.setVisible(false);
+							FarmScreenAll.disableButton(true);
+							invent.addItem(SelectionPaneJane.items[FarmScreenAll.farmPatch.get(index).imageIndx+6]);
+							invent.save();
+						}
+					} );
+				}
+				FarmScreenAll.plantPane.getItem().setText(SelectionPaneJane.items[FarmScreenAll.farmPatch.get(index).imageIndx].getName());
+				FarmScreenAll.plantPane.update();
+				FarmScreenAll.disableButton(false);
+				
+			}
+		});
+		
+	}
+
 	public void harvest(int i) {
 		image.setIndex(i);
 		update();

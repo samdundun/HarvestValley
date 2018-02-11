@@ -14,7 +14,17 @@ import guiTeacher.interfaces.FocusController;
 import guiTeacher.interfaces.Visible;
 
 public class SelectionPaneJane extends Pane {
-
+	public static Item[] items = {new Item("Corn Seeds", "Great crop to grow all year round", 300, 0, 4),new Item("Pepper Seeds", "Spicy", 50, 1,1),
+			new Item("Potato Seeds", "Just like me", 150, 2, 3),new Item("Strawberry Seeds", "Sweeter than you", 100, 3,2),
+			new Item("Tomato Seeds", "Make some good ketchup", 200, 4,3),new Item("Wheat Seeds", "Not weed", 400, 5,5),new Item("Corn", "Fresh to eat", 10,6,4),
+			new Item("Pepper","Supah Hot Fire",20,7,1),new Item("Potato","Time to make french fries",10,8,3),
+			new Item("Strawberry","Berry??",10,9,2),new Item("Tomato", "Great for salads", 10,10,3),
+			new Item("Wheat","Just plain old wheat",10,11,5),new Item("Brown Chicken", "Cluck cluck", 250, 12,1),new Item("White Chicken", "Cluck cluck", 250, 13,1),
+			new Item("Black Chicken", "Cluck cluck", 250, 14,1),new Item("Sheep", "BAAAAAAAAAAAH", 350, 15,2),
+			new Item("Cow", "Mooooooo", 500, 16,2),new Item("Pig", "SNORT SNORT", 250, 17,1),
+			new Item("Brown Eggs", "", 300, 18, 0),new Item("White Eggs", "", 50, 19,0),
+			new Item("Black Eggs", "", 150, 20, 0),new Item("Wool", "", 100, 21,0),
+			new Item("Milk", "", 200, 22,0),new Item("Meat", "", 400, 23,0)};
 	private Button cancel;
 	private Button select;
 	private Graphic grid;
@@ -80,18 +90,7 @@ public class SelectionPaneJane extends Pane {
 	public void initAllObjects(List<Visible> viewObjects){
 		invent = new Inventory();
 		invent.load();
-		Item[] items = {new Item("Corn Seeds", "Great crop to grow all year round", 300, 0, 4),new Item("Pepper Seeds", "Spicy", 50, 1,1),
-				new Item("Potato Seeds", "Just like me", 150, 2, 3),new Item("Strawberry Seeds", "Sweeter than you", 100, 3,2),
-				new Item("Tomato Seeds", "Make some good ketchup", 200, 4,3),new Item("Wheat Seeds", "Not weed", 400, 5,5),new Item("Corn", "Fresh to eat", 10,6,4),
-				new Item("Pepper","Supah Hot Fire",20,7,1),new Item("Potato","Time to make french fries",10,8,3),
-				new Item("Strawberry","Berry??",10,9,2),new Item("Tomato", "Great for salads", 10,10,3),
-				new Item("Wheat","Just plain old wheat",10,11,5),new Item("Brown Chicken", "Cluck cluck", 250, 12,1),new Item("White Chicken", "Cluck cluck", 250, 13,1),
-				new Item("Black Chicken", "Cluck cluck", 250, 14,1),new Item("Sheep", "BAAAAAAAAAAAH", 350, 15,2),
-				new Item("Cow", "Mooooooo", 500, 16,2),new Item("Pig", "SNORT SNORT", 250, 17,1),
-				new Item("Brown Eggs", "", 300, 18, 0),new Item("White Eggs", "", 50, 19,0),
-				new Item("Black Eggs", "", 150, 20, 0),new Item("Wool", "", 100, 21,0),
-				new Item("Milk", "", 200, 22,0),new Item("Meat", "", 400, 23,0)};
-		
+
 		grid = new Graphic(11,22,280,150, "resources/seedPane.png");
 		viewObjects.add(0,grid);
 
@@ -145,47 +144,7 @@ public class SelectionPaneJane extends Pane {
 						FarmScreenAll.farmPatch.get(index).setTime(items[i].getTime());
 						FarmScreenAll.farmPatch.get(index).crop(items[i].getImageIndex());
 						SelectionPaneJane.this.setVisible(false);
-						FarmScreenAll.farmPatch.get(index).setAction(new Action() {
-							
-							@Override
-							public void act() {
-								int dayLeft =FarmScreenAll.farmPatch.get(index).getLength()-FarmScreenAll.farmPatch.get(index).getCurrentTime();
-								FarmScreenAll.plantPane.setX(FarmScreenAll.farmPatch.get(index).getX()-250);
-								FarmScreenAll.plantPane.setY(FarmScreenAll.farmPatch.get(index).getY()-120);
-								FarmScreenAll.plantPane.setSrc("corn");
-								FarmScreenAll.plantPane.updateImg(FarmScreenAll.getView());
-								FarmScreenAll.plantPane.setVisible(true);
-								//FarmScreenAll.plantPane.updateImg("resources/corn.png");
-								if(FarmScreenAll.farmPatch.get(index).getLength()!=FarmScreenAll.farmPatch.get(index).getCurrentTime()) {
-									FarmScreenAll.plantPane.getLabel().setText(dayLeft+" days until harvest");
-								FarmScreenAll.plantPane.getHarvest().setAction(new Action() {
-									@Override
-									public void act() {
-										FarmScreenAll.plantPane.getLabel().setText("Crop is not ready yet");
-										
-									}
-								});
-								}
-								else {
-									FarmScreenAll.plantPane.getLabel().setText("Crop is ready to harvest");
-									FarmScreenAll.plantPane.getHarvest().setAction(new Action() {
-										
-										@Override
-										public void act() {
-											FarmScreenAll.farmPatch.get(index).harvest(PlantJane.plants.length-1);
-											FarmScreenAll.plantPane.setVisible(false);
-											FarmScreenAll.disableButton(true);
-											invent.addItem(items[seedSelectedInd+6]);
-											invent.save();
-										}
-									} );
-								}
-								FarmScreenAll.plantPane.getItem().setText(items[seedSelectedInd].getName());
-								FarmScreenAll.plantPane.update();
-								FarmScreenAll.disableButton(false);
-								
-							}
-						});
+					
 						FarmScreenAll.disableButton(true);
 					}
 				}
