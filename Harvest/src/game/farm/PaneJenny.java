@@ -52,6 +52,7 @@ public class PaneJenny extends Pane {
 		harvest = new Button(35, _HEIGHT - 30, 60, 25, "Harvest", Color.lightGray, new Action() {
 
 			public void act() {
+				img.setVisible(false);
 				PaneJenny.this.setVisible(false);
 			}
 		});
@@ -100,5 +101,9 @@ public class PaneJenny extends Pane {
 	public TextLabel getItem() {
 		// TODO Auto-generated method stub
 		return item;
+	}
+	
+	public Graphic getImg() {
+		return img;
 	}
 }

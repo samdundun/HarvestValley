@@ -58,14 +58,15 @@ public class CropJane extends CustomImageButton {
 			
 			@Override
 			public void act() {
-				int dayLeft =FarmScreenAll.farmPatch.get(index).getLength()-FarmScreenAll.farmPatch.get(index).getCurrentTime();
-				FarmScreenAll.plantPane.setX(FarmScreenAll.farmPatch.get(index).getX()-250);
-				FarmScreenAll.plantPane.setY(FarmScreenAll.farmPatch.get(index).getY()-120);
+				CropJane currentPatch=FarmScreenAll.farmPatch.get(index);
+				int dayLeft =currentPatch.getLength()-currentPatch.getCurrentTime();
+				FarmScreenAll.plantPane.setX(currentPatch.getX()-250);
+				FarmScreenAll.plantPane.setY(currentPatch.getY()-120);
 				FarmScreenAll.plantPane.setSrc("corn");
 				FarmScreenAll.plantPane.updateImg(FarmScreenAll.getView());
 				FarmScreenAll.plantPane.setVisible(true);
 				//FarmScreenAll.plantPane.updateImg("resources/corn.png");
-				if(FarmScreenAll.farmPatch.get(index).getLength()!=FarmScreenAll.farmPatch.get(index).getCurrentTime()) {
+				if(currentPatch.getLength()!=currentPatch.getCurrentTime()) {
 					FarmScreenAll.plantPane.getLabel().setText(dayLeft+" days until harvest");
 				FarmScreenAll.plantPane.getHarvest().setAction(new Action() {
 					@Override
@@ -81,8 +82,9 @@ public class CropJane extends CustomImageButton {
 						
 						@Override
 						public void act() {
-							FarmScreenAll.farmPatch.get(index).harvest(PlantJane.plants.length-1);
+							currentPatch.harvest(PlantJane.plants.length-1);
 							FarmScreenAll.plantPane.setVisible(false);
+							FarmScreenAll.plantPane.getImg().setVisible(false);
 							FarmScreenAll.disableButton(true);
 							invent.addItem(SelectionPaneJane.items[FarmScreenAll.farmPatch.get(index).imageIndx+6]);
 							invent.save();

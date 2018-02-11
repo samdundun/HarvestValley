@@ -144,7 +144,6 @@ public class SelectionPaneJane extends Pane {
 						FarmScreenAll.farmPatch.get(index).setTime(items[i].getTime());
 						FarmScreenAll.farmPatch.get(index).crop(items[i].getImageIndex());
 						SelectionPaneJane.this.setVisible(false);
-					
 						FarmScreenAll.disableButton(true);
 					}
 				}
