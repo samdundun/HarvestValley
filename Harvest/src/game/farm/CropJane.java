@@ -41,6 +41,7 @@ public class CropJane extends CustomImageButton {
 	public void crop(int i) {
 		changeAction();
 		imageIndx=i;
+		time=SelectionPaneJane.items[i].getTime();
 		if(i==5) {
 			length=5;
 		}
@@ -59,10 +60,14 @@ public class CropJane extends CustomImageButton {
 			@Override
 			public void act() {
 				CropJane currentPatch=FarmScreenAll.farmPatch.get(index);
+				String cropName = SelectionPaneJane.items[currentPatch.imageIndx+6].getName().toLowerCase();
+				//String cropName = SelectionPaneJane.items[currentPatch.imageIndx].getName();
+				//cropName=cropName.substring(0, cropName.length()-5);
+				System.out.println(cropName);
 				int dayLeft =currentPatch.getLength()-currentPatch.getCurrentTime();
 				FarmScreenAll.plantPane.setX(currentPatch.getX()-250);
 				FarmScreenAll.plantPane.setY(currentPatch.getY()-120);
-				FarmScreenAll.plantPane.setSrc("corn");
+				FarmScreenAll.plantPane.setSrc(cropName);
 				FarmScreenAll.plantPane.updateImg(FarmScreenAll.getView());
 				FarmScreenAll.plantPane.setVisible(true);
 				//FarmScreenAll.plantPane.updateImg("resources/corn.png");
@@ -91,7 +96,7 @@ public class CropJane extends CustomImageButton {
 						}
 					} );
 				}
-				FarmScreenAll.plantPane.getItem().setText(SelectionPaneJane.items[FarmScreenAll.farmPatch.get(index).imageIndx].getName());
+				FarmScreenAll.plantPane.getItem().setText(cropName);
 				FarmScreenAll.plantPane.update();
 				FarmScreenAll.disableButton(false);
 				
@@ -108,10 +113,10 @@ public class CropJane extends CustomImageButton {
 		Thread grower = new Thread(new Runnable() {
 
 			public void run() {
-				currentTime=0;
+				currentTime=(time*3000)/length;
 				for(int i = 0; i< length; i++) {
 					try {
-						Thread.sleep(2000);
+						Thread.sleep(currentTime);
 					} catch (InterruptedException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
