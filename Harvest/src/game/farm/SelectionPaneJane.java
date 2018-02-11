@@ -101,7 +101,6 @@ public class SelectionPaneJane extends Pane {
 			public void act() {
 				SelectionPaneJane.this.setVisible(false);
 				FarmScreenAll.disableButton(true);
-
 			}
 		});
 		viewObjects.add(cancel);
@@ -119,36 +118,11 @@ public class SelectionPaneJane extends Pane {
 		else
 			addImages(0, 6, 0, 40, 55, 60, label);
 
-//		for(int i = 0; i <6; i++) {
-//			Item z=items[i];
-//			z.setAction(new Action() {
-//
-//				@Override
-//				public void act() {
-//					for(int i = 0; i < items.length;i++) {
-//						items[i].setSelected(false);
-//					}
-//					z.setSelected(true);
-//					label.setText(z.getName());
-//
-//				}
-//			});
-//
-//			z.setX(35+move*width);
-//			z.setY(startingHeight);
-//			move++;
-//			if(move == 3){
-//				move = 0;
-//				startingHeight = startingHeight+height;
-//			}
-//			viewObjects.add(z);
-//		}
-
 		select= new Button(35,_HEIGHT - 30, 60, 25, "Select",Color.lightGray, new Action() {
 
 			public void act() {
-				for(int i = 0; i <items.length; i++) {
-					if(items[i].isSelected()) {
+				for(int i = 0; i < items.length; i++) {
+					if(items[i].isSelected() && FarmScreenAll.getWhich().equals("crop")) {
 						SelectionPaneJane.this.setSeedSelected(i);
 						FarmScreenAll.farmPatch.get(index).setTime(items[i].getTime());
 						FarmScreenAll.farmPatch.get(index).crop(items[i].getImageIndex());

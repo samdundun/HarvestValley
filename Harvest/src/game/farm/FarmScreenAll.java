@@ -31,10 +31,9 @@ public class FarmScreenAll extends FullFunctionScreen {
 	public static AnimatedComponent girl;
 
 	private static final int animalLimit = 5;
-	private int currentAnimals;
 	private static String which;
 	public static PaneJenny animalPane;
-	private static ArrayList<BoxJenny> animalBox;
+	public static ArrayList<BoxJenny> animalBox;
 
 	private static List<Visible> viewObj;
 	public static PaneJenny plantPane;
@@ -50,7 +49,6 @@ public class FarmScreenAll extends FullFunctionScreen {
 	public void initAllObjects(List<Visible> viewObjects) {
 		which = "";
 		viewObj = viewObjects;
-		currentAnimals = 0;
 		farmPatch = new ArrayList<CropJane>();
 		animalBox = new ArrayList<BoxJenny>();
 		//animalBox = new ArrayList<Test>();
