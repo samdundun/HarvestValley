@@ -101,10 +101,21 @@ public class PaneJenny extends Pane {
 	public TextLabel getItem() {
 		// TODO Auto-generated method stub
 		return item;
+<<<<<<< HEAD
 	}
+=======
+	}
+
+>>>>>>> branch 'farm' of https://github.com/samdundun/HarvestValley.git
 	public void setIndex(int i) {
+<<<<<<< HEAD
 		this.i = i;
 	}
+=======
+		this.i = i;
+	}
+	
+>>>>>>> branch 'farm' of https://github.com/samdundun/HarvestValley.git
 	public Graphic getImg() {
 		return img;
 	}

@@ -27,13 +27,12 @@ public class BoxJenny extends CustomImageButton implements Clickable{
 		}, new Action() {
 			
 			public void act() {
-				FarmScreenAll.animalPane.setX(x + 100);
-				FarmScreenAll.animalPane.setY(y - 100);
-				FarmScreenAll.animalPane.setSrc("wool");
-				FarmScreenAll.animalPane.updateImg(viewObjects);
-				FarmScreenAll.animalPane.setVisible(true);
-				FarmScreenAll.animalPane.update();
-				FarmScreenAll.animalPane.setIndex(i);
+				FarmScreenAll.first.setX(x + 100);
+				FarmScreenAll.first.setY(y - 100);
+				FarmScreenAll.first.setVisible(true);
+				FarmScreenAll.first.update();
+				FarmScreenAll.first.setIndex(i);
+				FarmScreenAll.disableButton(false);
 			}
 		});
 	}
