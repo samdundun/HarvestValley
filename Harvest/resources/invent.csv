@@ -8,6 +8,7 @@ Pepper,Supah Hot Fire,20,7,1
 Strawberry,Berry??,10,9,2
 Tomato,Great for salads,10,10,3
 Wheat,Just plain old wheat,10,11,5
+<<<<<<< HEAD
 =======
 <<<<<<< HEAD
 150
@@ -111,3 +112,9 @@ Pig,SNORT SNORT,250,17,1
 >>>>>>> branch 'develop' of https://github.com/samdundun/HarvestValley.git
 >>>>>>> branch 'farm' of https://github.com/samdundun/HarvestValley.git
 >>>>>>> branch 'farm' of https://github.com/samdundun/HarvestValley.git
+=======
+Wheat,Just plain old wheat,10,11,5
+Wheat,Just plain old wheat,10,11,5
+Pepper,Supah Hot Fire,20,7,1
+Potato,Time to make french fries,10,8,3
+>>>>>>> refs/heads/develop
