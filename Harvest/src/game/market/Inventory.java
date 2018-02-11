@@ -38,7 +38,6 @@ public class Inventory {
 
 		invent = new ArrayList<Item>();
 		amount = new int[ITEMS.length];
-
 	}
 
 	public void addBasics() {	

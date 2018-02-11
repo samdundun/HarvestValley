@@ -188,7 +188,6 @@ public class SelectionPaneJane extends Pane {
 			}
 			viewObjects.add(z);
 		}
-<<<<<<< HEAD
 
 		select= new Button(35,_HEIGHT - 30, 60, 25, "Select",Color.lightGray, new Action() {
 
@@ -205,8 +204,6 @@ public class SelectionPaneJane extends Pane {
 
 			}});
 		viewObjects.add(select);
-=======
->>>>>>> branch 'farm' of https://github.com/samdundun/HarvestValley.git
 	}
 
 	public int setSeedSelected(int i) {
