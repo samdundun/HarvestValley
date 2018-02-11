@@ -13,7 +13,7 @@ import guiTeacher.interfaces.Visible;
 
 public class BoxJenny extends CustomImageButton implements Clickable{
 
-	public BoxJenny(int x, int y, String imageAddress, Action action, List<Visible> viewObjects) {
+	public BoxJenny(int x, int y, String imageAddress, Action action, List<Visible> viewObjects, int i) {
 		super(x, y, new Graphic(0,0,imageAddress).getWidth(), new Graphic(0,0,imageAddress).getHeight(), new DrawInstructions() {
 			Graphic image = new Graphic(0,0,imageAddress);
 
@@ -33,6 +33,7 @@ public class BoxJenny extends CustomImageButton implements Clickable{
 				FarmScreenAll.animalPane.updateImg(viewObjects);
 				FarmScreenAll.animalPane.setVisible(true);
 				FarmScreenAll.animalPane.update();
+				FarmScreenAll.animalPane.setIndex(i);
 			}
 		});
 	}

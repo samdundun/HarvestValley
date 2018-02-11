@@ -11,6 +11,7 @@ import game.market.BuyingScreen;
 import game.market.InventoryScreen;
 import game.market.Item;
 import guiTeacher.components.*;
+import guiTeacher.interfaces.FocusController;
 import guiTeacher.interfaces.Visible;
 import guiTeacher.userInterfaces.FullFunctionScreen;
 import harvest.MainMenu;
@@ -22,6 +23,7 @@ public class FarmScreenAll extends FullFunctionScreen {
 	private Button menuJenny;
 	private Button itemJane;
 	public static SelectionPaneJane pane;
+	public static SelectionPaneJane second;
 	private ImageButton sleepAlex;
 	public static ArrayList<CropJane> farmPatch;
 
@@ -32,7 +34,6 @@ public class FarmScreenAll extends FullFunctionScreen {
 	private int currentAnimals;
 	public static PaneJenny animalPane;
 	private ArrayList<BoxJenny> animalBox;
-	
 
 	private Button test;
 	private static List<Visible> viewObj;
@@ -51,6 +52,7 @@ public class FarmScreenAll extends FullFunctionScreen {
 		currentAnimals = 0;
 		farmPatch = new ArrayList<CropJane>();
 		animalBox = new ArrayList<BoxJenny>();
+		//animalBox = new ArrayList<Test>();
 
 		back = new Graphic(0, 0, "resources/farm.PNG");
 		viewObjects.add(back);
@@ -122,11 +124,13 @@ public class FarmScreenAll extends FullFunctionScreen {
  		}
  		
 		addfarmingPatchJane(viewObjects);
+		
+		
 		pane = new SelectionPaneJane(this, 400, 300);
 		pane.update();
 		viewObjects.add(pane);
 		pane.setVisible(false);
-
+		
 		animalPane = new PaneJenny(this, 400, 300);
 		animalPane.update();
 		viewObjects.add(animalPane);
@@ -136,21 +140,26 @@ public class FarmScreenAll extends FullFunctionScreen {
 		plantPane.update();
 		viewObjects.add(plantPane);
 		plantPane.setVisible(false);
+		
+		second = new SelectionPaneJane(this, 400, 300);
+		second.update();
+		viewObjects.add(second);
+		second.setVisible(false);
 	}
 	
 	private void addAnimalJenny(List<Visible> viewObjects, String src) {
-		currentAnimals++;
 		int start = 40;
 		int space = 150;
 
 		if(currentAnimals <= animalLimit) {
 			if(currentAnimals < 4) {
-				BoxJenny box = new BoxJenny(start + ((currentAnimals - 1) * 130), 150, "resources/cow.png", null, viewObjects);
+				BoxJenny box = new BoxJenny(start + ((currentAnimals - 1) * 130), 150, "resources/cow.png", null, viewObjects, currentAnimals);
+				box.setEnabled(true);
 				animalBox.add(box);
 				viewObjects.add(box);
 			}
 			else{
-				BoxJenny box = new BoxJenny(start + ((currentAnimals - 4) * 130), 150 + space, src, null, viewObjects);
+				BoxJenny box = new BoxJenny(start + ((currentAnimals - 4) * 130), 150 + space, src, null, viewObjects, currentAnimals);
 				animalBox.add(box);
 				viewObjects.add(box);
 			}

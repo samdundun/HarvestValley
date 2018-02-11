@@ -28,6 +28,7 @@ public class PaneJenny extends Pane {
 	private int x;
 	private int y;
 	private TextLabel item;
+	private int i;
 
 	public PaneJenny(FocusController focusController, int x, int y) {
 		super(focusController, x, y, _WIDTH, _HEIGHT);
@@ -48,7 +49,6 @@ public class PaneJenny extends Pane {
 	}
 
 	public void initAllObjects(List<Visible> viewObjects){
-		setSrc("milk");
 		harvest = new Button(35, _HEIGHT - 30, 60, 25, "Harvest", Color.lightGray, new Action() {
 
 			public void act() {
@@ -68,7 +68,7 @@ public class PaneJenny extends Pane {
 		});
 		viewObjects.add(cancel);
 		
-		label = new TextLabel(15, 0, 150, 50, "You can harvest (one):");
+		label = new TextLabel(15, 0, 150, 50, "");
 		viewObjects.add(label);
 		
 		item = new TextLabel(80, 100, 150, 50, "");
@@ -102,8 +102,14 @@ public class PaneJenny extends Pane {
 		// TODO Auto-generated method stub
 		return item;
 	}
+<<<<<<< HEAD
+
+	public void setIndex(int i) {
+		this.i = i;
+=======
 	
 	public Graphic getImg() {
 		return img;
+>>>>>>> branch 'farm' of https://github.com/samdundun/HarvestValley.git
 	}
 }
