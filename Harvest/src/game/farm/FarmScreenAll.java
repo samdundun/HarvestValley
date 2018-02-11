@@ -23,7 +23,7 @@ public class FarmScreenAll extends FullFunctionScreen {
 	private Button menuJenny;
 	private Button itemJane;
 	public static SelectionPaneJane pane;
-	public static SelectionPaneJane second;
+	public static SelectionPaneJane first;
 	private ImageButton sleepAlex;
 	public static ArrayList<CropJane> farmPatch;
 
@@ -32,10 +32,10 @@ public class FarmScreenAll extends FullFunctionScreen {
 
 	private static final int animalLimit = 5;
 	private int currentAnimals;
+	private static String which;
 	public static PaneJenny animalPane;
-	private ArrayList<BoxJenny> animalBox;
+	private static ArrayList<BoxJenny> animalBox;
 
-	private Button test;
 	private static List<Visible> viewObj;
 	public static PaneJenny plantPane;
 	
@@ -48,6 +48,7 @@ public class FarmScreenAll extends FullFunctionScreen {
 	}
 
 	public void initAllObjects(List<Visible> viewObjects) {
+		which = "";
 		viewObj = viewObjects;
 		currentAnimals = 0;
 		farmPatch = new ArrayList<CropJane>();
@@ -56,14 +57,6 @@ public class FarmScreenAll extends FullFunctionScreen {
 
 		back = new Graphic(0, 0, "resources/farm.PNG");
 		viewObjects.add(back);
-
-		test = new Button(400, 500, 80, 30, "test", new Color(230, 235, 210), new Action() {
-			public void act() {
-				addAnimalJenny(viewObjects, "resources/pig.png");
-			}
-		});
-		viewObjects.add(test);
-		addAnimalJenny(viewObjects, "resources/brownChicken.png");
 
 		menuJenny = new Button(5, 500, 80, 30, "Menu", new Color(230, 235, 210), new Action() {
 			public void act() {
@@ -124,42 +117,45 @@ public class FarmScreenAll extends FullFunctionScreen {
  		}
  		
 		addfarmingPatchJane(viewObjects);
-		
+		addAnimalJenny(viewObjects);
 		
 		pane = new SelectionPaneJane(this, 400, 300);
+		setWhich("crop");
 		pane.update();
 		viewObjects.add(pane);
 		pane.setVisible(false);
-		
-		animalPane = new PaneJenny(this, 400, 300);
-		animalPane.update();
-		viewObjects.add(animalPane);
-		animalPane.setVisible(false);
 		
 		plantPane = new PaneJenny(this, 400, 300);
 		plantPane.update();
 		viewObjects.add(plantPane);
 		plantPane.setVisible(false);
 		
-		second = new SelectionPaneJane(this, 400, 300);
-		second.update();
-		viewObjects.add(second);
-		second.setVisible(false);
+		first = new SelectionPaneJane(this, 400, 300);
+		setWhich("animal");
+		first.update();
+		viewObjects.add(first);
+		first.setVisible(false);
+		
+		animalPane = new PaneJenny(this, 400, 300);
+		animalPane.update();
+		viewObjects.add(animalPane);
+		animalPane.setVisible(false);
 	}
 	
-	private void addAnimalJenny(List<Visible> viewObjects, String src) {
-		int start = 40;
+	private void addAnimalJenny(List<Visible> viewObjects) {
+		int start = 30;
 		int space = 150;
 
-		if(currentAnimals <= animalLimit) {
-			if(currentAnimals < 4) {
-				BoxJenny box = new BoxJenny(start + ((currentAnimals - 1) * 130), 150, "resources/cow.png", null, viewObjects, currentAnimals);
-				box.setEnabled(true);
+		for(int i = 0; i < animalLimit; i++) {
+			if(i < 3) {
+				BoxJenny box = new BoxJenny(start + (i * 150), 140, "resources/nothing.png", null, viewObjects, i);
+				box.update();
 				animalBox.add(box);
 				viewObjects.add(box);
 			}
 			else{
-				BoxJenny box = new BoxJenny(start + ((currentAnimals - 4) * 130), 150 + space, src, null, viewObjects, currentAnimals);
+				BoxJenny box = new BoxJenny(start + ((i - 3) * 150), 140 + space, "resources/nothing.png", null, viewObjects, i);
+				box.update();
 				animalBox.add(box);
 				viewObjects.add(box);
 			}
@@ -197,6 +193,18 @@ public class FarmScreenAll extends FullFunctionScreen {
 		for(int i=0; i<farmPatch.size(); i++) {
 			farmPatch.get(i).setEnabled(b);
 		}
+		for(int j=0; j<animalBox.size(); j++) {
+			animalBox.get(j).setEnabled(b);
+		}
 		
+	}
+
+	public static String getWhich() {
+		// TODO Auto-generated method stub
+		return which;
+	}
+
+	public void setWhich(String s) {
+		which = s;
 	}
 }
