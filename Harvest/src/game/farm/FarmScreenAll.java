@@ -23,27 +23,24 @@ public class FarmScreenAll extends FullFunctionScreen {
 	private Button shopJenny;
 	private Button menuJenny;
 	private Button itemJane;
+	private ImageButton sleepAlex;
+	private static String which;
+	private static final int animalLimit = 5;
+	private static List<Visible> viewObj;
+	
 	public static SelectionPaneJane pane;
 	public static SelectionPaneJane first;
-	private ImageButton sleepAlex;
+
 	public static ArrayList<CropJane> farmPatch;
+	private ArrayList<EmptyPatch> emptyFarmPatch;
+	public static ArrayList<BoxJenny> animalBox;
 
 	public static AnimatedComponent boy;
 	public static AnimatedComponent girl;
 
-<<<<<<< HEAD
-	private static final int animalLimit = 5;
-=======
-	private static final int animalLimit = 5;
-	private int currentAnimals;
-	private ArrayList<EmptyPatch> emptyFarmPatch;
->>>>>>> branch 'farm' of https://github.com/samdundun/HarvestValley.git
-	private static String which;
 	public static PaneJenny animalPane;
-	public static ArrayList<BoxJenny> animalBox;
-
-	private static List<Visible> viewObj;
 	public static PaneJenny plantPane;
+
 	
 	public FarmScreenAll(int width, int height) {
 		super(width, height);
