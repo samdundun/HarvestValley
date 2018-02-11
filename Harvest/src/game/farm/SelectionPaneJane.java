@@ -116,6 +116,7 @@ public class SelectionPaneJane extends Pane {
 
 				@Override
 				public void act() {
+					System.out.println(z.getName());
 					for(int i = 0; i < items.length;i++) {
 						items[i].setSelected(false);
 					}
@@ -141,7 +142,6 @@ public class SelectionPaneJane extends Pane {
 				for(int i = 0; i <items.length; i++) {
 					if(items[i].isSelected()) {
 						SelectionPaneJane.this.setSeedSelected(i);
-						FarmScreenAll.farmPatch.get(index).setTime(items[i].getTime());
 						FarmScreenAll.farmPatch.get(index).crop(items[i].getImageIndex());
 						SelectionPaneJane.this.setVisible(false);
 						FarmScreenAll.disableButton(true);
