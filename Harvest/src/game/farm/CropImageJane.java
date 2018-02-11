@@ -6,12 +6,12 @@ import java.awt.Graphics2D;
 import guiTeacher.components.Graphic;
 import guiTeacher.interfaces.DrawInstructions;
 
-public class CropImage implements DrawInstructions {
+public class CropImageJane implements DrawInstructions {
 
 	private int index;
 	private Graphic image; 
 	
-	public CropImage() {
+	public CropImageJane() {
 		index=-1;
 	}
 
@@ -25,7 +25,7 @@ public class CropImage implements DrawInstructions {
 				g.setColor(new Color(0,0,0,30));
 				g.fillRect(0, 0, 63, 50);
 					if(index==-1) {
-						//g.drawImage(image.getImage(), 0, 0, null);
+						g.drawImage(image.getImage(), 0, 0, null);
 					}	
 					else if(index==0&& index==5) {
 						g.drawImage(PlantJane.plants[index].getImage(), 35, 0, null);
@@ -38,7 +38,7 @@ public class CropImage implements DrawInstructions {
 			}
 			else {
 				if(index==-1) {
-					//g.drawImage(image.getImage(), 0, 0, null);
+					g.drawImage(image.getImage(), 0, 0, null);
 				}
 				else if(index==0&& index==5) {
 					g.drawImage(PlantJane.plants[index].getImage(), 35, 0, null);

@@ -1,6 +1,7 @@
 package game.farm;
 
 import java.awt.Color;
+import java.awt.Container;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,7 +31,13 @@ public class FarmScreenAll extends FullFunctionScreen {
 	public static AnimatedComponent boy;
 	public static AnimatedComponent girl;
 
+<<<<<<< HEAD
 	private static final int animalLimit = 5;
+=======
+	private static final int animalLimit = 5;
+	private int currentAnimals;
+	private ArrayList<EmptyPatch> emptyFarmPatch;
+>>>>>>> branch 'farm' of https://github.com/samdundun/HarvestValley.git
 	private static String which;
 	public static PaneJenny animalPane;
 	public static ArrayList<BoxJenny> animalBox;
@@ -50,6 +57,7 @@ public class FarmScreenAll extends FullFunctionScreen {
 		which = "";
 		viewObj = viewObjects;
 		farmPatch = new ArrayList<CropJane>();
+		emptyFarmPatch = new ArrayList<EmptyPatch>();
 		animalBox = new ArrayList<BoxJenny>();
 		//animalBox = new ArrayList<Test>();
 
@@ -166,23 +174,22 @@ public class FarmScreenAll extends FullFunctionScreen {
 		int space = 77;
 		for(int i=0; i<9; i++) {
 			if(i<3) {
-				CropJane patch= new CropJane(start+(i*68), 253, 63, 50, "",new Color(200, 125, 10), null, i, new CropImage());
+				CropJane patch= new CropJane(start+(i*68), 253, 63, 50, "",new Color(200, 125, 10), null, i, new CropImageJane());
 				patch.update();
 				farmPatch.add(patch);
 				viewObjects.add(patch);
 			}
 			else if(i>=3&&i<6) {
-				CropJane patch= new CropJane(start+((i-3)*68), 260+space, 63, 50,"",new Color(200, 125, 10), null, i, new CropImage());
+				CropJane patch= new CropJane(start+((i-3)*68), 260+space, 63, 50,"",new Color(200, 125, 10), null, i, new CropImageJane());
 				patch.update();
 				farmPatch.add(patch);
 				viewObjects.add(patch);
 			}
 			else {
-				CropJane patch= new CropJane(start+((i-6)*68), 278+space+space, 63, 50, "",new Color(200, 125, 10), null,i, new CropImage());
-				patch.update();
-				farmPatch.add(patch);
-				viewObjects.add(patch);
-				//
+				EmptyPatch emptyPatch= new EmptyPatch(start+((i-6)*68), 278+space+space, 63, 50, "For Sell",new Color(200, 125, 10), null,i);
+				emptyPatch.update();
+				emptyFarmPatch.add(emptyPatch);
+				viewObjects.add(emptyPatch);
 			}
 		}
 	}

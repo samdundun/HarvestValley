@@ -102,7 +102,6 @@ public class PaneJenny extends Pane {
 		// TODO Auto-generated method stub
 		return item;
 	}
-
 	public void setIndex(int i) {
 		this.i = i;
 	}
