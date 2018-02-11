@@ -102,8 +102,14 @@ public class PaneJenny extends Pane {
 		// TODO Auto-generated method stub
 		return item;
 	}
+<<<<<<< HEAD
 
 	public void setIndex(int i) {
 		this.i = i;
+=======
+	
+	public Graphic getImg() {
+		return img;
+>>>>>>> branch 'farm' of https://github.com/samdundun/HarvestValley.git
 	}
 }
