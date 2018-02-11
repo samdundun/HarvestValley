@@ -35,13 +35,19 @@ public class FarmScreenAll extends FullFunctionScreen {
 	
 
 	private Button test;
+	private static List<Visible> viewObj;
 	public static PaneJenny plantPane;
 	
 	public FarmScreenAll(int width, int height) {
 		super(width, height);
 	}
+	
+	public static List<Visible> getView(){
+		return viewObj;
+	}
 
 	public void initAllObjects(List<Visible> viewObjects) {
+		viewObj = viewObjects;
 		currentAnimals = 0;
 		farmPatch = new ArrayList<CropJane>();
 		animalBox = new ArrayList<BoxJenny>();
