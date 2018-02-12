@@ -75,8 +75,8 @@ public class SelectionPaneJane extends Pane {
 			}
 		});
 		viewObjects.add(cancel);
-
-		TextLabel label = new TextLabel(15, 0, 150, 50, "");
+		
+		TextLabel label = new TextLabel(15, 0, 150, 50, "Please select an item");
 		viewObjects.add(label);
 
 		//		int move = 0;
@@ -94,8 +94,7 @@ public class SelectionPaneJane extends Pane {
 			public void act() {
 				for(int i = 0; i < items.length; i++) {
 					if(items[i].isSelected()) {
-						System.out.println(items[i]);
-						if(FarmScreenAll.getWhich().equals("crop")) {
+						if(items[i].getImageIndex() < 6) {
 							SelectionPaneJane.this.setSeedSelected(i);
 							FarmScreenAll.farmPatch.get(index).setTime(items[i].getTime());
 							FarmScreenAll.farmPatch.get(index).crop(items[i].getImageIndex());
@@ -103,9 +102,9 @@ public class SelectionPaneJane extends Pane {
 							FarmScreenAll.disableButton(true);
 						}
 						else {
-							System.out.println("JANE");
+							System.out.println(FarmScreenAll.getWhich());
 							animalIdx = i;
-							animalImg = game.market.Item.getGraphic()[animalIdx].getImageLocation();
+							setSrc(game.market.Item.getGraphic()[animalIdx].getImageLocation());
 							FarmScreenAll.animalBox.get(index).changeAction();
 							SelectionPaneJane.this.setVisible(false);
 							FarmScreenAll.disableButton(true);
@@ -119,19 +118,21 @@ public class SelectionPaneJane extends Pane {
 	}
 
 	public void addImages(int start, int end, int move, int startingHeight, int width, int height,TextLabel label) {
-		for(int i = start; i < end; i++) {
+		invent.sort();
+		ArrayList<Item> seeds=invent.getSeedInventory();
+		System.out.println(seeds);
+		for(int i = 0; i < seeds.size(); i++) {
 			Item z=items[i];
 			z.setAction(new Action() {
 
 				@Override
 				public void act() {
-					System.out.println(z.getName());
 					for(int i = 0; i < items.length;i++) {
 						items[i].setSelected(false);
 					}
+					System.out.println(z.getName());
 					z.setSelected(true);
 					label.setText(z.getName());
-
 				}
 			});
 
@@ -144,22 +145,6 @@ public class SelectionPaneJane extends Pane {
 			}
 			viewObjects.add(z);
 		}
-
-		select= new Button(35,_HEIGHT - 30, 60, 25, "Select",Color.lightGray, new Action() {
-
-			public void act() {
-				for(int i = 0; i <items.length; i++) {
-					if(items[i].isSelected()) {
-						SelectionPaneJane.this.setSeedSelected(i);
-						FarmScreenAll.farmPatch.get(index).crop(items[i].getImageIndex());
-						SelectionPaneJane.this.setVisible(false);
-						FarmScreenAll.disableButton(true);
-					}
-				}
-				label.setText("Please select an item");
-
-			}});
-		viewObjects.add(select);
 	}
 
 	public int setSeedSelected(int i) {
@@ -174,6 +159,10 @@ public class SelectionPaneJane extends Pane {
 
 	}
 
+	public void setSrc(String s) {
+		animalImg = s;
+	}
+	
 	public static String getSrc() {
 		return animalImg;
 	}

@@ -11,25 +11,26 @@ import java.util.Scanner;
 
 import guiPlayer.Book;
 import guiTeacher.components.Graphic;
+import harvest.MainMenu;
 
-public class Inventory {
+public class Inventory implements game.farm.seedSelection {
 
 	public static Scanner in;
 	private int[] amount;
 	private ArrayList<Item> invent;
 	private int gold;
 
-	public static final Item[] ITEMS = {new Item("Corn Seeds", "Great crop to grow all year round", 300, 0, 4),new Item("Pepper Seeds", "Spicy", 50, 1,1),
+	public static final Item[] ITEMS = {new Item("Corn Seeds", "Great crop to grow all year round", 250, 0, 4),new Item("Pepper Seeds", "Spicy", 50, 1,1),
 			new Item("Potato Seeds", "Just like me", 150, 2, 3),new Item("Strawberry Seeds", "Sweeter than you", 100, 3,2),
-			new Item("Tomato Seeds", "Make some good ketchup", 200, 4,3),new Item("Wheat Seeds", "Not weed", 400, 5,5),new Item("Corn", "Fresh to eat", 10,6,4),
-			new Item("Pepper","Supah Hot Fire",20,7,1),new Item("Potato","Time to make french fries",10,8,3),
-			new Item("Strawberry","Berry??",10,9,2),new Item("Tomato", "Great for salads", 10,10,3),
-			new Item("Wheat","Just plain old wheat",10,11,5),new Item("Brown Chicken", "Cluck cluck", 250, 12,1),new Item("White Chicken", "Cluck cluck", 250, 13,1),
+			new Item("Tomato Seeds", "Make some good ketchup", 200, 4,3),new Item("Wheat Seeds", "Not weed", 300, 5,5),new Item("Corn", "Fresh to eat", 300,6,4),
+			new Item("Pepper","Supah Hot Fire",60,7,1),new Item("Potato","Time to make french fries",180,8,3),
+			new Item("Strawberry","Berry??",120,9,2),new Item("Tomato", "Great for salads", 240,10,3),
+			new Item("Wheat","Just plain old wheat",360,11,5),new Item("Brown Chicken", "Cluck cluck", 250, 12,1),new Item("White Chicken", "Cluck cluck", 250, 13,1),
 			new Item("Black Chicken", "Cluck cluck", 250, 14,1),new Item("Sheep", "BAAAAAAAAAAAH", 350, 15,2),
-			new Item("Cow", "Mooooooo", 500, 16,2),new Item("Pig", "SNORT SNORT", 250, 17,1),
-			new Item("Brown Eggs", "", 300, 18, 0),new Item("White Eggs", "", 50, 19,0),
-			new Item("Black Eggs", "", 150, 20, 0),new Item("Wool", "", 100, 21,0),
-			new Item("Milk", "", 200, 22,0),new Item("Meat", "", 400, 23,0)};
+			new Item("Cow", "Mooooooo", 400, 16,2),new Item("Pig", "SNORT SNORT", 450, 17,1),
+			new Item("Brown Eggs", "", 200, 18, 0),new Item("White Eggs", "", 200, 19,0),
+			new Item("Black Eggs", "", 200, 20, 0),new Item("Wool", "", 300, 21,0),
+			new Item("Milk", "", 350, 22,0),new Item("Meat", "", 500, 23,0)};
 
 	//image index
 	//cornseed,pepperseed,potatoseed,strawberryseed,tomatoseed,wheatseed,corn,pepper,potato,strawberry,tomato,wheat
@@ -45,6 +46,7 @@ public class Inventory {
 		addItem(ITEMS[1]);
 		addItem(ITEMS[2]);
 		addItem(ITEMS[3]);
+		setGold(500);
 		//		addItem(items[4]);
 		//		addItem(items[5]);
 		//		addItem(items[6]);
@@ -147,8 +149,10 @@ public class Inventory {
 
 
 				String[] param = line.split(",");
-				if(param.length == 1) {
+				if(param.length == 2) {
 					this.setGold(Integer.parseInt(param[0]));
+					MainMenu.isGirl = Boolean.parseBoolean(param[1]);
+					System.out.println(MainMenu.isGirl);
 				}
 				else {
 					invent.add(new Item(param[0],param[1],Integer.parseInt(param[2]), Integer.parseInt(param[3]), Integer.parseInt(param[4])));
@@ -165,7 +169,7 @@ public class Inventory {
 	public void save() {
 		try{    
 			FileWriter fw=new FileWriter("resources/invent.csv");
-			fw.write(Integer.toString(this.getGold())+"\n");
+			fw.write(Integer.toString(this.getGold())+","+ MainMenu.isGirl +"\n");
 			for(Item b: invent){
 				fw.write(b+"\n");    	
 			}
@@ -183,6 +187,18 @@ public class Inventory {
 
 	public void setGold(int gold) {
 		this.gold = gold;
+	}
+
+	@Override
+	public ArrayList<Item> getSeedInventory() {
+		ArrayList<Item> seeds = new ArrayList<Item>();
+		for(Item i: invent) {
+			if(i.getImageIndex() < 6) {
+				seeds.add(i);
+			}
+		}
+		
+		return seeds;
 	}
 
 

@@ -24,18 +24,17 @@ public class InventoryScreen extends FullFunctionScreen {
 
 	private Inventory invent;
 
-	public static final Item[] items = {new Item("Corn Seeds", "Great crop to grow all year round", 300, 0, 4),new Item("Pepper Seeds", "Spicy", 50, 1,1),
+	public static final Item[] items = {new Item("Corn Seeds", "Great crop to grow all year round", 250, 0, 4),new Item("Pepper Seeds", "Spicy", 50, 1,1),
 			new Item("Potato Seeds", "Just like me", 150, 2, 3),new Item("Strawberry Seeds", "Sweeter than you", 100, 3,2),
-			new Item("Tomato Seeds", "Make some good ketchup", 200, 4,3),new Item("Wheat Seeds", "Not weed", 400, 5,5),new Item("Corn", "Fresh to eat", 10,6,4),
-			new Item("Pepper","Supah Hot Fire",20,7,1),new Item("Potato","Time to make french fries",10,8,3),
-			new Item("Strawberry","Berry??",10,9,2),new Item("Tomato", "Great for salads", 10,10,3),
-			new Item("Wheat","Just plain old wheat",10,11,5),new Item("Brown Chicken", "Cluck cluck", 250, 12,1),new Item("White Chicken", "Cluck cluck", 250, 13,1),
+			new Item("Tomato Seeds", "Make some good ketchup", 200, 4,3),new Item("Wheat Seeds", "Not weed", 300, 5,5),new Item("Corn", "Fresh to eat", 300,6,4),
+			new Item("Pepper","Supah Hot Fire",60,7,1),new Item("Potato","Time to make french fries",180,8,3),
+			new Item("Strawberry","Berry??",120,9,2),new Item("Tomato", "Great for salads", 240,10,3),
+			new Item("Wheat","Just plain old wheat",360,11,5),new Item("Brown Chicken", "Cluck cluck", 250, 12,1),new Item("White Chicken", "Cluck cluck", 250, 13,1),
 			new Item("Black Chicken", "Cluck cluck", 250, 14,1),new Item("Sheep", "BAAAAAAAAAAAH", 350, 15,2),
-			new Item("Cow", "Mooooooo", 500, 16,2),new Item("Pig", "SNORT SNORT", 250, 17,1),
-			new Item("Brown Eggs", "", 300, 18, 0),new Item("White Eggs", "", 50, 19,0),
-			new Item("Black Eggs", "", 150, 20, 0),new Item("Wool", "", 100, 21,0),
-			new Item("Milk", "", 200, 22,0),new Item("Meat", "", 400, 23,0)};
-
+			new Item("Cow", "Mooooooo", 400, 16,2),new Item("Pig", "SNORT SNORT", 450, 17,1),
+			new Item("Brown Eggs", "", 200, 18, 0),new Item("White Eggs", "", 200, 19,0),
+			new Item("Black Eggs", "", 200, 20, 0),new Item("Wool", "", 300, 21,0),
+			new Item("Milk", "", 350, 22,0),new Item("Meat", "", 500, 23,0)};
 
 
 	public InventoryScreen(int width, int height) {
@@ -81,6 +80,7 @@ public class InventoryScreen extends FullFunctionScreen {
 					if(i.isSelected() && invent.getAmountArray()[i.getImageIndex()] == 0) {
 						MainMenu.game.inventory = new InventoryScreen(getWidth(),getHeight());
 						MainMenu.game.setScreen(MainMenu.game.inventory);
+						i.setSelected(false);
 					}
 				}
 			}

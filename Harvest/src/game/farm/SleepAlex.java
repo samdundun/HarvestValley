@@ -200,6 +200,7 @@ public class SleepAlex extends FullFunctionScreen {//can use ImageTextButton, Cu
 		cropAnimalAndProductCount.add(blackEggs);
 		
 		int buyingPrice = 50;
+		//try similar solution for creating different button actions
 		for(int i = 0; i < 12;i++) {
 			System.out.println(cashFromCropAnimalProducts);
 			cashFromCropAnimalProducts.set(i, buyingPrice);
