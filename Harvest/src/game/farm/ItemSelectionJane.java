@@ -2,7 +2,7 @@ package game.farm;
 
 import game.market.Item;
 
-public interface ItemSelection {
+public interface ItemSelectionJane {
 	//returns an array of imageIndex of seeds in the inventory
 	int[] getSeedSelection();
 	
