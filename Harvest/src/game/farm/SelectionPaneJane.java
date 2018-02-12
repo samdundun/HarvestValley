@@ -73,19 +73,14 @@ public class SelectionPaneJane extends Pane {
 				SelectionPaneJane.this.setVisible(false);
 				FarmScreenAll.disableButton(true);
 			}
-<<<<<<< HEAD
+
 		});
 		viewObjects.add(cancel);
-=======
-		});
-		viewObjects.add(cancel);
->>>>>>> refs/heads/menu
+
+
 		
-<<<<<<< HEAD
+
 		TextLabel label = new TextLabel(15, 0, 150, 50, "Please select an item");
-=======
-		TextLabel label = new TextLabel(15, 0, 150, 50, "Please select an item");
->>>>>>> refs/heads/menu
 		viewObjects.add(label);
 
 		//		int move = 0;
@@ -151,10 +146,6 @@ public class SelectionPaneJane extends Pane {
 				move = 0;
 				startingHeight = startingHeight+height;
 			}
-			viewObjects.add(z);
-<<<<<<< HEAD
-		}
-=======
 		}
 
 		select= new Button(35,_HEIGHT - 30, 60, 25, "Select",Color.lightGray, new Action() {
@@ -172,7 +163,6 @@ public class SelectionPaneJane extends Pane {
 
 			}});
 		viewObjects.add(select);
->>>>>>> refs/heads/menu
 	}
 
 	public int setSeedSelected(int i) {
