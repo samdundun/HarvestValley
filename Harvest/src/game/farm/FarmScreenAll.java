@@ -51,6 +51,10 @@ public class FarmScreenAll extends FullFunctionScreen {
 		return viewObj;
 	}
 
+	public static ArrayList<BoxJenny> getAnimalBox() {
+		return animalBox;
+	}
+
 	public void initAllObjects(List<Visible> viewObjects) {
 		which = "";
 		viewObj = viewObjects;

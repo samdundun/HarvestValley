@@ -17,15 +17,15 @@ public class SelectionPaneJane extends Pane {
 	public static Item[] items = {new Item("Corn Seeds", "Great crop to grow all year round", 300, 0, 4),new Item("Pepper Seeds", "Spicy", 50, 1,1),
 			new Item("Potato Seeds", "Just like me", 150, 2, 3),new Item("Strawberry Seeds", "Sweeter than you", 100, 3,2),
 			new Item("Tomato Seeds", "Make some good ketchup", 200, 4,3),new Item("Wheat Seeds", "Not weed", 400, 5,5),
-			
+
 			new Item("Corn", "Fresh to eat", 10,6,4), new Item("Pepper","Supah Hot Fire",20,7,1),
 			new Item("Potato","Time to make french fries",10,8,3),new Item("Strawberry","Berry??",10,9,2),
 			new Item("Tomato", "Great for salads", 10,10,3),	new Item("Wheat","Just plain old wheat",10,11,5),
-			
+
 			new Item("Brown Chicken", "Cluck cluck", 250, 12,1),new Item("White Chicken", "Cluck cluck", 250, 13,1),
 			new Item("Black Chicken", "Cluck cluck", 250, 14,1),new Item("Sheep", "BAAAAAAAAAAAH", 350, 15,2),
 			new Item("Cow", "Mooooooo", 500, 16,2),new Item("Pig", "SNORT SNORT", 250, 17,1),
-			
+
 			new Item("Brown Eggs", "", 300, 18, 0),new Item("White Eggs", "", 50, 19,0),
 			new Item("Black Eggs", "", 150, 20, 0),new Item("Wool", "", 100, 21,0),
 			new Item("Milk", "", 200, 22,0),new Item("Meat", "", 400, 23,0)};
@@ -34,6 +34,8 @@ public class SelectionPaneJane extends Pane {
 	private Graphic grid;
 	private Inventory seedList;
 	private int seedSelectedInd;
+	private static String animalImg;
+	private int animalIdx;
 	private int index;
 	private static final int _WIDTH = 225;
 	private static final int _HEIGHT = 210;
@@ -43,39 +45,6 @@ public class SelectionPaneJane extends Pane {
 		super(focusController, x, y, _WIDTH, _HEIGHT);
 
 	}
-
-	//	static ArrayList<Visible> listFromChoice(int choice){
-	//		ArrayList<Visible> listV = new ArrayList<Visible>();
-	//		if (choice == 1) {
-	//			 Item[] items = {new Item("Corn Seeds", "Great crop to grow all year round", 300, 0, 4),new Item("Pepper Seeds", "Spicy", 50, 1,1),
-	//						new Item("Potato Seeds", "Just like me", 150, 2, 3),new Item("Strawberry Seeds", "Sweeter than you", 100, 3,2),
-	//						new Item("Tomato Seeds", "Make some good ketchup", 200, 4,3),new Item("Wheat Seeds", "Not weed", 400, 5,5)};
-	//			int move = 0;
-	//			int width = 48;
-	//			int startingHeight =0 ;
-	//			int height = 48;
-	//			for(Item g: items) {
-	//				listV.add(g);
-	//				g.setX(move*width);
-	//				g.setY(startingHeight);
-	//				move++;
-	//				if(move == 3){
-	//					move = 0;
-	//					startingHeight = startingHeight+height;
-	//				}
-	//			}
-	//		}
-	//		return listV;
-	//	}	
-	//	
-	//	static ArrayList<Visible> listFromItems(Item[] list){
-	//		ArrayList<Visible> listV = new ArrayList<Visible>();
-	//		for(int i=0; i<list.length; i++) {
-	//			listV.add(list[i]);
-	//		}
-	//		return listV;
-	//	}
-
 
 	public void update(Graphics2D g){
 		//customize the background
@@ -90,6 +59,8 @@ public class SelectionPaneJane extends Pane {
 	}
 
 	public void initAllObjects(List<Visible> viewObjects){
+		index = 0;
+		animalImg = "";
 		invent = new Inventory();
 		invent.load();
 
@@ -104,15 +75,15 @@ public class SelectionPaneJane extends Pane {
 			}
 		});
 		viewObjects.add(cancel);
-		
+
 		TextLabel label = new TextLabel(15, 0, 150, 50, "");
 		viewObjects.add(label);
-		
-//		int move = 0;
-//		int width = 55;
-//		int startingHeight =40 ;
-//		int height = 60;
-		
+
+		//		int move = 0;
+		//		int width = 55;
+		//		int startingHeight =40 ;
+		//		int height = 60;
+
 		if(FarmScreenAll.getWhich().equals("crop"))
 			addImages(12, 18, 0, 45, 55, 60, label);
 		else
@@ -122,20 +93,31 @@ public class SelectionPaneJane extends Pane {
 
 			public void act() {
 				for(int i = 0; i < items.length; i++) {
-					if(items[i].isSelected() && FarmScreenAll.getWhich().equals("crop")) {
-						SelectionPaneJane.this.setSeedSelected(i);
-						FarmScreenAll.farmPatch.get(index).setTime(items[i].getTime());
-						FarmScreenAll.farmPatch.get(index).crop(items[i].getImageIndex());
-						SelectionPaneJane.this.setVisible(false);
-						FarmScreenAll.disableButton(true);
-					}
+					if(items[i].isSelected()) {
+						System.out.println(items[i]);
+						if(FarmScreenAll.getWhich().equals("crop")) {
+							SelectionPaneJane.this.setSeedSelected(i);
+							FarmScreenAll.farmPatch.get(index).setTime(items[i].getTime());
+							FarmScreenAll.farmPatch.get(index).crop(items[i].getImageIndex());
+							SelectionPaneJane.this.setVisible(false);
+							FarmScreenAll.disableButton(true);
+						}
+						else {
+							System.out.println("JANE");
+							animalIdx = i;
+							animalImg = game.market.Item.getGraphic()[animalIdx].getImageLocation();
+							FarmScreenAll.animalBox.get(index).changeAction();
+							SelectionPaneJane.this.setVisible(false);
+							FarmScreenAll.disableButton(true);
+						}
+					}	
 				}
 				label.setText("Please select an item");
 
 			}});
 		viewObjects.add(select);
 	}
-	
+
 	public void addImages(int start, int end, int move, int startingHeight, int width, int height,TextLabel label) {
 		for(int i = start; i < end; i++) {
 			Item z=items[i];
@@ -189,6 +171,10 @@ public class SelectionPaneJane extends Pane {
 
 	public void setIndex(int i) {
 		index=i;
-		
+
+	}
+
+	public static String getSrc() {
+		return animalImg;
 	}
 }
