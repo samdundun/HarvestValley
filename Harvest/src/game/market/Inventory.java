@@ -12,7 +12,7 @@ import java.util.Scanner;
 import guiPlayer.Book;
 import guiTeacher.components.Graphic;
 
-public class Inventory {
+public class Inventory implements game.farm.seedSelection {
 
 	public static Scanner in;
 	private int[] amount;
@@ -183,6 +183,18 @@ public class Inventory {
 
 	public void setGold(int gold) {
 		this.gold = gold;
+	}
+
+	@Override
+	public ArrayList<Item> getSeedInventory() {
+		ArrayList<Item> seeds = new ArrayList<Item>();
+		for(Item i: invent) {
+			if(i.getImageIndex() < 6) {
+				seeds.add(i);
+			}
+		}
+		
+		return seeds;
 	}
 
 
