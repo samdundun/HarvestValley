@@ -52,6 +52,9 @@ public class SleepAlex extends FullFunctionScreen {//can use ImageTextButton, Cu
 	private int whiteEggs;
 	private int blackEggs;
 	
+	private int actionInteger;
+	private int adjustTA;
+	
 	private Button back;
 	
 	private ArrayList<String> cropAnimalAndProductNames = new ArrayList<String>();
@@ -93,6 +96,7 @@ public class SleepAlex extends FullFunctionScreen {//can use ImageTextButton, Cu
 	public void initAllObjects(List<Visible> viewObjects) {
 		//ImageButton class works correctly when using the correct string address format -- include the package name
 		//create a textArea superclass to extend that incorporates a certain colored background
+		//addNamesAndCountToArray();
 		Graphic backgroundOne = new Graphic(0, 0,getWidth(),getHeight(), "resources/nightSky.png");
 		viewObjects.add(backgroundOne);
 		Graphic backgroundTwo = new Graphic(100, 0,getWidth(),getHeight(), "resources/nightSky.png");
@@ -110,29 +114,33 @@ public class SleepAlex extends FullFunctionScreen {//can use ImageTextButton, Cu
 		imageSources.add("resources/whiteEgg.png");
 		imageSources.add("resources/blackEgg.png");
 		
-		int actionInteger = 0;
+		actionInteger = 0;
 		
-		for(actionInteger = 0; actionInteger<imageSources.size();actionInteger++) {
+		for(int actionInteger = 0; actionInteger<imageSources.size();actionInteger++) {
+			/*variable inside the setup part of a for loop are local -- be cautious when using them in the function -- especially in the action method of a button*/
 			int xspacer = 83;
-			
+			int c = actionInteger;
 			ImageButton holder = new ImageButton(actionInteger*xspacer,75,90,150, imageSources.get(actionInteger), new Action() {
-				@Override
 				public void act() {
-					for (int j = 0; j < imageSources.size();j++) {
-						TextArea info = new TextArea(j*83, 300, 100, 100, "You have created" + cropAnimalAndProductCount.get(actionInteger) + cropAnimalAndProductNames.get(actionInteger) + "." + "You have made" +cashFromCropAnimalProducts.get(actionInteger)+ "from" + cropAnimalAndProductNames.get(actionInteger));
-						viewObjects.add(info);
-					}					
-				}
-			});
+					/*TextArea info = new TextArea(actionInteger*83, 300, 100, 100, "You have created" + 
+							cropAnimalAndProductCount.get(actionInteger) + cropAnimalAndProductNames.get(actionInteger) + "." + 
+							"You have made" +cashFromCropAnimalProducts.get(actionInteger)+ "from" + 
+							cropAnimalAndProductNames.get(actionInteger));
+							viewObjects.add(info);*/
+					TextArea test = new TextArea(c*83, 300, 200, 200, "DATA IS COOL");
+					viewObjects.add(test);
+				}});
 			viewObjects.add(holder);
 		}
 		back = new Button(getWidth()-100, getHeight()-100,100, 100, "",Color.blue, new Action() {
 			public void act() {
-				
+				MainMenu.game.setScreen(MainMenu.farmScreen);
 			}
 		});
 		viewObjects.add(back);}
-		
+		//add objects to array
+		//call method and add arrayobjects to screen in initallobjects
+	
 		/*holder = new ImageButton(180,350,150,150,"resources/nightSky.png",new Action() {
 
 			@Override
