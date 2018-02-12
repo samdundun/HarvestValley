@@ -35,6 +35,12 @@ public class Graphic implements Visible {
 	private int x;
 	private int y;
 	private boolean visible;
+	private String imageLocation;
+	
+	public String getImageLocation() {
+		return imageLocation;
+		
+	}
 
 	public Graphic(int x, int y, int w, int h, String imageLocation){	
 		this.x = x;
@@ -43,6 +49,7 @@ public class Graphic implements Visible {
 		visible = true;
 		loadedImages = false;
 		loadImages(imageLocation, w, h);
+		this.imageLocation = imageLocation;
 	}
 
 	public Graphic(int x, int y, double scale, String imageLocation){	

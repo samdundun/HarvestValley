@@ -15,7 +15,7 @@ public class PlantJane {
 			new Graphic(0,0,48,48,"resources/pepperSt4.png"),new Graphic(0,0,48,48,"resources/pepperSt5.png"),
 			new Graphic(0,0,48,48,"resources/pepperSt6.png"),
 			new Graphic(0,0,48,48,"resources/potatoSt1.png"),
-			new Graphic(0,0,48,48,"resources/potatoSt2.png"),new Graphic(0,0,48,48,"resources/potatoSt3.png.png"),
+			new Graphic(0,0,48,48,"resources/potatoSt2.png"),new Graphic(0,0,48,48,"resources/potatoSt3.png"),
 			new Graphic(0,0,48,48,"resources/potatoSt4.png"),new Graphic(0,0,48,48,"resources/potatoSt5.png"),
 			new Graphic(0,0,48,48,"resources/potatoSt6.png"),
 			new Graphic(0,0,48,48,"resources/strawberrySt1.png"),
@@ -28,7 +28,7 @@ public class PlantJane {
 			new Graphic(0,0,48,48,"resources/tomatoSt6.png"),
 			new Graphic(0,0,48,48,"resources/wheatSt1.png"),
 			new Graphic(0,0,48,48,"resources/wheatSt2.png"),new Graphic(0,0,48,48,"resources/wheatSt3.png"),
-			new Graphic(0,0,48,48,"resources/wheatSt4.png"),new Graphic(0,0,48,48,"resources/wheatSt5.png")};
+			new Graphic(0,0,48,48,"resources/wheatSt4.png"),new Graphic(0,0,48,48,"resources/wheatSt5.png"),new Graphic(0,0,63,50,"resources/test.png")};
 		
 	private String name;
 	private int growthRate;

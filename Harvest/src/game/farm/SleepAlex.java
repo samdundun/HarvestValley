@@ -1,5 +1,6 @@
 package game.farm;
 
+import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
@@ -14,11 +15,13 @@ import game.mainScreen.ImageButton;
 import guiTeacher.components.Action;
 import guiTeacher.components.Button;
 import guiTeacher.components.ClickableGraphic;
+import guiTeacher.components.Graphic;
 import guiTeacher.components.ImageTextButton;
 import guiTeacher.components.TextArea;
 import guiTeacher.interfaces.FileRequester;
 import guiTeacher.interfaces.Visible;
 import guiTeacher.userInterfaces.FullFunctionScreen;
+import harvest.MainMenu;
 
 public class SleepAlex extends FullFunctionScreen {//can use ImageTextButton, CustomImageButton, ClickableGraphic
 	
@@ -48,6 +51,8 @@ public class SleepAlex extends FullFunctionScreen {//can use ImageTextButton, Cu
 	private int brownEggs;
 	private int whiteEggs;
 	private int blackEggs;
+	
+	private Button back;
 	
 	private ArrayList<String> cropAnimalAndProductNames = new ArrayList<String>();
 	//{"tomato","wheat","strawberry","corn","potato","pepper","cows","sheep","pigs","chicken"};
@@ -85,21 +90,60 @@ public class SleepAlex extends FullFunctionScreen {//can use ImageTextButton, Cu
 		super(width,height);
 	}
 	
-	public void initAllObjects(List<Visible> viewObjects) {/*
-		imageSources.add("pepperSt6.png");
-		for(int i = 0; i<imageSources.size();i++) {
-			ImageButton holder = new ImageButton(i*75, 0, 50, 50, "pepperSt6.png", new Action() {
-				//SleepAlex.getImageSources().get(i)
+	public void initAllObjects(List<Visible> viewObjects) {
+		//ImageButton class works correctly when using the correct string address format -- include the package name
+		//create a textArea superclass to extend that incorporates a certain colored background
+		Graphic backgroundOne = new Graphic(0, 0,getWidth(),getHeight(), "resources/nightSky.png");
+		viewObjects.add(backgroundOne);
+		Graphic backgroundTwo = new Graphic(100, 0,getWidth(),getHeight(), "resources/nightSky.png");
+		viewObjects.add(backgroundTwo);
+		
+		imageSources.add("resources/pepperSt6.png");
+		imageSources.add("resources/strawberrySt6.png");
+		imageSources.add("resources/tomatoSt6.png");
+		imageSources.add("resources/cornSt6.png");
+		imageSources.add("resources/wheatSt5.png");
+		imageSources.add("resources/cow.png");
+		imageSources.add("resources/sheep.png");
+		imageSources.add("resources/pig.png");
+		imageSources.add("resources/brownEgg.png");
+		imageSources.add("resources/whiteEgg.png");
+		imageSources.add("resources/blackEgg.png");
+		
+		int actionInteger = 0;
+		
+		for(actionInteger = 0; actionInteger<imageSources.size();actionInteger++) {
+			int xspacer = 83;
+			
+			ImageButton holder = new ImageButton(actionInteger*xspacer,75,90,150, imageSources.get(actionInteger), new Action() {
 				@Override
 				public void act() {
-					TextArea info = new TextArea(0, 0, 100, 100, "You have created 5 corns. You have made $50 from corn.");
-					viewObjects.add(info);
+					for (int j = 0; j < imageSources.size();j++) {
+						TextArea info = new TextArea(j*83, 300, 100, 100, "You have created" + cropAnimalAndProductCount.get(actionInteger) + cropAnimalAndProductNames.get(actionInteger) + "." + "You have made" +cashFromCropAnimalProducts.get(actionInteger)+ "from" + cropAnimalAndProductNames.get(actionInteger));
+						viewObjects.add(info);
+					}					
 				}
 			});
 			viewObjects.add(holder);
 		}
-*/
-	}
+		back = new Button(getWidth()-100, getHeight()-100,100, 100, "",Color.blue, new Action() {
+			public void act() {
+				
+			}
+		});
+		viewObjects.add(back);}
+		
+		/*holder = new ImageButton(180,350,150,150,"resources/nightSky.png",new Action() {
+
+			@Override
+			public void act() {
+				//MainMenu.isNew = true;
+				//MainMenu.game.setScreen(MainMenu.screen2);
+				TextArea info = new TextArea(0, 0, 100, 100, "You have created 5 corns. You have made $50 from corn.");
+				viewObjects.add(info);
+			}
+		});
+		viewObjects.add(holder);*/
 	
 	public void addNamesAndCountToArray() {
 		//execute once
