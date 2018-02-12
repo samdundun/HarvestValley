@@ -22,6 +22,7 @@ public class CropJane extends CustomImageButton {
 	private int time;
 	private int currentTime;
 	private Inventory invent;
+	private Action orginAction;
 	
 	public CropJane(int x, int y, int w, int h, String text, Color color, Action action, int i, CropImageJane image) {
 		super(x, y, w, h,image, new Action() {
@@ -91,6 +92,18 @@ public class CropJane extends CustomImageButton {
 							FarmScreenAll.disableButton(true);
 							invent.addItem(SelectionPaneJane.items[currentPatch.imageIndx+6]);
 							invent.save();
+							currentPatch.setAction(new Action() {
+								
+								@Override
+								public void act() {
+									FarmScreenAll.pane.setX(getX()-250);
+									FarmScreenAll.pane.setY(getY()-120);
+									FarmScreenAll.pane.setVisible(true);
+									FarmScreenAll.pane.update();
+									FarmScreenAll.disableButton(false);
+									
+								}
+							});
 						}
 					} );
 				}
