@@ -14,11 +14,14 @@ import guiTeacher.components.Graphic;
 
 public class Inventory {
 
+
 	public static Scanner in;
+
 	private int[] amount;
 	private ArrayList<Item> invent;
 	private int gold;
 
+	
 	public static final Item[] ITEMS = {new Item("Corn Seeds", "Great crop to grow all year round", 300, 0, 4),new Item("Pepper Seeds", "Spicy", 50, 1,1),
 			new Item("Potato Seeds", "Just like me", 150, 2, 3),new Item("Strawberry Seeds", "Sweeter than you", 100, 3,2),
 			new Item("Tomato Seeds", "Make some good ketchup", 200, 4,3),new Item("Wheat Seeds", "Not weed", 400, 5,5),new Item("Corn", "Fresh to eat", 10,6,4),
@@ -31,13 +34,20 @@ public class Inventory {
 			new Item("Black Eggs", "", 150, 20, 0),new Item("Wool", "", 100, 21,0),
 			new Item("Milk", "", 200, 22,0),new Item("Meat", "", 400, 23,0)};
 
+
 	//image index
+
 	//cornseed,pepperseed,potatoseed,strawberryseed,tomatoseed,wheatseed,corn,pepper,potato,strawberry,tomato,wheat
 	// 0           1          2            3             4          5      6    7       8       9         10    11
 	public Inventory() {
 
+
 		invent = new ArrayList<Item>();
+
 		amount = new int[ITEMS.length];
+
+		amount = new int[ITEMS.length];
+ 
 	}
 
 	public void addBasics() {	
@@ -55,7 +65,10 @@ public class Inventory {
 		//		addItem(items[11]);
 		//		addItem(items[7]);
 		//		addItem(items[8]);
+
 		//		addItem(items[9]);
+		//		addItem(items[9]);
+
 		/**
 		 * strawberries
 		 * corn
@@ -109,7 +122,11 @@ public class Inventory {
 	}
 
 	public void addItem(Item i){
+
 		invent.add(i);
+
+		invent.add(i);
+
 	}
 
 	public void removeItem(Item i) {

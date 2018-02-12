@@ -14,14 +14,26 @@ import guiTeacher.interfaces.FocusController;
 import guiTeacher.interfaces.Visible;
 
 public class SelectionPaneJane extends Pane {
-
+	public static Item[] items = {new Item("Corn Seeds", "Great crop to grow all year round", 300, 0, 4),new Item("Pepper Seeds", "Spicy", 50, 1,1),
+			new Item("Potato Seeds", "Just like me", 150, 2, 3),new Item("Strawberry Seeds", "Sweeter than you", 100, 3,2),
+			new Item("Tomato Seeds", "Make some good ketchup", 200, 4,3),new Item("Wheat Seeds", "Not weed", 400, 5,5),new Item("Corn", "Fresh to eat", 10,6,4),
+			new Item("Pepper","Supah Hot Fire",20,7,1),new Item("Potato","Time to make french fries",10,8,3),
+			new Item("Strawberry","Berry??",10,9,2),new Item("Tomato", "Great for salads", 10,10,3),
+			new Item("Wheat","Just plain old wheat",10,11,5),new Item("Brown Chicken", "Cluck cluck", 250, 12,1),new Item("White Chicken", "Cluck cluck", 250, 13,1),
+			new Item("Black Chicken", "Cluck cluck", 250, 14,1),new Item("Sheep", "BAAAAAAAAAAAH", 350, 15,2),
+			new Item("Cow", "Mooooooo", 500, 16,2),new Item("Pig", "SNORT SNORT", 250, 17,1),
+			new Item("Brown Eggs", "", 300, 18, 0),new Item("White Eggs", "", 50, 19,0),
+			new Item("Black Eggs", "", 150, 20, 0),new Item("Wool", "", 100, 21,0),
+			new Item("Milk", "", 200, 22,0),new Item("Meat", "", 400, 23,0)};
 	private Button cancel;
 	private Button select;
 	private Graphic grid;
 	private Inventory seedList;
 	private int seedSelectedInd;
+	private int index;
 	private static final int _WIDTH = 225;
 	private static final int _HEIGHT = 210;
+	private Inventory invent;
 
 	public SelectionPaneJane(FocusController focusController, int x, int y) {
 		super(focusController, x, y, _WIDTH, _HEIGHT);
@@ -76,9 +88,9 @@ public class SelectionPaneJane extends Pane {
 	}
 
 	public void initAllObjects(List<Visible> viewObjects){
-		Item[] items = {new Item("Corn Seeds", "Great crop to grow all year round", 300, 0, 4),new Item("Pepper Seeds", "Spicy", 50, 1,1),
-				new Item("Potato Seeds", "Just like me", 150, 2, 3),new Item("Strawberry Seeds", "Sweeter than you", 100, 3,2),
-				new Item("Tomato Seeds", "Make some good ketchup", 200, 4,3),new Item("Wheat Seeds", "Not weed", 400, 5,5)};
+		invent = new Inventory();
+		invent.load();
+
 		grid = new Graphic(11,22,280,150, "resources/seedPane.png");
 		viewObjects.add(0,grid);
 
@@ -86,6 +98,7 @@ public class SelectionPaneJane extends Pane {
 
 			public void act() {
 				SelectionPaneJane.this.setVisible(false);
+				FarmScreenAll.disableButton(true);
 
 			}
 		});
@@ -97,7 +110,7 @@ public class SelectionPaneJane extends Pane {
 		int width = 55;
 		int startingHeight =40 ;
 		int height = 60;
-		for(int i = 0; i <items.length; i++) {
+		for(int i = 0; i <6; i++) {
 			Item z=items[i];
 			z.setAction(new Action() {
 
@@ -125,11 +138,13 @@ public class SelectionPaneJane extends Pane {
 		select= new Button(35,_HEIGHT - 30, 60, 25, "Select",Color.lightGray, new Action() {
 
 			public void act() {
-				for(int i = 0; i <BuyingScreen.items.length; i++) {
+				for(int i = 0; i <items.length; i++) {
 					if(items[i].isSelected()) {
 						SelectionPaneJane.this.setSeedSelected(i);
+						FarmScreenAll.farmPatch.get(index).setTime(items[i].getTime());
+						FarmScreenAll.farmPatch.get(index).crop(items[i].getImageIndex());
 						SelectionPaneJane.this.setVisible(false);
-
+						FarmScreenAll.disableButton(true);
 					}
 				}
 				label.setText("Please select an item");
@@ -143,5 +158,10 @@ public class SelectionPaneJane extends Pane {
 	}
 	public int getSeedSelected() {
 		return seedSelectedInd;
+	}
+
+	public void setIndex(int i) {
+		index=i;
+		
 	}
 }

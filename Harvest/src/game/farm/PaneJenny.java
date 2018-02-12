@@ -5,17 +5,17 @@ import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.util.ArrayList;
 import java.util.List;
+import game.farm.FarmScreenAll;
 
-import game.market.BuyingScreen;
-import game.market.Item;
 import guiTeacher.components.Action;
 import guiTeacher.components.Button;
 import guiTeacher.components.Graphic;
 import guiTeacher.components.Pane;
+import guiTeacher.components.TextLabel;
 import guiTeacher.interfaces.FocusController;
 import guiTeacher.interfaces.Visible;
 
-public class paneJenny extends Pane {
+public class PaneJenny extends Pane {
 
 	private static final int _WIDTH = 225;
 	private static final int _HEIGHT = 195;
@@ -24,9 +24,15 @@ public class paneJenny extends Pane {
 	private Button cancel;
 	private Graphic img;
 	private String src;
+	private TextLabel label;
+	private int x;
+	private int y;
+	private TextLabel item;
 
-	public paneJenny(FocusController focusController, int x, int y, String src) {
+	public PaneJenny(FocusController focusController, int x, int y) {
 		super(focusController, x, y, _WIDTH, _HEIGHT);
+		this.x = x;
+		this.y = y;
 	}
 
 	public void update(Graphics2D g){
@@ -42,10 +48,12 @@ public class paneJenny extends Pane {
 	}
 
 	public void initAllObjects(List<Visible> viewObjects){
+		setSrc("milk");
 		harvest = new Button(35, _HEIGHT - 30, 60, 25, "Harvest", Color.lightGray, new Action() {
 
 			public void act() {
-				paneJenny.this.setVisible(false);
+				img.setVisible(false);
+				PaneJenny.this.setVisible(false);
 			}
 		});
 		viewObjects.add(harvest);
@@ -53,9 +61,49 @@ public class paneJenny extends Pane {
 		cancel = new Button(120, _HEIGHT - 30, 60, 25, "Cancel", Color.lightGray, new Action() {
 
 			public void act() {
-				paneJenny.this.setVisible(false);
+				img.setVisible(false);
+				PaneJenny.this.setVisible(false);
+				FarmScreenAll.disableButton(true);
 			}
 		});
 		viewObjects.add(cancel);
+		
+		label = new TextLabel(15, 0, 150, 50, "You can harvest (one):");
+		viewObjects.add(label);
+		
+		item = new TextLabel(15, 50, 150, 50, "");
+		viewObjects.add(item);
+	}
+	
+	public void updateImg(List<Visible> viewObjects) {
+		img = new Graphic(getX() + (_WIDTH - 160), getY() + 50, getSrc());
+		viewObjects.add(img);
+	}
+	
+	public String getSrc() {
+		return src;
+	}
+
+	public void setSrc(String src) {
+		this.src = "resources/" + src + ".png";
+	}
+
+	public TextLabel getLabel() {
+		// TODO Auto-generated method stub
+		return label;
+	}
+
+	public Button getHarvest() {
+		// TODO Auto-generated method stub
+		return harvest;
+	}
+
+	public TextLabel getItem() {
+		// TODO Auto-generated method stub
+		return item;
+	}
+	
+	public Graphic getImg() {
+		return img;
 	}
 }
