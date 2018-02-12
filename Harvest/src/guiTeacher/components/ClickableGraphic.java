@@ -18,7 +18,10 @@
  *******************************************************************************/
 package guiTeacher.components;
 
+import java.awt.Graphics2D;
+
 import guiTeacher.interfaces.Clickable;
+import guiTeacher.interfaces.DrawInstructions;
 
 public class ClickableGraphic extends Graphic implements Clickable {
 
@@ -26,6 +29,7 @@ public class ClickableGraphic extends Graphic implements Clickable {
 	
 	public ClickableGraphic(int x, int y, int w, int h, String imageLocation) {
 		super(x, y, w, h, imageLocation);
+		update();
 	}
 
 	public ClickableGraphic(int x, int y, double scale, String imageLocation) {
@@ -46,10 +50,6 @@ public class ClickableGraphic extends Graphic implements Clickable {
 
 	public void act() {
 		if(action != null)action.act();
-	}
-	
-	public void hoverAction(){
-		//most Components don't do anything on hover
 	}
 
 }
