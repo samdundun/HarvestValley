@@ -3,7 +3,6 @@ package game.market;
 import java.awt.ItemSelectable;
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -123,56 +122,45 @@ public class Inventory {
 	}
 
 	public void load() {
-		invent.clear();
-		String csvFile = "resources/invent.csv";
-        BufferedReader br = null;
-        String line = "";
-        String cvsSplitBy = ",";
-        try {
-            br = new BufferedReader(new FileReader(csvFile));
-            line = br.readLine();
-            setGold(Integer.parseInt(line));
-            while ((line = br.readLine()) != null) {
+		String fileName = "";
+		//empty the catalog to prepare for a new load
+		//use this boolean to control the while loop. The user should have multiple chances to enter a correct filename
+		boolean opened = false;
+		while(!opened){
 
-                // use comma as separator
-                String[] array = line.split(cvsSplitBy);
-                Item it = new Item(array[0], array[1], Integer.parseInt (array[2]), Integer.parseInt(array[3]), Integer.parseInt(array[4]));
-                addItem(it);
-                System.out.println(it);
+			fileName = "resources/invent.csv";
+			opened = read(new File(fileName));
 
-            }
-        }
-        catch (IOException e) {
-            e.printStackTrace();
-        }
+
+		}
 
 	}
 
-//	public boolean read(File f){
-//		try{
-//			FileReader fileReader = new FileReader(f);
-//			String line = "";
-//			//a BufferedReader enables us to read the file one line at a time
-//			BufferedReader br = new BufferedReader(fileReader);
-//			while ((line = br.readLine()) != null) {
-//
-//
-//
-//				String[] param = line.split(",");
-//				if(param.length == 1) {
-//					this.setGold(Integer.parseInt(param[0]));
-//				}
-//				else {
-//					invent.add(new Item(param[0],param[1],Integer.parseInt(param[2]), Integer.parseInt(param[3]), Integer.parseInt(param[4])));
-//				}
-//			}
-//			br.close();
-//			return true;
-//		}catch(Exception e){
-//			System.out.println("The file name you specified does not exist.");
-//			return false;
-//		}
-//	}
+	public boolean read(File f){
+		try{
+			FileReader fileReader = new FileReader(f);
+			String line = "";
+			//a BufferedReader enables us to read the file one line at a time
+			BufferedReader br = new BufferedReader(fileReader);
+			while ((line = br.readLine()) != null) {
+
+
+
+				String[] param = line.split(",");
+				if(param.length == 1) {
+					this.setGold(Integer.parseInt(param[0]));
+				}
+				else {
+					invent.add(new Item(param[0],param[1],Integer.parseInt(param[2]), Integer.parseInt(param[3]), Integer.parseInt(param[4])));
+				}
+			}
+			br.close();
+			return true;
+		}catch(Exception e){
+			System.out.println("The file name you specified does not exist.");
+			return false;
+		}
+	}
 
 	public void save() {
 		try{    
