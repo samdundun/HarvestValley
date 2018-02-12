@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 3900
 =======
 <<<<<<< HEAD
@@ -27,11 +28,17 @@ Strawberry Seeds,Sweeter than you,100,3,2
 =======
 Pepper Seeds,Spicy,50,1,1
 =======
+10000,,,,
+Corn,Fresh to eat,10,6,4
+Corn,Fresh to eat,10,6,4
+>>>>>>> refs/heads/farm
+=======
 0
 <<<<<<< HEAD
 >>>>>>> branch 'develop' of https://github.com/samdundun/HarvestValley.git
 =======
 Tomato,Great for salads,10,10,3
+<<<<<<< HEAD
 >>>>>>> refs/heads/farm
 =======
 Potato,Time to make french fries,10,8,3
@@ -43,3 +50,6 @@ Pepper,Supah Hot Fire,20,7,1
 >>>>>>> branch 'develop' of https://github.com/samdundun/HarvestValley.git
 >>>>>>> branch 'develop' of https://github.com/samdundun/HarvestValley.git
 >>>>>>> branch 'develop' of https://github.com/samdundun/HarvestValley.git
+=======
+>>>>>>> branch 'farm' of https://github.com/samdundun/HarvestValley.git
+>>>>>>> refs/heads/farm
