@@ -27,7 +27,6 @@ public class FarmScreenAll extends FullFunctionScreen {
 	private static String which;
 	private static final int animalLimit = 5;
 	private static List<Visible> viewObj;
-	
 	public static SelectionPaneJane pane;
 	public static SelectionPaneJane first;
 
@@ -37,25 +36,12 @@ public class FarmScreenAll extends FullFunctionScreen {
 
 	public static AnimatedComponent boy;
 	public static AnimatedComponent girl;
-<<<<<<< HEAD
 
-	private static final int animalLimit = 5;
 	private int currentAnimals;
-	public static ArrayList<EmptyPatch> emptyFarmPatch;
-	private static String which;
-	public static PaneJenny animalPane;
-	private static ArrayList<BoxJenny> animalBox;
-=======
->>>>>>> branch 'farm' of https://github.com/samdundun/HarvestValley.git
 
 	public static PaneJenny animalPane;
 	public static PaneJenny plantPane;
-<<<<<<< HEAD
 	public static PaneJenny patchPane;
-	private List<Visible> viewObjects;
-=======
-
->>>>>>> branch 'farm' of https://github.com/samdundun/HarvestValley.git
 	
 	public FarmScreenAll(int width, int height) {
 		super(width, height);
