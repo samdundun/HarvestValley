@@ -2,6 +2,7 @@ package game.mainScreen;
 
 import java.util.List;
 
+import game.farm.FarmScreenAll;
 import game.market.Inventory;
 import guiTeacher.components.Action;
 import guiTeacher.components.Graphic;
@@ -51,7 +52,7 @@ public class MenuScreenLubna extends ClickableScreen implements Runnable {
 
 			@Override
 			public void act() {
-				MainMenu.isLoad= true;
+				invent.load();
 				MainMenu.game.setScreen(MainMenu.farmScreen);
 				//using farmScreen rn but eventually will use the saved info.
 
