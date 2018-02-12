@@ -21,7 +21,7 @@ public class Inventory {
 	private ArrayList<Item> invent;
 	private int gold;
 
-	
+
 	public static final Item[] ITEMS = {new Item("Corn Seeds", "Great crop to grow all year round", 300, 0, 4),new Item("Pepper Seeds", "Spicy", 50, 1,1),
 			new Item("Potato Seeds", "Just like me", 150, 2, 3),new Item("Strawberry Seeds", "Sweeter than you", 100, 3,2),
 			new Item("Tomato Seeds", "Make some good ketchup", 200, 4,3),new Item("Wheat Seeds", "Not weed", 400, 5,5),new Item("Corn", "Fresh to eat", 10,6,4),
@@ -46,8 +46,6 @@ public class Inventory {
 
 		amount = new int[ITEMS.length];
 
-		amount = new int[ITEMS.length];
- 
 	}
 
 	public void addBasics() {	
@@ -139,68 +137,78 @@ public class Inventory {
 	}
 
 	public void load() {
-		String fileName = "";
-		//empty the catalog to prepare for a new load
-		//use this boolean to control the while loop. The user should have multiple chances to enter a correct filename
-		boolean opened = false;
-		while(!opened){
-
-			fileName = "resources/invent.csv";
-			opened = read(new File(fileName));
-
-
-		}
-
-	}
-
-	public boolean read(File f){
-		try{
-			FileReader fileReader = new FileReader(f);
-			String line = "";
-			//a BufferedReader enables us to read the file one line at a time
-			BufferedReader br = new BufferedReader(fileReader);
+		invent.clear();
+		String csvFile = "resources/invent.csv";
+		BufferedReader br = null;
+		String line = "";
+		String cvsSplitBy = ",";
+		try {
+			br = new BufferedReader(new FileReader(csvFile));
+			line = br.readLine();
+			setGold(Integer.parseInt(line));
 			while ((line = br.readLine()) != null) {
 
+				// use comma as separator
+				String[] array = line.split(cvsSplitBy);
+				Item it = new Item(array[0], array[1], Integer.parseInt (array[2]), Integer.parseInt(array[3]), Integer.parseInt(array[4]));
+				addItem(it);
+				System.out.println(it);
 
-
-				String[] param = line.split(",");
-				if(param.length == 1) {
-					this.setGold(Integer.parseInt(param[0]));
-				}
-				else {
-					invent.add(new Item(param[0],param[1],Integer.parseInt(param[2]), Integer.parseInt(param[3]), Integer.parseInt(param[4])));
-				}
 			}
-			br.close();
-			return true;
-		}catch(Exception e){
-			System.out.println("The file name you specified does not exist.");
-			return false;
+		}
+		catch (IOException e) {
+			e.printStackTrace();
 		}
 	}
 
-	public void save() {
-		try{    
-			FileWriter fw=new FileWriter("resources/invent.csv");
-			fw.write(Integer.toString(this.getGold())+"\n");
-			for(Item b: invent){
-				fw.write(b+"\n");    	
+//		public boolean read(File f){
+//			try{
+//				FileReader fileReader = new FileReader(f);
+//				String line = "";
+//				//a BufferedReader enables us to read the file one line at a time
+//				BufferedReader br = new BufferedReader(fileReader);
+//				while ((line = br.readLine()) != null) {
+//
+//
+//
+//					String[] param = line.split(",");
+//					if(param.length == 1) {
+//						this.setGold(Integer.parseInt(param[0]));
+//					}
+//					else {
+//						invent.add(new Item(param[0],param[1],Integer.parseInt(param[2]), Integer.parseInt(param[3]), Integer.parseInt(param[4])));
+//					}
+//				}
+//				br.close();
+//				return true;
+//			}catch(Exception e){
+//				System.out.println("The file name you specified does not exist.");
+//				return false;
+//			}
+//		}
+
+		public void save() {
+			try{    
+				FileWriter fw=new FileWriter("resources/invent.csv");
+				fw.write(Integer.toString(this.getGold())+"\n");
+				for(Item b: invent){
+					fw.write(b+"\n");    	
+				}
+
+				fw.close();    
+				System.out.println("Success! File \"invent.csv\" saved!");
+			}catch(IOException e){
+				System.out.println("An IOException was thrown. \nCheck to see that the directory where you tried to save the file actually exists.");
 			}
-
-			fw.close();    
-			System.out.println("Success! File \"invent.csv\" saved!");
-		}catch(IOException e){
-			System.out.println("An IOException was thrown. \nCheck to see that the directory where you tried to save the file actually exists.");
 		}
+
+		public int getGold() {
+			return gold;
+		}
+
+		public void setGold(int gold) {
+			this.gold = gold;
+		}
+
+
 	}
-
-	public int getGold() {
-		return gold;
-	}
-
-	public void setGold(int gold) {
-		this.gold = gold;
-	}
-
-
-}
