@@ -36,7 +36,6 @@ public class CropImageJane implements DrawInstructions {
 				//bufferedImage = op.filter(image.getImage(), null);
 
 			}
-		.
 			else {
 				if(index==-1) {
 					g.drawImage(image.getImage(), 0, 0, null);

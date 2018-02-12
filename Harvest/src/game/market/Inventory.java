@@ -11,6 +11,7 @@ import java.util.Scanner;
 
 import guiPlayer.Book;
 import guiTeacher.components.Graphic;
+import harvest.MainMenu;
 
 public class Inventory implements game.farm.seedSelection {
 
@@ -45,6 +46,7 @@ public class Inventory implements game.farm.seedSelection {
 		addItem(ITEMS[1]);
 		addItem(ITEMS[2]);
 		addItem(ITEMS[3]);
+		setGold(500);
 		//		addItem(items[4]);
 		//		addItem(items[5]);
 		//		addItem(items[6]);
@@ -147,8 +149,10 @@ public class Inventory implements game.farm.seedSelection {
 
 
 				String[] param = line.split(",");
-				if(param.length == 1) {
+				if(param.length == 2) {
 					this.setGold(Integer.parseInt(param[0]));
+					MainMenu.isGirl = Boolean.parseBoolean(param[1]);
+					System.out.println(MainMenu.isGirl);
 				}
 				else {
 					invent.add(new Item(param[0],param[1],Integer.parseInt(param[2]), Integer.parseInt(param[3]), Integer.parseInt(param[4])));
@@ -165,7 +169,7 @@ public class Inventory implements game.farm.seedSelection {
 	public void save() {
 		try{    
 			FileWriter fw=new FileWriter("resources/invent.csv");
-			fw.write(Integer.toString(this.getGold())+"\n");
+			fw.write(Integer.toString(this.getGold())+","+ MainMenu.isGirl +"\n");
 			for(Item b: invent){
 				fw.write(b+"\n");    	
 			}
