@@ -2,6 +2,7 @@ package game.farm;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
+import java.util.ArrayList;
 import java.util.List;
 
 import game.market.Inventory;
@@ -20,6 +21,8 @@ public class BoxJenny extends CustomImageButton implements Clickable{
 	private int stage;
 	private int time;
 	private int currentTime;
+	private int x;
+	private int y;
 
 	public BoxJenny(int x, int y, String imageAddress, Action action, List<Visible> viewObjects, int i) {
 		super(x, y, new Graphic(0,0,imageAddress).getWidth(), new Graphic(0,0,imageAddress).getHeight(), new DrawInstructions() {
@@ -43,10 +46,12 @@ public class BoxJenny extends CustomImageButton implements Clickable{
 			}
 		});
 		index = i;
+		this.x = x;
+		this.y = y;
 	}
 
-	private void changeAction() {
-		updateImg();
+	public void changeAction() {
+		updateImg(index, SelectionPaneJane.getSrc());
 		this.setAction(new Action() {
 
 			public void act() {
@@ -85,9 +90,10 @@ public class BoxJenny extends CustomImageButton implements Clickable{
 		});
 	}
 
-	private void updateImg() {
-		// TODO Auto-generated method stub
-		
+	private void updateImg(int idx, String src) {
+		ArrayList<BoxJenny> array = FarmScreenAll.getAnimalBox();
+		array.remove(idx);
+		array.add(idx, new BoxJenny(x, y, src, null, FarmScreenAll.getView(), idx));
 	}
 
 	public void printSelected(int x) {

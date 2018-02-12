@@ -39,6 +39,10 @@ public class Item extends CustomImageButton implements Clickable{
 	private int time;
 	
 	
+	public static Graphic[] getGraphic() {
+		return ITEMS;
+	}
+	
 	public int getTime() {
 		return time;
 	}
