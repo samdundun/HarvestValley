@@ -15,13 +15,10 @@ import harvest.MainMenu;
 
 public class Inventory implements game.farm.seedSelection {
 
-
 	public static Scanner in;
-
 	private int[] amount;
 	private ArrayList<Item> invent;
 	private int gold;
-
 
 	public static final Item[] ITEMS = {new Item("Corn Seeds", "Great crop to grow all year round", 250, 0, 4),new Item("Pepper Seeds", "Spicy", 50, 1,1),
 			new Item("Potato Seeds", "Just like me", 150, 2, 3),new Item("Strawberry Seeds", "Sweeter than you", 100, 3,2),
@@ -35,23 +32,13 @@ public class Inventory implements game.farm.seedSelection {
 			new Item("Black Eggs", "", 200, 20, 0),new Item("Wool", "", 300, 21,0),
 			new Item("Milk", "", 350, 22,0),new Item("Meat", "", 500, 23,0)};
 
-
 	//image index
-
 	//cornseed,pepperseed,potatoseed,strawberryseed,tomatoseed,wheatseed,corn,pepper,potato,strawberry,tomato,wheat
 	// 0           1          2            3             4          5      6    7       8       9         10    11
 	public Inventory() {
 
-
 		invent = new ArrayList<Item>();
-<<<<<<< HEAD
-
 		amount = new int[ITEMS.length];
-
-=======
-		amount = new int[ITEMS.length];
-		
->>>>>>> refs/heads/develop
 	}
 
 	public void addBasics() {	
@@ -70,10 +57,7 @@ public class Inventory implements game.farm.seedSelection {
 		//		addItem(items[11]);
 		//		addItem(items[7]);
 		//		addItem(items[8]);
-
 		//		addItem(items[9]);
-		//		addItem(items[9]);
-
 		/**
 		 * strawberries
 		 * corn
@@ -127,11 +111,7 @@ public class Inventory implements game.farm.seedSelection {
 	}
 
 	public void addItem(Item i){
-
 		invent.add(i);
-
-		invent.add(i);
-
 	}
 
 	public void removeItem(Item i) {
@@ -144,25 +124,29 @@ public class Inventory implements game.farm.seedSelection {
 	}
 
 	public void load() {
-		invent.clear();
-		String csvFile = "resources/invent.csv";
-		BufferedReader br = null;
-		String line = "";
-		String cvsSplitBy = ",";
-		try {
-			br = new BufferedReader(new FileReader(csvFile));
-			line = br.readLine();
-			setGold(Integer.parseInt(line));
+		String fileName = "";
+		//empty the catalog to prepare for a new load
+		//use this boolean to control the while loop. The user should have multiple chances to enter a correct filename
+		boolean opened = false;
+		while(!opened){
+
+			fileName = "resources/invent.csv";
+			opened = read(new File(fileName));
+
+
+		}
+
+	}
+
+	public boolean read(File f){
+		try{
+			FileReader fileReader = new FileReader(f);
+			String line = "";
+			//a BufferedReader enables us to read the file one line at a time
+			BufferedReader br = new BufferedReader(fileReader);
 			while ((line = br.readLine()) != null) {
 
-				// use comma as separator
-				String[] array = line.split(cvsSplitBy);
-				Item it = new Item(array[0], array[1], Integer.parseInt (array[2]), Integer.parseInt(array[3]), Integer.parseInt(array[4]));
-				addItem(it);
-				System.out.println(it);
 
-<<<<<<< HEAD
-=======
 
 				String[] param = line.split(",");
 				if(param.length == 2) {
@@ -173,76 +157,29 @@ public class Inventory implements game.farm.seedSelection {
 				else {
 					invent.add(new Item(param[0],param[1],Integer.parseInt(param[2]), Integer.parseInt(param[3]), Integer.parseInt(param[4])));
 				}
->>>>>>> refs/heads/develop
 			}
-		}
-		catch (IOException e) {
-			e.printStackTrace();
+			br.close();
+			return true;
+		}catch(Exception e){
+			System.out.println("The file name you specified does not exist.");
+			return false;
 		}
 	}
 
-<<<<<<< HEAD
-//		public boolean read(File f){
-//			try{
-//				FileReader fileReader = new FileReader(f);
-//				String line = "";
-//				//a BufferedReader enables us to read the file one line at a time
-//				BufferedReader br = new BufferedReader(fileReader);
-//				while ((line = br.readLine()) != null) {
-//
-//
-//
-//					String[] param = line.split(",");
-//					if(param.length == 1) {
-//						this.setGold(Integer.parseInt(param[0]));
-//					}
-//					else {
-//						invent.add(new Item(param[0],param[1],Integer.parseInt(param[2]), Integer.parseInt(param[3]), Integer.parseInt(param[4])));
-//					}
-//				}
-//				br.close();
-//				return true;
-//			}catch(Exception e){
-//				System.out.println("The file name you specified does not exist.");
-//				return false;
-//			}
-//		}
-
-		public void save() {
-			try{    
-				FileWriter fw=new FileWriter("resources/invent.csv");
-				fw.write(Integer.toString(this.getGold())+"\n");
-				for(Item b: invent){
-					fw.write(b+"\n");    	
-				}
-
-				fw.close();    
-				System.out.println("Success! File \"invent.csv\" saved!");
-			}catch(IOException e){
-				System.out.println("An IOException was thrown. \nCheck to see that the directory where you tried to save the file actually exists.");
-=======
 	public void save() {
 		try{    
 			FileWriter fw=new FileWriter("resources/invent.csv");
 			fw.write(Integer.toString(this.getGold())+","+ MainMenu.isGirl +"\n");
 			for(Item b: invent){
 				fw.write(b+"\n");    	
->>>>>>> refs/heads/develop
 			}
+
+			fw.close();    
+			System.out.println("Success! File \"invent.csv\" saved!");
+		}catch(IOException e){
+			System.out.println("An IOException was thrown. \nCheck to see that the directory where you tried to save the file actually exists.");
 		}
-
-		public int getGold() {
-			return gold;
-		}
-
-		public void setGold(int gold) {
-			this.gold = gold;
-		}
-
-
 	}
-<<<<<<< HEAD
-=======
 
 	public int getGold() {
 		return gold;
@@ -266,4 +203,4 @@ public class Inventory implements game.farm.seedSelection {
 
 
 }
->>>>>>> refs/heads/develop
+ 

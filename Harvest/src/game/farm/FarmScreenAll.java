@@ -1,11 +1,7 @@
 package game.farm;
 
 import java.awt.Color;
-<<<<<<< HEAD
-import java.awt.event.KeyEvent;
-=======
 import java.awt.Container;
->>>>>>> refs/heads/develop
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,14 +23,10 @@ public class FarmScreenAll extends FullFunctionScreen {
 	private Button shopJenny;
 	private Button menuJenny;
 	private Button itemJane;
-<<<<<<< HEAD
-	private Button saveJessi;
-=======
 	private ImageButton sleepAlex;
 	private static String which;
 	private static final int animalLimit = 5;
 	private static List<Visible> viewObj;
->>>>>>> refs/heads/develop
 	public static SelectionPaneJane pane;
 	public static SelectionPaneJane first;
 
@@ -47,20 +39,9 @@ public class FarmScreenAll extends FullFunctionScreen {
 
 	private int currentAnimals;
 
-<<<<<<< HEAD
-	private Button test;
-
-	KeyEvent e;
-	
-
-	private static List<Visible> viewObj;
-	public static PaneJenny plantPane;
-
-=======
 	public static PaneJenny animalPane;
 	public static PaneJenny plantPane;
 	public static PaneJenny patchPane;
->>>>>>> refs/heads/develop
 	
 	public FarmScreenAll(int width, int height) {
 		super(width, height);
@@ -75,21 +56,8 @@ public class FarmScreenAll extends FullFunctionScreen {
 	}
 
 	public void initAllObjects(List<Visible> viewObjects) {
-<<<<<<< HEAD
-
-		
-		game.mainScreen.Character c = new game.mainScreen.Character(0,0);
-		
-		currentAnimals = 2;
-
-=======
 		which = "";
->>>>>>> refs/heads/develop
 		viewObj = viewObjects;
-<<<<<<< HEAD
-		currentAnimals = 0;
-=======
->>>>>>> refs/heads/develop
 		farmPatch = new ArrayList<CropJane>();
 		emptyFarmPatch = new ArrayList<EmptyPatch>();
 		animalBox = new ArrayList<BoxJenny>();
@@ -135,15 +103,6 @@ public class FarmScreenAll extends FullFunctionScreen {
 		viewObjects.add(itemJane);
 
 		addfarmingPatchJane(viewObjects);
-		
-		saveJessi = new Button(260, 500, 80, 30, "Save", new Color(230, 235, 210), new Action() {
-			public void act() {
-				MainMenu.game.setScreen(MainMenu.saveMimi);
-
-			}
-		});
-		viewObjects.add(saveJessi);
-
 		
 		//Mainscreen team work
 		girl = game.mainScreen.GirlCharacter.addGirl(viewObjects);
@@ -216,7 +175,7 @@ public class FarmScreenAll extends FullFunctionScreen {
 		}
 
 	}
-//
+
 	private void addfarmingPatchJane(List<Visible> viewObjects) {
 		int start = 593;
 		int space = 77;
