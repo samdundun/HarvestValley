@@ -23,13 +23,21 @@ public class FarmScreenAll extends FullFunctionScreen {
 	private Button shopJenny;
 	private Button menuJenny;
 	private Button itemJane;
+	private ImageButton sleepAlex;
+	private static String which;
+	private static final int animalLimit = 5;
+	private static List<Visible> viewObj;
+	
 	public static SelectionPaneJane pane;
 	public static SelectionPaneJane first;
-	private ImageButton sleepAlex;
+
 	public static ArrayList<CropJane> farmPatch;
+	private ArrayList<EmptyPatch> emptyFarmPatch;
+	public static ArrayList<BoxJenny> animalBox;
 
 	public static AnimatedComponent boy;
 	public static AnimatedComponent girl;
+<<<<<<< HEAD
 
 	private static final int animalLimit = 5;
 	private int currentAnimals;
@@ -37,11 +45,17 @@ public class FarmScreenAll extends FullFunctionScreen {
 	private static String which;
 	public static PaneJenny animalPane;
 	private static ArrayList<BoxJenny> animalBox;
+=======
+>>>>>>> branch 'farm' of https://github.com/samdundun/HarvestValley.git
 
-	private static List<Visible> viewObj;
+	public static PaneJenny animalPane;
 	public static PaneJenny plantPane;
+<<<<<<< HEAD
 	public static PaneJenny patchPane;
 	private List<Visible> viewObjects;
+=======
+
+>>>>>>> branch 'farm' of https://github.com/samdundun/HarvestValley.git
 	
 	public FarmScreenAll(int width, int height) {
 		super(width, height);
@@ -54,7 +68,6 @@ public class FarmScreenAll extends FullFunctionScreen {
 	public void initAllObjects(List<Visible> viewObjects) {
 		which = "";
 		viewObj = viewObjects;
-		currentAnimals = 0;
 		farmPatch = new ArrayList<CropJane>();
 		emptyFarmPatch = new ArrayList<EmptyPatch>();
 		animalBox = new ArrayList<BoxJenny>();
