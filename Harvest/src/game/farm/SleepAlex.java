@@ -117,7 +117,7 @@ public class SleepAlex extends FullFunctionScreen {//can use ImageTextButton, Cu
 		actionInteger = 0;
 		
 		for(int actionInteger = 0; actionInteger<imageSources.size();actionInteger++) {
-			/*variable inside the setup part of a for loop are local -- be cautious when using them in the function -- especially in the action method of a button*/
+			/*variables inside the setup part of a for loop are local -- be cautious when using them in the function -- especially in the action method of a button*/
 			int xspacer = 83;
 			int c = actionInteger;
 			ImageButton holder = new ImageButton(actionInteger*xspacer,75,90,150, imageSources.get(actionInteger), new Action() {
