@@ -57,16 +57,16 @@ public class SleepAlex extends FullFunctionScreen {//can use ImageTextButton, Cu
 	
 	private Button back;
 	
-	private ArrayList<String> cropAnimalAndProductNames = new ArrayList<String>();
+	private static ArrayList<String> cropAnimalAndProductNames = new ArrayList<String>();
 	//{"tomato","wheat","strawberry","corn","potato","pepper","cows","sheep","pigs","chicken"};
 	/*
 	 * ArrayLists will follow 
 	 * */
-	private ArrayList<Integer> cropAnimalAndProductCount = new ArrayList<Integer>();
+	private static ArrayList<Integer> cropAnimalAndProductCount = new ArrayList<Integer>();
 	//{tomato,wheat,strawberry,corn,potato,pepper,cows,sheep,pigs,chicken};
 	
-	private ArrayList<Integer> cashFromCropAnimalProducts = new ArrayList<Integer>(12);
-	private ArrayList<Integer> sellingPriceCropAnimalProducts = new ArrayList<Integer>(12);
+	private static ArrayList<Integer> cashFromCropAnimalProducts = new ArrayList<Integer>(12);
+	private static ArrayList<Integer> sellingPriceCropAnimalProducts = new ArrayList<Integer>(12);
 	
 	//private ArrayList<ImageButton> imagesCropAnimalProducts = new ArrayList<ImageButton>();
 	private static ArrayList<String> imageSources  = new ArrayList<String>();
@@ -96,7 +96,7 @@ public class SleepAlex extends FullFunctionScreen {//can use ImageTextButton, Cu
 	public void initAllObjects(List<Visible> viewObjects) {
 		//ImageButton class works correctly when using the correct string address format -- include the package name
 		//create a textArea superclass to extend that incorporates a certain colored background
-		//addNamesAndCountToArray();
+		
 		Graphic backgroundOne = new Graphic(0, 0,getWidth(),getHeight(), "resources/nightSky.png");
 		viewObjects.add(backgroundOne);
 		Graphic backgroundTwo = new Graphic(100, 0,getWidth(),getHeight(), "resources/nightSky.png");
@@ -115,20 +115,21 @@ public class SleepAlex extends FullFunctionScreen {//can use ImageTextButton, Cu
 		imageSources.add("resources/blackEgg.png");
 		
 		actionInteger = 0;
-		
+		addNamesAndCountToArray();
 		for(int actionInteger = 0; actionInteger<imageSources.size();actionInteger++) {
 			/*variables inside the setup part of a for loop are local -- be cautious when using them in the function -- especially in the action method of a button*/
 			int xspacer = 83;
 			int c = actionInteger;
 			ImageButton holder = new ImageButton(actionInteger*xspacer,75,90,150, imageSources.get(actionInteger), new Action() {
 				public void act() {
-					/*TextArea info = new TextArea(actionInteger*83, 300, 100, 100, "You have created" + 
-							cropAnimalAndProductCount.get(actionInteger) + cropAnimalAndProductNames.get(actionInteger) + "." + 
-							"You have made" +cashFromCropAnimalProducts.get(actionInteger)+ "from" + 
-							cropAnimalAndProductNames.get(actionInteger));
-							viewObjects.add(info);*/
-					TextArea test = new TextArea(c*83, 300, 200, 200, "DATA IS COOL");
-					viewObjects.add(test);
+					System.out.println(cashFromCropAnimalProducts.get(c));
+					TextArea info = new TextArea(c*83, 300, 100, 100, "You have created" + 
+							cropAnimalAndProductCount.get(c) + cropAnimalAndProductNames.get(c) + "." + 
+							"You have made" +cashFromCropAnimalProducts.get(c)+ "from" + 
+							cropAnimalAndProductNames.get(c));
+							viewObjects.add(info);
+					/*TextArea test = new TextArea(c*83, 300, 200, 200, "DATA IS COOL");
+					viewObjects.add(test);*/
 				}});
 			viewObjects.add(holder);
 		}
@@ -198,8 +199,9 @@ public class SleepAlex extends FullFunctionScreen {//can use ImageTextButton, Cu
 		cropAnimalAndProductCount.add(whiteEggs);
 		cropAnimalAndProductCount.add(blackEggs);
 		
-		for(int i = 0; i < cashFromCropAnimalProducts.size();i++ ) {
-			int buyingPrice = 50;
+		int buyingPrice = 50;
+		for(int i = 0; i < 12;i++) {
+			System.out.println(cashFromCropAnimalProducts);
 			cashFromCropAnimalProducts.set(i, buyingPrice);
 			buyingPrice+=50;
 		}
@@ -209,6 +211,8 @@ public class SleepAlex extends FullFunctionScreen {//can use ImageTextButton, Cu
 			sellingPriceCropAnimalProducts.set(i, sellingPrice);
 			sellingPrice+=60;
 		}
+		//System.out.println(cropAnimalAndProductCount);
+		System.out.println(cashFromCropAnimalProducts);
 			//create textboxes or clickable boxes for each item of information about crops and animals
 			//have a panel that lightens all products the player can buy and darkens (perhaps an image of a lock) of all the products the user may not by.
 			//create a class that makes an image lighten or darken w/ a lock image under specific game conditions
