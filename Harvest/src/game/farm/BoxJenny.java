@@ -50,6 +50,7 @@ public class BoxJenny extends CustomImageButton implements Clickable{
 		index = i;
 		this.x = x;
 		this.y = y;
+		length = 5;
 	}
 
 	public void changeAction() {
@@ -87,7 +88,6 @@ public class BoxJenny extends CustomImageButton implements Clickable{
 				FarmScreenAll.animalPane.getItem().setText(name);
 				FarmScreenAll.animalPane.update();
 				FarmScreenAll.disableButton(false);
-
 			}
 		});
 	}
