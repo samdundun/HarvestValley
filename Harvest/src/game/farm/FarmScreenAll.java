@@ -1,7 +1,11 @@
 package game.farm;
 
 import java.awt.Color;
+<<<<<<< HEAD
 import java.awt.event.KeyEvent;
+=======
+import java.awt.Container;
+>>>>>>> refs/heads/develop
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,6 +16,7 @@ import game.market.BuyingScreen;
 import game.market.InventoryScreen;
 import game.market.Item;
 import guiTeacher.components.*;
+import guiTeacher.interfaces.FocusController;
 import guiTeacher.interfaces.Visible;
 import guiTeacher.userInterfaces.FullFunctionScreen;
 import harvest.MainMenu;
@@ -22,20 +27,27 @@ public class FarmScreenAll extends FullFunctionScreen {
 	private Button shopJenny;
 	private Button menuJenny;
 	private Button itemJane;
+<<<<<<< HEAD
 	private Button saveJessi;
-	public static SelectionPaneJane pane;
+=======
 	private ImageButton sleepAlex;
+	private static String which;
+	private static final int animalLimit = 5;
+	private static List<Visible> viewObj;
+>>>>>>> refs/heads/develop
+	public static SelectionPaneJane pane;
+	public static SelectionPaneJane first;
+
 	public static ArrayList<CropJane> farmPatch;
+	private ArrayList<EmptyPatch> emptyFarmPatch;
+	public static ArrayList<BoxJenny> animalBox;
 
 	public static AnimatedComponent boy;
 	public static AnimatedComponent girl;
 
-	private static final int animalLimit = 5;
 	private int currentAnimals;
-	public static PaneJenny animalPane;
-	private ArrayList<BoxJenny> animalBox;
-	
 
+<<<<<<< HEAD
 	private Button test;
 
 	KeyEvent e;
@@ -44,6 +56,11 @@ public class FarmScreenAll extends FullFunctionScreen {
 	private static List<Visible> viewObj;
 	public static PaneJenny plantPane;
 
+=======
+	public static PaneJenny animalPane;
+	public static PaneJenny plantPane;
+	public static PaneJenny patchPane;
+>>>>>>> refs/heads/develop
 	
 	public FarmScreenAll(int width, int height) {
 		super(width, height);
@@ -53,28 +70,33 @@ public class FarmScreenAll extends FullFunctionScreen {
 		return viewObj;
 	}
 
+	public static ArrayList<BoxJenny> getAnimalBox() {
+		return animalBox;
+	}
+
 	public void initAllObjects(List<Visible> viewObjects) {
+<<<<<<< HEAD
 
 		
 		game.mainScreen.Character c = new game.mainScreen.Character(0,0);
 		
 		currentAnimals = 2;
 
+=======
+		which = "";
+>>>>>>> refs/heads/develop
 		viewObj = viewObjects;
+<<<<<<< HEAD
 		currentAnimals = 0;
+=======
+>>>>>>> refs/heads/develop
 		farmPatch = new ArrayList<CropJane>();
+		emptyFarmPatch = new ArrayList<EmptyPatch>();
 		animalBox = new ArrayList<BoxJenny>();
+		//animalBox = new ArrayList<Test>();
 
 		back = new Graphic(0, 0, "resources/farm.PNG");
 		viewObjects.add(back);
-
-		test = new Button(400, 500, 80, 30, "test", new Color(230, 235, 210), new Action() {
-			public void act() {
-				addAnimalJenny(viewObjects, "resources/pig.png");
-			}
-		});
-		viewObjects.add(test);
-		addAnimalJenny(viewObjects, "resources/brownChicken.png");
 
 		menuJenny = new Button(5, 500, 80, 30, "Menu", new Color(230, 235, 210), new Action() {
 			public void act() {
@@ -143,36 +165,51 @@ public class FarmScreenAll extends FullFunctionScreen {
  			viewObjects.add(boy);
  		}
  		
+ 		patchPane = new PaneJenny(this, 400, 300);
+		patchPane.update();
+		viewObjects.add(patchPane);
+		patchPane.setVisible(false);
+		
 		addfarmingPatchJane(viewObjects);
+		addAnimalJenny(viewObjects);
+		
 		pane = new SelectionPaneJane(this, 400, 300);
+		setWhich("crop");
 		pane.update();
 		viewObjects.add(pane);
 		pane.setVisible(false);
-
-		animalPane = new PaneJenny(this, 400, 300);
-		animalPane.update();
-		viewObjects.add(animalPane);
-		animalPane.setVisible(false);
 		
 		plantPane = new PaneJenny(this, 400, 300);
 		plantPane.update();
 		viewObjects.add(plantPane);
 		plantPane.setVisible(false);
+		
+		first = new SelectionPaneJane(this, 400, 300);
+		setWhich("animal");
+		first.update();
+		viewObjects.add(first);
+		first.setVisible(false);
+		
+		animalPane = new PaneJenny(this, 400, 300);
+		animalPane.update();
+		viewObjects.add(animalPane);
+		animalPane.setVisible(false);
 	}
 	
-	private void addAnimalJenny(List<Visible> viewObjects, String src) {
-		currentAnimals++;
-		int start = 40;
+	private void addAnimalJenny(List<Visible> viewObjects) {
+		int start = 30;
 		int space = 150;
 
-		if(currentAnimals <= animalLimit) {
-			if(currentAnimals < 4) {
-				BoxJenny box = new BoxJenny(start + ((currentAnimals - 1) * 130), 150, "resources/cow.png", null, viewObjects);
+		for(int i = 0; i < animalLimit; i++) {
+			if(i < 3) {
+				BoxJenny box = new BoxJenny(start + (i * 150), 140, "resources/nothing.png", null, viewObjects, i);
+				box.update();
 				animalBox.add(box);
 				viewObjects.add(box);
 			}
 			else{
-				BoxJenny box = new BoxJenny(start + ((currentAnimals - 4) * 130), 150 + space, src, null, viewObjects);
+				BoxJenny box = new BoxJenny(start + ((i - 3) * 150), 140 + space, "resources/nothing.png", null, viewObjects, i);
+				box.update();
 				animalBox.add(box);
 				viewObjects.add(box);
 			}
@@ -185,31 +222,44 @@ public class FarmScreenAll extends FullFunctionScreen {
 		int space = 77;
 		for(int i=0; i<9; i++) {
 			if(i<3) {
-				CropJane patch= new CropJane(start+(i*68), 253, 63, 50, "",new Color(200, 125, 10), null, i, new CropImage());
+				CropJane patch= new CropJane(start+(i*68), 253, 63, 50, "",new Color(200, 125, 10), null, i, new CropImageJane());
 				patch.update();
 				farmPatch.add(patch);
 				viewObjects.add(patch);
 			}
 			else if(i>=3&&i<6) {
-				CropJane patch= new CropJane(start+((i-3)*68), 260+space, 63, 50,"",new Color(200, 125, 10), null, i, new CropImage());
+				CropJane patch= new CropJane(start+((i-3)*68), 260+space, 63, 50,"",new Color(200, 125, 10), null, i, new CropImageJane());
 				patch.update();
 				farmPatch.add(patch);
 				viewObjects.add(patch);
 			}
 			else {
-				CropJane patch= new CropJane(start+((i-6)*68), 278+space+space, 63, 50, "",new Color(200, 125, 10), null,i, new CropImage());
-				patch.update();
-				farmPatch.add(patch);
-				viewObjects.add(patch);
-				//
+				EmptyPatch emptyPatch= new EmptyPatch(start+((i-6)*68), 278+space+space, 63, 50, "For Sell",new Color(200, 125, 10), null,i);
+				emptyPatch.update();
+				emptyFarmPatch.add(emptyPatch);
+				viewObjects.add(emptyPatch);
 			}
 		}
 	}
+
 
 	public static void disableButton(boolean b) {
 		for(int i=0; i<farmPatch.size(); i++) {
 			farmPatch.get(i).setEnabled(b);
 		}
+		for(int j=0; j<animalBox.size(); j++) {
+			animalBox.get(j).setEnabled(b);
+		}
 		
 	}
+
+	public static String getWhich() {
+		// TODO Auto-generated method stub
+		return which;
+	}
+
+	public void setWhich(String s) {
+		which = s;
+	}
+	
 }

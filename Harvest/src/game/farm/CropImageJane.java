@@ -6,12 +6,12 @@ import java.awt.Graphics2D;
 import guiTeacher.components.Graphic;
 import guiTeacher.interfaces.DrawInstructions;
 
-public class CropImage implements DrawInstructions {
+public class CropImageJane implements DrawInstructions {
 
 	private int index;
 	private Graphic image; 
 	
-	public CropImage() {
+	public CropImageJane() {
 		index=-1;
 	}
 

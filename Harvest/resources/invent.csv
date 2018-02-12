@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 12900
 Pepper Seeds,Spicy,50,1,1
 Pepper Seeds,Spicy,50,1,1
@@ -1261,3 +1262,36 @@ Corn Seeds,Great crop to grow all year round,300,0,4
 Corn Seeds,Great crop to grow all year round,300,0,4
 Corn Seeds,Great crop to grow all year round,300,0,4
 Corn Seeds,Great crop to grow all year round,300,0,4
+=======
+<<<<<<< HEAD
+500,true
+Corn Seeds,Great crop to grow all year round,250,0,4
+=======
+8900
+Corn Seeds,Great crop to grow all year round,250,0,4
+Corn Seeds,Great crop to grow all year round,250,0,4
+Corn Seeds,Great crop to grow all year round,250,0,4
+Pepper Seeds,Spicy,50,1,1
+Potato Seeds,Just like me,150,2,3
+Potato Seeds,Just like me,150,2,3
+<<<<<<< HEAD
+>>>>>>> branch 'develop' of https://github.com/samdundun/HarvestValley.git
+Pepper Seeds,Spicy,50,1,1
+<<<<<<< HEAD
+Potato Seeds,Just like me,150,2,3
+Strawberry Seeds,Sweeter than you,100,3,2
+=======
+Pepper Seeds,Spicy,50,1,1
+=======
+0
+<<<<<<< HEAD
+>>>>>>> branch 'develop' of https://github.com/samdundun/HarvestValley.git
+=======
+Tomato,Great for salads,10,10,3
+>>>>>>> refs/heads/farm
+=======
+Potato,Time to make french fries,10,8,3
+Corn,Fresh to eat,10,6,4
+>>>>>>> branch 'develop' of https://github.com/samdundun/HarvestValley.git
+>>>>>>> branch 'develop' of https://github.com/samdundun/HarvestValley.git
+>>>>>>> refs/heads/develop

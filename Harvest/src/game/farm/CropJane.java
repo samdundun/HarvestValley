@@ -16,14 +16,14 @@ public class CropJane extends CustomImageButton {
 	
 	private int imageIndx;
 	private int index;
-	private CropImage image;
+	private CropImageJane image;
 	private int length;
 	private int stage;
 	private int time;
 	private int currentTime;
 	private Inventory invent;
 	
-	public CropJane(int x, int y, int w, int h, String text, Color color, Action action, int i, CropImage image) {
+	public CropJane(int x, int y, int w, int h, String text, Color color, Action action, int i, CropImageJane image) {
 		super(x, y, w, h,image, new Action() {
 			public void act() {
 				FarmScreenAll.pane.setX(x-250);
@@ -41,13 +41,14 @@ public class CropJane extends CustomImageButton {
 	public void crop(int i) {
 		changeAction();
 		imageIndx=i;
+		time=SelectionPaneJane.items[i].getTime();
 		if(i==5) {
 			length=5;
 		}
 		else
 			length=6;
 		stage = i*6;
-		image.setIndex(stage);
+		image.setIndex(i);
 		update();
 		startGrowing();
 	}
@@ -58,41 +59,43 @@ public class CropJane extends CustomImageButton {
 			
 			@Override
 			public void act() {
+				PaneJenny plantPane =FarmScreenAll.plantPane;
 				CropJane currentPatch=FarmScreenAll.farmPatch.get(index);
+				String cropName = SelectionPaneJane.items[currentPatch.imageIndx+6].getName().toLowerCase();
+				System.out.println(cropName);
 				int dayLeft =currentPatch.getLength()-currentPatch.getCurrentTime();
-				FarmScreenAll.plantPane.setX(currentPatch.getX()-250);
-				FarmScreenAll.plantPane.setY(currentPatch.getY()-120);
-				FarmScreenAll.plantPane.setSrc("corn");
-				FarmScreenAll.plantPane.updateImg(FarmScreenAll.getView());
-				FarmScreenAll.plantPane.setVisible(true);
-				//FarmScreenAll.plantPane.updateImg("resources/corn.png");
+				plantPane.setX(currentPatch.getX()-250);
+				plantPane.setY(currentPatch.getY()-120);
+				plantPane.setSrc(cropName);
+				plantPane.updateImg(FarmScreenAll.getView());
+				plantPane.setVisible(true);
 				if(currentPatch.getLength()!=currentPatch.getCurrentTime()) {
-					FarmScreenAll.plantPane.getLabel().setText(dayLeft+" days until harvest");
-				FarmScreenAll.plantPane.getHarvest().setAction(new Action() {
+					plantPane.getLabel().setText(dayLeft+" days until harvest");
+				plantPane.getHarvest().setAction(new Action() {
 					@Override
 					public void act() {
-						FarmScreenAll.plantPane.getLabel().setText("Crop is not ready yet");
+						plantPane.getLabel().setText("Crop is not ready yet");
 						
 					}
 				});
 				}
 				else {
-					FarmScreenAll.plantPane.getLabel().setText("Crop is ready to harvest");
-					FarmScreenAll.plantPane.getHarvest().setAction(new Action() {
+					plantPane.getLabel().setText("Crop is ready to harvest");
+					plantPane.getHarvest().setAction(new Action() {
 						
 						@Override
 						public void act() {
 							currentPatch.harvest(PlantJane.plants.length-1);
-							FarmScreenAll.plantPane.setVisible(false);
-							FarmScreenAll.plantPane.getImg().setVisible(false);
+							plantPane.setVisible(false);
+							plantPane.getImg().setVisible(false);
 							FarmScreenAll.disableButton(true);
-							invent.addItem(SelectionPaneJane.items[FarmScreenAll.farmPatch.get(index).imageIndx+6]);
+							invent.addItem(SelectionPaneJane.items[currentPatch.imageIndx+6]);
 							invent.save();
 						}
 					} );
 				}
-				FarmScreenAll.plantPane.getItem().setText(SelectionPaneJane.items[FarmScreenAll.farmPatch.get(index).imageIndx].getName());
-				FarmScreenAll.plantPane.update();
+				plantPane.getItem().setText(cropName);
+				plantPane.update();
 				FarmScreenAll.disableButton(false);
 				
 			}
@@ -108,10 +111,12 @@ public class CropJane extends CustomImageButton {
 		Thread grower = new Thread(new Runnable() {
 
 			public void run() {
+				//grows the crop base on the day and how many stage change the crop has
+				int stageTime =(time*3000)/length;
 				currentTime=0;
 				for(int i = 0; i< length; i++) {
 					try {
-						Thread.sleep(2000);
+						Thread.sleep(stageTime);
 					} catch (InterruptedException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
@@ -141,10 +146,6 @@ public class CropJane extends CustomImageButton {
 	
 	public int getIndex() {
 		return index;
-	}
-	public void setColor(Color red) {
-		this.setForeground(red);
-		
 	}
 
 	public void setTime(int time2) {
