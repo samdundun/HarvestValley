@@ -101,7 +101,9 @@ public class AnimatedComponent extends MovingComponent{
 		this.times.add(time);
 	}
 
-
+	public void setCurrentFrame(int i) {
+		currentFrame = i;
+	}
 
 	public void drawImage(Graphics2D g) {
 		long currentTime = System.currentTimeMillis();//gets time now

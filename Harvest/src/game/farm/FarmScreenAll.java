@@ -8,6 +8,7 @@ import java.util.List;
 import game.mainScreen.BoyCharacter;
 import game.mainScreen.GirlCharacter;
 import game.mainScreen.ImageButton;
+import game.mainScreen.MovableCharacter;
 import game.market.BuyingScreen;
 import game.market.Item;
 import guiTeacher.components.*;
@@ -26,8 +27,8 @@ public class FarmScreenAll extends FullFunctionScreen {
 	private ImageButton sleepAlex;
 	private ArrayList<CropJane> farmPatch;
 
-	public static AnimatedComponent boy;
-	public static AnimatedComponent girl;
+	public static MovableCharacter boy;
+	public static MovableCharacter girl;
 
 	private static final int animalLimit = 5;
 	private int currentAnimals;
@@ -44,7 +45,7 @@ public class FarmScreenAll extends FullFunctionScreen {
 
 	public void initAllObjects(List<Visible> viewObjects) {
 		
-		game.mainScreen.Character c = new game.mainScreen.Character(0,0);
+//		game.mainScreen.Character c = new game.mainScreen.Character(0,0);
 		
 		currentAnimals = 2;
 		farmPatch = new ArrayList<CropJane>();
@@ -107,23 +108,22 @@ public class FarmScreenAll extends FullFunctionScreen {
 
 		
 		//Mainscreen team work
-		girl = game.mainScreen.GirlCharacter.addGirl(viewObjects);
+		girl = new GirlCharacter(480, 220, 50, 100);
 		Thread rungurl = new Thread(girl);
 		rungurl.start();
 		
 		
- 		boy = game.mainScreen.BoyCharacter.addBoy(viewObjects);
+		boy = new BoyCharacter(480, 220, 50, 100);
  		Thread runboi = new Thread(boy);
  		runboi.start();
-// 		viewObjects.add(boy);
 
-// 		/viewObjects.add(girl);
-	
  		if(MainMenu.isGirl) {
  			viewObjects.add(girl);
+ 			moveFocus(girl);
  		}
  		else if(!MainMenu.isGirl) {
  			viewObjects.add(boy);
+ 			moveFocus(boy);
  		}
  		
 		addfarmingPatchJane(viewObjects);
