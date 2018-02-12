@@ -45,6 +45,7 @@ public class Inventory implements game.farm.seedSelection {
 		addItem(ITEMS[1]);
 		addItem(ITEMS[2]);
 		addItem(ITEMS[3]);
+		setGold(500);
 		//		addItem(items[4]);
 		//		addItem(items[5]);
 		//		addItem(items[6]);

@@ -2,6 +2,7 @@ package game.mainScreen;
 
 import java.util.List;
 
+import game.market.Inventory;
 import guiTeacher.components.Action;
 import guiTeacher.components.Graphic;
 import guiTeacher.interfaces.Visible;
@@ -17,6 +18,8 @@ public class MenuScreenLubna extends ClickableScreen implements Runnable {
 	private ImageButton obj;
 //	private ImageButton save;
 
+	private Inventory invent;
+	
 	public MenuScreenLubna(int width, int height) {
 		super(width, height);
 		Thread app = new Thread(this);
@@ -25,6 +28,7 @@ public class MenuScreenLubna extends ClickableScreen implements Runnable {
 
 	@Override
 	public void initAllObjects(List<Visible> viewObjects) {
+		invent = new Inventory();
 		Graphic back = new Graphic(0,0,getWidth(),getHeight(),"resources/background.png");
 		viewObjects.add(back);
 		title = new Graphic(150, 60, 600, 600, "resources/harvestvalley.png");
@@ -34,6 +38,9 @@ public class MenuScreenLubna extends ClickableScreen implements Runnable {
 
 			@Override
 			public void act() {
+				invent = new Inventory();
+				invent.addBasics();
+				invent.save();
 				MainMenu.isNew = true;
 				MainMenu.game.setScreen(MainMenu.screen2);
 
