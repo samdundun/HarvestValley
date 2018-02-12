@@ -9,13 +9,8 @@ import guiTeacher.interfaces.Visible;
 
 public class EmptyPatch extends Button {
 	private int index;
-	
-	public EmptyPatch(int x, int y, int w, int h, String text, Color color, Action action, int i) {
-		super(x, y, w, h, text, color, action);
-		// TODO Auto-generated constructor stub
-	}
 
-	public EmptyPatch(int x, int y, int w, int h, String text, Color color, Action action, int i,List<Visible> viewObjects) {
+	public EmptyPatch(int x, int y, int w, int h, String text, Color color, Action action, int i) {
 		super(x, y, w, h, text,color, new Action() {
 			
 			@Override
@@ -27,25 +22,25 @@ public class EmptyPatch extends Button {
 				FarmScreenAll.patchPane.setSrc("farmPatch");
 				FarmScreenAll.patchPane.updateImg(FarmScreenAll.getView());
 				FarmScreenAll.patchPane.setVisible(true);
+				FarmScreenAll.patchPane.getHarvest().setAction(new Action() {
+					
+					@Override
+					public void act() {
+						CropJane newPatch = convertToPatch();
+						newPatch.update();
+						FarmScreenAll.farmPatch.add(convertToPatch());
+						FarmScreenAll.getView().add(newPatch);
+						
+					}
+
+					private CropJane convertToPatch() {
+						CropJane newPatch = new CropJane(x, y, w, h, "", color, action, i, new CropImageJane());
+						return newPatch;
+					}
+				});
 			
 		}});
 		this.index=i;
-//		FarmScreenAll.patchPane.getHarvest().setAction(new Action() {
-//			
-//			@Override
-//			public void act() {
-//				CropJane newPatch = convertToPatch();
-//				newPatch.update();
-//				FarmScreenAll.farmPatch.add(convertToPatch());
-//				viewObjects.add(newPatch);
-//				
-//			}
-//
-//			private CropJane convertToPatch() {
-//				CropJane newPatch = new CropJane(x, y, w, h, "", color, action, i, new CropImageJane());
-//				return newPatch;
-//			}
-//		});
 	}
 
 

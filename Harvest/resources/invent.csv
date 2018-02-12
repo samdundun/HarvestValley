@@ -1,14 +1,11 @@
+8900
+Corn Seeds,Great crop to grow all year round,250,0,4
+Corn Seeds,Great crop to grow all year round,250,0,4
+Corn Seeds,Great crop to grow all year round,250,0,4
+Pepper Seeds,Spicy,50,1,1
+Potato Seeds,Just like me,150,2,3
+Potato Seeds,Just like me,150,2,3
 <<<<<<< HEAD
-460
-Strawberry Seeds,Sweeter than you,100,3,2
-Strawberry Seeds,Sweeter than you,100,3,2
-Wheat,Just plain old wheat,10,11,5
-Wheat,Just plain old wheat,10,11,5
-Wheat,Just plain old wheat,10,11,5
-Wheat,Just plain old wheat,10,11,5
-White Chicken,Cluck cluck,250,13,1
-Potato Seeds,Just like me,150,2,3
-Potato Seeds,Just like me,150,2,3
 Pepper Seeds,Spicy,50,1,1
 Pepper Seeds,Spicy,50,1,1
 =======
@@ -18,3 +15,7 @@ Pepper Seeds,Spicy,50,1,1
 =======
 Tomato,Great for salads,10,10,3
 >>>>>>> refs/heads/farm
+=======
+Potato,Time to make french fries,10,8,3
+Corn,Fresh to eat,10,6,4
+>>>>>>> branch 'develop' of https://github.com/samdundun/HarvestValley.git
