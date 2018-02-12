@@ -82,9 +82,13 @@ public class InventoryScreen extends FullFunctionScreen {
 						MainMenu.game.setScreen(MainMenu.game.inventory);
 						i.setSelected(false);
 					}
+
 				}
+
+				}
+
 			}
-		});
+		);
 		discard.setBackground(Color.red);
 		discard.setActiveBorderColor(Color.white);
 		discard.setCurve(0, 0);
@@ -103,7 +107,7 @@ public class InventoryScreen extends FullFunctionScreen {
 		for(Item i:invent.getItems()) {
 			i.setAction(new Action() {
 
-				@Override
+
 				public void act() {
 					description.setText(i.getName()+"\n"+i.getDescription()  + "\nGrowth time : " + i.getTime() + " Days");
 					amount.setText("Amount: " + Integer.toString(invent.getAmountArray()[i.getImageIndex()]));
@@ -115,6 +119,7 @@ public class InventoryScreen extends FullFunctionScreen {
 					items[i.getImageIndex()].setSelected(true);
 
 					i.update();
+
 
 				}
 			});
