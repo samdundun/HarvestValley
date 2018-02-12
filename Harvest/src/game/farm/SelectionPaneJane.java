@@ -75,13 +75,8 @@ public class SelectionPaneJane extends Pane {
 			}
 		});
 		viewObjects.add(cancel);
-<<<<<<< HEAD
-
-		TextLabel label = new TextLabel(15, 0, 150, 50, "");
-=======
 		
 		TextLabel label = new TextLabel(15, 0, 150, 50, "Please select an item");
->>>>>>> branch 'develop' of https://github.com/samdundun/HarvestValley.git
 		viewObjects.add(label);
 
 		//		int move = 0;
@@ -126,7 +121,6 @@ public class SelectionPaneJane extends Pane {
 	public void addImages(int start, int end, int move, int startingHeight, int width, int height,TextLabel label) {
 		invent.sort();
 		ArrayList<Item> seeds=invent.getSeedInventory();
-		System.out.println(seeds);
 		for(int i = 0; i < seeds.size(); i++) {
 			Item z=items[i];
 			z.setAction(new Action() {
@@ -136,9 +130,9 @@ public class SelectionPaneJane extends Pane {
 					for(int i = 0; i < items.length;i++) {
 						items[i].setSelected(false);
 					}
-					label.setText(z.getName());
+					System.out.println(z.getName());
 					z.setSelected(true);
-
+					label.setText(z.getName());
 				}
 			});
 
