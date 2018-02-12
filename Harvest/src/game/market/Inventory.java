@@ -3,6 +3,7 @@ package game.market;
 import java.awt.ItemSelectable;
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -15,25 +16,29 @@ import guiTeacher.components.Graphic;
 public class Inventory {
 
 	public static Scanner in;
-	private ArrayList<Item> inventItems;
-	private int[] amount = {0,0,0,0,0,0,0,0,0,0,0,0};
+	private int[] amount;
 	private ArrayList<Item> invent;
+	private int gold;
 
-	public static final Item[] ITEMS = {new Item("Corn Seeds", "Great crop to grow all year round", 100, 0,4),
-			new Item("Pepper Seeds", "Yes", 100, 1,1),new Item("Potato Seeds", "Yes", 100, 2,3),
-			new Item("Strawberry Seeds", "Yes", 100, 3,2),new Item("Tomato Seeds", "Yes", 100, 4,3),
-			new Item("Wheat Seeds", "Yes", 100, 5,5),new Item("Corn", "Corn \nFresh to eat", 10,6,4),
-			new Item("Pepper","Pepper \nSupah Hot Fire",20,7,1),new Item("Potato","Potato \nTime to make french fries",10,8,3),
-			new Item("Strawberry","Strawberry \nStraw + Berry??",10,9,2),new Item("Tomato", "Tomato \nGreat for salads", 10,10,3),
-			new Item("Wheat","Wheat \nJust plain old wheat",10,11,5)};
-	
+	public static final Item[] ITEMS = {new Item("Corn Seeds", "Great crop to grow all year round", 300, 0, 4),new Item("Pepper Seeds", "Spicy", 50, 1,1),
+			new Item("Potato Seeds", "Just like me", 150, 2, 3),new Item("Strawberry Seeds", "Sweeter than you", 100, 3,2),
+			new Item("Tomato Seeds", "Make some good ketchup", 200, 4,3),new Item("Wheat Seeds", "Not weed", 400, 5,5),new Item("Corn", "Fresh to eat", 10,6,4),
+			new Item("Pepper","Supah Hot Fire",20,7,1),new Item("Potato","Time to make french fries",10,8,3),
+			new Item("Strawberry","Berry??",10,9,2),new Item("Tomato", "Great for salads", 10,10,3),
+			new Item("Wheat","Just plain old wheat",10,11,5),new Item("Brown Chicken", "Cluck cluck", 250, 12,1),new Item("White Chicken", "Cluck cluck", 250, 13,1),
+			new Item("Black Chicken", "Cluck cluck", 250, 14,1),new Item("Sheep", "BAAAAAAAAAAAH", 350, 15,2),
+			new Item("Cow", "Mooooooo", 500, 16,2),new Item("Pig", "SNORT SNORT", 250, 17,1),
+			new Item("Brown Eggs", "", 300, 18, 0),new Item("White Eggs", "", 50, 19,0),
+			new Item("Black Eggs", "", 150, 20, 0),new Item("Wool", "", 100, 21,0),
+			new Item("Milk", "", 200, 22,0),new Item("Meat", "", 400, 23,0)};
+
 	//image index
 	//cornseed,pepperseed,potatoseed,strawberryseed,tomatoseed,wheatseed,corn,pepper,potato,strawberry,tomato,wheat
-	// 0           1          2            3             4          5      6    7       8        9         10    11
+	// 0           1          2            3             4          5      6    7       8       9         10    11
 	public Inventory() {
-		inventItems = new ArrayList<Item>();
+
 		invent = new ArrayList<Item>();
-		//load();
+		amount = new int[ITEMS.length];
 	}
 
 	public void addBasics() {	
@@ -41,17 +46,17 @@ public class Inventory {
 		addItem(ITEMS[1]);
 		addItem(ITEMS[2]);
 		addItem(ITEMS[3]);
-//		addItem(items[4]);
-//		addItem(items[5]);
-//		addItem(items[6]);
-//		addItem(items[7]);
-//		addItem(items[8]);
-//		addItem(items[9]);
-//		addItem(items[10]);
-//		addItem(items[11]);
-//		addItem(items[7]);
-//		addItem(items[8]);
-//		addItem(items[9]);
+		//		addItem(items[4]);
+		//		addItem(items[5]);
+		//		addItem(items[6]);
+		//		addItem(items[7]);
+		//		addItem(items[8]);
+		//		addItem(items[9]);
+		//		addItem(items[10]);
+		//		addItem(items[11]);
+		//		addItem(items[7]);
+		//		addItem(items[8]);
+		//		addItem(items[9]);
 		/**
 		 * strawberries
 		 * corn
@@ -73,12 +78,18 @@ public class Inventory {
 	//	}
 
 	public void sort() {
-		for(int i = 0; i < inventItems.size();i++) {
-			amount[inventItems.get(i).getImageIndex()]++;
+
+		for(int k = 0; k < amount.length;k++) {
+			amount[k] = 0;
 		}
-		for(int j = 0; j < inventItems.size();j++) {
-			inventItems.get(j).setAmount(amount[inventItems.get(j).getImageIndex()]);
+
+		for(Item i: invent) {
+			amount[i.getImageIndex()]++;
 		}
+
+		//		for(int i = 0; i < invent.size()/2;i++) {
+		//			amount[invent.get(i).getImageIndex()]++;
+		//		}
 	}
 
 
@@ -91,65 +102,82 @@ public class Inventory {
 	}
 
 	public ArrayList<Item> getItems(){
-		return inventItems;
+		return invent;
 	}
 
 	public Item getItem(int index){
-		return inventItems.get(index);
+		return invent.get(index);
 	}
 
 	public void addItem(Item i){
-		inventItems.add(i);
 		invent.add(i);
 	}
 
 	public void removeItem(Item i) {
-		inventItems.remove(i);
+		invent.remove(i);
+		System.out.println("Inventory class: "+ invent);
 	}
 
 	public int[] getAmountArray() {
 		return amount;
 	}
 
-	private void load() {
-		String fileName = "";
-		//empty the catalog to prepare for a new load
-		//use this boolean to control the while loop. The user should have multiple chances to enter a correct filename
-		boolean opened = false;
-		while(!opened){
+	public void load() {
+		invent.clear();
+		String csvFile = "resources/invent.csv";
+        BufferedReader br = null;
+        String line = "";
+        String cvsSplitBy = ",";
+        try {
+            br = new BufferedReader(new FileReader(csvFile));
+            line = br.readLine();
+            setGold(Integer.parseInt(line));
+            while ((line = br.readLine()) != null) {
 
-			fileName = "invent.csv";
-			opened = read(new File(fileName));
+                // use comma as separator
+                String[] array = line.split(cvsSplitBy);
+                Item it = new Item(array[0], array[1], Integer.parseInt (array[2]), Integer.parseInt(array[3]), Integer.parseInt(array[4]));
+                addItem(it);
+                System.out.println(it);
 
-
-		}
+            }
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
 
 	}
 
-	public boolean read(File f){
-		try{
-			FileReader fileReader = new FileReader(f);
-			String line = "";
-			//a BufferedReader enables us to read the file one line at a time
-			BufferedReader br = new BufferedReader(fileReader);
-			while ((line = br.readLine()) != null) {
-
-				String[] param = line.split(",");
-
-				invent.add(new Item(param[0],param[1],Integer.parseInt(param[2]), Integer.parseInt(param[3]), Integer.parseInt(param[4])));
-
-			}
-			br.close();
-			return true;
-		}catch(Exception e){
-			System.out.println("The file name you specified does not exist.");
-			return false;
-		}
-	}
+//	public boolean read(File f){
+//		try{
+//			FileReader fileReader = new FileReader(f);
+//			String line = "";
+//			//a BufferedReader enables us to read the file one line at a time
+//			BufferedReader br = new BufferedReader(fileReader);
+//			while ((line = br.readLine()) != null) {
+//
+//
+//
+//				String[] param = line.split(",");
+//				if(param.length == 1) {
+//					this.setGold(Integer.parseInt(param[0]));
+//				}
+//				else {
+//					invent.add(new Item(param[0],param[1],Integer.parseInt(param[2]), Integer.parseInt(param[3]), Integer.parseInt(param[4])));
+//				}
+//			}
+//			br.close();
+//			return true;
+//		}catch(Exception e){
+//			System.out.println("The file name you specified does not exist.");
+//			return false;
+//		}
+//	}
 
 	public void save() {
 		try{    
-			FileWriter fw=new FileWriter("invent.csv");
+			FileWriter fw=new FileWriter("resources/invent.csv");
+			fw.write(Integer.toString(this.getGold())+"\n");
 			for(Item b: invent){
 				fw.write(b+"\n");    	
 			}
@@ -161,5 +189,13 @@ public class Inventory {
 		}
 	}
 
-	
+	public int getGold() {
+		return gold;
+	}
+
+	public void setGold(int gold) {
+		this.gold = gold;
+	}
+
+
 }
