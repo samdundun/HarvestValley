@@ -31,7 +31,7 @@ public class FarmScreenAll extends FullFunctionScreen {
 	public static SelectionPaneJane first;
 
 	public static ArrayList<CropJane> farmPatch;
-	private ArrayList<EmptyPatch> emptyFarmPatch;
+	public static ArrayList<EmptyPatch> emptyFarmPatch;
 	public static ArrayList<BoxJenny> animalBox;
 
 	public static AnimatedComponent boy;
@@ -219,6 +219,11 @@ public class FarmScreenAll extends FullFunctionScreen {
 
 	public void setWhich(String s) {
 		which = s;
+	}
+
+	public static void disableEmptyPatch(boolean b, int i) {
+			emptyFarmPatch.get(i).setEnabled(b);
+		
 	}
 	
 }

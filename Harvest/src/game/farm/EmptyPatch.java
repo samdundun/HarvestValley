@@ -30,6 +30,10 @@ public class EmptyPatch extends Button {
 						newPatch.update();
 						FarmScreenAll.farmPatch.add(convertToPatch());
 						FarmScreenAll.getView().add(newPatch);
+						FarmScreenAll.patchPane.setVisible(false);
+						FarmScreenAll.patchPane.getImg().setVisible(false);
+						FarmScreenAll.disableEmptyPatch(false,1);
+						System.out.println(FarmScreenAll.farmPatch.size());
 						
 					}
 
@@ -41,6 +45,7 @@ public class EmptyPatch extends Button {
 			
 		}});
 		this.index=i;
+		System.out.println(index);
 	}
 
 
@@ -48,9 +53,7 @@ public class EmptyPatch extends Button {
 		return index;
 	}
 
-	public void setIndex(int index) {
-		this.index = index;
-	}
+
 	
 	
 }
