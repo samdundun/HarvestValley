@@ -222,7 +222,9 @@ public class FarmScreenAll extends FullFunctionScreen {
 	}
 
 	public static void disableEmptyPatch(boolean b, int i) {
-			emptyFarmPatch.get(i).setEnabled(b);
+		for(int j=0; j<emptyFarmPatch.size(); j++) {
+			emptyFarmPatch.get(j).setEnabled(b);
+		}
 		
 	}
 	
