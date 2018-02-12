@@ -33,13 +33,15 @@ public class FarmScreenAll extends FullFunctionScreen {
 
 	private static final int animalLimit = 5;
 	private int currentAnimals;
-	private ArrayList<EmptyPatch> emptyFarmPatch;
+	public static ArrayList<EmptyPatch> emptyFarmPatch;
 	private static String which;
 	public static PaneJenny animalPane;
 	private static ArrayList<BoxJenny> animalBox;
 
 	private static List<Visible> viewObj;
 	public static PaneJenny plantPane;
+	public static PaneJenny patchPane;
+	private List<Visible> viewObjects;
 	
 	public FarmScreenAll(int width, int height) {
 		super(width, height);
@@ -119,6 +121,11 @@ public class FarmScreenAll extends FullFunctionScreen {
  			viewObjects.add(boy);
  		}
  		
+ 		patchPane = new PaneJenny(this, 400, 300);
+		patchPane.update();
+		viewObjects.add(patchPane);
+		patchPane.setVisible(false);
+		
 		addfarmingPatchJane(viewObjects);
 		addAnimalJenny(viewObjects);
 		
@@ -183,13 +190,14 @@ public class FarmScreenAll extends FullFunctionScreen {
 				viewObjects.add(patch);
 			}
 			else {
-				EmptyPatch emptyPatch= new EmptyPatch(start+((i-6)*68), 278+space+space, 63, 50, "For Sell",new Color(200, 125, 10), null,i);
+				EmptyPatch emptyPatch= new EmptyPatch(start+((i-6)*68), 278+space+space, 63, 50, "For Sell",new Color(200, 125, 10), null,i, viewObjects);
 				emptyPatch.update();
 				emptyFarmPatch.add(emptyPatch);
 				viewObjects.add(emptyPatch);
 			}
 		}
 	}
+
 
 	public static void disableButton(boolean b) {
 		for(int i=0; i<farmPatch.size(); i++) {
@@ -209,4 +217,5 @@ public class FarmScreenAll extends FullFunctionScreen {
 	public void setWhich(String s) {
 		which = s;
 	}
+	
 }
