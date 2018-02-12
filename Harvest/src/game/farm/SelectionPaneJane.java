@@ -105,7 +105,7 @@ public class SelectionPaneJane extends Pane {
 		});
 		viewObjects.add(cancel);
 		
-		TextLabel label = new TextLabel(15, 0, 150, 50, "");
+		TextLabel label = new TextLabel(15, 0, 150, 50, "Please select an item");
 		viewObjects.add(label);
 		
 //		int move = 0;
@@ -137,18 +137,20 @@ public class SelectionPaneJane extends Pane {
 	}
 	
 	public void addImages(int start, int end, int move, int startingHeight, int width, int height,TextLabel label) {
-		for(int i = start; i < end; i++) {
+		invent.sort();
+		ArrayList<Item> seeds=invent.getSeedInventory();
+		System.out.println(seeds);
+		for(int i = 0; i < seeds.size(); i++) {
 			Item z=items[i];
 			z.setAction(new Action() {
 
 				@Override
 				public void act() {
-					System.out.println(z.getName());
 					for(int i = 0; i < items.length;i++) {
 						items[i].setSelected(false);
 					}
-					z.setSelected(true);
 					label.setText(z.getName());
+					z.setSelected(true);
 
 				}
 			});

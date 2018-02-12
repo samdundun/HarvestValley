@@ -189,7 +189,7 @@ public class FarmScreenAll extends FullFunctionScreen {
 				viewObjects.add(patch);
 			}
 			else {
-				EmptyPatch emptyPatch= new EmptyPatch(start+((i-6)*68), 278+space+space, 63, 50, "For Sell",new Color(200, 125, 10), null,i, viewObjects);
+				EmptyPatch emptyPatch= new EmptyPatch(start+((i-6)*68), 278+space+space, 63, 50, "For Sell",new Color(200, 125, 10), null,i);
 				emptyPatch.update();
 				emptyFarmPatch.add(emptyPatch);
 				viewObjects.add(emptyPatch);
