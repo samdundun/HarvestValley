@@ -42,7 +42,7 @@ public class MenuScreenLubna extends ClickableScreen implements Runnable {
 				invent = new Inventory();
 				invent.addBasics();
 				invent.save();
-				MainMenu.isNew = true;
+				MainMenu.game.screen2 = new ChooseGenderScreenLubna(getWidth(), getHeight());
 				MainMenu.game.setScreen(MainMenu.screen2);
 
 			}

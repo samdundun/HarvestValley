@@ -122,14 +122,10 @@ public class FarmScreenAll extends FullFunctionScreen {
  			viewObjects.add(boy);
  		}
  		
- 		addfarmingPatchJane(viewObjects);
+		
+		addfarmingPatchJane(viewObjects);
 		addAnimalJenny(viewObjects);
 		
- 		patchPane = new PaneJenny(this, 400, 300);
-		patchPane.update();
-		viewObjects.add(patchPane);
-		patchPane.setVisible(false);
-	
 		pane = new SelectionPaneJane(this, 400, 300);
 		setWhich("crop");
 		pane.update();
@@ -171,7 +167,8 @@ public class FarmScreenAll extends FullFunctionScreen {
 				viewObjects.add(box);
 			}
 		}
-	}
+		}
+
 
 	private void addfarmingPatchJane(List<Visible> viewObjects) {
 		int start = 593;
