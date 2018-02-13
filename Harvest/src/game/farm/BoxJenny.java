@@ -56,12 +56,12 @@ public class BoxJenny extends CustomImageButton implements Clickable{
 
 	public void changeAction(int i) {
 		updateImg(index, SelectionPaneJane.getSrc());
+				BoxJenny animal = FarmScreenAll.animalBox.get(index);
 		imageIndx = i;
 		System.out.println(imageIndx);
 		this.setEnabled(true);
 		this.setAction(new Action() {
 			public void act() {
-				BoxJenny animal = FarmScreenAll.animalBox.get(index);
 				String label = SelectionPaneJane.items[imageIndx + 6].getName().toLowerCase();
 				String name = game.market.Item.getGraphic()[imageIndx + 6].getImageLocation();
 				System.out.println(name);	System.out.println(animal.imageIndx);
