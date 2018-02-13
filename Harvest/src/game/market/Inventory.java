@@ -39,7 +39,6 @@ public class Inventory implements game.farm.seedSelection {
 
 		invent = new ArrayList<Item>();
 		amount = new int[ITEMS.length];
-		save();
 	}
 
 	public void addBasics() {	
@@ -153,7 +152,6 @@ public class Inventory implements game.farm.seedSelection {
 				if(param.length == 2) {
 					this.setGold(Integer.parseInt(param[0]));
 					MainMenu.isGirl = Boolean.parseBoolean(param[1]);
-					System.out.println(MainMenu.isGirl);
 				}
 				else {
 					invent.add(new Item(param[0],param[1],Integer.parseInt(param[2]), Integer.parseInt(param[3]), Integer.parseInt(param[4])));
@@ -204,3 +202,4 @@ public class Inventory implements game.farm.seedSelection {
 
 
 }
+ 

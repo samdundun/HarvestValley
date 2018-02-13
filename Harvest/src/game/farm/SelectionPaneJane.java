@@ -74,9 +74,13 @@ public class SelectionPaneJane extends Pane {
 				SelectionPaneJane.this.setVisible(false);
 				FarmScreenAll.disableButton(true);
 			}
+
 		});
 		viewObjects.add(cancel);
+
+
 		
+
 		TextLabel label = new TextLabel(15, 0, 150, 50, "Please select an item");
 		viewObjects.add(label);
 
@@ -118,12 +122,14 @@ public class SelectionPaneJane extends Pane {
 		viewObjects.add(select);
 	}
 
-	public void addImages(int start, int end, int move, int startingHeight, int width, int height,TextLabel label) {
-
 //		invent.sort();
 //		ArrayList<Item> seeds=invent.getSeedInventory();
 //		System.out.println(seeds);
-		for(int i = start; i < end; i++) {
+	public void addImages(int start, int end, int move, int startingHeight, int width, int height,TextLabel label) {
+		invent.sort();
+		
+		ArrayList<Item> seeds=invent.getSeedSelection();
+		for(int i = 0; i < seeds.size(); i++) {
 			Item z=items[i];
 			z.setAction(new Action() {
 
@@ -145,8 +151,23 @@ public class SelectionPaneJane extends Pane {
 				move = 0;
 				startingHeight = startingHeight+height;
 			}
-			viewObjects.add(z);
 		}
+
+		select= new Button(35,_HEIGHT - 30, 60, 25, "Select",Color.lightGray, new Action() {
+
+			public void act() {
+				for(int i = 0; i <items.length; i++) {
+					if(items[i].isSelected()) {
+						SelectionPaneJane.this.setSeedSelected(i);
+						FarmScreenAll.farmPatch.get(index).crop(items[i].getImageIndex());
+						SelectionPaneJane.this.setVisible(false);
+						FarmScreenAll.disableButton(true);
+					}
+				}
+				label.setText("Please select an item");
+
+			}});
+		viewObjects.add(select);
 	}
 
 	public int setSeedSelected(int i) {
