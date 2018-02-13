@@ -6,12 +6,14 @@ import java.util.List;
 import guiTeacher.components.Action;
 import guiTeacher.components.Button;
 import guiTeacher.interfaces.Visible;
+import harvest.MainMenu;
 
 public class EmptyPatch extends Button {
 	private int index;
 
 	public EmptyPatch(int x, int y, int w, int h, String text, Color color, Action action, int i) {
-		super(x, y, w, h, text,color, new Action() {
+		super(x, y, w, h, text,color, null);
+		setAction(new Action() {
 			
 			@Override
 			public void act() {
@@ -32,7 +34,8 @@ public class EmptyPatch extends Button {
 						CropJane newPatch = convertToPatch();
 						newPatch.update();
 						FarmScreenAll.farmPatch.add(newPatch);
-						FarmScreenAll.getView().add(newPatch);
+						MainMenu.farmScreen.addObjectToBack(newPatch);
+						MainMenu.farmScreen.remove(EmptyPatch.this);
 						FarmScreenAll.patchPane.setVisible(false);
 						FarmScreenAll.patchPane.getImg().setVisible(false);
 						FarmScreenAll.disableEmptyPatch(true,1);
@@ -40,12 +43,13 @@ public class EmptyPatch extends Button {
 					}
 
 					private CropJane convertToPatch() {
-						CropJane newPatch = new CropJane(x+68, y, w, h, "", color, null, i, new CropImageJane());
+						CropJane newPatch = new CropJane(x, y, w, h, "", color, null, i, new CropImageJane());
 						return newPatch;
 					}
 				});
 			
-		}});
+		}
+		});
 		this.index=i;
 		System.out.println(index);
 	}

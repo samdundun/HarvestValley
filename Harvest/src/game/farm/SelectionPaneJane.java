@@ -64,7 +64,10 @@ public class SelectionPaneJane extends Pane {
 		animalImg = "";
 		invent = new SamInventory();
 		invent.load();
-
+		invent.sort();
+		ArrayList<ErikItem> animal=invent.getAnimalSelection();
+		ArrayList<ErikItem> seeds=invent.getSeedSelection();
+		
 		grid = new Graphic(11,22,280,150, "resources/seedPane.png");
 		viewObjects.add(0,grid);
 
@@ -88,56 +91,61 @@ public class SelectionPaneJane extends Pane {
 		//		int width = 55;
 		//		int startingHeight =40 ;
 		//		int height = 60;
-
-		if(FarmScreenAll.getWhich().equals("crop"))
-			addImages(12, 18, 0, 45, 55, 60, label);
-		else
-			addImages(0, 6, 0, 40, 55, 60, label);
+		invent.sort();
+		if(FarmScreenAll.getWhich().equals("crop")) {
+			
+			addImages(animal, 0, 45, 55, 60, label);
+			}
+		else {
+			
+			addImages(seeds, 0, 40, 55, 60, label);
+		}
 
 		select= new Button(35,_HEIGHT - 30, 60, 25, "Select",Color.lightGray, new Action() {
 
 			public void act() {
-				for(int i = 0; i < items.length; i++) {
-					if(items[i].isSelected()) {
-						if(items[i].getImageIndex() < 6) {
-							SelectionPaneJane.this.setSeedSelected(i);
-							FarmScreenAll.farmPatch.get(index).setTime(items[i].getTime());
-							FarmScreenAll.farmPatch.get(index).crop(items[i].getImageIndex());
-							SelectionPaneJane.this.setVisible(false);
-							FarmScreenAll.disableButton(true);
-						}
-						else {
-							System.out.println(FarmScreenAll.getWhich());
-							animalIdx = i;
-							setSrc(game.market.ErikItem.getGraphic()[animalIdx].getImageLocation());
-							FarmScreenAll.animalBox.get(index).changeAction(items[i].getImageIndex());
-					setSrc(game.market.ErikItem.getGraphic()[animalIdx].getImageLocation());
-							FarmScreenAll.animalBox.get(index).changeAction(items[i].getImageIndex());
-							SelectionPaneJane.this.setVisible(false);
-							FarmScreenAll.disableButton(true);
-						}
-					}	
+				for(int i = 0; i < seeds.size(); i++) {
+					if(seeds.get(i).isSelected()) {
+						SelectionPaneJane.this.setSeedSelected(i);
+						FarmScreenAll.farmPatch.get(index).setTime(seeds.get(i).getTime());
+						FarmScreenAll.farmPatch.get(index).crop(seeds.get(i).getImageIndex());
+						SelectionPaneJane.this.setVisible(false);
+						FarmScreenAll.disableButton(true);
+					}
+					
 				}
-				label.setText("Please select an item");
+			for(int i=0; i<animal.size(); i++) {
+				System.out.println(FarmScreenAll.getWhich());
+				animalIdx = i;
+				setSrc(game.market.ErikItem.getGraphic()[animalIdx].getImageLocation());
+				FarmScreenAll.animalBox.get(index).changeAction(items[i].getImageIndex());
+		setSrc(game.market.ErikItem.getGraphic()[animalIdx].getImageLocation());
+				FarmScreenAll.animalBox.get(index).changeAction(items[i].getImageIndex());
+				SelectionPaneJane.this.setVisible(false);
+				FarmScreenAll.disableButton(true);
+			}
+			label.setText("Please select an item");
+			}
+			
+	
 
-			}});
+			});
 		viewObjects.add(select);}
 
 //		invent.sort();
 //		ArrayList<Item> seeds=invent.getSeedInventory();
 //		System.out.println(seeds);
-	public void addImages(int start, int end, int move, int startingHeight, int width, int height,TextLabel label) {
-		invent.sort();
+	public void addImages(ArrayList<ErikItem> item, int move, int startingHeight, int width, int height,TextLabel label) {
 		
-		ArrayList<ErikItem> seeds=invent.getSeedSelection();
-		for(int i = 0; i < seeds.size(); i++) {
-			ErikItem z=items[i];
+			
+		for(int i = 0; i <item.size(); i++) {
+			ErikItem z=item.get(i);
 			z.setAction(new Action() {
 
 				@Override
 				public void act() {
-					for(int i = 0; i < items.length;i++) {
-						items[i].setSelected(false);
+					for(int i = 0; i < item.size();i++) {
+						item.get(i).setSelected(false);
 					}
 					System.out.println(z.getName());
 					z.setSelected(true);
@@ -151,7 +159,9 @@ public class SelectionPaneJane extends Pane {
 			if(move == 3){
 				move = 0;
 				startingHeight = startingHeight+height;
-			}}
+			}
+			viewObjects.add(z);
+		}
 		}
 
 
