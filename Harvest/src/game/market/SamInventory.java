@@ -13,7 +13,7 @@ import guiPlayer.Book;
 import guiTeacher.components.Graphic;
 import harvest.MainMenu;
 
-public class SamInventory implements game.farm.seedSelection {
+public class SamInventory implements game.farm.ItemSelectionJane {
 
 	public static Scanner in;
 	private int[] amount;
@@ -188,8 +188,9 @@ public class SamInventory implements game.farm.seedSelection {
 		this.gold = gold;
 	}
 
+
 	@Override
-	public ArrayList<ErikItem> getSeedInventory() {
+	public ArrayList<ErikItem> getSeedSelection() {
 		ArrayList<ErikItem> seeds = new ArrayList<ErikItem>();
 		for(ErikItem i: invent) {
 			if(i.getImageIndex() < 6) {
@@ -198,6 +199,18 @@ public class SamInventory implements game.farm.seedSelection {
 		}
 		
 		return seeds;
+	}
+
+	@Override
+	public ArrayList<ErikItem> getAnimalSelection() {
+		ArrayList<ErikItem> animals = new ArrayList<ErikItem>();
+		for(ErikItem i: invent) {
+			if(i.getImageIndex() > 11 && i.getImageIndex() < 18) {
+				animals.add(i);
+			}
+		}
+		
+		return animals;
 	}
 
 
