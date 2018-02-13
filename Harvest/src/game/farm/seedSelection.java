@@ -2,8 +2,8 @@ package game.farm;
 
 import java.util.ArrayList;
 
-import game.market.Item;
+import game.market.ErikItem;
 
 public interface seedSelection {
-	ArrayList<Item> getSeedInventory();
+	ArrayList<ErikItem> getSeedInventory();
 }

@@ -13,7 +13,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import game.market.Inventory;
+import game.market.SamInventory;
 import guiTeacher.components.*;
 
 public class SaveDataJessi {

@@ -6,8 +6,8 @@ import harvest.MainMenu;
 
 import java.util.List;
 
-import game.market.Inventory;
-import game.market.Item;
+import game.market.SamInventory;
+import game.market.ErikItem;
 import guiTeacher.components.*;
 import guiTeacher.interfaces.Visible;
 import guiTeacher.userInterfaces.ClickableScreen;

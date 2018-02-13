@@ -3,16 +3,16 @@ package game.farm;
 import java.awt.Color;
 import java.awt.Graphics2D;
 
-import game.market.Item;
+import game.market.ErikItem;
 import guiTeacher.components.CustomImageButton;
 import guiTeacher.components.Graphic;
 import guiTeacher.interfaces.DrawInstructions;
 
 public class AnimalProduceJenny extends CustomImageButton {
 	
-	public static final Item[] produce = {new Item("Brown Eggs", "", 300, 0, 0),new Item("White Eggs", "", 50, 1,0),
-			new Item("Black Eggs", "", 150, 2, 0),new Item("Wool", "", 100, 3,0),
-			new Item("Milk", "", 200, 4,0),new Item("Meat", "", 400, 5,0)};
+	public static final ErikItem[] produce = {new ErikItem("Brown Eggs", "", 300, 0, 0),new ErikItem("White Eggs", "", 50, 1,0),
+			new ErikItem("Black Eggs", "", 150, 2, 0),new ErikItem("Wool", "", 100, 3,0),
+			new ErikItem("Milk", "", 200, 4,0),new ErikItem("Meat", "", 400, 5,0)};
 	
 	public static final Graphic[] items = {new Graphic(0,0,48,48,"resources/brownEgg.png"),
 			new Graphic(0,0,48,48,"resources/whiteEgg.png"),new Graphic(0,0,48,48,"resources/blackEgg.png"),

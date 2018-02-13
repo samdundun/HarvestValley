@@ -11,7 +11,7 @@ import guiTeacher.components.Graphic;
 import guiTeacher.interfaces.Clickable;
 import guiTeacher.interfaces.DrawInstructions;
 
-public class Item extends CustomImageButton implements Clickable{
+public class ErikItem extends CustomImageButton implements Clickable{
 
 	public static final Graphic[] ITEMS = {new Graphic(0,0,48,48,"resources/cornseeds.png"),
 			new Graphic(0,0,48,48,"resources/pepperseeds.png"),new Graphic(0,0,48,48,"resources/potatoseeds.png"),
@@ -55,7 +55,7 @@ public class Item extends CustomImageButton implements Clickable{
 	public static final int HEIGHT = 48;
 	public static final int WIDTH = 48;
 	
-	public Item(String name, String description, int value, int imageIndex, int time) {
+	public ErikItem(String name, String description, int value, int imageIndex, int time) {
 		super(0,0,48,48,new DrawInstructions() {
 
 			Graphic image = ITEMS[imageIndex];
