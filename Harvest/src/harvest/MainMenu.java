@@ -11,6 +11,7 @@ import game.mainScreen.MenuScreenLubna;
 import game.mainScreen.ObjectivesScreenJessi;
 import game.mainScreen.PlaceHolderScreen;
 import game.mainScreen.SaveScreenMimi;
+import game.mainScreen.Sound;
 import game.market.BuyingScreen;
 import game.market.InventoryScreen;
 import game.market.SellingScreen;
@@ -39,6 +40,8 @@ public class MainMenu extends GUIApplication {
 	public static SleepAlex sleep;
 	
 //	public static boolean isSaved;
+	
+//	private Sound sound;
 	
 	public MainMenu(int width, int height) {
 		super(width, height);
@@ -74,7 +77,7 @@ public class MainMenu extends GUIApplication {
 
 		setScreen(screen);
 
-	
+	//Sound.sound1.play();
 
 	}
 

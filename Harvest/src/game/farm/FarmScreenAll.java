@@ -26,7 +26,7 @@ public class FarmScreenAll extends FullFunctionScreen {
 	private Button itemJane;
 	private ImageButton sleepAlex;
 	private static String which;
-	private static final int animalLimit = 5;
+	private static final int animalLimit1 = 5;
 	private static List<Visible> viewObj;
 	public static SelectionPaneJane pane;
 	public static SelectionPaneJane first;
@@ -35,16 +35,14 @@ public class FarmScreenAll extends FullFunctionScreen {
 	private ArrayList<EmptyPatch> emptyFarmPatch;
 	public static ArrayList<BoxJenny> animalBox;
 
-<<<<<<< HEAD
-	public static MovableCharacter boy;
-	public static MovableCharacter girl;
+
+	public static MovableCharacter boy1;
+	public static MovableCharacter girl1;
 
 	private static final int animalLimit = 5;
-=======
 	public static AnimatedComponent boy;
 	public static AnimatedComponent girl;
 
->>>>>>> branch 'menu' of https://github.com/samdundun/HarvestValley
 	private int currentAnimals;
 
 	public static PaneJenny animalPane;
@@ -64,15 +62,14 @@ public class FarmScreenAll extends FullFunctionScreen {
 	}
 
 	public void initAllObjects(List<Visible> viewObjects) {
-<<<<<<< HEAD
 		
 //		game.mainScreen.Character c = new game.mainScreen.Character(0,0);
 		
 		currentAnimals = 2;
-=======
+
 		which = "";
 		viewObj = viewObjects;
->>>>>>> branch 'menu' of https://github.com/samdundun/HarvestValley
+
 		farmPatch = new ArrayList<CropJane>();
 		emptyFarmPatch = new ArrayList<EmptyPatch>();
 		animalBox = new ArrayList<BoxJenny>();
@@ -120,27 +117,25 @@ public class FarmScreenAll extends FullFunctionScreen {
 		addfarmingPatchJane(viewObjects);
 		
 		//Mainscreen team work
-		girl = new GirlCharacter(480, 220, 50, 100);
-		Thread rungurl = new Thread(girl);
+		girl1 = new GirlCharacter(480, 220, 50, 100);
+		Thread rungurl = new Thread(girl1);
 		rungurl.start();
 		
 		
-		boy = new BoyCharacter(480, 220, 50, 100);
- 		Thread runboi = new Thread(boy);
+		boy1 = new BoyCharacter(480, 220, 50, 100);
+ 		Thread runboi = new Thread(boy1);
  		runboi.start();
 
-<<<<<<< HEAD
-=======
+
 // 		viewObjects.add(girl);
 	
->>>>>>> branch 'menu' of https://github.com/samdundun/HarvestValley
  		if(MainMenu.isGirl) {
- 			viewObjects.add(girl);
- 			moveFocus(girl);
+ 			viewObjects.add(girl1);
+ 			moveFocus(girl1);
  		}
  		else if(!MainMenu.isGirl) {
- 			viewObjects.add(boy);
- 			moveFocus(boy);
+ 			viewObjects.add(boy1);
+ 			moveFocus(boy1);
  		}
  		
  		patchPane = new PaneJenny(this, 400, 300);
@@ -178,7 +173,7 @@ public class FarmScreenAll extends FullFunctionScreen {
 		int start = 30;
 		int space = 150;
 
-		for(int i = 0; i < animalLimit; i++) {
+		for(int i = 0; i < animalLimit1; i++) {
 			if(i < 3) {
 				BoxJenny box = new BoxJenny(start + (i * 150), 140, "resources/nothing.png", null, viewObjects, i);
 				box.update();
