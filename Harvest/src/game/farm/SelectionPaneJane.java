@@ -127,7 +127,8 @@ public class SelectionPaneJane extends Pane {
 //		System.out.println(seeds);
 	public void addImages(int start, int end, int move, int startingHeight, int width, int height,TextLabel label) {
 		invent.sort();
-		ArrayList<Item> seeds=invent.getSeedInventory();
+		
+		ArrayList<Item> seeds=invent.getSeedSelection();
 		for(int i = 0; i < seeds.size(); i++) {
 			Item z=items[i];
 			z.setAction(new Action() {
