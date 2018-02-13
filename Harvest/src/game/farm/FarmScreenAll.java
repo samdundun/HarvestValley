@@ -8,9 +8,9 @@ import java.util.List;
 import game.mainScreen.BoyCharacter;
 import game.mainScreen.GirlCharacter;
 import game.mainScreen.ImageButton;
-import game.market.BuyingScreen;
-import game.market.InventoryScreen;
-import game.market.Item;
+import game.market.SamBuyingScreen;
+import game.market.ErikInventoryScreen;
+import game.market.ErikItem;
 import guiTeacher.components.*;
 import guiTeacher.interfaces.FocusController;
 import guiTeacher.interfaces.Visible;
@@ -76,26 +76,26 @@ public class FarmScreenAll extends FullFunctionScreen {
 
 		shopJenny = new Button(90, 500, 80, 30, "Shop", new Color(230, 235, 210), new Action() {
 			public void act() {
-				MainMenu.game.shop = new BuyingScreen(getWidth(),getHeight());
+				MainMenu.game.shop = new SamBuyingScreen(getWidth(),getHeight());
 				MainMenu.game.setScreen(MainMenu.shop);
 
 			}
 		});
 		viewObjects.add(shopJenny);
 
-//		sleepAlex = new ImageButton(815, 493, 39, 39, "resources/sleep.png", new Action() {
-//
-//			@Override
-//			public void act() {
-//				MainMenu.game.setScreen(MainMenu.sleep);
-//
-//			}
-//		});
-//		viewObjects.add(sleepAlex);
+		sleepAlex = new ImageButton(815, 493, 39, 39, "resources/sleep.png", new Action() {
+
+			@Override
+			public void act() {
+			MainMenu.game.setScreen(MainMenu.sleep);
+
+		}
+		});
+		viewObjects.add(sleepAlex);
 
 		itemJane = new Button(175, 500, 80, 30, "Inventory", new Color(230, 235, 210), new Action() {
 			public void act() {
-				MainMenu.game.inventory = new InventoryScreen(getWidth(),getHeight());
+				MainMenu.game.inventory = new ErikInventoryScreen(getWidth(),getHeight());
 				MainMenu.game.setScreen(MainMenu.inventory);
 
 			}
