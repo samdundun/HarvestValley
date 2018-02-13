@@ -67,7 +67,7 @@ public class CropJane extends CustomImageButton {
 				int dayLeft =currentPatch.getLength()-currentPatch.getCurrentTime();
 				plantPane.setX(currentPatch.getX()-250);
 				plantPane.setY(currentPatch.getY()-120);
-				plantPane.setSrc(cropName);
+				plantPane.setSrc("resources/" + cropName + ".png");
 				plantPane.updateImg(FarmScreenAll.getView());
 				plantPane.setVisible(true);
 				if(currentPatch.getLength()!=currentPatch.getCurrentTime()) {

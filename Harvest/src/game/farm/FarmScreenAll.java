@@ -159,19 +159,18 @@ public class FarmScreenAll extends FullFunctionScreen {
 
 		for(int i = 0; i < animalLimit; i++) {
 			if(i < 3) {
-				BoxJenny box = new BoxJenny(start + (i * 150), 140, "resources/nothing.png", null, viewObjects, i);
+				BoxJenny box = new BoxJenny(start + (i * 150), 140, "resources/star.png", null, viewObjects, i);
 				box.update();
 				animalBox.add(box);
 				viewObjects.add(box);
 			}
 			else{
-				BoxJenny box = new BoxJenny(start + ((i - 3) * 150), 140 + space, "resources/nothing.png", null, viewObjects, i);
+				BoxJenny box = new BoxJenny(start + ((i - 3) * 150), 140 + space, "resources/star.png", null, viewObjects, i);
 				box.update();
 				animalBox.add(box);
 				viewObjects.add(box);
 			}
 		}
-
 	}
 
 	private void addfarmingPatchJane(List<Visible> viewObjects) {

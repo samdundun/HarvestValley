@@ -105,7 +105,7 @@ public class SelectionPaneJane extends Pane {
 							System.out.println(FarmScreenAll.getWhich());
 							animalIdx = i;
 							setSrc(game.market.Item.getGraphic()[animalIdx].getImageLocation());
-							FarmScreenAll.animalBox.get(index).changeAction();
+							FarmScreenAll.animalBox.get(index).changeAction(items[i].getImageIndex());
 							SelectionPaneJane.this.setVisible(false);
 							FarmScreenAll.disableButton(true);
 						}
@@ -118,9 +118,10 @@ public class SelectionPaneJane extends Pane {
 	}
 
 	public void addImages(int start, int end, int move, int startingHeight, int width, int height,TextLabel label) {
-		invent.sort();
-		ArrayList<Item> seeds=invent.getSeedInventory();
-		System.out.println(seeds);
+
+//		invent.sort();
+//		ArrayList<Item> seeds=invent.getSeedInventory();
+//		System.out.println(seeds);
 		for(int i = start; i < end; i++) {
 			Item z=items[i];
 			z.setAction(new Action() {
