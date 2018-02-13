@@ -121,7 +121,7 @@ public class SelectionPaneJane extends Pane {
 		invent.sort();
 		ArrayList<Item> seeds=invent.getSeedInventory();
 		System.out.println(seeds);
-		for(int i = 0; i < seeds.size(); i++) {
+		for(int i = start; i < end; i++) {
 			Item z=items[i];
 			z.setAction(new Action() {
 

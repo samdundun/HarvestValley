@@ -49,7 +49,7 @@ public class CropJane extends CustomImageButton {
 		else
 			length=6;
 		stage = i*6;
-		image.setIndex(i);
+		image.setIndex(stage);
 		update();
 		startGrowing();
 	}
@@ -99,6 +99,7 @@ public class CropJane extends CustomImageButton {
 									FarmScreenAll.pane.setX(getX()-250);
 									FarmScreenAll.pane.setY(getY()-120);
 									FarmScreenAll.pane.setVisible(true);
+									FarmScreenAll.pane.setIndex(index);
 									FarmScreenAll.pane.update();
 									FarmScreenAll.disableButton(false);
 									

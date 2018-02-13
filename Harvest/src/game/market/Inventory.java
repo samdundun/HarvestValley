@@ -39,6 +39,7 @@ public class Inventory implements game.farm.seedSelection {
 
 		invent = new ArrayList<Item>();
 		amount = new int[ITEMS.length];
+		save();
 	}
 
 	public void addBasics() {	

@@ -15,6 +15,7 @@ public class EmptyPatch extends Button {
 			
 			@Override
 			public void act() {
+				System.out.println(FarmScreenAll.farmPatch.size());
 				FarmScreenAll.patchPane.getLabel().setText("Enlarge your farm!");
 				FarmScreenAll.patchPane.getItem().setText("Patch for $1000");
 				FarmScreenAll.patchPane.setX(x-250);
@@ -22,23 +23,25 @@ public class EmptyPatch extends Button {
 				FarmScreenAll.patchPane.setSrc("farmPatch");
 				FarmScreenAll.patchPane.updateImg(FarmScreenAll.getView());
 				FarmScreenAll.patchPane.setVisible(true);
+				FarmScreenAll.disableEmptyPatch(false,1);
 				FarmScreenAll.patchPane.getHarvest().setAction(new Action() {
 					
 					@Override
 					public void act() {
+						//FarmScreenAll.removeEmptyPatch();
 						CropJane newPatch = convertToPatch();
 						newPatch.update();
-						FarmScreenAll.farmPatch.add(convertToPatch());
+						newPatch.setEnabled(true);
+						FarmScreenAll.farmPatch.add(newPatch);
 						FarmScreenAll.getView().add(newPatch);
 						FarmScreenAll.patchPane.setVisible(false);
 						FarmScreenAll.patchPane.getImg().setVisible(false);
-						FarmScreenAll.disableEmptyPatch(false,1);
-						System.out.println(FarmScreenAll.farmPatch.size());
-						
+						FarmScreenAll.disableEmptyPatch(true,1);
+						System.out.println(FarmScreenAll.emptyFarmPatch.size());
 					}
 
 					private CropJane convertToPatch() {
-						CropJane newPatch = new CropJane(x, y, w, h, "", color, action, i, new CropImageJane());
+						CropJane newPatch = new CropJane(x+68, y, w, h, "", color, null, i, new CropImageJane());
 						return newPatch;
 					}
 				});

@@ -83,15 +83,15 @@ public class FarmScreenAll extends FullFunctionScreen {
 		});
 		viewObjects.add(shopJenny);
 
-		sleepAlex = new ImageButton(815, 493, 39, 39, "resources/sleep.png", new Action() {
-
-			@Override
-			public void act() {
-				MainMenu.game.setScreen(MainMenu.sleep);
-
-			}
-		});
-		viewObjects.add(sleepAlex);
+//		sleepAlex = new ImageButton(815, 493, 39, 39, "resources/sleep.png", new Action() {
+//
+//			@Override
+//			public void act() {
+//				MainMenu.game.setScreen(MainMenu.sleep);
+//
+//			}
+//		});
+//		viewObjects.add(sleepAlex);
 
 		itemJane = new Button(175, 500, 80, 30, "Inventory", new Color(230, 235, 210), new Action() {
 			public void act() {
@@ -101,8 +101,6 @@ public class FarmScreenAll extends FullFunctionScreen {
 			}
 		});
 		viewObjects.add(itemJane);
-
-		addfarmingPatchJane(viewObjects);
 		
 		//Mainscreen team work
 		girl = game.mainScreen.GirlCharacter.addGirl(viewObjects);
@@ -124,14 +122,14 @@ public class FarmScreenAll extends FullFunctionScreen {
  			viewObjects.add(boy);
  		}
  		
+ 		addfarmingPatchJane(viewObjects);
+		addAnimalJenny(viewObjects);
+		
  		patchPane = new PaneJenny(this, 400, 300);
 		patchPane.update();
 		viewObjects.add(patchPane);
 		patchPane.setVisible(false);
-		
-		addfarmingPatchJane(viewObjects);
-		addAnimalJenny(viewObjects);
-		
+	
 		pane = new SelectionPaneJane(this, 400, 300);
 		setWhich("crop");
 		pane.update();
@@ -193,12 +191,18 @@ public class FarmScreenAll extends FullFunctionScreen {
 				viewObjects.add(patch);
 			}
 			else {
-				EmptyPatch emptyPatch= new EmptyPatch(start+((i-6)*68), 278+space+space, 63, 50, "For Sale",new Color(200, 125, 10), null,i);
-				emptyPatch.update();
-				emptyFarmPatch.add(emptyPatch);
-				viewObjects.add(emptyPatch);
-			}
-		}
+//				EmptyPatch emptyPatch= new EmptyPatch(start+((i-6)*68), 278+space+space, 63, 50, "For Sale",new Color(200, 125, 10), null,i);
+//				emptyPatch.update();
+//				System.out.println("patch "+emptyFarmPatch.size());
+//				emptyFarmPatch.add(emptyPatch);
+//				viewObjects.add(emptyPatch);
+			}}
+			EmptyPatch emptyPatch= new EmptyPatch(593, 278+space+space, 63, 50, "For Sale",new Color(200, 125, 10), null,6);
+			emptyPatch.update();
+			System.out.println("patch "+emptyFarmPatch.size());
+			emptyFarmPatch.add(emptyPatch);
+			viewObjects.add(emptyPatch);
+		
 	}
 
 
@@ -225,6 +229,19 @@ public class FarmScreenAll extends FullFunctionScreen {
 		for(int j=0; j<emptyFarmPatch.size(); j++) {
 			emptyFarmPatch.get(j).setEnabled(b);
 		}
+		
+	}
+
+	public static void removeEmptyPatch() {
+		for(int i=emptyFarmPatch.size()-1; i==0; i++) {
+			emptyFarmPatch.replaceAll(null);
+//			emptyFarmPatch.remove(i);
+			viewObj.remove(emptyFarmPatch.get(i));
+		}
+		for(int j=0; j<emptyFarmPatch.size(); j++) {
+			emptyFarmPatch.get(j).update();
+		}
+		
 		
 	}
 	
