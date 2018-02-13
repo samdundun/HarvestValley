@@ -56,6 +56,9 @@ public class SleepAlex extends FullFunctionScreen {//can use ImageTextButton, Cu
 	private int adjustTA;
 	private int originalBuyingPrice;
 	
+	private boolean infoDisplayed;
+	private static ArrayList<Boolean> infoDisplayedArray = new ArrayList<Boolean>();
+	
 	private Button back;
 	
 	private static ArrayList<String> cropAnimalAndProductNames = new ArrayList<String>();
@@ -117,20 +120,24 @@ public class SleepAlex extends FullFunctionScreen {//can use ImageTextButton, Cu
 		
 		actionInteger = 0;
 		addNamesAndCountToArray();
+		
+		infoDisplayed = false;
+		for(int i = 0; i < 11;i++) {
+			infoDisplayedArray.add(infoDisplayed);
+		}
 		for(int actionInteger = 0; actionInteger<imageSources.size();actionInteger++) {
 			/*variables inside the setup part of a for loop are local -- be cautious when using them in the function -- especially in the action method of a button*/
 			int xspacer = 83;
 			int c = actionInteger;
 			ImageButton holder = new ImageButton(actionInteger*xspacer,75,90,150, imageSources.get(actionInteger), new Action() {
 				public void act() {
-					//System.out.println(cashFromCropAnimalProducts.get(c));
-					TextArea info = new TextArea(c*83, 300, 100, 100, "You have created" + 
+					infoDisplayed = true;
+					System.out.println(cashFromCropAnimalProducts.get(c));
+					TextArea info = new TextArea(c*83, 300, 200, 500, "You have created" + 
 							cropAnimalAndProductCount.get(c) + cropAnimalAndProductNames.get(c) + "." + 
-							"You have made" /*+cashFromCropAnimalProducts.get(c)*/+ "from" + 
+							"You have made" +cashFromCropAnimalProducts.get(c)+ "from" + 
 							cropAnimalAndProductNames.get(c));
 							viewObjects.add(info);
-					/*TextArea test = new TextArea(c*83, 300, 200, 200, "DATA IS COOL");
-					viewObjects.add(test);*/
 				}});
 			viewObjects.add(holder);
 		}
@@ -202,15 +209,16 @@ public class SleepAlex extends FullFunctionScreen {//can use ImageTextButton, Cu
 		
 		originalBuyingPrice = 50;
 		//try similar solution for creating different button actions
-		for(int i = 0; i < 12;i++) {
-			cashFromCropAnimalProducts.set(i, originalBuyingPrice);
+		for(int i = 1; i < 13;i++) {
+			cashFromCropAnimalProducts.add(originalBuyingPrice);
 			System.out.println(cashFromCropAnimalProducts);
 			originalBuyingPrice+=50;
 		}
 		
-		for(int i = 0; i < sellingPriceCropAnimalProducts.size();i++ ) {
-			int sellingPrice = 60;
-			sellingPriceCropAnimalProducts.set(i, sellingPrice);
+		int sellingPrice = 60;
+		for(int i = 0; i < 12;i++ ) {
+			sellingPriceCropAnimalProducts.add(sellingPrice);
+			System.out.println(sellingPriceCropAnimalProducts);
 			sellingPrice+=60;
 		}
 		//System.out.println(cropAnimalAndProductCount);

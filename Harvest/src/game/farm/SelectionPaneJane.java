@@ -128,7 +128,7 @@ public class SelectionPaneJane extends Pane {
 	public void addImages(int start, int end, int move, int startingHeight, int width, int height,TextLabel label) {
 		invent.sort();
 		
-		ArrayList<Item> seeds=invent.getSeedSelection();
+		/*ArrayList<Item> seeds=invent.getSeedSelection();
 		for(int i = 0; i < seeds.size(); i++) {
 			Item z=items[i];
 			z.setAction(new Action() {
@@ -151,7 +151,7 @@ public class SelectionPaneJane extends Pane {
 				move = 0;
 				startingHeight = startingHeight+height;
 			}
-		}
+		}*/
 
 		select= new Button(35,_HEIGHT - 30, 60, 25, "Select",Color.lightGray, new Action() {
 
