@@ -3,6 +3,8 @@ package game.market;
 import java.awt.Color;
 import java.util.List;
 
+import game.farm.FarmScreenAll;
+import game.farm.SelectionPaneJane;
 import guiTeacher.components.Action;
 import guiTeacher.components.Button;
 import guiTeacher.components.Graphic;
@@ -147,6 +149,7 @@ public class ErikInventoryScreen extends FullFunctionScreen {
 			public void act() {
 				amount.setText("Amount: ");
 				description.setText("");
+				MainMenu.game.farmScreen = new FarmScreenAll(getWidth(), getHeight());
 				MainMenu.game.setScreen(MainMenu.farmScreen);
 				MainMenu.game.shop = new SamBuyingScreen(getWidth(),getHeight());
 

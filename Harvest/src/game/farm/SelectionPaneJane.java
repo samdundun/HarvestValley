@@ -40,7 +40,11 @@ public class SelectionPaneJane extends Pane {
 	private int index;
 	private static final int _WIDTH = 225;
 	private static final int _HEIGHT = 210;
-	private SamInventory invent;
+	public SamInventory invent;
+
+	private ArrayList<ErikItem> animal;
+
+	private ArrayList<ErikItem> seeds;
 
 	public SelectionPaneJane(FocusController focusController, int x, int y) {
 		super(focusController, x, y, _WIDTH, _HEIGHT);
@@ -65,9 +69,9 @@ public class SelectionPaneJane extends Pane {
 		invent = new SamInventory();
 		invent.load();
 		invent.sort();
-		ArrayList<ErikItem> animal=invent.getAnimalSelection();
-		ArrayList<ErikItem> seeds=invent.getSeedSelection();
-		
+		 animal=invent.getAnimalSelection();
+		 seeds=invent.getSeedSelection();
+
 		grid = new Graphic(11,22,280,150, "resources/seedPane.png");
 		viewObjects.add(0,grid);
 
@@ -82,7 +86,7 @@ public class SelectionPaneJane extends Pane {
 		viewObjects.add(cancel);
 
 
-		
+
 
 		TextLabel label = new TextLabel(15, 0, 150, 50, "Please select an item");
 		viewObjects.add(label);
@@ -93,11 +97,11 @@ public class SelectionPaneJane extends Pane {
 		//		int height = 60;
 		invent.sort();
 		if(FarmScreenAll.getWhich().equals("crop")) {
-			
+
 			addImages(animal, 0, 45, 55, 60, label);
-			}
+		}
 		else {
-			
+
 			addImages(seeds, 0, 40, 55, 60, label);
 		}
 
@@ -112,33 +116,47 @@ public class SelectionPaneJane extends Pane {
 						SelectionPaneJane.this.setVisible(false);
 						FarmScreenAll.disableButton(true);
 					}
-					
-				}
-			for(int i=0; i<animal.size(); i++) {
-				System.out.println(FarmScreenAll.getWhich());
-				animalIdx = i;
-				setSrc(game.market.ErikItem.getGraphic()[animalIdx].getImageLocation());
-				FarmScreenAll.animalBox.get(index).changeAction(items[i].getImageIndex());
-		setSrc(game.market.ErikItem.getGraphic()[animalIdx].getImageLocation());
-				FarmScreenAll.animalBox.get(index).changeAction(items[i].getImageIndex());
-				SelectionPaneJane.this.setVisible(false);
-				FarmScreenAll.disableButton(true);
-			}
-			label.setText("Please select an item");
-			}
-			
-	
 
-			});
+				}
+				for(int i=0; i<animal.size(); i++) {
+					if(animal.get(i).isSelected()) {
+						System.out.println(FarmScreenAll.getWhich());
+						animalIdx = i;
+						setSrc(game.market.ErikItem.getGraphic()[animalIdx].getImageLocation());
+						FarmScreenAll.animalBox.get(index).changeAction(animal.get(i).getImageIndex());
+						SelectionPaneJane.this.setVisible(false);
+						FarmScreenAll.disableButton(true);
+					}
+				}
+				label.setText("Please select an item");
+			}
+
+		});
 		viewObjects.add(select);}
 
-//		invent.sort();
-//		ArrayList<Item> seeds=invent.getSeedInventory();
-//		System.out.println(seeds);
+
+
+
+	public ArrayList<ErikItem> getAnimal() {
+		return animal;
+	}
+
+	public void setAnimal(ArrayList<ErikItem> animal) {
+		this.animal = animal;
+	}
+
+	public ArrayList<ErikItem> getSeeds() {
+		return seeds;
+	}
+
+	public void setSeeds(ArrayList<ErikItem> seeds) {
+		this.seeds = seeds;
+	}
+
 	public void addImages(ArrayList<ErikItem> item, int move, int startingHeight, int width, int height,TextLabel label) {
-		
-			
-		for(int i = 0; i <item.size(); i++) {
+
+
+		for(int i = 0; i < item.size(); i++) {
 			ErikItem z=item.get(i);
 			z.setAction(new Action() {
 
@@ -162,8 +180,7 @@ public class SelectionPaneJane extends Pane {
 			}
 			viewObjects.add(z);
 		}
-		}
-
+	}
 
 	public int setSeedSelected(int i) {
 		return seedSelectedInd = i;
@@ -180,7 +197,7 @@ public class SelectionPaneJane extends Pane {
 	public void setSrc(String s) {
 		animalImg = s;
 	}
-	
+
 	public static String getSrc() {
 		return animalImg;
 	}
