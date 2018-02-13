@@ -12,6 +12,7 @@ import game.mainScreen.ObjectivesScreenJessi;
 import game.mainScreen.PlaceHolderScreen;
 import game.mainScreen.SaveScreenMimi;
 import game.mainScreen.Sound;
+import game.mainScreen.SoundScreen;
 import game.market.BuyingScreen;
 import game.market.InventoryScreen;
 import game.market.SellingScreen;
@@ -34,6 +35,7 @@ public class MainMenu extends GUIApplication {
 	public static SellingScreen sell;
 	public static MenuScreenLubna screen;
 	public static ObjectivesScreenJessi objectives;
+	public static SoundScreen soundTracks;
 	public static InventoryScreen inventory;
 	public static PlaceHolderScreen placeHolder;
 	public static SaveScreenMimi saveMimi;
@@ -41,7 +43,7 @@ public class MainMenu extends GUIApplication {
 	
 //	public static boolean isSaved;
 	
-//	private Sound sound;
+	private Sound sound;
 	
 	public MainMenu(int width, int height) {
 		super(width, height);
@@ -74,10 +76,13 @@ public class MainMenu extends GUIApplication {
 		
 		
 		objectives = new ObjectivesScreenJessi(getWidth(), getHeight());
+		
+		
+		soundTracks = new SoundScreen(getWidth(), getHeight());
 
 		setScreen(screen);
 
-	//Sound.sound1.play();
+	Sound.sound1.play();
 
 	}
 

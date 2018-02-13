@@ -5,9 +5,6 @@ package game.mainScreen;
 import harvest.MainMenu;
 
 import java.util.List;
-
-import game.market.Inventory;
-import game.market.Item;
 import guiTeacher.components.*;
 import guiTeacher.interfaces.Visible;
 import guiTeacher.userInterfaces.ClickableScreen;
@@ -15,7 +12,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.io.File;
 
-public class ObjectivesScreenJessi extends ClickableScreen implements Runnable, MessageDisplayerJessi,  ObjectiveScreen {
+public class ObjectivesScreenJessi extends ClickableScreen implements Runnable, ObjectiveScreen {
 
 	private Button exit;
 	private TextBox intro;
@@ -66,11 +63,11 @@ public class ObjectivesScreenJessi extends ClickableScreen implements Runnable, 
 		
 	}
 
-	@Override
-	public void showline() {
-		//for the android app
-		
-	}
+//	@Override
+//	public void showline() {
+//		//for the android app
+//		
+//	}
 
 
 	public void displayObjectives() {

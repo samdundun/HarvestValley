@@ -19,7 +19,7 @@ public class Sound {
 
 	public void play() {
 		try {
-			new Thread() {
+			new Thread() { 
 				public void run() {
 					clip.play();
 				}

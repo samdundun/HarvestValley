@@ -1,10 +1,13 @@
 package game.mainScreen;
 
+import java.awt.Color;
 import java.util.List;
 
 import game.farm.FarmScreenAll;
+import game.market.BuyingScreen;
 import game.market.Inventory;
 import guiTeacher.components.Action;
+import guiTeacher.components.Button;
 import guiTeacher.components.Graphic;
 import guiTeacher.interfaces.Visible;
 import guiTeacher.userInterfaces.ClickableScreen;
@@ -18,6 +21,7 @@ public class MenuScreenLubna extends ClickableScreen implements Runnable {
 	private ImageButton exit;
 	private ImageButton obj;
 //	private ImageButton save;
+	private Button sound;
 
 	private Inventory invent;
 	
@@ -90,6 +94,14 @@ public class MenuScreenLubna extends ClickableScreen implements Runnable {
 //			}
 //		});
 //		viewObjects.add(save);
+		sound = new Button(90, 500, 80, 30, "Sound", new Color(230, 235, 210), new Action() {
+			public void act() {
+				MainMenu.soundTracks = new SoundScreen(getWidth(),getHeight());
+				MainMenu.game.setScreen(MainMenu.soundTracks);
+
+			}
+		});
+		viewObjects.add(sound);
 	}
 
 	@Override
