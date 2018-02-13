@@ -11,9 +11,9 @@ import game.mainScreen.MenuScreenLubna;
 import game.mainScreen.ObjectivesScreenJessi;
 import game.mainScreen.PlaceHolderScreen;
 import game.mainScreen.SaveScreenMimi;
-import game.market.BuyingScreen;
-import game.market.InventoryScreen;
-import game.market.SellingScreen;
+import game.market.SamBuyingScreen;
+import game.market.ErikInventoryScreen;
+import game.market.ErikSellingScreen;
 import guiTeacher.GUIApplication;
 import guiTeacher.components.Graphic;
 import guiTeacher.components.StyledComponent;
@@ -29,11 +29,11 @@ public class MainMenu extends GUIApplication {
 	public static boolean isObj;
 	public static ChooseGenderScreenLubna screen2;
 	public static FarmScreenAll farmScreen;
-	public static BuyingScreen shop;
-	public static SellingScreen sell;
+	public static SamBuyingScreen shop;
+	public static ErikSellingScreen sell;
 	public static MenuScreenLubna screen;
 	public static ObjectivesScreenJessi objectives;
-	public static InventoryScreen inventory;
+	public static ErikInventoryScreen inventory;
 	public static PlaceHolderScreen placeHolder;
 	public static SaveScreenMimi saveMimi;
 	public static SleepAlex sleep;
@@ -60,10 +60,10 @@ public class MainMenu extends GUIApplication {
 		screen = new MenuScreenLubna(getWidth(), getHeight());
 		sleep = new SleepAlex(getWidth(), getHeight());
 		farmScreen = new FarmScreenAll(getWidth(),getHeight());
-		shop = new BuyingScreen(getWidth(),getHeight());
+		shop = new SamBuyingScreen(getWidth(),getHeight());
 		screen2 = new ChooseGenderScreenLubna(getWidth(), getHeight());
-		inventory = new InventoryScreen(getWidth(), getHeight());
-		sell = new SellingScreen(getWidth(), getHeight());
+		inventory = new ErikInventoryScreen(getWidth(), getHeight());
+		sell = new ErikSellingScreen(getWidth(), getHeight());
 		placeHolder = new PlaceHolderScreen(getWidth(), getHeight());
 		//don't delete the place holder please.
 

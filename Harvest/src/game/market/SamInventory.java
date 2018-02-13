@@ -13,31 +13,31 @@ import guiPlayer.Book;
 import guiTeacher.components.Graphic;
 import harvest.MainMenu;
 
-public class Inventory implements game.farm.seedSelection {
+public class SamInventory implements game.farm.seedSelection {
 
 	public static Scanner in;
 	private int[] amount;
-	private ArrayList<Item> invent;
+	private ArrayList<ErikItem> invent;
 	private int gold;
 
-	public static final Item[] ITEMS = {new Item("Corn Seeds", "Great crop to grow all year round", 250, 0, 4),new Item("Pepper Seeds", "Spicy", 50, 1,1),
-			new Item("Potato Seeds", "Just like me", 150, 2, 3),new Item("Strawberry Seeds", "Sweeter than you", 100, 3,2),
-			new Item("Tomato Seeds", "Make some good ketchup", 200, 4,3),new Item("Wheat Seeds", "Not weed", 300, 5,5),new Item("Corn", "Fresh to eat", 300,6,4),
-			new Item("Pepper","Supah Hot Fire",60,7,1),new Item("Potato","Time to make french fries",180,8,3),
-			new Item("Strawberry","Berry??",120,9,2),new Item("Tomato", "Great for salads", 240,10,3),
-			new Item("Wheat","Just plain old wheat",360,11,5),new Item("Brown Chicken", "Cluck cluck", 250, 12,1),new Item("White Chicken", "Cluck cluck", 250, 13,1),
-			new Item("Black Chicken", "Cluck cluck", 250, 14,1),new Item("Sheep", "BAAAAAAAAAAAH", 350, 15,2),
-			new Item("Cow", "Mooooooo", 400, 16,2),new Item("Pig", "SNORT SNORT", 450, 17,1),
-			new Item("Brown Eggs", "", 200, 18, 0),new Item("White Eggs", "", 200, 19,0),
-			new Item("Black Eggs", "", 200, 20, 0),new Item("Wool", "", 300, 21,0),
-			new Item("Milk", "", 350, 22,0),new Item("Meat", "", 500, 23,0)};
+	public static final ErikItem[] ITEMS = {new ErikItem("Corn Seeds", "Great crop to grow all year round", 250, 0, 4),new ErikItem("Pepper Seeds", "Spicy", 50, 1,1),
+			new ErikItem("Potato Seeds", "Just like me", 150, 2, 3),new ErikItem("Strawberry Seeds", "Sweeter than you", 100, 3,2),
+			new ErikItem("Tomato Seeds", "Make some good ketchup", 200, 4,3),new ErikItem("Wheat Seeds", "Not weed", 300, 5,5),new ErikItem("Corn", "Fresh to eat", 300,6,4),
+			new ErikItem("Pepper","Supah Hot Fire",60,7,1),new ErikItem("Potato","Time to make french fries",180,8,3),
+			new ErikItem("Strawberry","Berry??",120,9,2),new ErikItem("Tomato", "Great for salads", 240,10,3),
+			new ErikItem("Wheat","Just plain old wheat",360,11,5),new ErikItem("Brown Chicken", "Cluck cluck", 250, 12,1),new ErikItem("White Chicken", "Cluck cluck", 250, 13,1),
+			new ErikItem("Black Chicken", "Cluck cluck", 250, 14,1),new ErikItem("Sheep", "BAAAAAAAAAAAH", 350, 15,2),
+			new ErikItem("Cow", "Mooooooo", 400, 16,2),new ErikItem("Pig", "SNORT SNORT", 450, 17,1),
+			new ErikItem("Brown Eggs", "", 200, 18, 0),new ErikItem("White Eggs", "", 200, 19,0),
+			new ErikItem("Black Eggs", "", 200, 20, 0),new ErikItem("Wool", "", 300, 21,0),
+			new ErikItem("Milk", "", 350, 22,0),new ErikItem("Meat", "", 500, 23,0)};
 
 	//image index
 	//cornseed,pepperseed,potatoseed,strawberryseed,tomatoseed,wheatseed,corn,pepper,potato,strawberry,tomato,wheat
 	// 0           1          2            3             4          5      6    7       8       9         10    11
-	public Inventory() {
+	public SamInventory() {
 
-		invent = new ArrayList<Item>();
+		invent = new ArrayList<ErikItem>();
 		amount = new int[ITEMS.length];
 	}
 
@@ -84,7 +84,7 @@ public class Inventory implements game.farm.seedSelection {
 			amount[k] = 0;
 		}
 
-		for(Item i: invent) {
+		for(ErikItem i: invent) {
 			amount[i.getImageIndex()]++;
 		}
 
@@ -102,19 +102,19 @@ public class Inventory implements game.farm.seedSelection {
 		//if we want to start something upon enter
 	}
 
-	public ArrayList<Item> getItems(){
+	public ArrayList<ErikItem> getItems(){
 		return invent;
 	}
 
-	public Item getItem(int index){
+	public ErikItem getItem(int index){
 		return invent.get(index);
 	}
 
-	public void addItem(Item i){
+	public void addItem(ErikItem i){
 		invent.add(i);
 	}
 
-	public void removeItem(Item i) {
+	public void removeItem(ErikItem i) {
 		invent.remove(i);
 		System.out.println("Inventory class: "+ invent);
 	}
@@ -154,7 +154,7 @@ public class Inventory implements game.farm.seedSelection {
 					MainMenu.isGirl = Boolean.parseBoolean(param[1]);
 				}
 				else {
-					invent.add(new Item(param[0],param[1],Integer.parseInt(param[2]), Integer.parseInt(param[3]), Integer.parseInt(param[4])));
+					invent.add(new ErikItem(param[0],param[1],Integer.parseInt(param[2]), Integer.parseInt(param[3]), Integer.parseInt(param[4])));
 				}
 			}
 			br.close();
@@ -169,7 +169,7 @@ public class Inventory implements game.farm.seedSelection {
 		try{    
 			FileWriter fw=new FileWriter("resources/invent.csv");
 			fw.write(Integer.toString(this.getGold())+","+ MainMenu.isGirl +"\n");
-			for(Item b: invent){
+			for(ErikItem b: invent){
 				fw.write(b+"\n");    	
 			}
 
@@ -189,9 +189,9 @@ public class Inventory implements game.farm.seedSelection {
 	}
 
 	@Override
-	public ArrayList<Item> getSeedInventory() {
-		ArrayList<Item> seeds = new ArrayList<Item>();
-		for(Item i: invent) {
+	public ArrayList<ErikItem> getSeedInventory() {
+		ArrayList<ErikItem> seeds = new ArrayList<ErikItem>();
+		for(ErikItem i: invent) {
 			if(i.getImageIndex() < 6) {
 				seeds.add(i);
 			}

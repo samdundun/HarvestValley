@@ -8,9 +8,9 @@ import java.awt.RenderingHints;
 
 import guiTeacher.components.TextArea;
 
-public class CustomArea extends TextArea {
+public class SamCustomArea extends TextArea {
 
-	public CustomArea(int x, int y, int w, int h, String text) {
+	public SamCustomArea(int x, int y, int w, int h, String text) {
 		super(x, y, w, h, text);
 		// TODO Auto-generated constructor stub
 	}

@@ -5,8 +5,8 @@ import java.awt.Graphics2D;
 import java.util.ArrayList;
 import java.util.List;
 
-import game.market.Inventory;
-import game.market.InventoryScreen;
+import game.market.SamInventory;
+import game.market.ErikInventoryScreen;
 import guiTeacher.components.Action;
 import guiTeacher.components.CustomImageButton;
 import guiTeacher.components.Graphic;

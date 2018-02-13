@@ -1,6 +1,6 @@
 package game.farm;
 
-import game.market.Item;
+import game.market.ErikItem;
 
 public interface ItemSelectionJane {
 	//returns an array of imageIndex of seeds in the inventory

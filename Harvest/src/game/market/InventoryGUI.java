@@ -8,8 +8,8 @@ public class InventoryGUI extends GUIApplication {
 	private static final long serialVersionUID = 7548071104587737267L;
 	
 	public static InventoryGUI market;
-	public static BuyingScreen buy;
-	public static SellingScreen sell;
+	public static SamBuyingScreen buy;
+	public static ErikSellingScreen sell;
 	
 	public InventoryGUI(int width, int height) {
 		super(width, height);
@@ -17,9 +17,9 @@ public class InventoryGUI extends GUIApplication {
 	}
 
 	public void initScreen() {
-		buy = new BuyingScreen(getWidth(), getHeight());
-		sell = new SellingScreen(getWidth(), getHeight());
-		InventoryScreen whatever = new InventoryScreen(getWidth(),getHeight());
+		buy = new SamBuyingScreen(getWidth(), getHeight());
+		sell = new ErikSellingScreen(getWidth(), getHeight());
+		ErikInventoryScreen whatever = new ErikInventoryScreen(getWidth(),getHeight());
 		setScreen(whatever);
 
 	}
