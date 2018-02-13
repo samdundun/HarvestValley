@@ -131,13 +131,17 @@ public class SleepAlex extends FullFunctionScreen {//can use ImageTextButton, Cu
 			int c = actionInteger;
 			ImageButton holder = new ImageButton(actionInteger*xspacer,75,90,150, imageSources.get(actionInteger), new Action() {
 				public void act() {
-					infoDisplayed = true;
 					System.out.println(cashFromCropAnimalProducts.get(c));
 					TextArea info = new TextArea(c*83, 300, 200, 500, "You have created" + 
 							cropAnimalAndProductCount.get(c) + cropAnimalAndProductNames.get(c) + "." + 
 							"You have made" +cashFromCropAnimalProducts.get(c)+ "from" + 
 							cropAnimalAndProductNames.get(c));
-							viewObjects.add(info);
+					if(!infoDisplayed)
+						viewObjects.add(info);
+					infoDisplayed = true;
+					else {
+						
+					}
 				}});
 			viewObjects.add(holder);
 		}
