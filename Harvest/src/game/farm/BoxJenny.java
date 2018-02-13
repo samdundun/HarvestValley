@@ -7,6 +7,7 @@ import java.util.List;
 
 import game.market.SamInventory;
 import game.market.ErikInventoryScreen;
+import game.market.ErikItem;
 import guiTeacher.components.Action;
 import guiTeacher.components.CustomImageButton;
 import guiTeacher.components.Graphic;
@@ -63,7 +64,7 @@ public class BoxJenny extends CustomImageButton implements Clickable{
 		this.setAction(new Action() {
 			public void act() {
 				String label = SelectionPaneJane.items[imageIndx + 6].getName().toLowerCase();
-				String name = game.market.Item.getGraphic()[imageIndx + 6].getImageLocation();
+				String name = ErikItem.getGraphic()[imageIndx + 6].getImageLocation();
 				System.out.println(name);	System.out.println(animal.imageIndx);
 				int dayLeft = animal.getLength() - animal.getCurrentTime();
 				FarmScreenAll.animalPane.setX(animal.getX() + animal.getWidth() + 10);
