@@ -121,10 +121,17 @@ public class SleepAlex extends FullFunctionScreen {//can use ImageTextButton, Cu
 		actionInteger = 0;
 		addNamesAndCountToArray();
 		
+<<<<<<< HEAD
 		infoDisplayed = false;
 		for(int i = 0; i < 11;i++) {
 			infoDisplayedArray.add(infoDisplayed);
 		}
+=======
+		TextArea info = new TextArea(200, 400, 200, 500, "Click on an item.");
+		info.setCustomTextColor(Color.white);
+		viewObjects.add(info);
+		
+>>>>>>> branch 'farm' of https://github.com/samdundun/HarvestValley.git
 		for(int actionInteger = 0; actionInteger<imageSources.size();actionInteger++) {
 			/*variables inside the setup part of a for loop are local -- be cautious when using them in the function -- especially in the action method of a button*/
 			int xspacer = 83;
@@ -132,19 +139,31 @@ public class SleepAlex extends FullFunctionScreen {//can use ImageTextButton, Cu
 			ImageButton holder = new ImageButton(actionInteger*xspacer,75,90,150, imageSources.get(actionInteger), new Action() {
 				public void act() {
 					System.out.println(cashFromCropAnimalProducts.get(c));
+<<<<<<< HEAD
 					TextArea info = new TextArea(c*83, 300, 200, 500, "You have created" + 
 							cropAnimalAndProductCount.get(c) + cropAnimalAndProductNames.get(c) + "." + 
 							"You have made" +cashFromCropAnimalProducts.get(c)+ "from" + 
+=======
+					info.setText("You have created " + 
+							cropAnimalAndProductCount.get(c) + " " + cropAnimalAndProductNames.get(c) + ". " + 
+							"You have made" /*+cashFromCropAnimalProducts.get(c)*/+ "from " + 
+>>>>>>> branch 'farm' of https://github.com/samdundun/HarvestValley.git
 							cropAnimalAndProductNames.get(c));
+<<<<<<< HEAD
 					if(!infoDisplayed)
 						viewObjects.add(info);
 					infoDisplayed = true;
 					else {
 						
 					}
+=======
+					info.setTextColor(Color.white);
+>>>>>>> branch 'farm' of https://github.com/samdundun/HarvestValley.git
 				}});
 			viewObjects.add(holder);
 		}
+		
+		
 		back = new Button(getWidth()-100, getHeight()-100,100, 100, "",Color.blue, new Action() {
 			public void act() {
 				MainMenu.game.setScreen(MainMenu.farmScreen);
@@ -213,16 +232,27 @@ public class SleepAlex extends FullFunctionScreen {//can use ImageTextButton, Cu
 		
 		originalBuyingPrice = 50;
 		//try similar solution for creating different button actions
+<<<<<<< HEAD
 		for(int i = 1; i < 13;i++) {
+=======
+		for(int i = 0; i < 12;i++) {
+>>>>>>> branch 'farm' of https://github.com/samdundun/HarvestValley.git
 			cashFromCropAnimalProducts.add(originalBuyingPrice);
 			System.out.println(cashFromCropAnimalProducts);
 			originalBuyingPrice+=50;
 		}
 		
 		int sellingPrice = 60;
+<<<<<<< HEAD
 		for(int i = 0; i < 12;i++ ) {
 			sellingPriceCropAnimalProducts.add(sellingPrice);
 			System.out.println(sellingPriceCropAnimalProducts);
+=======
+		
+		for(int i = 0; i < 12;i++ ) {
+			sellingPriceCropAnimalProducts.add(sellingPrice);
+			System.out.println("Selling: "+sellingPriceCropAnimalProducts);
+>>>>>>> branch 'farm' of https://github.com/samdundun/HarvestValley.git
 			sellingPrice+=60;
 		}
 		//System.out.println(cropAnimalAndProductCount);
