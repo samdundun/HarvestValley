@@ -20,7 +20,7 @@ public class EmptyPatch extends Button {
 				FarmScreenAll.patchPane.getItem().setText("Patch for $1000");
 				FarmScreenAll.patchPane.setX(x-250);
 				FarmScreenAll.patchPane.setY(y-120);
-				FarmScreenAll.patchPane.setSrc("farmPatch");
+				FarmScreenAll.patchPane.setSrc("resources/farmPatch.png");
 				FarmScreenAll.patchPane.updateImg(FarmScreenAll.getView());
 				FarmScreenAll.patchPane.setVisible(true);
 				FarmScreenAll.disableEmptyPatch(false,1);
@@ -31,7 +31,6 @@ public class EmptyPatch extends Button {
 						//FarmScreenAll.removeEmptyPatch();
 						CropJane newPatch = convertToPatch();
 						newPatch.update();
-						newPatch.setEnabled(true);
 						FarmScreenAll.farmPatch.add(newPatch);
 						FarmScreenAll.getView().add(newPatch);
 						FarmScreenAll.patchPane.setVisible(false);

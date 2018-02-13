@@ -176,7 +176,7 @@ public class FarmScreenAll extends FullFunctionScreen {
 	private void addfarmingPatchJane(List<Visible> viewObjects) {
 		int start = 593;
 		int space = 77;
-		for(int i=0; i<9; i++) {
+		for(int i=0; i<6; i++) {
 			if(i<3) {
 				CropJane patch= new CropJane(start+(i*68), 253, 63, 50, "",new Color(200, 125, 10), null, i, new CropImageJane());
 				patch.update();
@@ -189,13 +189,16 @@ public class FarmScreenAll extends FullFunctionScreen {
 				farmPatch.add(patch);
 				viewObjects.add(patch);
 			}
-			else {
-//				EmptyPatch emptyPatch= new EmptyPatch(start+((i-6)*68), 278+space+space, 63, 50, "For Sale",new Color(200, 125, 10), null,i);
-//				emptyPatch.update();
-//				System.out.println("patch "+emptyFarmPatch.size());
-//				emptyFarmPatch.add(emptyPatch);
-//				viewObjects.add(emptyPatch);
-			}}
+		}
+//		for(int j=0; j<3; j++) {
+//			EmptyPatch emptyPatch= new EmptyPatch(729-(j*68), 278+space+space, 63, 50, "For Sale",new Color(200, 125, 10), null,j+6);
+//			emptyPatch.update();
+//			System.out.println("patch "+emptyFarmPatch.size());
+//			emptyFarmPatch.add(emptyPatch);
+//			viewObjects.add(emptyPatch);
+//		
+//		}
+			
 			EmptyPatch emptyPatch= new EmptyPatch(593, 278+space+space, 63, 50, "For Sale",new Color(200, 125, 10), null,6);
 			emptyPatch.update();
 			System.out.println("patch "+emptyFarmPatch.size());
