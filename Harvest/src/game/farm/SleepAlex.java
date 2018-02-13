@@ -54,6 +54,7 @@ public class SleepAlex extends FullFunctionScreen {//can use ImageTextButton, Cu
 	
 	private int actionInteger;
 	private int adjustTA;
+	private int originalBuyingPrice;
 	
 	private Button back;
 	
@@ -122,10 +123,10 @@ public class SleepAlex extends FullFunctionScreen {//can use ImageTextButton, Cu
 			int c = actionInteger;
 			ImageButton holder = new ImageButton(actionInteger*xspacer,75,90,150, imageSources.get(actionInteger), new Action() {
 				public void act() {
-					System.out.println(cashFromCropAnimalProducts.get(c));
+					//System.out.println(cashFromCropAnimalProducts.get(c));
 					TextArea info = new TextArea(c*83, 300, 100, 100, "You have created" + 
 							cropAnimalAndProductCount.get(c) + cropAnimalAndProductNames.get(c) + "." + 
-							"You have made" +cashFromCropAnimalProducts.get(c)+ "from" + 
+							"You have made" /*+cashFromCropAnimalProducts.get(c)*/+ "from" + 
 							cropAnimalAndProductNames.get(c));
 							viewObjects.add(info);
 					/*TextArea test = new TextArea(c*83, 300, 200, 200, "DATA IS COOL");
@@ -199,12 +200,12 @@ public class SleepAlex extends FullFunctionScreen {//can use ImageTextButton, Cu
 		cropAnimalAndProductCount.add(whiteEggs);
 		cropAnimalAndProductCount.add(blackEggs);
 		
-		int buyingPrice = 50;
+		originalBuyingPrice = 50;
 		//try similar solution for creating different button actions
 		for(int i = 0; i < 12;i++) {
+			cashFromCropAnimalProducts.set(i, originalBuyingPrice);
 			System.out.println(cashFromCropAnimalProducts);
-			cashFromCropAnimalProducts.set(i, buyingPrice);
-			buyingPrice+=50;
+			originalBuyingPrice+=50;
 		}
 		
 		for(int i = 0; i < sellingPriceCropAnimalProducts.size();i++ ) {
@@ -213,7 +214,7 @@ public class SleepAlex extends FullFunctionScreen {//can use ImageTextButton, Cu
 			sellingPrice+=60;
 		}
 		//System.out.println(cropAnimalAndProductCount);
-		System.out.println(cashFromCropAnimalProducts);
+		//System.out.println(cashFromCropAnimalProducts);
 			//create textboxes or clickable boxes for each item of information about crops and animals
 			//have a panel that lightens all products the player can buy and darkens (perhaps an image of a lock) of all the products the user may not by.
 			//create a class that makes an image lighten or darken w/ a lock image under specific game conditions
