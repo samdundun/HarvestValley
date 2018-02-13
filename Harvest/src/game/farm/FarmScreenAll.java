@@ -117,26 +117,6 @@ public class FarmScreenAll extends FullFunctionScreen {
 		addfarmingPatchJane(viewObjects);
 		
 		//Mainscreen team work
-		girl1 = new GirlCharacter(480, 220, 50, 100);
-		Thread rungurl = new Thread(girl1);
-		rungurl.start();
-		
-		
-		boy1 = new BoyCharacter(480, 220, 50, 100);
- 		Thread runboi = new Thread(boy1);
- 		runboi.start();
-
-
-// 		viewObjects.add(girl);
-	
- 		if(MainMenu.isGirl) {
- 			viewObjects.add(girl1);
- 			moveFocus(girl1);
- 		}
- 		else if(!MainMenu.isGirl) {
- 			viewObjects.add(boy1);
- 			moveFocus(boy1);
- 		}
  		
  		patchPane = new PaneJenny(this, 400, 300);
 		patchPane.update();
@@ -167,6 +147,27 @@ public class FarmScreenAll extends FullFunctionScreen {
 		animalPane.update();
 		viewObjects.add(animalPane);
 		animalPane.setVisible(false);
+		
+		girl1 = new GirlCharacter(480, 220, 50, 100);
+		Thread rungurl = new Thread(girl1);
+		rungurl.start();
+		
+		
+		boy1 = new BoyCharacter(480, 220, 50, 100);
+ 		Thread runboi = new Thread(boy1);
+ 		runboi.start();
+
+
+// 		viewObjects.add(girl);
+	
+ 		if(MainMenu.isGirl) {
+ 			viewObjects.add(girl1);
+ 			moveFocus(girl1);
+ 		}
+ 		else if(!MainMenu.isGirl) {
+ 			viewObjects.add(boy1);
+ 			moveFocus(boy1);
+ 		}
 	}
 	
 	private void addAnimalJenny(List<Visible> viewObjects) {

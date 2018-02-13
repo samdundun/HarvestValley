@@ -2,6 +2,10 @@ package game.mainScreen;
 
 import java.awt.event.KeyEvent;
 
+/**
+ * @author Mimi Buan
+ */
+
 import guiTeacher.components.AnimatedComponent;
 import guiTeacher.interfaces.KeyedComponent;
 
@@ -56,6 +60,36 @@ public class MovableCharacter extends AnimatedComponent implements KeyedComponen
 		}
 		if(getX() < 0) {
 			setX(0);
+		}
+		if(getX() > 780) {
+			setX(780);
+		}
+		if(getY() < 0) {
+			setY(0);
+		}
+		if(getY() > 430) {
+			setY(430);
+		}
+		if(getX() > 490 && getY() < 180 && getX() < 510) {
+			setX(490);
+		}
+		if(getX() < 530 && getY() < 180 && getX() > 490) {
+			setX(530);
+		}
+		if(getX() < 530 && getY() < 185 && getX() > 490) {
+			setY(185);
+		}
+		if(getX() > 516 && getY() < 150) {
+			setY(150);
+		}
+		if(getX() > 490 && getY() > 250 && getX() < 510) {
+			setX(490);
+		}
+		if(getX() < 530 && getY() > 250 && getX() > 490) {
+			setX(530);
+		}
+		if(getX() < 530 && getY() > 245 && getX() > 490) {
+			setY(245);
 		}
 	}
 	

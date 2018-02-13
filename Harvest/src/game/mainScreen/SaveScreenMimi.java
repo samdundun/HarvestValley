@@ -39,7 +39,7 @@ public class SaveScreenMimi extends ClickableScreen {
 		Graphic title = new Graphic(240, 40, 400, 400, "resources/harvestvalley.png");
 		viewObjects.add(title);
 		// put a box behind this text
-		text = new TextArea(135, 190, 600, 230, "You have saved the items in your inventory and your current amount of money. Progress made in the farm and barn cannot be saved.");
+		text = new TextArea(135, 190, 600, 230, "The items in your inventory and your current amount of money is already saved. Try going back to main menu and load your previous game!");
 		text.setCustomTextColor(Color.black);
 //		save.update();//143
 		viewObjects.add(save);
