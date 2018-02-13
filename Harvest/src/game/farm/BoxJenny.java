@@ -39,8 +39,9 @@ public class BoxJenny extends CustomImageButton implements Clickable{
 			}
 		}, new Action() {
 			public void act() {
-				FarmScreenAll.first.setX(x + 100);
-				FarmScreenAll.first.setY(y - 100);
+				Graphic image = new Graphic(0,0,imageAddress);
+				FarmScreenAll.first.setX(x + image.getWidth() + 10);
+				FarmScreenAll.first.setY(y - 50);
 				FarmScreenAll.first.setVisible(true);
 				FarmScreenAll.first.update();
 				FarmScreenAll.first.setIndex(i);
@@ -63,19 +64,18 @@ public class BoxJenny extends CustomImageButton implements Clickable{
 				BoxJenny animal = FarmScreenAll.animalBox.get(index);
 				String label = SelectionPaneJane.items[imageIndx + 6].getName().toLowerCase();
 				String name = game.market.Item.getGraphic()[imageIndx + 6].getImageLocation();
-				System.out.println(name);System.out.println(animal.imageIndx);
+				System.out.println(name);	System.out.println(animal.imageIndx);
 				int dayLeft = animal.getLength() - animal.getCurrentTime();
-				FarmScreenAll.animalPane.setX(animal.getX() + animal.getWidth());
-				FarmScreenAll.animalPane.setY(animal.getY());
+				FarmScreenAll.animalPane.setX(animal.getX() + animal.getWidth() + 10);
+				FarmScreenAll.animalPane.setY(animal.getY() - 50);
 				FarmScreenAll.animalPane.setSrc(name);
 				FarmScreenAll.animalPane.updateImg(FarmScreenAll.getView());
 				FarmScreenAll.animalPane.setVisible(true);
-				animal.setEnabled(false);
 				if(animal.getLength() != animal.getCurrentTime()) {
 					FarmScreenAll.animalPane.getLabel().setText(dayLeft + " days until harvest");
 					FarmScreenAll.animalPane.getHarvest().setAction(new Action() {
 						public void act() {
-							FarmScreenAll.animalPane.getLabel().setText("Cannot harvest yet");
+							FarmScreenAll.animalPane.getLabel().setText("Can not harvest yet");
 						}
 					});
 				}
@@ -83,11 +83,22 @@ public class BoxJenny extends CustomImageButton implements Clickable{
 					FarmScreenAll.animalPane.getLabel().setText("Ready to harvest");
 					FarmScreenAll.animalPane.getHarvest().setAction(new Action() {
 						public void act() {
-							FarmScreenAll.animalPane.setVisible(false);
-							FarmScreenAll.animalPane.getImg().setVisible(false);
 							FarmScreenAll.disableButton(true);
+							FarmScreenAll.animalPane.getImg().setVisible(false);
+							FarmScreenAll.animalPane.setVisible(false);
 						}
 					} );
+					animal.setAction(new Action() {
+						public void act() {
+							Graphic image = new Graphic(0,0,"resources/star.png");
+							FarmScreenAll.first.setX(x + image.getWidth() + 10);
+							FarmScreenAll.first.setY(y - 50);
+							FarmScreenAll.first.setVisible(true);
+							FarmScreenAll.first.update();
+							FarmScreenAll.first.setIndex(i);
+							FarmScreenAll.disableButton(false);
+						}
+					});
 				}
 				FarmScreenAll.animalPane.getItem().setText(label);
 				FarmScreenAll.animalPane.update();
@@ -98,7 +109,7 @@ public class BoxJenny extends CustomImageButton implements Clickable{
 
 	private void updateImg(int idx, String src) {
 		FarmScreenAll.getAnimalBox().remove(idx);
-		BoxJenny animal = new BoxJenny(x + 45, y + 30, src, null, FarmScreenAll.getView(), idx);
+		BoxJenny animal = new BoxJenny(x + 40, y + 30, src, null, FarmScreenAll.getView(), idx);
 		FarmScreenAll.getAnimalBox().add(idx, animal);
 		FarmScreenAll.getView().add(animal);
 	}

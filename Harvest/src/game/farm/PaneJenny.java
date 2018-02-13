@@ -72,7 +72,7 @@ public class PaneJenny extends Pane {
 		label = new TextLabel(15, 0, 150, 50, "");
 		viewObjects.add(label);
 		
-		item = new TextLabel(80, 115, 150, 50, "");
+		item = new TextLabel(30, 20, 150, 50, "");
 		viewObjects.add(item);
 	}
 	

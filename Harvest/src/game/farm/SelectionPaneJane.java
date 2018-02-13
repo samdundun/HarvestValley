@@ -26,9 +26,10 @@ public class SelectionPaneJane extends Pane {
 			new Item("Black Chicken", "Cluck cluck", 250, 14,1),new Item("Sheep", "BAAAAAAAAAAAH", 350, 15,2),
 			new Item("Cow", "Mooooooo", 500, 16,2),new Item("Pig", "SNORT SNORT", 250, 17,1),
 
-			new Item("Brown Eggs", "", 300, 18, 0),new Item("White Eggs", "", 50, 19,0),
-			new Item("Black Eggs", "", 150, 20, 0),new Item("Wool", "", 100, 21,0),
-			new Item("Milk", "", 200, 22,0),new Item("Meat", "", 400, 23,0)};
+			new Item("Brown Egg", "", 300, 18, 6),new Item("White Egg", "", 50, 19, 6),
+			new Item("Black Egg", "", 150, 20, 7),new Item("Wool", "", 100, 21, 2),
+			new Item("Milk", "", 200, 22, 1),new Item("Meat", "", 400, 23, 5)};
+	
 	private Button cancel;
 	private Button select;
 	private Graphic grid;
