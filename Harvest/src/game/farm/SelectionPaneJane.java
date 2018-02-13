@@ -121,8 +121,10 @@ public class SelectionPaneJane extends Pane {
 				label.setText("Please select an item");
 
 			}});
-		viewObjects.add(select);}
+		viewObjects.add(select);
+	}
 
+<<<<<<< HEAD
 //		invent.sort();
 //		ArrayList<Item> seeds=invent.getSeedInventory();
 //		System.out.println(seeds);
@@ -157,12 +159,14 @@ public class SelectionPaneJane extends Pane {
 //			}
 //		}
 =======
+=======
+	public void addImages(int start, int end, int move, int startingHeight, int width, int height,TextLabel label) {
+>>>>>>> branch 'farm' of https://github.com/samdundun/HarvestValley.git
 		invent.sort();
 		
 		ArrayList<ErikItem> seeds=invent.getSeedSelection();
 		for(int i = 0; i < seeds.size(); i++) {
 			ErikItem z=items[i];
->>>>>>> branch 'farm' of https://github.com/samdundun/HarvestValley.git
 			z.setAction(new Action() {
 
 				@Override
@@ -181,10 +185,16 @@ public class SelectionPaneJane extends Pane {
 			move++;
 			if(move == 3){
 				move = 0;
+<<<<<<< HEAD
 				startingHeight = startingHeight+height;
 <<<<<<< HEAD
 			}
 		}*/}
+=======
+				startingHeight = startingHeight+height;
+			}}
+		}
+>>>>>>> branch 'farm' of https://github.com/samdundun/HarvestValley.git
 
 	public int setSeedSelected(int i) {
 		return seedSelectedInd = i;
