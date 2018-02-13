@@ -117,23 +117,28 @@ public class SleepAlex extends FullFunctionScreen {//can use ImageTextButton, Cu
 		
 		actionInteger = 0;
 		addNamesAndCountToArray();
+		
+		TextArea info = new TextArea(200, 400, 200, 500, "Click on an item.");
+		info.setCustomTextColor(Color.white);
+		viewObjects.add(info);
+		
 		for(int actionInteger = 0; actionInteger<imageSources.size();actionInteger++) {
 			/*variables inside the setup part of a for loop are local -- be cautious when using them in the function -- especially in the action method of a button*/
 			int xspacer = 83;
 			int c = actionInteger;
 			ImageButton holder = new ImageButton(actionInteger*xspacer,75,90,150, imageSources.get(actionInteger), new Action() {
 				public void act() {
-					//System.out.println(cashFromCropAnimalProducts.get(c));
-					TextArea info = new TextArea(c*83, 300, 100, 100, "You have created" + 
-							cropAnimalAndProductCount.get(c) + cropAnimalAndProductNames.get(c) + "." + 
-							"You have made" /*+cashFromCropAnimalProducts.get(c)*/+ "from" + 
+					System.out.println(cashFromCropAnimalProducts.get(c));
+					info.setText("You have created " + 
+							cropAnimalAndProductCount.get(c) + " " + cropAnimalAndProductNames.get(c) + ". " + 
+							"You have made" /*+cashFromCropAnimalProducts.get(c)*/+ "from " + 
 							cropAnimalAndProductNames.get(c));
-							viewObjects.add(info);
-					/*TextArea test = new TextArea(c*83, 300, 200, 200, "DATA IS COOL");
-					viewObjects.add(test);*/
+					info.setTextColor(Color.white);
 				}});
 			viewObjects.add(holder);
 		}
+		
+		
 		back = new Button(getWidth()-100, getHeight()-100,100, 100, "",Color.blue, new Action() {
 			public void act() {
 				MainMenu.game.setScreen(MainMenu.farmScreen);
@@ -203,14 +208,16 @@ public class SleepAlex extends FullFunctionScreen {//can use ImageTextButton, Cu
 		originalBuyingPrice = 50;
 		//try similar solution for creating different button actions
 		for(int i = 0; i < 12;i++) {
-			cashFromCropAnimalProducts.set(i, originalBuyingPrice);
+			cashFromCropAnimalProducts.add(originalBuyingPrice);
 			System.out.println(cashFromCropAnimalProducts);
 			originalBuyingPrice+=50;
 		}
 		
-		for(int i = 0; i < sellingPriceCropAnimalProducts.size();i++ ) {
-			int sellingPrice = 60;
-			sellingPriceCropAnimalProducts.set(i, sellingPrice);
+		int sellingPrice = 60;
+		
+		for(int i = 0; i < 12;i++ ) {
+			sellingPriceCropAnimalProducts.add(sellingPrice);
+			System.out.println("Selling: "+sellingPriceCropAnimalProducts);
 			sellingPrice+=60;
 		}
 		//System.out.println(cropAnimalAndProductCount);

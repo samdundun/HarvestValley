@@ -128,30 +128,30 @@ public class SelectionPaneJane extends Pane {
 	public void addImages(int start, int end, int move, int startingHeight, int width, int height,TextLabel label) {
 		invent.sort();
 		
-		ArrayList<Item> seeds=invent.getSeedSelection();
-		for(int i = 0; i < seeds.size(); i++) {
-			Item z=items[i];
-			z.setAction(new Action() {
-
-				@Override
-				public void act() {
-					for(int i = 0; i < items.length;i++) {
-						items[i].setSelected(false);
-					}
-					System.out.println(z.getName());
-					z.setSelected(true);
-					label.setText(z.getName());
-				}
-			});
-
-			z.setX(35+move*width);
-			z.setY(startingHeight);
-			move++;
-			if(move == 3){
-				move = 0;
-				startingHeight = startingHeight+height;
-			}
-		}
+//		ArrayList<Item> seeds=invent.getSeedSelection();
+//		for(int i = 0; i < seeds.size(); i++) {
+//			Item z=items[i];
+//			z.setAction(new Action() {
+//
+//				@Override
+//				public void act() {
+//					for(int i = 0; i < items.length;i++) {
+//						items[i].setSelected(false);
+//					}
+//					System.out.println(z.getName());
+//					z.setSelected(true);
+//					label.setText(z.getName());
+//				}
+//			});
+//
+//			z.setX(35+move*width);
+//			z.setY(startingHeight);
+//			move++;
+//			if(move == 3){
+//				move = 0;
+//				startingHeight = startingHeight+height;
+//			}
+//		}
 
 		select= new Button(35,_HEIGHT - 30, 60, 25, "Select",Color.lightGray, new Action() {
 
