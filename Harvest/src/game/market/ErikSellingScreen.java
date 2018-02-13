@@ -18,37 +18,37 @@ import guiTeacher.interfaces.Visible;
 import guiTeacher.userInterfaces.FullFunctionScreen;
 import harvest.MainMenu;
 
-public class SellingScreen extends FullFunctionScreen implements FileRequester{
+public class ErikSellingScreen extends FullFunctionScreen implements FileRequester{
 
 	private static final long serialVersionUID = 7548071104587737267L;
-	ArrayList<Inventory> a;
+	ArrayList<SamInventory> a;
 	private Button buying;
 	private Button selling;
 	private Button exchange;
-	private CustomArea description;
-	private CustomArea price;
+	private SamCustomArea description;
+	private SamCustomArea price;
 	private TextLabel amount;
 	private TextLabel gold;
 	private Graphic grid;
 	private Button exit;
 	
-	private Inventory invent;
+	private SamInventory invent;
 	
 	private int priceLevel;
 
-	public static final Item[] items = {new Item("Corn Seeds", "Great crop to grow all year round", 250, 0, 4),new Item("Pepper Seeds", "Spicy", 50, 1,1),
-			new Item("Potato Seeds", "Just like me", 150, 2, 3),new Item("Strawberry Seeds", "Sweeter than you", 100, 3,2),
-			new Item("Tomato Seeds", "Make some good ketchup", 200, 4,3),new Item("Wheat Seeds", "Not weed", 300, 5,5),new Item("Corn", "Fresh to eat", 300,6,4),
-			new Item("Pepper","Supah Hot Fire",60,7,1),new Item("Potato","Time to make french fries",180,8,3),
-			new Item("Strawberry","Berry??",120,9,2),new Item("Tomato", "Great for salads", 240,10,3),
-			new Item("Wheat","Just plain old wheat",360,11,5),new Item("Brown Chicken", "Cluck cluck", 250, 12,1),new Item("White Chicken", "Cluck cluck", 250, 13,1),
-			new Item("Black Chicken", "Cluck cluck", 250, 14,1),new Item("Sheep", "BAAAAAAAAAAAH", 350, 15,2),
-			new Item("Cow", "Mooooooo", 400, 16,2),new Item("Pig", "SNORT SNORT", 450, 17,1),
-			new Item("Brown Eggs", "", 200, 18, 0),new Item("White Eggs", "", 200, 19,0),
-			new Item("Black Eggs", "", 200, 20, 0),new Item("Wool", "", 300, 21,0),
-			new Item("Milk", "", 350, 22,0),new Item("Meat", "", 500, 23,0)};
+	public static final ErikItem[] items = {new ErikItem("Corn Seeds", "Great crop to grow all year round", 250, 0, 4),new ErikItem("Pepper Seeds", "Spicy", 50, 1,1),
+			new ErikItem("Potato Seeds", "Just like me", 150, 2, 3),new ErikItem("Strawberry Seeds", "Sweeter than you", 100, 3,2),
+			new ErikItem("Tomato Seeds", "Make some good ketchup", 200, 4,3),new ErikItem("Wheat Seeds", "Not weed", 300, 5,5),new ErikItem("Corn", "Fresh to eat", 300,6,4),
+			new ErikItem("Pepper","Supah Hot Fire",60,7,1),new ErikItem("Potato","Time to make french fries",180,8,3),
+			new ErikItem("Strawberry","Berry??",120,9,2),new ErikItem("Tomato", "Great for salads", 240,10,3),
+			new ErikItem("Wheat","Just plain old wheat",360,11,5),new ErikItem("Brown Chicken", "Cluck cluck", 250, 12,1),new ErikItem("White Chicken", "Cluck cluck", 250, 13,1),
+			new ErikItem("Black Chicken", "Cluck cluck", 250, 14,1),new ErikItem("Sheep", "BAAAAAAAAAAAH", 350, 15,2),
+			new ErikItem("Cow", "Mooooooo", 400, 16,2),new ErikItem("Pig", "SNORT SNORT", 450, 17,1),
+			new ErikItem("Brown Eggs", "", 200, 18, 0),new ErikItem("White Eggs", "", 200, 19,0),
+			new ErikItem("Black Eggs", "", 200, 20, 0),new ErikItem("Wool", "", 300, 21,0),
+			new ErikItem("Milk", "", 350, 22,0),new ErikItem("Meat", "", 500, 23,0)};
 
-	public SellingScreen(int width, int height) {
+	public ErikSellingScreen(int width, int height) {
 		super(width, height);
 		// TODO Auto-generated constructor stub
 	}
@@ -58,14 +58,14 @@ public class SellingScreen extends FullFunctionScreen implements FileRequester{
 		StyledComponent.setButtonOutline(true);
 		setBackground(new Color(252,226,148));
 		
-		invent = new Inventory();
+		invent = new SamInventory();
 		invent.load();
 		
 		buying = new Button(100, 40, 100, 40, "BUYING", new Action() {
 
 			@Override
 			public void act() {
-				MainMenu.game.shop = new BuyingScreen(getWidth(),getHeight());
+				MainMenu.game.shop = new SamBuyingScreen(getWidth(),getHeight());
 				MainMenu.game.setScreen(MainMenu.shop);
 
 			}
@@ -104,7 +104,7 @@ public class SellingScreen extends FullFunctionScreen implements FileRequester{
 			@Override
 			public void act() {
 				MainMenu.game.setScreen(MainMenu.farmScreen);
-				MainMenu.game.inventory = new InventoryScreen(getWidth(),getHeight());
+				MainMenu.game.inventory = new ErikInventoryScreen(getWidth(),getHeight());
 
 
 			}
@@ -119,10 +119,10 @@ public class SellingScreen extends FullFunctionScreen implements FileRequester{
 
 			@Override
 			public void act() {
-				Item removeI = null;
-				for(Item i: items) {
+				ErikItem removeI = null;
+				for(ErikItem i: items) {
 					if(i.isSelected()) {
-						for(Item it: invent.getItems()) {
+						for(ErikItem it: invent.getItems()) {
 							 if(i.getImageIndex() == it.getImageIndex()) {
 								 removeI = it;
 							 }
@@ -134,9 +134,9 @@ public class SellingScreen extends FullFunctionScreen implements FileRequester{
 				}
 				invent.getItems().remove(removeI);
 				invent.save();
-				for(Item i: items) {
+				for(ErikItem i: items) {
 					if(i.isSelected() && invent.getAmountArray()[i.getImageIndex()] == 0) {
-						MainMenu.game.sell = new SellingScreen(getWidth(),getHeight());
+						MainMenu.game.sell = new ErikSellingScreen(getWidth(),getHeight());
 						MainMenu.game.setScreen(MainMenu.game.sell);
 						i.setSelected(false);
 					}
@@ -151,11 +151,11 @@ public class SellingScreen extends FullFunctionScreen implements FileRequester{
 		exchange.update();
 		viewObjects.add(exchange);
 		
-		price = new CustomArea(100,400,250,125,"Selling Price :");
+		price = new SamCustomArea(100,400,250,125,"Selling Price :");
 		viewObjects.add(price);
 		
 		
-		description = new CustomArea(490, 400, 250, 125, "Description");
+		description = new SamCustomArea(490, 400, 250, 125, "Description");
 		viewObjects.add(description);
 		
 		int move = 1;
@@ -164,7 +164,7 @@ public class SellingScreen extends FullFunctionScreen implements FileRequester{
 		int height = 48;
 		
 		invent.sort();
-		for(Item i:invent.getItems()) {
+		for(ErikItem i:invent.getItems()) {
 			i.setAction(new Action() {
 
 				@Override
@@ -185,7 +185,7 @@ public class SellingScreen extends FullFunctionScreen implements FileRequester{
 			});
 			if(invent.getAmountArray()[i.getImageIndex()] > 0 && i.isAdded() == false) {
 				i.setAdded(true);
-				for(Item it:invent.getItems()) {
+				for(ErikItem it:invent.getItems()) {
 					if(it.getImageIndex() == i.getImageIndex()) {
 						it.setAdded(true);
 					}
