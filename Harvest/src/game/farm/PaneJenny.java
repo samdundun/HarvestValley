@@ -85,7 +85,7 @@ public class PaneJenny extends Pane {
 	}
 
 	public void setSrc(String src) {
-		this.src = "resources/" + src + ".png";
+		this.src = src;
 	}
 
 	public TextLabel getLabel() {

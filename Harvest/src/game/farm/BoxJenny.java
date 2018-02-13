@@ -53,20 +53,24 @@ public class BoxJenny extends CustomImageButton implements Clickable{
 		length = 5;
 	}
 
-	public void changeAction() {
+	public void changeAction(int i) {
 		updateImg(index, SelectionPaneJane.getSrc());
+		imageIndx = i;
+		System.out.println(imageIndx);
+		this.setEnabled(true);
 		this.setAction(new Action() {
-
 			public void act() {
 				BoxJenny animal = FarmScreenAll.animalBox.get(index);
-				String name = SelectionPaneJane.items[animal.imageIndx + 6].getName().toLowerCase();
-				System.out.println(name);
+				String label = SelectionPaneJane.items[imageIndx + 6].getName().toLowerCase();
+				String name = game.market.Item.getGraphic()[imageIndx + 6].getImageLocation();
+				System.out.println(name);System.out.println(animal.imageIndx);
 				int dayLeft = animal.getLength() - animal.getCurrentTime();
-				FarmScreenAll.animalPane.setX(animal.getX());
+				FarmScreenAll.animalPane.setX(animal.getX() + animal.getWidth());
 				FarmScreenAll.animalPane.setY(animal.getY());
 				FarmScreenAll.animalPane.setSrc(name);
 				FarmScreenAll.animalPane.updateImg(FarmScreenAll.getView());
 				FarmScreenAll.animalPane.setVisible(true);
+				animal.setEnabled(false);
 				if(animal.getLength() != animal.getCurrentTime()) {
 					FarmScreenAll.animalPane.getLabel().setText(dayLeft + " days until harvest");
 					FarmScreenAll.animalPane.getHarvest().setAction(new Action() {
@@ -85,7 +89,7 @@ public class BoxJenny extends CustomImageButton implements Clickable{
 						}
 					} );
 				}
-				FarmScreenAll.animalPane.getItem().setText(name);
+				FarmScreenAll.animalPane.getItem().setText(label);
 				FarmScreenAll.animalPane.update();
 				FarmScreenAll.disableButton(false);
 			}
@@ -94,7 +98,7 @@ public class BoxJenny extends CustomImageButton implements Clickable{
 
 	private void updateImg(int idx, String src) {
 		FarmScreenAll.getAnimalBox().remove(idx);
-		BoxJenny animal = new BoxJenny(x, y, src, null, FarmScreenAll.getView(), idx);
+		BoxJenny animal = new BoxJenny(x + 45, y + 30, src, null, FarmScreenAll.getView(), idx);
 		FarmScreenAll.getAnimalBox().add(idx, animal);
 		FarmScreenAll.getView().add(animal);
 	}
