@@ -58,7 +58,7 @@ public class MainMenu extends GUIApplication {
 //		}
 
 		screen = new MenuScreenLubna(getWidth(), getHeight());
-		//sleep = new SleepAlex(getWidth(), getHeight());
+		sleep = new SleepAlex(getWidth(), getHeight());
 		farmScreen = new FarmScreenAll(getWidth(),getHeight());
 		shop = new BuyingScreen(getWidth(),getHeight());
 		screen2 = new ChooseGenderScreenLubna(getWidth(), getHeight());
