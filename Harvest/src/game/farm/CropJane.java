@@ -48,6 +48,7 @@ public class CropJane extends CustomImageButton {
 				FarmScreenAll.pane.getSelect().setX(i);
 				FarmScreenAll.pane.getCancel().setX(j);
 				FarmScreenAll.pane.getSell().setVisible(b);
+				FarmScreenAll.pane.getSell().setEnabled(b);
 				
 			}
 		});
@@ -73,6 +74,9 @@ public class CropJane extends CustomImageButton {
 	private void changeAction() {
 		invent = new SamInventory();
 		invent.load();
+		invent.sort();
+		FarmScreenAll.pane.setSeeds(invent.getSeedSelection());
+		invent.save();
 		this.setAction(new Action() {
 			
 			@Override
