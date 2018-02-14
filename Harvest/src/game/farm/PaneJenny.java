@@ -64,7 +64,7 @@ public class PaneJenny extends Pane {
 				img.setVisible(false);
 				PaneJenny.this.setVisible(false);
 				FarmScreenAll.disableButton(true);
-				FarmScreenAll.disableEmptyPatch(true,1);
+				FarmScreenAll.disableEmptyPatch(true);
 			}
 		});
 		viewObjects.add(cancel);

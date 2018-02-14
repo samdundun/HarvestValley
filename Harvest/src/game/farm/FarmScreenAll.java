@@ -152,40 +152,7 @@ public class FarmScreenAll extends FullFunctionScreen {
 		viewObjects.add(plantPane);
 		viewObjects.add(pane);
 	}
-//	public static void patchPaneCreate() {
-//			System.out.println(FarmScreenAll.farmPatch.size());
-//			FarmScreenAll.patchPane.getLabel().setText("Enlarge your farm!");
-//			FarmScreenAll.patchPane.getItem().setText("Patch for $1000");
-////			FarmScreenAll.patchPane.setX(x-250);
-////			FarmScreenAll.patchPane.setY(y-120);
-//			FarmScreenAll.patchPane.setSrc("resources/farmPatch.png");
-//			FarmScreenAll.patchPane.updateImg(FarmScreenAll.getView());
-//			FarmScreenAll.patchPane.setVisible(true);
-//			FarmScreenAll.disableEmptyPatch(false,1);
-//			FarmScreenAll.patchPane.getHarvest().setAction(new Action() {
-//				
-//				@Override
-//				public void act() {
-//					//FarmScreenAll.removeEmptyPatch();
-////					CropJane newPatch = convertToPatch();
-////					newPatch.update();
-////					FarmScreenAll.farmPatch.add(newPatch);
-////					FarmScreenAll.getView().add(newPatch);
-////					FarmScreenAll.patchPane.setVisible(false);
-////					FarmScreenAll.patchPane.getImg().setVisible(false);
-////					FarmScreenAll.disableEmptyPatch(true,1);
-////					System.out.println(FarmScreenAll.emptyFarmPatch.size());
-//				}
-//
-////				private CropJane convertToPatch() {
-////					CropJane newPatch = new CropJane(x+68, y, w, h, "", color, null, i, new CropImageJane());
-////					return newPatch;
-////				}
-//			});
-//		
-//	
-//	}
-	
+
 	private void addAnimalJenny(List<Visible> viewObjects) {
 		int start = 30;
 		int space = 150;
@@ -215,28 +182,29 @@ public class FarmScreenAll extends FullFunctionScreen {
 	private void addfarmingPatchJane(List<Visible> viewObjects) {
 		int start = 593;
 		int space = 77;
-		for(int i=0; i<6; i++) {
+		for(int i=0; i<9; i++) {
 			if(i<3) {
-				CropJane patch= new CropJane(start+(i*68), 253, 63, 50, "",new Color(200, 125, 10), null, i, new CropImageJane());
+				CropJane patch= new CropJane(start+(i*68), 253, 63, 50, "",new Color(200, 125, 10), null, i, new CropImageJane(),-1);
 				patch.update();
 				farmPatch.add(patch);
 				viewObjects.add(patch);
 			}
 			else if(i>=3&&i<6) {
-				CropJane patch= new CropJane(start+((i-3)*68), 260+space, 63, 50,"",new Color(200, 125, 10), null, i, new CropImageJane());
+				CropJane patch= new CropJane(start+((i-3)*68), 260+space, 63, 50,"",new Color(200, 125, 10), null, i, new CropImageJane(),-1);
 				patch.update();
 				farmPatch.add(patch);
 				viewObjects.add(patch);
 			}
+			else {
+				EmptyPatch emptyPatch= new EmptyPatch(start+((i-6)*68), 278+space+space, 63, 50, "For Sale",new Color(200, 125, 10), null,i,i-6);
+				emptyPatch.update();
+				emptyFarmPatch.add(emptyPatch);
+				viewObjects.add(emptyPatch);
+			}
 		}
-		for(int j=0; j<3; j++) {
-			EmptyPatch emptyPatch= new EmptyPatch(729-(j*68), 278+space+space, 63, 50, "For Sale",new Color(200, 125, 10), null,j+6);
-			emptyPatch.update();
-			System.out.println("patch "+emptyFarmPatch.size());
-			emptyFarmPatch.add(emptyPatch);
-			viewObjects.add(emptyPatch);
+
 		
-		}
+		
 			
 //			EmptyPatch emptyPatch= new EmptyPatch(593, 278+space+space, 63, 50, "For Sale",new Color(200, 125, 10), null,6);
 //			emptyPatch.update();
@@ -244,7 +212,7 @@ public class FarmScreenAll extends FullFunctionScreen {
 //			emptyFarmPatch.add(emptyPatch);
 //			viewObjects.add(emptyPatch);
 		
-	}
+}
 
 
 	public static void disableButton(boolean b) {
@@ -254,6 +222,7 @@ public class FarmScreenAll extends FullFunctionScreen {
 		for(int j=0; j<animalBox.size(); j++) {
 			animalBox.get(j).setEnabled(b);
 		}
+		disableEmptyPatch(b);
 		
 	}
 
@@ -266,22 +235,11 @@ public class FarmScreenAll extends FullFunctionScreen {
 		which = s;
 	}
 
-	public static void disableEmptyPatch(boolean b, int i) {
+	public static void disableEmptyPatch(boolean b) {
 		for(int j=0; j<emptyFarmPatch.size(); j++) {
 			emptyFarmPatch.get(j).setEnabled(b);
 		}
 		
-	}
-
-	public static void removeEmptyPatch() {
-		for(int i=emptyFarmPatch.size()-1; i==0; i++) {
-			emptyFarmPatch.replaceAll(null);
-//			emptyFarmPatch.remove(i);
-			viewObj.remove(emptyFarmPatch.get(i));
-		}
-		for(int j=0; j<emptyFarmPatch.size(); j++) {
-			emptyFarmPatch.get(j).update();
-		}
 		
 		
 	}

@@ -11,11 +11,13 @@ import guiTeacher.components.Button;
 import guiTeacher.components.CustomImageButton;
 import guiTeacher.components.Graphic;
 import guiTeacher.interfaces.DrawInstructions;
+import harvest.MainMenu;
 
 public class CropJane extends CustomImageButton {
 	
 	private int imageIndx;
 	private int index;
+	private int patchIndex;
 	private CropImageJane image;
 	private int length;
 	private int stage;
@@ -24,18 +26,33 @@ public class CropJane extends CustomImageButton {
 	private SamInventory invent;
 	private Action orginAction;
 	
-	public CropJane(int x, int y, int w, int h, String text, Color color, Action action, int i, CropImageJane image) {
+	public CropJane(int x, int y, int w, int h, String text, Color color, Action action, int i, CropImageJane image, int j) {
 		super(x, y, w, h,image, new Action() {
 			public void act() {
 				FarmScreenAll.pane.setX(x-250);
 				FarmScreenAll.pane.setY(y-120);
-				FarmScreenAll.pane.setVisible(true);
-				FarmScreenAll.pane.update();
 				FarmScreenAll.pane.setIndex(i);
+				FarmScreenAll.pane.setPatchIndex(j);
+				if(i>5) {
+					changeSetting(7,78,true);
+				}
+				else {
+					changeSetting(35,120,false);
+				}
+				FarmScreenAll.pane.update();
+				FarmScreenAll.pane.setVisible(true);
 				FarmScreenAll.disableButton(false);
+			}
+
+			private void changeSetting(int i, int j, boolean b) {
+				FarmScreenAll.pane.getSelect().setX(i);
+				FarmScreenAll.pane.getCancel().setX(j);
+				FarmScreenAll.pane.getSell().setVisible(b);
+				
 			}
 		});
 		index=i;
+		this.patchIndex=j;
 		this.image=image;
 	}
 	
@@ -65,8 +82,7 @@ public class CropJane extends CustomImageButton {
 				String cropName = SelectionPaneJane.items[currentPatch.imageIndx+6].getName().toLowerCase();
 				System.out.println(cropName);
 				int dayLeft =currentPatch.getLength()-currentPatch.getCurrentTime();
-				plantPane.setX(currentPatch.getX()-250);
-				plantPane.setY(currentPatch.getY()-120);
+				setPosition();
 				plantPane.setSrc("resources/" + cropName + ".png");
 				plantPane.updateImg(FarmScreenAll.getView());
 				plantPane.setVisible(true);
@@ -96,10 +112,9 @@ public class CropJane extends CustomImageButton {
 								
 								@Override
 								public void act() {
-									FarmScreenAll.pane.setX(getX()-250);
-									FarmScreenAll.pane.setY(getY()-120);
 									FarmScreenAll.pane.setVisible(true);
 									FarmScreenAll.pane.setIndex(index);
+									FarmScreenAll.pane.setPatchIndex(patchIndex);
 									FarmScreenAll.pane.update();
 									FarmScreenAll.disableButton(false);
 									
@@ -111,6 +126,12 @@ public class CropJane extends CustomImageButton {
 				plantPane.getItem().setText(cropName);
 				plantPane.update();
 				FarmScreenAll.disableButton(false);
+				
+			}
+
+			private void setPosition() {
+				FarmScreenAll.plantPane.setX(FarmScreenAll.farmPatch.get(index).getX()-250);
+				FarmScreenAll.plantPane.setY(FarmScreenAll.farmPatch.get(index).getY()-120);
 				
 			}
 		});
@@ -179,6 +200,11 @@ public class CropJane extends CustomImageButton {
 	public int getCurrentTime() {
 		// TODO Auto-generated method stub
 		return currentTime;
+	}
+
+	public int getPatchIndex() {
+		// TODO Auto-generated method stub
+		return patchIndex;
 	}
 
 

@@ -10,14 +10,14 @@ import harvest.MainMenu;
 
 public class EmptyPatch extends Button {
 	private int index;
-
-	public EmptyPatch(int x, int y, int w, int h, String text, Color color, Action action, int i) {
+	private int patchIndex;
+	
+	public EmptyPatch(int x, int y, int w, int h, String text, Color color, Action action, int i, int j) {
 		super(x, y, w, h, text,color, null);
 		setAction(new Action() {
 			
 			@Override
 			public void act() {
-				System.out.println(FarmScreenAll.farmPatch.size());
 				FarmScreenAll.patchPane.getLabel().setText("Enlarge your farm!");
 				FarmScreenAll.patchPane.getItem().setText("Patch for $1000");
 				FarmScreenAll.patchPane.setX(x-250);
@@ -25,12 +25,11 @@ public class EmptyPatch extends Button {
 				FarmScreenAll.patchPane.setSrc("resources/farmPatch.png");
 				FarmScreenAll.patchPane.updateImg(FarmScreenAll.getView());
 				FarmScreenAll.patchPane.setVisible(true);
-				FarmScreenAll.disableEmptyPatch(false,1);
+				FarmScreenAll.disableEmptyPatch(false);
 				FarmScreenAll.patchPane.getHarvest().setAction(new Action() {
 					
 					@Override
 					public void act() {
-						//FarmScreenAll.removeEmptyPatch();
 						CropJane newPatch = convertToPatch();
 						newPatch.update();
 						FarmScreenAll.farmPatch.add(newPatch);
@@ -38,20 +37,20 @@ public class EmptyPatch extends Button {
 						MainMenu.farmScreen.remove(EmptyPatch.this);
 						FarmScreenAll.patchPane.setVisible(false);
 						FarmScreenAll.patchPane.getImg().setVisible(false);
-						FarmScreenAll.disableEmptyPatch(true,1);
-						System.out.println(FarmScreenAll.emptyFarmPatch.size());
+						FarmScreenAll.disableEmptyPatch(true);
 					}
 
 					private CropJane convertToPatch() {
-						CropJane newPatch = new CropJane(x, y, w, h, "", color, null, i, new CropImageJane());
+						int ind=FarmScreenAll.farmPatch.size();
+						CropJane newPatch = new CropJane(x, y, w, h, "", color, null, ind, new CropImageJane(),j);
 						return newPatch;
 					}
 				});
 			
 		}
 		});
-		this.index=i;
-		System.out.println(index);
+		this.patchIndex=j;
+		System.out.println(i);
 	}
 
 

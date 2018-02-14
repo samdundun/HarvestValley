@@ -12,6 +12,7 @@ import game.market.ErikItem;
 import guiTeacher.components.*;
 import guiTeacher.interfaces.FocusController;
 import guiTeacher.interfaces.Visible;
+import harvest.MainMenu;
 
 public class SelectionPaneJane extends Pane {
 	public static ErikItem[] items = {new ErikItem("Corn Seeds", "Great crop to grow all year round", 300, 0, 4),new ErikItem("Pepper Seeds", "Spicy", 50, 1,1),
@@ -38,13 +39,17 @@ public class SelectionPaneJane extends Pane {
 	private static String animalImg;
 	private int animalIdx;
 	private int index;
-	private static final int _WIDTH = 225;
+	private static final int _WIDTH = 235;
 	private static final int _HEIGHT = 210;
 	public SamInventory invent;
 
 	private ArrayList<ErikItem> animal;
 
 	private ArrayList<ErikItem> seeds;
+
+	private Button sell;
+
+	private int patchIndex;
 
 	public SelectionPaneJane(FocusController focusController, int x, int y) {
 		super(focusController, x, y, _WIDTH, _HEIGHT);
@@ -64,15 +69,13 @@ public class SelectionPaneJane extends Pane {
 	}
 
 	public void initAllObjects(List<Visible> viewObjects){
-		index = 0;
 		animalImg = "";
 		invent = new SamInventory();
 		invent.load();
 		invent.sort();
 		 animal=invent.getAnimalSelection();
 		 seeds=invent.getSeedSelection();
-
-		grid = new Graphic(11,22,280,150, "resources/seedPane.png");
+		grid = new Graphic(15,22,280,150, "resources/seedPane.png");
 		viewObjects.add(0,grid);
 
 		cancel= new Button(120,_HEIGHT - 30, 60, 25, "Cancel",Color.lightGray, new Action() {
@@ -104,7 +107,6 @@ public class SelectionPaneJane extends Pane {
 
 			addImages(seeds, 0, 40, 55, 60, label);
 		}
-
 		select= new Button(35,_HEIGHT - 30, 60, 25, "Select",Color.lightGray, new Action() {
 
 			public void act() {
@@ -132,9 +134,29 @@ public class SelectionPaneJane extends Pane {
 			}
 
 		});
-		viewObjects.add(select);}
+		viewObjects.add(select);
+			sell = new Button(151,_HEIGHT - 30, 78, 25, "Sell Patch",Color.lightGray, new Action() {
+				
+				@Override
+				public void act() {
+					
+					for(int i=6; i<FarmScreenAll.farmPatch.size(); i++) {
+						if(getX()+250==FarmScreenAll.farmPatch.get(i).getX())
+							index=i;
+					}
+					
+					MainMenu.farmScreen.remove(FarmScreenAll.farmPatch.get(index));
+					FarmScreenAll.farmPatch.remove(index);
+					MainMenu.farmScreen.addObjectToBack(FarmScreenAll.emptyFarmPatch.get(patchIndex));
+					FarmScreenAll.pane.setVisible(false);
+					FarmScreenAll.disableButton(true);
+					
+				}
+			});
+			viewObjects.add(sell);
+		}
 
-
+		
 
 
 	public ArrayList<ErikItem> getAnimal() {
@@ -145,7 +167,7 @@ public class SelectionPaneJane extends Pane {
 		this.animal = animal;
 	}
 
-	public ArrayList<ErikItem> getSeeds() {
+	public  ArrayList<ErikItem> getSeeds() {
 		return seeds;
 	}
 
@@ -201,4 +223,23 @@ public class SelectionPaneJane extends Pane {
 	public static String getSrc() {
 		return animalImg;
 	}
+
+	public Button getCancel() {
+		return cancel;
+	}
+
+	public Button getSelect() {
+		return select;
+	}
+
+	public Button getSell() {
+		return sell;
+	}
+
+	public void setPatchIndex(int patchIndex) {
+		this.patchIndex=patchIndex;
+		
+	}
+	 
 }
+
