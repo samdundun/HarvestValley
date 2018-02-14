@@ -5,6 +5,8 @@ import java.awt.Graphics2D;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.plaf.basic.BasicInternalFrameTitlePane.MoveAction;
+
 import game.market.SamInventory;
 import game.market.ErikInventoryScreen;
 import game.market.ErikItem;
@@ -55,64 +57,78 @@ public class BoxJenny extends CustomImageButton implements Clickable{
 		length = 5;
 	}
 
-	public void changeAction(int i) {
-		updateImg(index, SelectionPaneJane.getSrc());
-				BoxJenny animal = FarmScreenAll.animalBox.get(index);
-		imageIndx = i;
-		System.out.println(imageIndx);
-		this.setEnabled(true);
-		this.setAction(new Action() {
-			public void act() {
-				String label = SelectionPaneJane.getAnimal().get(imageIndx).getName().toLowerCase();
-				String name = ErikItem.getGraphic()[imageIndx + 6].getImageLocation();
-				System.out.println(name);	System.out.println(animal.imageIndx);
-				int dayLeft = animal.getLength() - animal.getCurrentTime();
-				FarmScreenAll.animalPane.setX(animal.getX() + animal.getWidth() + 10);
-				FarmScreenAll.animalPane.setY(animal.getY() - 50);
-				FarmScreenAll.animalPane.setSrc(name);
-				FarmScreenAll.animalPane.updateImg(FarmScreenAll.getView());
-				FarmScreenAll.animalPane.setVisible(true);
-				if(animal.getLength() != animal.getCurrentTime()) {
-					FarmScreenAll.animalPane.getLabel().setText(dayLeft + " days until harvest");
-					FarmScreenAll.animalPane.getHarvest().setAction(new Action() {
-						public void act() {
-							FarmScreenAll.animalPane.getLabel().setText("Can not harvest yet");
-						}
-					});
+	public void act() {
+		BoxJenny animal = FarmScreenAll.animalBox.get(index);
+		String label = SamInventory.ITEMS[imageIndx + 6].getName().toLowerCase();
+		System.out.println(index);					System.out.println(imageIndx);
+		String name = ErikItem.getGraphic()[imageIndx + 6].getImageLocation();
+		System.out.println(name);	System.out.println(animal.index);
+		int dayLeft = animal.getLength() - animal.getCurrentTime();
+		FarmScreenAll.animalPane.setX(animal.getX() + animal.getWidth() + 10);
+		FarmScreenAll.animalPane.setY(animal.getY() - 50);
+		FarmScreenAll.animalPane.setSrc(name);
+		FarmScreenAll.animalPane.updateImg(FarmScreenAll.getView());
+		FarmScreenAll.animalPane.setVisible(true);
+		if(animal.getLength() != animal.getCurrentTime()) {
+			FarmScreenAll.animalPane.getLabel().setText(dayLeft + " days until harvest");
+			FarmScreenAll.animalPane.getHarvest().setAction(new Action() {
+				public void act() {
+					FarmScreenAll.animalPane.getLabel().setText("Can not harvest yet");
 				}
-				else {
-					FarmScreenAll.animalPane.getLabel().setText("Ready to harvest");
-					FarmScreenAll.animalPane.getHarvest().setAction(new Action() {
-						public void act() {
-							FarmScreenAll.disableButton(true);
-							FarmScreenAll.animalPane.getImg().setVisible(false);
-							FarmScreenAll.animalPane.setVisible(false);
-						}
-					} );
-					animal.setAction(new Action() {
-						public void act() {
-							Graphic image = new Graphic(0,0,"resources/star.png");
-							FarmScreenAll.first.setX(x + image.getWidth() + 10);
-							FarmScreenAll.first.setY(y - 50);
-							FarmScreenAll.first.setVisible(true);
-							FarmScreenAll.first.update();
-							FarmScreenAll.first.setIndex(i);
-							FarmScreenAll.disableButton(false);
-						}
-					});
+			});
+		}
+		else {
+			FarmScreenAll.animalPane.getLabel().setText("Ready to harvest");
+			FarmScreenAll.animalPane.getHarvest().setAction(new Action() {
+				public void act() {
+					FarmScreenAll.disableButton(true);
+					FarmScreenAll.animalPane.getImg().setVisible(false);
+					FarmScreenAll.animalPane.setVisible(false);
 				}
-				FarmScreenAll.animalPane.getItem().setText(label);
-				FarmScreenAll.animalPane.update();
-				FarmScreenAll.disableButton(false);
-			}
-		});
+			} );
+			animal.setAction(new Action() {
+				public void act() {
+					Graphic image = new Graphic(0,0,"resources/star.png");
+					FarmScreenAll.first.setX(x + image.getWidth() + 10);
+					FarmScreenAll.first.setY(y - 50);
+					FarmScreenAll.first.setVisible(true);
+					FarmScreenAll.first.update();
+					FarmScreenAll.first.setIndex(imageIndx);
+					FarmScreenAll.disableButton(false);
+				}
+			});
+		}
+		FarmScreenAll.animalPane.getItem().setText(label);
+		FarmScreenAll.animalPane.update();
+		FarmScreenAll.disableButton(false);
 	}
 
-	private void updateImg(int idx, String src) {
-		FarmScreenAll.getAnimalBox().remove(idx);
-		BoxJenny animal = new BoxJenny(x + 40, y + 30, src, null, FarmScreenAll.getView(), idx);
-		FarmScreenAll.getAnimalBox().add(idx, animal);
-		FarmScreenAll.getView().add(animal);
+	public void changeAction(int i) {
+		imageIndx = i;
+		updateImg(index);
+
+	}
+
+	private void updateImg(int idx) {
+		SelectionPaneJane.setSrc(game.market.ErikItem.getGraphic()[imageIndx].getImageLocation());
+		String src = SelectionPaneJane.getSrc();
+		moveToBack(FarmScreenAll.animalBox.get(idx));
+		FarmScreenAll.animalBox.remove(idx);
+		BoxJenny animal = new BoxJenny(x + 25, y + 30, src, new Action() {
+
+			@Override
+			public void act() {
+				act();
+			}
+		}, FarmScreenAll.getView(), idx);
+		FarmScreenAll.animalBox.add(idx, animal);
+		MainMenu.farmScreen.addObjectToBack(animal);
+	}
+
+	public void moveToBack(Visible v){
+		if(FarmScreenAll.getView().contains(v)){
+			FarmScreenAll.getView().remove(v);//all other objects slide up in order
+		}
 	}
 
 	public void printSelected(int x) {
