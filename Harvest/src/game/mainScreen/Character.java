@@ -21,8 +21,8 @@ public class Character{
 	private int y; 
 	
 	public Character(int x,int y) {
-		boy = game.farm.FarmScreenAll.boy;
-		girl = game.farm.FarmScreenAll.girl;
+		boy = (MimiMovableCharacter) game.farm.FarmScreenAll.boy;
+		girl = (MimiMovableCharacter) game.farm.FarmScreenAll.girl;
 		x = 430;
 		y = 200;
 //		this.x = x;
