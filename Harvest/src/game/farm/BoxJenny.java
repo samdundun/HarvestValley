@@ -5,13 +5,15 @@ import java.awt.Graphics2D;
 import java.util.ArrayList;
 import java.util.List;
 
-import game.market.Inventory;
+import game.market.SamInventory;
+import game.market.ErikInventoryScreen;
 import guiTeacher.components.Action;
 import guiTeacher.components.CustomImageButton;
 import guiTeacher.components.Graphic;
 import guiTeacher.interfaces.Clickable;
 import guiTeacher.interfaces.DrawInstructions;
 import guiTeacher.interfaces.Visible;
+import harvest.MainMenu;
 
 public class BoxJenny extends CustomImageButton implements Clickable{
 
@@ -91,9 +93,10 @@ public class BoxJenny extends CustomImageButton implements Clickable{
 	}
 
 	private void updateImg(int idx, String src) {
-		ArrayList<BoxJenny> array = FarmScreenAll.getAnimalBox();
-		array.remove(idx);
-		array.add(idx, new BoxJenny(x, y, src, null, FarmScreenAll.getView(), idx));
+		FarmScreenAll.getAnimalBox().remove(idx);
+		BoxJenny animal = new BoxJenny(x, y, src, null, FarmScreenAll.getView(), idx);
+		FarmScreenAll.getAnimalBox().add(idx, animal);
+		FarmScreenAll.getView().add(animal);
 	}
 
 	public void printSelected(int x) {

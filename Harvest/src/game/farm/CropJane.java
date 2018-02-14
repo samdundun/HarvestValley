@@ -4,8 +4,8 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 
 import game.mainScreen.ImageButton;
-import game.market.Inventory;
-import game.market.Item;
+import game.market.SamInventory;
+import game.market.ErikItem;
 import guiTeacher.components.Action;
 import guiTeacher.components.Button;
 import guiTeacher.components.CustomImageButton;
@@ -21,7 +21,8 @@ public class CropJane extends CustomImageButton {
 	private int stage;
 	private int time;
 	private int currentTime;
-	private Inventory invent;
+	private SamInventory invent;
+	private Action orginAction;
 	
 	public CropJane(int x, int y, int w, int h, String text, Color color, Action action, int i, CropImageJane image) {
 		super(x, y, w, h,image, new Action() {
@@ -53,7 +54,7 @@ public class CropJane extends CustomImageButton {
 		startGrowing();
 	}
 	private void changeAction() {
-		invent = new Inventory();
+		invent = new SamInventory();
 		invent.load();
 		this.setAction(new Action() {
 			
@@ -91,6 +92,18 @@ public class CropJane extends CustomImageButton {
 							FarmScreenAll.disableButton(true);
 							invent.addItem(SelectionPaneJane.items[currentPatch.imageIndx+6]);
 							invent.save();
+							currentPatch.setAction(new Action() {
+								
+								@Override
+								public void act() {
+									FarmScreenAll.pane.setX(getX()-250);
+									FarmScreenAll.pane.setY(getY()-120);
+									FarmScreenAll.pane.setVisible(true);
+									FarmScreenAll.pane.update();
+									FarmScreenAll.disableButton(false);
+									
+								}
+							});
 						}
 					} );
 				}

@@ -9,9 +9,9 @@ import game.mainScreen.BoyCharacter;
 import game.mainScreen.GirlCharacter;
 import game.mainScreen.ImageButton;
 import game.mainScreen.MovableCharacter;
-import game.market.BuyingScreen;
-import game.market.InventoryScreen;
-import game.market.Item;
+import game.market.SamBuyingScreen;
+import game.market.ErikInventoryScreen;
+import game.market.ErikItem;
 import guiTeacher.components.*;
 import guiTeacher.interfaces.FocusController;
 import guiTeacher.interfaces.Visible;
@@ -88,7 +88,7 @@ public class FarmScreenAll extends FullFunctionScreen {
 
 		shopJenny = new Button(90, 500, 80, 30, "Shop", new Color(230, 235, 210), new Action() {
 			public void act() {
-				MainMenu.game.shop = new BuyingScreen(getWidth(),getHeight());
+				MainMenu.game.shop = new SamBuyingScreen(getWidth(),getHeight());
 				MainMenu.game.setScreen(MainMenu.shop);
 
 			}
@@ -107,7 +107,7 @@ public class FarmScreenAll extends FullFunctionScreen {
 
 		itemJane = new Button(175, 500, 80, 30, "Inventory", new Color(230, 235, 210), new Action() {
 			public void act() {
-				MainMenu.game.inventory = new InventoryScreen(getWidth(),getHeight());
+				MainMenu.game.inventory = new ErikInventoryScreen(getWidth(),getHeight());
 				MainMenu.game.setScreen(MainMenu.inventory);
 
 			}
@@ -116,7 +116,6 @@ public class FarmScreenAll extends FullFunctionScreen {
 
 		addfarmingPatchJane(viewObjects);
 		
-		//Mainscreen team work
  		
  		patchPane = new PaneJenny(this, 400, 300);
 		patchPane.update();
@@ -148,6 +147,7 @@ public class FarmScreenAll extends FullFunctionScreen {
 		viewObjects.add(animalPane);
 		animalPane.setVisible(false);
 		
+		//Main Screen teamwork.
 		girl1 = new GirlCharacter(480, 220, 50, 100);
 		Thread rungurl = new Thread(girl1);
 		rungurl.start();
@@ -158,7 +158,6 @@ public class FarmScreenAll extends FullFunctionScreen {
  		runboi.start();
 
 
-// 		viewObjects.add(girl);
 	
  		if(MainMenu.isGirl) {
  			viewObjects.add(girl1);
@@ -169,7 +168,7 @@ public class FarmScreenAll extends FullFunctionScreen {
  			moveFocus(boy1);
  		}
 	}
-	
+	//
 	private void addAnimalJenny(List<Visible> viewObjects) {
 		int start = 30;
 		int space = 150;

@@ -4,8 +4,8 @@ import java.awt.Color;
 import java.util.List;
 
 import game.farm.FarmScreenAll;
-import game.market.BuyingScreen;
-import game.market.Inventory;
+import game.market.SamBuyingScreen;
+import game.market.SamInventory;
 import guiTeacher.components.Action;
 import guiTeacher.components.Button;
 import guiTeacher.components.Graphic;
@@ -23,7 +23,7 @@ public class MenuScreenLubna extends ClickableScreen implements Runnable {
 //	private ImageButton save;
 	private Button sound;
 
-	private Inventory invent;
+	private SamInventory invent;
 	
 	public MenuScreenLubna(int width, int height) {
 		super(width, height);
@@ -33,7 +33,7 @@ public class MenuScreenLubna extends ClickableScreen implements Runnable {
 
 	@Override
 	public void initAllObjects(List<Visible> viewObjects) {
-		invent = new Inventory();
+		invent = new SamInventory();
 		Graphic back = new Graphic(0,0,getWidth(),getHeight(),"resources/background.png");
 		viewObjects.add(back);
 		title = new Graphic(150, 60, 600, 600, "resources/harvestvalley.png");
@@ -43,7 +43,7 @@ public class MenuScreenLubna extends ClickableScreen implements Runnable {
 
 			@Override
 			public void act() {
-				invent = new Inventory();
+				invent = new SamInventory();
 				invent.addBasics();
 				invent.save();
 				MainMenu.game.screen2 = new ChooseGenderScreenLubna(getWidth(), getHeight());

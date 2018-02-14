@@ -13,31 +13,31 @@ import guiTeacher.interfaces.Visible;
 import guiTeacher.userInterfaces.FullFunctionScreen;
 import harvest.MainMenu;
 
-public class InventoryScreen extends FullFunctionScreen {
+public class ErikInventoryScreen extends FullFunctionScreen {
 
-	CustomArea description;
+	SamCustomArea description;
 	TextLabel amount;
 	private TextLabel gold;
 	private Button discard;
 	private Graphic grid;
 	private Button exit;
 
-	private Inventory invent;
+	private SamInventory invent;
 
-	public static final Item[] items = {new Item("Corn Seeds", "Great crop to grow all year round", 250, 0, 4),new Item("Pepper Seeds", "Spicy", 50, 1,1),
-			new Item("Potato Seeds", "Just like me", 150, 2, 3),new Item("Strawberry Seeds", "Sweeter than you", 100, 3,2),
-			new Item("Tomato Seeds", "Make some good ketchup", 200, 4,3),new Item("Wheat Seeds", "Not weed", 300, 5,5),new Item("Corn", "Fresh to eat", 300,6,4),
-			new Item("Pepper","Supah Hot Fire",60,7,1),new Item("Potato","Time to make french fries",180,8,3),
-			new Item("Strawberry","Berry??",120,9,2),new Item("Tomato", "Great for salads", 240,10,3),
-			new Item("Wheat","Just plain old wheat",360,11,5),new Item("Brown Chicken", "Cluck cluck", 250, 12,1),new Item("White Chicken", "Cluck cluck", 250, 13,1),
-			new Item("Black Chicken", "Cluck cluck", 250, 14,1),new Item("Sheep", "BAAAAAAAAAAAH", 350, 15,2),
-			new Item("Cow", "Mooooooo", 400, 16,2),new Item("Pig", "SNORT SNORT", 450, 17,1),
-			new Item("Brown Eggs", "", 200, 18, 0),new Item("White Eggs", "", 200, 19,0),
-			new Item("Black Eggs", "", 200, 20, 0),new Item("Wool", "", 300, 21,0),
-			new Item("Milk", "", 350, 22,0),new Item("Meat", "", 500, 23,0)};
+	public static final ErikItem[] items = {new ErikItem("Corn Seeds", "Great crop to grow all year round", 250, 0, 4),new ErikItem("Pepper Seeds", "Spicy", 50, 1,1),
+			new ErikItem("Potato Seeds", "Just like me", 150, 2, 3),new ErikItem("Strawberry Seeds", "Sweeter than you", 100, 3,2),
+			new ErikItem("Tomato Seeds", "Make some good ketchup", 200, 4,3),new ErikItem("Wheat Seeds", "Not weed", 300, 5,5),new ErikItem("Corn", "Fresh to eat", 300,6,4),
+			new ErikItem("Pepper","Supah Hot Fire",60,7,1),new ErikItem("Potato","Time to make french fries",180,8,3),
+			new ErikItem("Strawberry","Berry??",120,9,2),new ErikItem("Tomato", "Great for salads", 240,10,3),
+			new ErikItem("Wheat","Just plain old wheat",360,11,5),new ErikItem("Brown Chicken", "Cluck cluck", 250, 12,1),new ErikItem("White Chicken", "Cluck cluck", 250, 13,1),
+			new ErikItem("Black Chicken", "Cluck cluck", 250, 14,1),new ErikItem("Sheep", "BAAAAAAAAAAAH", 350, 15,2),
+			new ErikItem("Cow", "Mooooooo", 400, 16,2),new ErikItem("Pig", "SNORT SNORT", 450, 17,1),
+			new ErikItem("Brown Eggs", "", 200, 18, 0),new ErikItem("White Eggs", "", 200, 19,0),
+			new ErikItem("Black Eggs", "", 200, 20, 0),new ErikItem("Wool", "", 300, 21,0),
+			new ErikItem("Milk", "", 350, 22,0),new ErikItem("Meat", "", 500, 23,0)};
 
 
-	public InventoryScreen(int width, int height) {
+	public ErikInventoryScreen(int width, int height) {
 		super(width, height);
 	}
 
@@ -46,10 +46,10 @@ public class InventoryScreen extends FullFunctionScreen {
 		StyledComponent.setButtonOutline(true);
 		setBackground(new Color(224,120,8));
 
-		invent = new Inventory();
+		invent = new SamInventory();
 		invent.load();
 
-		description = new CustomArea(100,400,300,100,"Description");
+		description = new SamCustomArea(100,400,300,100,"Description");
 		viewObjects.add(description);
 
 		amount = new TextLabel(100,60,100,100,"Amount:");
@@ -61,10 +61,10 @@ public class InventoryScreen extends FullFunctionScreen {
 
 			@Override
 			public void act() {
-				Item removeI = null;
-				for(Item i: items) {
+				ErikItem removeI = null;
+				for(ErikItem i: items) {
 					if(i.isSelected()) {
-						for(Item it: invent.getItems()) {
+						for(ErikItem it: invent.getItems()) {
 							 if(i.getImageIndex() == it.getImageIndex()) {
 								 removeI = it;
 							 }
@@ -76,9 +76,9 @@ public class InventoryScreen extends FullFunctionScreen {
 				invent.getItems().remove(removeI);
 				invent.save();
 
-				for(Item i: items) {
+				for(ErikItem i: items) {
 					if(i.isSelected() && invent.getAmountArray()[i.getImageIndex()] == 0) {
-						MainMenu.game.inventory = new InventoryScreen(getWidth(),getHeight());
+						MainMenu.game.inventory = new ErikInventoryScreen(getWidth(),getHeight());
 						MainMenu.game.setScreen(MainMenu.game.inventory);
 						i.setSelected(false);
 					}
@@ -104,7 +104,7 @@ public class InventoryScreen extends FullFunctionScreen {
 		int height = 48;
 
 		invent.sort();
-		for(Item i:invent.getItems()) {
+		for(ErikItem i:invent.getItems()) {
 			i.setAction(new Action() {
 
 
@@ -125,7 +125,7 @@ public class InventoryScreen extends FullFunctionScreen {
 			});
 			if(invent.getAmountArray()[i.getImageIndex()] > 0 && i.isAdded() == false) {
 				i.setAdded(true);
-				for(Item it:invent.getItems()) {
+				for(ErikItem it:invent.getItems()) {
 					if(it.getImageIndex() == i.getImageIndex()) {
 						it.setAdded(true);
 					}
@@ -148,7 +148,7 @@ public class InventoryScreen extends FullFunctionScreen {
 				amount.setText("Amount: ");
 				description.setText("");
 				MainMenu.game.setScreen(MainMenu.farmScreen);
-				MainMenu.game.shop = new BuyingScreen(getWidth(),getHeight());
+				MainMenu.game.shop = new SamBuyingScreen(getWidth(),getHeight());
 
 			}
 		});
