@@ -74,6 +74,9 @@ public class CropJane extends CustomImageButton {
 	private void changeAction() {
 		invent = new SamInventory();
 		invent.load();
+		invent.sort();
+		FarmScreenAll.pane.setSeeds(invent.getSeedSelection());
+		invent.save();
 		this.setAction(new Action() {
 			
 			@Override

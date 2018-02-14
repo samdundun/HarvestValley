@@ -64,7 +64,8 @@ public class BoxJenny extends CustomImageButton implements Clickable{
 		this.setAction(new Action() {
 			
 			@Override
-			public void act() {BoxJenny animal = FarmScreenAll.animalBox.get(index);
+			public void act() {
+				BoxJenny animal = FarmScreenAll.animalBox.get(index);
 			String label = SamInventory.ITEMS[imageIndx + 6].getName().toLowerCase();
 			String name = ErikItem.getGraphic()[imageIndx + 6].getImageLocation();
 			System.out.println(name);	System.out.println(animal.index);
@@ -106,9 +107,10 @@ public class BoxJenny extends CustomImageButton implements Clickable{
 			FarmScreenAll.animalPane.getItem().setText(label);
 			FarmScreenAll.animalPane.update();
 			FarmScreenAll.disableButton(false);
-			}
+			
 		});
 		grow();
+	}
 	}
 
 	private void grow() {
