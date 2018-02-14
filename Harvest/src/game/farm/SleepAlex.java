@@ -12,6 +12,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
 import game.mainScreen.ImageButton;
+import game.market.ErikItem;
 import guiTeacher.components.Action;
 import guiTeacher.components.Button;
 import guiTeacher.components.ClickableGraphic;
@@ -57,6 +58,23 @@ public class SleepAlex extends FullFunctionScreen {//can use ImageTextButton, Cu
 	private int originalBuyingPrice;
 	
 	private boolean infoDisplayed;
+	
+	public static ErikItem[] items = {new ErikItem("Corn Seeds", "Great crop to grow all year round", 300, 0, 4),new ErikItem("Pepper Seeds", "Spicy", 50, 1,1),
+			new ErikItem("Potato Seeds", "Just like me", 150, 2, 3),new ErikItem("Strawberry Seeds", "Sweeter than you", 100, 3,2),
+			new ErikItem("Tomato Seeds", "Make some good ketchup", 200, 4,3),new ErikItem("Wheat Seeds", "Not weed", 400, 5,5),
+
+			new ErikItem("Corn", "Fresh to eat", 10,6,4), new ErikItem("Pepper","Supah Hot Fire",20,7,1),
+			new ErikItem("Potato","Time to make french fries",10,8,3),new ErikItem("Strawberry","Berry??",10,9,2),
+			new ErikItem("Tomato", "Great for salads", 10,10,3),	new ErikItem("Wheat","Just plain old wheat",10,11,5),
+
+			new ErikItem("Brown Chicken", "Cluck cluck", 250, 12,1),new ErikItem("White Chicken", "Cluck cluck", 250, 13,1),
+			new ErikItem("Black Chicken", "Cluck cluck", 250, 14,1),new ErikItem("Sheep", "BAAAAAAAAAAAH", 350, 15,2),
+			new ErikItem("Cow", "Mooooooo", 500, 16,2),new ErikItem("Pig", "SNORT SNORT", 250, 17,1),
+
+			new ErikItem("Brown Eggs", "", 300, 18, 0),new ErikItem("White Eggs", "", 50, 19,0),
+			new ErikItem("Black Eggs", "", 150, 20, 0),new ErikItem("Wool", "", 100, 21,0),
+			new ErikItem("Milk", "", 200, 22,0),new ErikItem("Meat", "", 400, 23,0)};
+	
 	private static ArrayList<Boolean> infoDisplayedArray = new ArrayList<Boolean>();
 	
 	private Button back;
@@ -179,40 +197,42 @@ public class SleepAlex extends FullFunctionScreen {//can use ImageTextButton, Cu
 	public void addNamesAndCountToArray() {
 		//execute once
 		//First 6 items are crops -- Next 4 are animals -- Next 4 are animal products
+		
+		//use the strings from the SelectionPaneJane class
+		/*cropAnimalAndProductNames.add("corn");
+		cropAnimalAndProductNames.add("pepper");
+		cropAnimalAndProductNames.add("potato");
+		cropAnimalAndProductNames.add("strawberry");
 		cropAnimalAndProductNames.add("tomato");
 		cropAnimalAndProductNames.add("wheat");
-		cropAnimalAndProductNames.add("strawberry");
-		cropAnimalAndProductNames.add("corn");
-		cropAnimalAndProductNames.add("potato");
-		cropAnimalAndProductNames.add("pepper");
 		
-		cropAnimalAndProductNames.add("cows");
-		cropAnimalAndProductNames.add("sheep");
-		cropAnimalAndProductNames.add("pigs");
 		cropAnimalAndProductNames.add("brownChicken");
 		cropAnimalAndProductNames.add("whiteChicken");
 		cropAnimalAndProductNames.add("blackChicken");
+		cropAnimalAndProductNames.add("sheep");
+		cropAnimalAndProductNames.add("cows");
+		cropAnimalAndProductNames.add("pigs");
 		
-		cropAnimalAndProductNames.add("milk");
-		cropAnimalAndProductNames.add("wool");
-		cropAnimalAndProductNames.add("pork");
 		cropAnimalAndProductNames.add("brownEggs");
 		cropAnimalAndProductNames.add("whiteEggs");
 		cropAnimalAndProductNames.add("blackEggs");
+		cropAnimalAndProductNames.add("wool");
+		cropAnimalAndProductNames.add("milk");
+		cropAnimalAndProductNames.add("meat");*/
 		
+		cropAnimalAndProductCount.add(corn);
+		cropAnimalAndProductCount.add(pepper);
+		cropAnimalAndProductCount.add(potato);
+		cropAnimalAndProductCount.add(strawberry);
 		cropAnimalAndProductCount.add(tomato);
 		cropAnimalAndProductCount.add(wheat);
-		cropAnimalAndProductCount.add(strawberry);
-		cropAnimalAndProductCount.add(corn);
-		cropAnimalAndProductCount.add(potato);
-		cropAnimalAndProductCount.add(pepper);
-		
-		cropAnimalAndProductCount.add(cows);
-		cropAnimalAndProductCount.add(sheep);
-		cropAnimalAndProductCount.add(pigs);
-		cropAnimalAndProductCount.add(brownChicken);
+				
+		/*cropAnimalAndProductCount.add(brownChicken);
 		cropAnimalAndProductCount.add(whiteChicken);
 		cropAnimalAndProductCount.add(blackChicken);
+		cropAnimalAndProductCount.add(sheep);
+		cropAnimalAndProductCount.add(cows);
+		cropAnimalAndProductCount.add(pigs);*/
 		
 		cropAnimalAndProductCount.add(milk);
 		cropAnimalAndProductCount.add(wool);
@@ -235,6 +255,8 @@ public class SleepAlex extends FullFunctionScreen {//can use ImageTextButton, Cu
 			System.out.println("Selling: "+sellingPriceCropAnimalProducts);
 			sellingPrice+=60;
 		}
+		
+		
 		//System.out.println(cropAnimalAndProductCount);
 		//System.out.println(cashFromCropAnimalProducts);
 			//create textboxes or clickable boxes for each item of information about crops and animals
@@ -242,41 +264,20 @@ public class SleepAlex extends FullFunctionScreen {//can use ImageTextButton, Cu
 			//create a class that makes an image lighten or darken w/ a lock image under specific game conditions
 	}
 	
-	private void addCAPImages(List<Visible> viewObjects) {
-		//create an array of images AND place them strategically
-		//ensure proper spacing
-		imageSources.add("pepperSt6.png");
-		//create an ArrayList of string addresses or an ArrayList of ImageButtons, not both
-		/*
-		imagesCropAnimalProducts.add("resources/sleep.png");
-		imagesCropAnimalProducts.add("resources/sleep.png");
-		imagesCropAnimalProducts.add("resources/sleep.png");
-		imagesCropAnimalProducts.add("resources/sleep.png");
-		imagesCropAnimalProducts.add("resources/sleep.png");
-		imagesCropAnimalProducts.add("resources/sleep.png");
-		imagesCropAnimalProducts.add("resources/sleep.png");
-		imagesCropAnimalProducts.add("resources/sleep.png");
-		imagesCropAnimalProducts.add("resources/sleep.png");
-		imagesCropAnimalProducts.add("resources/sleep.png");
-		imagesCropAnimalProducts.add("resources/sleep.png");*/
-		
-		for(int i = 0; i<imageSources.size();i++) {
-			ImageButton holder = new ImageButton(i*75, 0, 50, 50, SleepAlex.getImageSources().get(i), new Action() {
-				
-				@Override
-				public void act() {
-					// TODO Auto-generated method stub
-					//create a text label that has a semi-defined string -- variables will include the name of the product
-					//and buying and selling price
-					//"You have created" + num + CAP. "You have made" + cash + "from" + CAP
-				}
-			});
-			viewObjects.add(holder);
-		}
-	}
-	
 	//call when: 
 	public void AnimalCropIncrement(String animalCrop) {
+		
+		
+		for(int i = 0; i<6;i++) {
+			if(cropAnimalAndProductNames.get(CropJane.getCurrentPatch() - 6).equals(cropAnimalAndProductNames.get(i))) {
+				
+			}
+			items[i+6].getName();
+		}
+		for(int i =0;i<6;i++) {
+			items[i+18].getName();
+		}
+		
 		for(int i = 0;i < cropAnimalAndProductNames.size();i++) {
 			if(animalCrop.equals(cropAnimalAndProductNames.get(i))) {
 				cropAnimalAndProductCount.set(i,cropAnimalAndProductCount.get(i) + 1);
