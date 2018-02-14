@@ -113,10 +113,10 @@ public class SelectionPaneJane extends Pane {
 				for(int i = 0; i < seeds.size(); i++) {
 					if(seeds.get(i).isSelected()) {
 						SelectionPaneJane.this.setSeedSelected(i);
-						FarmScreenAll.farmPatch.get(index).setTime(seeds.get(i).getTime());
-						FarmScreenAll.farmPatch.get(index).crop(seeds.get(i).getImageIndex());
 						invent.removeItem(seeds.get(i));
 						invent.save();
+						FarmScreenAll.farmPatch.get(index).setTime(seeds.get(i).getTime());
+						FarmScreenAll.farmPatch.get(index).crop(seeds.get(i).getImageIndex());
 						SelectionPaneJane.this.setVisible(false);
 						FarmScreenAll.disableButton(true);
 					}
@@ -125,11 +125,10 @@ public class SelectionPaneJane extends Pane {
 				for(int j=0; j<animal.size(); j++) {
 					if(animal.get(j).isSelected()) {
 						animalIdx = j + 12;
-						System.out.println(animalIdx);
 						//setSrc(game.market.ErikItem.getGraphic()[animalIdx].getImageLocation());
-						FarmScreenAll.animalBox.get(index).changeAction(animal.get(j).getImageIndex());
 						invent.removeItem(animal.get(j));
 						invent.save();
+						FarmScreenAll.animalBox.get(index).changeAction(animal.get(j).getImageIndex());
 						SelectionPaneJane.this.setVisible(false);
 						FarmScreenAll.disableButton(true);
 					}
