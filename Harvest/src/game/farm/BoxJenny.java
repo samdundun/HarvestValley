@@ -123,7 +123,6 @@ public class BoxJenny extends CustomImageButton implements Clickable{
 					}
 					currentTime++;
 					update();
-
 				}
 			}
 		});
