@@ -11,7 +11,8 @@ import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
-import game.mainScreen.ImageButton;
+
+import game.mainScreen.LubnaImageButton;
 import game.market.ErikItem;
 import guiTeacher.components.Action;
 import guiTeacher.components.Button;
@@ -151,7 +152,9 @@ public class SleepAlex extends FullFunctionScreen {//can use ImageTextButton, Cu
 			/*variables inside the setup part of a for loop are local -- be cautious when using them in the function -- especially in the action method of a button*/
 			int xspacer = 83;
 			int c = actionInteger;
-			ImageButton holder = new ImageButton(actionInteger*xspacer,75,90,150, imageSources.get(actionInteger), new Action() {
+
+			LubnaImageButton holder = new LubnaImageButton(actionInteger*xspacer,75,90,150, imageSources.get(actionInteger), new Action() {
+
 				public void act() {
 					System.out.println(cashFromCropAnimalProducts.get(c));
 //					TextArea info = new TextArea(c*83, 300, 200, 500, "You have created" + 
@@ -173,11 +176,11 @@ public class SleepAlex extends FullFunctionScreen {//can use ImageTextButton, Cu
 		}
 		
 		
-		back = new Button(getWidth()-100, getHeight()-100,100, 100, "",Color.blue, new Action() {
-			public void act() {
-				MainMenu.game.setScreen(MainMenu.farmScreen);
-			}
-		});
+//		back = new Button(getWidth()-100, getHeight()-100,100, 100, "",Color.blue, new Action() {
+//			public void act() {
+//				MainMenu.game.setScreen(MainMenu.farmScreen);
+//			}
+//		});
 		viewObjects.add(back);}
 		//add objects to array
 		//call method and add arrayobjects to screen in initallobjects
@@ -264,6 +267,41 @@ public class SleepAlex extends FullFunctionScreen {//can use ImageTextButton, Cu
 			//create a class that makes an image lighten or darken w/ a lock image under specific game conditions
 	}
 	
+
+	private void addCAPImages(List<Visible> viewObjects) {
+		//create an array of images AND place them strategically
+		//ensure proper spacing
+		imageSources.add("pepperSt6.png");
+		//create an ArrayList of string addresses or an ArrayList of ImageButtons, not both
+		/*
+		imagesCropAnimalProducts.add("resources/sleep.png");
+		imagesCropAnimalProducts.add("resources/sleep.png");
+		imagesCropAnimalProducts.add("resources/sleep.png");
+		imagesCropAnimalProducts.add("resources/sleep.png");
+		imagesCropAnimalProducts.add("resources/sleep.png");
+		imagesCropAnimalProducts.add("resources/sleep.png");
+		imagesCropAnimalProducts.add("resources/sleep.png");
+		imagesCropAnimalProducts.add("resources/sleep.png");
+		imagesCropAnimalProducts.add("resources/sleep.png");
+		imagesCropAnimalProducts.add("resources/sleep.png");
+		imagesCropAnimalProducts.add("resources/sleep.png");*/
+		
+		for(int i = 0; i<imageSources.size();i++) {
+			LubnaImageButton holder = new LubnaImageButton(i*75, 0, 50, 50, SleepAlex.getImageSources().get(i), new Action() {
+				
+				@Override
+				public void act() {
+					// TODO Auto-generated method stub
+					//create a text label that has a semi-defined string -- variables will include the name of the product
+					//and buying and selling price
+					//"You have created" + num + CAP. "You have made" + cash + "from" + CAP
+				}
+			});
+			viewObjects.add(holder);
+		}
+	}
+	
+
 	//call when: 
 	public void AnimalCropIncrement(String animalCrop) {
 		

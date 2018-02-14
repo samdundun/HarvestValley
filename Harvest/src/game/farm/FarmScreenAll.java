@@ -5,9 +5,11 @@ import java.awt.Container;
 import java.util.ArrayList;
 import java.util.List;
 
-import game.mainScreen.BoyCharacter;
-import game.mainScreen.GirlCharacter;
-import game.mainScreen.ImageButton;
+
+import game.mainScreen.JessiBoyCharacter;
+import game.mainScreen.MimiGirlCharacter;
+import game.mainScreen.LubnaImageButton;
+import game.mainScreen.MimiMovableCharacter;
 import game.market.SamBuyingScreen;
 import game.market.ErikInventoryScreen;
 import game.market.ErikItem;
@@ -23,9 +25,10 @@ public class FarmScreenAll extends FullFunctionScreen {
 	private Button shopJenny;
 	private Button menuJenny;
 	private Button itemJane;
-	private ImageButton sleepAlex;
+	private LubnaImageButton sleepAlex;
+	private int currentAnimals;
 	private static String which;
-	private static final int animalLimit = 5;
+	private static final int animalLimit1 = 5;
 	private static List<Visible> viewObj;
 	public static SelectionPaneJane pane;
 	public static SelectionPaneJane first;
@@ -34,6 +37,11 @@ public class FarmScreenAll extends FullFunctionScreen {
 	public static ArrayList<EmptyPatch> emptyFarmPatch;
 	public static ArrayList<BoxJenny> animalBox;
 
+
+	public static MimiMovableCharacter boy1;
+	public static MimiMovableCharacter girl1;
+
+	private static final int animalLimit = 5;
 	public static AnimatedComponent boy;
 	public static AnimatedComponent girl;
 
@@ -50,8 +58,14 @@ public class FarmScreenAll extends FullFunctionScreen {
 	}
 
 	public void initAllObjects(List<Visible> viewObjects) {
+		
+//		game.mainScreen.Character c = new game.mainScreen.Character(0,0);
+		
+		currentAnimals = 2;
+
 		which = "";
 		viewObj = viewObjects;
+
 		farmPatch = new ArrayList<CropJane>();
 		emptyFarmPatch = new ArrayList<EmptyPatch>();
 		animalBox = new ArrayList<BoxJenny>();
@@ -76,7 +90,9 @@ public class FarmScreenAll extends FullFunctionScreen {
 		});
 		viewObjects.add(shopJenny);
 
-		sleepAlex = new ImageButton(815, 493, 39, 39, "resources/sleep.png", new Action() {
+
+		sleepAlex = new LubnaImageButton(815, 493, 39, 39, "resources/sleep.png", new Action() {
+
 
 			@Override
 			public void act() {
@@ -94,19 +110,8 @@ public class FarmScreenAll extends FullFunctionScreen {
 			}
 		});
 		viewObjects.add(itemJane);
-		
-		//Mainscreen team work
-		girl = game.mainScreen.GirlCharacter.addGirl(viewObjects);
-		Thread rungurl = new Thread(girl);
-		rungurl.start();
-		
-		
- 		boy = game.mainScreen.BoyCharacter.addBoy(viewObjects);
- 		Thread runboi = new Thread(boy);
- 		runboi.start();
-//		viewObjects.add(boy);
-//
-//		viewObjects.add(girl);
+
+
  		
  		patchPane = new PaneJenny(this, 400, 300);
 		patchPane.update();
@@ -133,24 +138,35 @@ public class FarmScreenAll extends FullFunctionScreen {
 		animalPane.update();
 		animalPane.setVisible(false);
 		
-		if(MainMenu.isGirl) {
-			viewObjects.add(girl);
-		}
-		else if(!MainMenu.isGirl) {
-			viewObjects.add(boy);
-		}
-		viewObjects.add(first);
-		viewObjects.add(pane);
-		viewObjects.add(patchPane);
-		viewObjects.add(plantPane);
-		viewObjects.add(animalPane);
+
+		//Main Screen teamwork.
+		girl1 = new MimiGirlCharacter(480, 220, 50, 100);
+		Thread rungurl = new Thread(girl1);
+		rungurl.start();
+		
+		
+		boy1 = new JessiBoyCharacter(480, 220, 50, 100);
+ 		Thread runboi = new Thread(boy1);
+ 		runboi.start();
+
+
+	
+ 		if(MainMenu.isGirl) {
+ 			viewObjects.add(girl1);
+ 			moveFocus(girl1);
+ 		}
+ 		else if(!MainMenu.isGirl) {
+ 			viewObjects.add(boy1);
+ 			moveFocus(boy1);
+ 		}
 	}
+	//
 
 	private void addAnimalJenny(List<Visible> viewObjects) {
 		int start = 30;
 		int space = 150;
 
-		for(int i = 0; i < animalLimit; i++) {
+		for(int i = 0; i < animalLimit1; i++) {
 			if(i < 3) {
 				BoxJenny box = new BoxJenny(start + (i * 150), 140, "resources/nothing.png", null, viewObjects, i);
 				box.update();

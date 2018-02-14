@@ -85,6 +85,7 @@ public class SelectionPaneJane extends Pane {
 				FarmScreenAll.disableButton(true);
 			}
 
+
 		});
 		viewObjects.add(cancel);
 
@@ -92,6 +93,7 @@ public class SelectionPaneJane extends Pane {
 
 
 		TextLabel label = new TextLabel(15, 0, 150, 50, "Please select an item");
+
 		viewObjects.add(label);
 
 		//		int move = 0;
@@ -169,9 +171,11 @@ public class SelectionPaneJane extends Pane {
 	}
 
 
+
 	public void addImages(ArrayList<ErikItem> item,int move, int startingHeight, int width, int height,TextLabel label) {
 		for(int i = 0; i < item.size(); i++) {
 			ErikItem z=item.get(i);
+
 			z.setAction(new Action() {
 
 				@Override

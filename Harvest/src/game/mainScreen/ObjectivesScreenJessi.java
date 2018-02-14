@@ -15,7 +15,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.io.File;
 
-public class ObjectivesScreenJessi extends ClickableScreen implements Runnable, MessageDisplayerJessi,  ObjectiveScreen {
+public class ObjectivesScreenJessi extends ClickableScreen implements Runnable, JessiPlayable {
 
 	private Button exit;
 	private TextBox intro;
@@ -66,11 +66,6 @@ public class ObjectivesScreenJessi extends ClickableScreen implements Runnable, 
 		
 	}
 
-	@Override
-	public void showline() {
-		//for the android app
-		
-	}
 
 
 	public void displayObjectives() {
@@ -95,6 +90,18 @@ public class ObjectivesScreenJessi extends ClickableScreen implements Runnable, 
 			}
 		});
 		printer.start();
+	}
+
+	@Override
+	public void play() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void play(double seconds) {
+		// TODO Auto-generated method stub
+		
 	}
 
 

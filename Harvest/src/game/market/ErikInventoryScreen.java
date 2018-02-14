@@ -124,6 +124,7 @@ public class ErikInventoryScreen extends FullFunctionScreen {
 					i.update();
 
 
+
 				}
 			});
 			if(invent.getAmountArray()[i.getImageIndex()] > 0 && i.isAdded() == false) {
