@@ -269,7 +269,9 @@ public class SleepAlex extends FullFunctionScreen {//can use ImageTextButton, Cu
 		
 		
 		for(int i = 0; i<6;i++) {
-			if(CropJane.currentPatch.imageIdx)
+			if(cropAnimalAndProductNames.get(CropJane.getCurrentPatch() - 6).equals(cropAnimalAndProductNames.get(i))) {
+				
+			}
 			items[i+6].getName();
 		}
 		for(int i =0;i<6;i++) {
