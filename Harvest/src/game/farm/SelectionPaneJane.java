@@ -171,11 +171,11 @@ public class SelectionPaneJane extends Pane {
 	}
 
 
-	public void addImages(ArrayList<ErikItem> item, int move, int startingHeight, int width, int height,TextLabel label) {
-		invent.sort();
-		ArrayList<ErikItem> seeds=invent.getSeedSelection();
-		for(int i = 0; i < seeds.size(); i++) {
-			ErikItem z=items[i];
+
+	public void addImages(ArrayList<ErikItem> item,int move, int startingHeight, int width, int height,TextLabel label) {
+		for(int i = 0; i < item.size(); i++) {
+			ErikItem z=item.get(i);
+
 			z.setAction(new Action() {
 
 				@Override
@@ -198,6 +198,14 @@ public class SelectionPaneJane extends Pane {
 			}
 			viewObjects.add(z);
 		}
+	}
+
+	public ArrayList<ErikItem> getSeeds() {
+		return seeds;
+	}
+
+	public void setSeeds(ArrayList<ErikItem> seeds) {
+		this.seeds = seeds;
 	}
 
 	public int setSeedSelected(int i) {
