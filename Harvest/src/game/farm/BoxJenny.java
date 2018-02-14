@@ -5,8 +5,11 @@ import java.awt.Graphics2D;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.plaf.basic.BasicInternalFrameTitlePane.MoveAction;
+
 import game.market.SamInventory;
 import game.market.ErikInventoryScreen;
+import game.market.ErikItem;
 import guiTeacher.components.Action;
 import guiTeacher.components.CustomImageButton;
 import guiTeacher.components.Graphic;
@@ -39,8 +42,9 @@ public class BoxJenny extends CustomImageButton implements Clickable{
 			}
 		}, new Action() {
 			public void act() {
-				FarmScreenAll.first.setX(x + 100);
-				FarmScreenAll.first.setY(y - 100);
+				Graphic image = new Graphic(0,0,imageAddress);
+				FarmScreenAll.first.setX(x + image.getWidth() + 10);
+				FarmScreenAll.first.setY(y - 50);
 				FarmScreenAll.first.setVisible(true);
 				FarmScreenAll.first.update();
 				FarmScreenAll.first.setIndex(i);
@@ -50,19 +54,22 @@ public class BoxJenny extends CustomImageButton implements Clickable{
 		index = i;
 		this.x = x;
 		this.y = y;
+		length = 5;
 	}
 
-	public void changeAction() {
-		updateImg(index, SelectionPaneJane.getSrc());
+	public void changeAction(int i) {
+		BoxJenny animal = FarmScreenAll.animalBox.get(index);
+		imageIndx = i;
+		updateImg(index);
+		this.setEnabled(true);
 		this.setAction(new Action() {
-
 			public void act() {
-				BoxJenny animal = FarmScreenAll.animalBox.get(index);
-				String name = SelectionPaneJane.items[animal.imageIndx + 6].getName().toLowerCase();
-				System.out.println(name);
+				String label = SamInventory.ITEMS[imageIndx + 6].getName().toLowerCase();
+				String name = ErikItem.getGraphic()[imageIndx + 6].getImageLocation();
+				System.out.println(name);	System.out.println(animal.index);
 				int dayLeft = animal.getLength() - animal.getCurrentTime();
-				FarmScreenAll.animalPane.setX(animal.getX());
-				FarmScreenAll.animalPane.setY(animal.getY());
+				FarmScreenAll.animalPane.setX(animal.getX() + animal.getWidth() + 10);
+				FarmScreenAll.animalPane.setY(animal.getY() - 50);
 				FarmScreenAll.animalPane.setSrc(name);
 				FarmScreenAll.animalPane.updateImg(FarmScreenAll.getView());
 				FarmScreenAll.animalPane.setVisible(true);
@@ -70,7 +77,7 @@ public class BoxJenny extends CustomImageButton implements Clickable{
 					FarmScreenAll.animalPane.getLabel().setText(dayLeft + " days until harvest");
 					FarmScreenAll.animalPane.getHarvest().setAction(new Action() {
 						public void act() {
-							FarmScreenAll.animalPane.getLabel().setText("Cannot harvest yet");
+							FarmScreenAll.animalPane.getLabel().setText("Can not harvest yet");
 						}
 					});
 				}
@@ -78,25 +85,65 @@ public class BoxJenny extends CustomImageButton implements Clickable{
 					FarmScreenAll.animalPane.getLabel().setText("Ready to harvest");
 					FarmScreenAll.animalPane.getHarvest().setAction(new Action() {
 						public void act() {
-							FarmScreenAll.animalPane.setVisible(false);
-							FarmScreenAll.animalPane.getImg().setVisible(false);
 							FarmScreenAll.disableButton(true);
+							FarmScreenAll.animalPane.getImg().setVisible(false);
+							FarmScreenAll.animalPane.setVisible(false);
 						}
 					} );
+					animal.setAction(new Action() {
+						public void act() {
+							Graphic image = new Graphic(0,0,"resources/nothing.png");
+							FarmScreenAll.first.setX(x + image.getWidth() + 10);
+							FarmScreenAll.first.setY(y - 50);
+							FarmScreenAll.first.setVisible(true);
+							FarmScreenAll.first.update();
+							FarmScreenAll.first.setIndex(imageIndx);
+							FarmScreenAll.disableButton(false);
+						}
+					});
 				}
-				FarmScreenAll.animalPane.getItem().setText(name);
+				FarmScreenAll.animalPane.getItem().setText(label);
 				FarmScreenAll.animalPane.update();
 				FarmScreenAll.disableButton(false);
-
 			}
 		});
+		grow();
 	}
 
-	private void updateImg(int idx, String src) {
-		FarmScreenAll.getAnimalBox().remove(idx);
-		BoxJenny animal = new BoxJenny(x, y, src, null, FarmScreenAll.getView(), idx);
-		FarmScreenAll.getAnimalBox().add(idx, animal);
-		FarmScreenAll.getView().add(animal);
+	private void grow() {
+		Thread grower = new Thread(new Runnable() {
+			public void run() {
+				int stageTime = (time*3000)/length;
+				currentTime=0;
+				for(int i = 0; i< length; i++) {
+					try {
+						Thread.sleep(stageTime);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+					currentTime++;
+					update();
+
+				}
+			}
+		});
+		grower.start();
+
+	}
+
+	private void updateImg(int idx) {
+		SelectionPaneJane.setSrc(game.market.ErikItem.getGraphic()[imageIndx].getImageLocation());
+		String src = SelectionPaneJane.getSrc();
+		FarmScreenAll.animalBox.remove(idx);
+		BoxJenny animal = new BoxJenny(x + 25, y + 30, src, null, FarmScreenAll.getView(), idx);
+		FarmScreenAll.animalBox.add(idx, animal);
+		MainMenu.farmScreen.addObjectToBack(animal);
+	}
+
+	public void moveToBack(Visible v){
+		if(FarmScreenAll.getView().contains(v)){
+			FarmScreenAll.getView().remove(v);//all other objects slide up in order
+		}
 	}
 
 	public void printSelected(int x) {

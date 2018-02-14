@@ -64,14 +64,15 @@ public class PaneJenny extends Pane {
 				img.setVisible(false);
 				PaneJenny.this.setVisible(false);
 				FarmScreenAll.disableButton(true);
+				FarmScreenAll.disableEmptyPatch(true);
 			}
 		});
 		viewObjects.add(cancel);
 		
-		label = new TextLabel(15, 0, 150, 50, "");
+		label = new TextLabel(15, 0, 200, 50, "");
 		viewObjects.add(label);
 		
-		item = new TextLabel(80, 115, 150, 50, "");
+		item = new TextLabel(30, 20, 150, 50, "");
 		viewObjects.add(item);
 	}
 	
@@ -85,7 +86,7 @@ public class PaneJenny extends Pane {
 	}
 
 	public void setSrc(String src) {
-		this.src = "resources/" + src + ".png";
+		this.src = src;
 	}
 
 	public TextLabel getLabel() {
