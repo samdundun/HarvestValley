@@ -43,7 +43,7 @@ public class SelectionPaneJane extends Pane {
 	private static final int _HEIGHT = 210;
 	public SamInventory invent;
 
-	private static ArrayList<ErikItem> animal;
+	private ArrayList<ErikItem> animal;
 
 	private ArrayList<ErikItem> seeds;
 
@@ -101,7 +101,7 @@ public class SelectionPaneJane extends Pane {
 		invent.sort();
 		if(FarmScreenAll.getWhich().equals("crop")) {
 
-			addImages(animal, 0, 45, 55, 60, label);
+			addImages(animal, 0, 45, 60, 60, label);
 		}
 		else {
 
@@ -164,13 +164,6 @@ public class SelectionPaneJane extends Pane {
 			sell.setVisible(false);
 			sell.setEnabled(false);
 		}
-
-		
-
-
-	public static ArrayList<ErikItem> getAnimal() {
-		return animal;
-	}
 
 	public void setAnimal(ArrayList<ErikItem> animal) {
 		this.animal = animal;
