@@ -37,8 +37,6 @@ public class FarmScreenAll extends FullFunctionScreen {
 	public static AnimatedComponent boy;
 	public static AnimatedComponent girl;
 
-	private int currentAnimals;
-
 	public static PaneJenny animalPane;
 	public static PaneJenny plantPane;
 	public static PaneJenny patchPane;
@@ -51,17 +49,12 @@ public class FarmScreenAll extends FullFunctionScreen {
 		return viewObj;
 	}
 
-	public static ArrayList<BoxJenny> getAnimalBox() {
-		return animalBox;
-	}
-
 	public void initAllObjects(List<Visible> viewObjects) {
 		which = "";
 		viewObj = viewObjects;
 		farmPatch = new ArrayList<CropJane>();
 		emptyFarmPatch = new ArrayList<EmptyPatch>();
 		animalBox = new ArrayList<BoxJenny>();
-		//animalBox = new ArrayList<Test>();
 
 		back = new Graphic(0, 0, "resources/farm.PNG");
 		viewObjects.add(back);
@@ -87,9 +80,9 @@ public class FarmScreenAll extends FullFunctionScreen {
 
 			@Override
 			public void act() {
-				MainMenu.game.setScreen(MainMenu.sleep);
+			MainMenu.game.setScreen(MainMenu.sleep);
 
-			}
+		}
 		});
 		viewObjects.add(sleepAlex);
 
@@ -101,8 +94,6 @@ public class FarmScreenAll extends FullFunctionScreen {
 			}
 		});
 		viewObjects.add(itemJane);
-
-		addfarmingPatchJane(viewObjects);
 		
 		//Mainscreen team work
 		girl = game.mainScreen.GirlCharacter.addGirl(viewObjects);
@@ -113,20 +104,12 @@ public class FarmScreenAll extends FullFunctionScreen {
  		boy = game.mainScreen.BoyCharacter.addBoy(viewObjects);
  		Thread runboi = new Thread(boy);
  		runboi.start();
-// 		viewObjects.add(boy);
-
-// 		viewObjects.add(girl);
-	
- 		if(MainMenu.isGirl) {
- 			viewObjects.add(girl);
- 		}
- 		else if(!MainMenu.isGirl) {
- 			viewObjects.add(boy);
- 		}
+//		viewObjects.add(boy);
+//
+//		viewObjects.add(girl);
  		
  		patchPane = new PaneJenny(this, 400, 300);
 		patchPane.update();
-		viewObjects.add(patchPane);
 		patchPane.setVisible(false);
 		
 		addfarmingPatchJane(viewObjects);
@@ -135,26 +118,34 @@ public class FarmScreenAll extends FullFunctionScreen {
 		pane = new SelectionPaneJane(this, 400, 300);
 		setWhich("crop");
 		pane.update();
-		viewObjects.add(pane);
 		pane.setVisible(false);
 		
 		plantPane = new PaneJenny(this, 400, 300);
 		plantPane.update();
-		viewObjects.add(plantPane);
 		plantPane.setVisible(false);
 		
 		first = new SelectionPaneJane(this, 400, 300);
 		setWhich("animal");
 		first.update();
-		viewObjects.add(first);
 		first.setVisible(false);
 		
 		animalPane = new PaneJenny(this, 400, 300);
 		animalPane.update();
-		viewObjects.add(animalPane);
 		animalPane.setVisible(false);
+		
+		if(MainMenu.isGirl) {
+			viewObjects.add(girl);
+		}
+		else if(!MainMenu.isGirl) {
+			viewObjects.add(boy);
+		}
+		viewObjects.add(first);
+		viewObjects.add(pane);
+		viewObjects.add(patchPane);
+		viewObjects.add(plantPane);
+		viewObjects.add(animalPane);
 	}
-	
+
 	private void addAnimalJenny(List<Visible> viewObjects) {
 		int start = 30;
 		int space = 150;
@@ -173,7 +164,12 @@ public class FarmScreenAll extends FullFunctionScreen {
 				viewObjects.add(box);
 			}
 		}
+		}
 
+	public void addObjectToBack(Visible v) {
+		super.addObject(v);
+		moveToBack(v);
+		moveToBack(back);
 	}
 
 	private void addfarmingPatchJane(List<Visible> viewObjects) {
@@ -181,25 +177,35 @@ public class FarmScreenAll extends FullFunctionScreen {
 		int space = 77;
 		for(int i=0; i<9; i++) {
 			if(i<3) {
-				CropJane patch= new CropJane(start+(i*68), 253, 63, 50, "",new Color(200, 125, 10), null, i, new CropImageJane());
+				CropJane patch= new CropJane(start+(i*68), 253, 63, 50, "",new Color(200, 125, 10), null, i, new CropImageJane(),-1);
 				patch.update();
 				farmPatch.add(patch);
 				viewObjects.add(patch);
 			}
 			else if(i>=3&&i<6) {
-				CropJane patch= new CropJane(start+((i-3)*68), 260+space, 63, 50,"",new Color(200, 125, 10), null, i, new CropImageJane());
+				CropJane patch= new CropJane(start+((i-3)*68), 260+space, 63, 50,"",new Color(200, 125, 10), null, i, new CropImageJane(),-1);
 				patch.update();
 				farmPatch.add(patch);
 				viewObjects.add(patch);
 			}
 			else {
-				EmptyPatch emptyPatch= new EmptyPatch(start+((i-6)*68), 278+space+space, 63, 50, "For Sale",new Color(200, 125, 10), null,i);
+				EmptyPatch emptyPatch= new EmptyPatch(start+((i-6)*68), 278+space+space, 63, 50, "For Sale",new Color(200, 125, 10), null,i,i-6);
 				emptyPatch.update();
 				emptyFarmPatch.add(emptyPatch);
 				viewObjects.add(emptyPatch);
 			}
 		}
-	}
+
+		
+		
+			
+//			EmptyPatch emptyPatch= new EmptyPatch(593, 278+space+space, 63, 50, "For Sale",new Color(200, 125, 10), null,6);
+//			emptyPatch.update();
+//			System.out.println("patch "+emptyFarmPatch.size());
+//			emptyFarmPatch.add(emptyPatch);
+//			viewObjects.add(emptyPatch);
+		
+}
 
 
 	public static void disableButton(boolean b) {
@@ -209,6 +215,7 @@ public class FarmScreenAll extends FullFunctionScreen {
 		for(int j=0; j<animalBox.size(); j++) {
 			animalBox.get(j).setEnabled(b);
 		}
+		disableEmptyPatch(b);
 		
 	}
 
@@ -221,8 +228,12 @@ public class FarmScreenAll extends FullFunctionScreen {
 		which = s;
 	}
 
-	public static void disableEmptyPatch(boolean b, int i) {
-			emptyFarmPatch.get(i).setEnabled(b);
+	public static void disableEmptyPatch(boolean b) {
+		for(int j=0; j<emptyFarmPatch.size(); j++) {
+			emptyFarmPatch.get(j).setEnabled(b);
+		}
+		
+		
 		
 	}
 	

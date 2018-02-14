@@ -13,33 +13,32 @@ import guiPlayer.Book;
 import guiTeacher.components.Graphic;
 import harvest.MainMenu;
 
-public class SamInventory implements game.farm.ItemSelectionJane {
+public class Inventory implements game.farm.seedSelection {
 
 	public static Scanner in;
 	private int[] amount;
-	private ArrayList<ErikItem> invent;
+	private ArrayList<Item> invent;
 	private int gold;
 
-	public static final ErikItem[] ITEMS = {new ErikItem("Corn Seeds", "Great crop to grow all year round", 250, 0, 4),new ErikItem("Pepper Seeds", "Spicy", 50, 1,1),
-			new ErikItem("Potato Seeds", "Just like me", 150, 2, 3),new ErikItem("Strawberry Seeds", "Sweeter than you", 100, 3,2),
-			new ErikItem("Tomato Seeds", "Make some good ketchup", 200, 4,3),new ErikItem("Wheat Seeds", "Not weed", 300, 5,5),new ErikItem("Corn", "Fresh to eat", 300,6,4),
-			new ErikItem("Pepper","Supah Hot Fire",60,7,1),new ErikItem("Potato","Time to make french fries",180,8,3),
-			new ErikItem("Strawberry","Berry??",120,9,2),new ErikItem("Tomato", "Great for salads", 240,10,3),
-			new ErikItem("Wheat","Just plain old wheat",360,11,5),new ErikItem("Brown Chicken", "Cluck cluck", 250, 12,1),new ErikItem("White Chicken", "Cluck cluck", 250, 13,1),
-			new ErikItem("Black Chicken", "Cluck cluck", 250, 14,1),new ErikItem("Sheep", "BAAAAAAAAAAAH", 350, 15,2),
-			new ErikItem("Cow", "Mooooooo", 400, 16,2),new ErikItem("Pig", "SNORT SNORT", 450, 17,1),
-			new ErikItem("Brown Eggs", "Organic", 200, 18, 0),new ErikItem("White Eggs", "Non-Organic", 200, 19,0),
-			new ErikItem("Black Eggs", "Does not contain egg whites", 200, 20, 0),new ErikItem("Wool", "Canada Goose", 300, 21,0),
-			new ErikItem("Milk", "An utter-disaster", 350, 22,0),new ErikItem("Meat", "Mmmmmmm tasty", 500, 23,0)};
+	public static final Item[] ITEMS = {new Item("Corn Seeds", "Great crop to grow all year round", 250, 0, 4),new Item("Pepper Seeds", "Spicy", 50, 1,1),
+			new Item("Potato Seeds", "Just like me", 150, 2, 3),new Item("Strawberry Seeds", "Sweeter than you", 100, 3,2),
+			new Item("Tomato Seeds", "Make some good ketchup", 200, 4,3),new Item("Wheat Seeds", "Not weed", 300, 5,5),new Item("Corn", "Fresh to eat", 300,6,4),
+			new Item("Pepper","Supah Hot Fire",60,7,1),new Item("Potato","Time to make french fries",180,8,3),
+			new Item("Strawberry","Berry??",120,9,2),new Item("Tomato", "Great for salads", 240,10,3),
+			new Item("Wheat","Just plain old wheat",360,11,5),new Item("Brown Chicken", "Cluck cluck", 250, 12,1),new Item("White Chicken", "Cluck cluck", 250, 13,1),
+			new Item("Black Chicken", "Cluck cluck", 250, 14,1),new Item("Sheep", "BAAAAAAAAAAAH", 350, 15,2),
+			new Item("Cow", "Mooooooo", 400, 16,2),new Item("Pig", "SNORT SNORT", 450, 17,1),
+			new Item("Brown Eggs", "", 200, 18, 0),new Item("White Eggs", "", 200, 19,0),
+			new Item("Black Eggs", "", 200, 20, 0),new Item("Wool", "", 300, 21,0),
+			new Item("Milk", "", 350, 22,0),new Item("Meat", "", 500, 23,0)};
 
 	//image index
 	//cornseed,pepperseed,potatoseed,strawberryseed,tomatoseed,wheatseed,corn,pepper,potato,strawberry,tomato,wheat
 	// 0           1          2            3             4          5      6    7       8       9         10    11
-	public SamInventory() {
+	public Inventory() {
 
-		invent = new ArrayList<ErikItem>();
+		invent = new ArrayList<Item>();
 		amount = new int[ITEMS.length];
-	
 	}
 
 	public void addBasics() {	
@@ -85,7 +84,7 @@ public class SamInventory implements game.farm.ItemSelectionJane {
 			amount[k] = 0;
 		}
 
-		for(ErikItem i: invent) {
+		for(Item i: invent) {
 			amount[i.getImageIndex()]++;
 		}
 
@@ -103,19 +102,19 @@ public class SamInventory implements game.farm.ItemSelectionJane {
 		//if we want to start something upon enter
 	}
 
-	public ArrayList<ErikItem> getItems(){
+	public ArrayList<Item> getItems(){
 		return invent;
 	}
 
-	public ErikItem getItem(int index){
+	public Item getItem(int index){
 		return invent.get(index);
 	}
 
-	public void addItem(ErikItem i){
+	public void addItem(Item i){
 		invent.add(i);
 	}
 
-	public void removeItem(ErikItem i) {
+	public void removeItem(Item i) {
 		invent.remove(i);
 		System.out.println("Inventory class: "+ invent);
 	}
@@ -155,7 +154,7 @@ public class SamInventory implements game.farm.ItemSelectionJane {
 					MainMenu.isGirl = Boolean.parseBoolean(param[1]);
 				}
 				else {
-					invent.add(new ErikItem(param[0],param[1],Integer.parseInt(param[2]), Integer.parseInt(param[3]), Integer.parseInt(param[4])));
+					invent.add(new Item(param[0],param[1],Integer.parseInt(param[2]), Integer.parseInt(param[3]), Integer.parseInt(param[4])));
 				}
 			}
 			br.close();
@@ -170,7 +169,7 @@ public class SamInventory implements game.farm.ItemSelectionJane {
 		try{    
 			FileWriter fw=new FileWriter("resources/invent.csv");
 			fw.write(Integer.toString(this.getGold())+","+ MainMenu.isGirl +"\n");
-			for(ErikItem b: invent){
+			for(Item b: invent){
 				fw.write(b+"\n");    	
 			}
 
@@ -189,29 +188,16 @@ public class SamInventory implements game.farm.ItemSelectionJane {
 		this.gold = gold;
 	}
 
-
 	@Override
-	public ArrayList<ErikItem> getSeedSelection() {
-		ArrayList<ErikItem> seeds = new ArrayList<ErikItem>();
-		for(ErikItem i: invent) {
+	public ArrayList<Item> getSeedInventory() {
+		ArrayList<Item> seeds = new ArrayList<Item>();
+		for(Item i: invent) {
 			if(i.getImageIndex() < 6) {
 				seeds.add(i);
 			}
 		}
 		
 		return seeds;
-	}
-
-	@Override
-	public ArrayList<ErikItem> getAnimalSelection() {
-		ArrayList<ErikItem> animals = new ArrayList<ErikItem>();
-		for(ErikItem i: invent) {
-			if(i.getImageIndex() > 11 && i.getImageIndex() < 18) {
-				animals.add(i);
-			}
-		}
-		
-		return animals;
 	}
 
 
