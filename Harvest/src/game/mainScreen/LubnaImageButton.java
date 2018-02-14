@@ -12,9 +12,9 @@ import guiTeacher.interfaces.DrawInstructions;
  * @author Lubna Khalid
  *
  */
-public class ImageButton extends CustomImageButton {
+public class LubnaImageButton extends CustomImageButton {
 
-	public ImageButton(int x, int y, int w, int h, String imageAddress, Action action) {
+	public LubnaImageButton(int x, int y, int w, int h, String imageAddress, Action action) {
 		super(x, y, w, h, new DrawInstructions() {
 
 			Graphic image = new Graphic(0,0,imageAddress);

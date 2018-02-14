@@ -11,7 +11,7 @@ import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
-import game.mainScreen.ImageButton;
+import game.mainScreen.LubnaImageButton;
 import guiTeacher.components.Action;
 import guiTeacher.components.Button;
 import guiTeacher.components.ClickableGraphic;
@@ -120,7 +120,7 @@ public class SleepAlex extends FullFunctionScreen {//can use ImageTextButton, Cu
 			/*variables inside the setup part of a for loop are local -- be cautious when using them in the function -- especially in the action method of a button*/
 			int xspacer = 83;
 			int c = actionInteger;
-			ImageButton holder = new ImageButton(actionInteger*xspacer,75,90,150, imageSources.get(actionInteger), new Action() {
+			LubnaImageButton holder = new LubnaImageButton(actionInteger*xspacer,75,90,150, imageSources.get(actionInteger), new Action() {
 				public void act() {
 					/*TextArea info = new TextArea(actionInteger*83, 300, 100, 100, "You have created" + 
 							cropAnimalAndProductCount.get(actionInteger) + cropAnimalAndProductNames.get(actionInteger) + "." + 
@@ -233,7 +233,7 @@ public class SleepAlex extends FullFunctionScreen {//can use ImageTextButton, Cu
 		imagesCropAnimalProducts.add("resources/sleep.png");*/
 		
 		for(int i = 0; i<imageSources.size();i++) {
-			ImageButton holder = new ImageButton(i*75, 0, 50, 50, SleepAlex.getImageSources().get(i), new Action() {
+			LubnaImageButton holder = new LubnaImageButton(i*75, 0, 50, 50, SleepAlex.getImageSources().get(i), new Action() {
 				
 				@Override
 				public void act() {

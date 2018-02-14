@@ -5,7 +5,7 @@ package game.mainScreen;
  * @author Lubna Khalid
  *
  */
-public interface ObjectiveScreen {
+public interface LubnaObjectiveScreen {
 
 	void displayObjectives();
 }

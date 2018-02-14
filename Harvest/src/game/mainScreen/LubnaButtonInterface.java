@@ -9,7 +9,7 @@ import guiTeacher.interfaces.Clickable;
  * @author Lubna Khalid
  *
  */
-public interface ButtonInterface extends Clickable {
+public interface LubnaButtonInterface extends Clickable {
 	void setColor(Color color);
 	void setAction(Action a);
 	void highlight();

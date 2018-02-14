@@ -3,15 +3,15 @@ package game.mainScreen;
 import java.applet.Applet;
 import java.applet.AudioClip;
 
-public class Sound {
+public class JessiSound {
 	
-	public static final Sound sound1 = new Sound("/sound.wav");
+	public static final JessiSound sound1 = new JessiSound("/sound.wav");
 
 	private AudioClip clip;
 	
-	public Sound(String filename) {
+	public JessiSound(String filename) {
 		try {
-			clip = Applet.newAudioClip(Sound.class.getResource(filename));
+			clip = Applet.newAudioClip(JessiSound.class.getResource(filename));
 		}catch(Exception e) {
 			e.printStackTrace();
 		}

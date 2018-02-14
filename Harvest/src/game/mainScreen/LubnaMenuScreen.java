@@ -13,19 +13,19 @@ import guiTeacher.interfaces.Visible;
 import guiTeacher.userInterfaces.ClickableScreen;
 import harvest.MainMenu;
 
-public class MenuScreenLubna extends ClickableScreen implements Runnable {
+public class LubnaMenuScreen extends ClickableScreen implements Runnable {
 
 	private Graphic title;
-	private ImageButton newGame;
-	private ImageButton load;
-	private ImageButton exit;
-	private ImageButton obj;
+	private LubnaImageButton newGame;
+	private LubnaImageButton load;
+	private LubnaImageButton exit;
+	private LubnaImageButton obj;
 //	private ImageButton save;
 	private Button sound;
 
 	private SamInventory invent;
 	
-	public MenuScreenLubna(int width, int height) {
+	public LubnaMenuScreen(int width, int height) {
 		super(width, height);
 		Thread app = new Thread(this);
 		app.start();
@@ -39,20 +39,20 @@ public class MenuScreenLubna extends ClickableScreen implements Runnable {
 		title = new Graphic(150, 60, 600, 600, "resources/harvestvalley.png");
 		viewObjects.add(title);
 
-		newGame = new ImageButton(180,350,150,150,"resources/newButton.png",new Action() {
+		newGame = new LubnaImageButton(180,350,150,150,"resources/newButton.png",new Action() {
 
 			@Override
 			public void act() {
 				invent = new SamInventory();
 				invent.addBasics();
 				invent.save();
-				MainMenu.game.screen2 = new ChooseGenderScreenLubna(getWidth(), getHeight());
+				MainMenu.game.screen2 = new LubnaChooseGenderScreen(getWidth(), getHeight());
 				MainMenu.game.setScreen(MainMenu.screen2);
 
 			}
 		});
 		viewObjects.add(newGame);
-		load = new ImageButton(380,350, 150,150,"resources/loadButton.png", new Action() {
+		load = new LubnaImageButton(380,350, 150,150,"resources/loadButton.png", new Action() {
 
 			@Override
 			public void act() {
@@ -63,7 +63,7 @@ public class MenuScreenLubna extends ClickableScreen implements Runnable {
 			}
 		});
 		viewObjects.add(load);
-		exit = new ImageButton(580,350, 150,150,"resources/exitButton.png", new Action() {
+		exit = new LubnaImageButton(580,350, 150,150,"resources/exitButton.png", new Action() {
 
 			@Override
 			public void act() {
@@ -73,7 +73,7 @@ public class MenuScreenLubna extends ClickableScreen implements Runnable {
 			}
 		});
 		viewObjects.add(exit);
-		obj = new ImageButton(750,480, 60,60,"resources/objective.png", new Action() {
+		obj = new LubnaImageButton(750,480, 60,60,"resources/objective.png", new Action() {
 
 			@Override
 			public void act() {
@@ -96,7 +96,7 @@ public class MenuScreenLubna extends ClickableScreen implements Runnable {
 //		viewObjects.add(save);
 		sound = new Button(90, 500, 80, 30, "Sound", new Color(230, 235, 210), new Action() {
 			public void act() {
-				MainMenu.soundTracks = new SoundScreen(getWidth(),getHeight());
+				MainMenu.soundTracks = new JessiSoundScreen(getWidth(),getHeight());
 				MainMenu.game.setScreen(MainMenu.soundTracks);
 
 			}

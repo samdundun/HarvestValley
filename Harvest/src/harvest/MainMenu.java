@@ -4,15 +4,15 @@ import java.awt.Font;
 import java.io.File;
 
 import game.farm.FarmScreenAll;
-import game.mainScreen.GirlCharacter;
+import game.mainScreen.MimiGirlCharacter;
 import game.farm.SleepAlex;
-import game.mainScreen.ChooseGenderScreenLubna;
-import game.mainScreen.MenuScreenLubna;
-import game.mainScreen.ObjectivesScreenJessi;
+import game.mainScreen.LubnaChooseGenderScreen;
+import game.mainScreen.LubnaMenuScreen;
+import game.mainScreen.JessiObjectivesScreen;
 import game.mainScreen.PlaceHolderScreen;
-import game.mainScreen.SaveScreenMimi;
-import game.mainScreen.Sound;
-import game.mainScreen.SoundScreen;
+import game.mainScreen.MimiSaveScreen;
+import game.mainScreen.JessiSound;
+import game.mainScreen.JessiSoundScreen;
 import game.market.SamBuyingScreen;
 import game.market.ErikInventoryScreen;
 import game.market.ErikSellingScreen;
@@ -29,21 +29,21 @@ public class MainMenu extends GUIApplication {
 	public static boolean isLoad;
 	public static boolean isExit;
 	public static boolean isObj;
-	public static ChooseGenderScreenLubna screen2;
+	public static LubnaChooseGenderScreen screen2;
 	public static FarmScreenAll farmScreen;
 	public static SamBuyingScreen shop;
 	public static ErikSellingScreen sell;
-	public static MenuScreenLubna screen;
-	public static ObjectivesScreenJessi objectives;
-	public static SoundScreen soundTracks;
+	public static LubnaMenuScreen screen;
+	public static JessiObjectivesScreen objectives;
+	public static JessiSoundScreen soundTracks;
 	public static ErikInventoryScreen inventory;
 	public static PlaceHolderScreen placeHolder;
-	public static SaveScreenMimi saveMimi;
+	public static MimiSaveScreen saveMimi;
 	public static SleepAlex sleep;
 	
 //	public static boolean isSaved;
 	
-	private Sound sound;
+	private JessiSound sound;
 	
 	public MainMenu(int width, int height) {
 		super(width, height);
@@ -62,27 +62,27 @@ public class MainMenu extends GUIApplication {
 //			e.printStackTrace();
 //		}
 
-		screen = new MenuScreenLubna(getWidth(), getHeight());
+		screen = new LubnaMenuScreen(getWidth(), getHeight());
 		sleep = new SleepAlex(getWidth(), getHeight());
 		farmScreen = new FarmScreenAll(getWidth(),getHeight());
 		shop = new SamBuyingScreen(getWidth(),getHeight());
-		screen2 = new ChooseGenderScreenLubna(getWidth(), getHeight());
+		screen2 = new LubnaChooseGenderScreen(getWidth(), getHeight());
 		inventory = new ErikInventoryScreen(getWidth(), getHeight());
 		sell = new ErikSellingScreen(getWidth(), getHeight());
 		placeHolder = new PlaceHolderScreen(getWidth(), getHeight());
 		//don't delete the place holder please.
 
-		saveMimi = new SaveScreenMimi(getWidth(), getHeight());
+		saveMimi = new MimiSaveScreen(getWidth(), getHeight());
 		
 		
-		objectives = new ObjectivesScreenJessi(getWidth(), getHeight());
+		objectives = new JessiObjectivesScreen(getWidth(), getHeight());
 		
 		
-		soundTracks = new SoundScreen(getWidth(), getHeight());
+		soundTracks = new JessiSoundScreen(getWidth(), getHeight());
 
 		setScreen(screen);
 
-	Sound.sound1.play();
+	JessiSound.sound1.play();
 
 	}
 

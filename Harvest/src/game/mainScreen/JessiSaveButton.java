@@ -7,17 +7,17 @@ import guiTeacher.components.Button;
 import guiTeacher.interfaces.Visible;
 import harvest.MainMenu;
 
-public class SaveButtonJessi extends Button {
+public class JessiSaveButton extends Button {
 
-	private ImageButton saveButton;
+	private LubnaImageButton saveButton;
 	
-	public SaveButtonJessi(int x, int y, int w, int h, String text, Action action) {
+	public JessiSaveButton(int x, int y, int w, int h, String text, Action action) {
 		super(x, y, w, h, text, action);
 		// TODO Auto-generated constructor stub
 	}
 
 	public void initAllObjects(List<Visible> viewObjects) {
-		saveButton = new ImageButton(260,350,50,50,"",new Action() {
+		saveButton = new LubnaImageButton(260,350,50,50,"",new Action() {
 			
 			@Override
 			public void act() {

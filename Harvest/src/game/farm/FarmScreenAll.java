@@ -5,9 +5,9 @@ import java.awt.Container;
 import java.util.ArrayList;
 import java.util.List;
 
-import game.mainScreen.BoyCharacter;
-import game.mainScreen.GirlCharacter;
-import game.mainScreen.ImageButton;
+import game.mainScreen.JessiBoyCharacter;
+import game.mainScreen.MimiGirlCharacter;
+import game.mainScreen.LubnaImageButton;
 import game.mainScreen.MovableCharacter;
 import game.market.SamBuyingScreen;
 import game.market.ErikInventoryScreen;
@@ -24,7 +24,7 @@ public class FarmScreenAll extends FullFunctionScreen {
 	private Button shopJenny;
 	private Button menuJenny;
 	private Button itemJane;
-	private ImageButton sleepAlex;
+	private LubnaImageButton sleepAlex;
 	private static String which;
 	private static final int animalLimit1 = 5;
 	private static List<Visible> viewObj;
@@ -95,7 +95,7 @@ public class FarmScreenAll extends FullFunctionScreen {
 		});
 		viewObjects.add(shopJenny);
 
-		sleepAlex = new ImageButton(815, 493, 39, 39, "resources/sleep.png", new Action() {
+		sleepAlex = new LubnaImageButton(815, 493, 39, 39, "resources/sleep.png", new Action() {
 
 			@Override
 			public void act() {
@@ -148,12 +148,12 @@ public class FarmScreenAll extends FullFunctionScreen {
 		animalPane.setVisible(false);
 		
 		//Main Screen teamwork.
-		girl1 = new GirlCharacter(480, 220, 50, 100);
+		girl1 = new MimiGirlCharacter(480, 220, 50, 100);
 		Thread rungurl = new Thread(girl1);
 		rungurl.start();
 		
 		
-		boy1 = new BoyCharacter(480, 220, 50, 100);
+		boy1 = new JessiBoyCharacter(480, 220, 50, 100);
  		Thread runboi = new Thread(boy1);
  		runboi.start();
 

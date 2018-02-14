@@ -213,6 +213,11 @@ public class SamInventory implements game.farm.ItemSelectionJane {
 		return animals;
 	}
 
+	public ArrayList<ErikItem> getSeedInventory() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 
 }
  

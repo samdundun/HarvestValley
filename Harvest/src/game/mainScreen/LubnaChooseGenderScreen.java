@@ -14,18 +14,18 @@ import guiTeacher.interfaces.Visible;
 import guiTeacher.userInterfaces.ClickableScreen;
 import harvest.MainMenu;
 
-public class ChooseGenderScreenLubna extends ClickableScreen implements Runnable {
+public class LubnaChooseGenderScreen extends ClickableScreen implements Runnable {
 
 
-	private ImageButton girl;
-	private ImageButton boy;
+	private LubnaImageButton girl;
+	private LubnaImageButton boy;
 	private Graphic back;
 	private Graphic title;
 	private static boolean girlAction; 
 	
 	private SamInventory invent;
 
-	public ChooseGenderScreenLubna(int width, int height) {
+	public LubnaChooseGenderScreen(int width, int height) {
 		super(width, height);
 		Thread app = new Thread(this);
 		app.start();
@@ -48,7 +48,7 @@ public class ChooseGenderScreenLubna extends ClickableScreen implements Runnable
 		
 		back = new Graphic(0,0,getWidth(),getHeight(),"resources/background.png");
 		viewObjects.add(back);
-		girl = new ImageButton(260,350,150,150,"resources/girlButton.png",new Action() {
+		girl = new LubnaImageButton(260,350,150,150,"resources/girlButton.png",new Action() {
 			
 			@Override
 			public void act() {
@@ -60,7 +60,7 @@ public class ChooseGenderScreenLubna extends ClickableScreen implements Runnable
 			}
 		});
 		viewObjects.add(girl);
-		boy = new ImageButton(470,350, 150,150,"resources/boyButton.png", new Action() {
+		boy = new LubnaImageButton(470,350, 150,150,"resources/boyButton.png", new Action() {
 			
 			@Override
 			public void act() {

@@ -13,11 +13,11 @@ import guiTeacher.components.TextArea;
 import guiTeacher.interfaces.Visible;
 import guiTeacher.userInterfaces.ClickableScreen;
 
-public class SoundScreen extends ClickableScreen  {
+public class JessiSoundScreen extends ClickableScreen  {
 	
 	private Button exit;
 
-	public SoundScreen(int width, int height) {
+	public JessiSoundScreen(int width, int height) {
 		super(width, height);
 	}
 

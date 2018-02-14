@@ -12,11 +12,11 @@ import java.awt.Color;
 import java.awt.Font;
 import java.io.File;
 
-public class ObjectivesScreenJessi extends ClickableScreen implements Runnable, ObjectiveScreen {
+public class JessiObjectivesScreen extends ClickableScreen implements Runnable, LubnaObjectiveScreen {
 
 	private Button exit;
 	private TextBox intro;
-	public ObjectivesScreenJessi(int width, int height) {
+	public JessiObjectivesScreen(int width, int height) {
 		super(width, height);
 	}
 	

@@ -13,18 +13,18 @@ import guiTeacher.interfaces.Visible;
 import guiTeacher.userInterfaces.ClickableScreen;
 import harvest.MainMenu;
 
-public class SaveScreenMimi extends ClickableScreen {
+public class MimiSaveScreen extends ClickableScreen {
 	
 	private static FocusController FarmScreenAll;
 	//the pop up asking if you want to save the currency and inventory is a separate screen.
 	
 	private TextArea text;
 //	private Button exit;
-	private ImageButton exit;
+	private LubnaImageButton exit;
 	private Button save;
-	private SavePaneMimi SavePaneMimi;
+	private MimiSavePane SavePaneMimi;
 
-	public SaveScreenMimi(int width, int height) {
+	public MimiSaveScreen(int width, int height) {
 		super(width, height);
 	}
 
@@ -45,7 +45,7 @@ public class SaveScreenMimi extends ClickableScreen {
 		viewObjects.add(save);
 //		Graphic exit = new Graphic(390, 430, 100, 100, "resources/exitButton.png");
 //		viewObjects.add(exit);
-		exit = new ImageButton(690, 410, 150, 150, "resources/exitButton.png",new Action() {
+		exit = new LubnaImageButton(690, 410, 150, 150, "resources/exitButton.png",new Action() {
 			
 			@Override
 			public void act() {

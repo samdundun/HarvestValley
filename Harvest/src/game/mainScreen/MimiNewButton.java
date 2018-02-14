@@ -7,18 +7,18 @@ import guiTeacher.components.*;
 import guiTeacher.interfaces.Visible;
 import harvest.MainMenu;
 
-public class NewButtonMimi extends Button{
+public class MimiNewButton extends Button{
 	
-	private ImageButton newbutton;
+	private LubnaImageButton newbutton;
 
-	public NewButtonMimi(int x, int y, int w, int h, String text, Action action) {
+	public MimiNewButton(int x, int y, int w, int h, String text, Action action) {
 		super(x, y, w, h, text, action);
 		Thread runner = new Thread();
 		runner.start();
 	}
 	
 	public void initAllObjects(List<Visible> viewObjects) {
-		newbutton = new ImageButton(260,350,150,150,"",new Action() {
+		newbutton = new LubnaImageButton(260,350,150,150,"",new Action() {
 			
 			@Override
 			public void act() {

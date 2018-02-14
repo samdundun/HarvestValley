@@ -5,22 +5,20 @@ import java.util.List;
 import guiPlayer.Sampler;
 import guiTeacher.components.AnimatedComponent;
 import guiTeacher.interfaces.Visible;
-import guiTeacher.userInterfaces.Screen;
 
 /**
- * @author Mimi Buan
+ * @author Jessi Wu.
  */
 
-public class GirlCharacter extends MovableCharacter{
+public class JessiBoyCharacter extends MovableCharacter {
 	
-	
-	public GirlCharacter(int x, int y , int w, int h) {
+	public JessiBoyCharacter(int x, int y, int w, int h) {
 		super(x, y, w, h);
-		addSequence("resources/girl farmer.png",180, 0, 0 ,109, 160, 3);
+		addSequence("resources/boy.png",180, 0, 0 ,109, 160, 3);
 		// TODO Auto-generated constructor stub
 	}
-	
+
 
 	
-
 }
+

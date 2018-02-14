@@ -6,9 +6,9 @@ import game.farm.FarmScreenAll;
 import guiTeacher.components.Action;
 import guiTeacher.components.Button;
 
-public class SavePaneMimi extends Button {
+public class MimiSavePane extends Button {
 
-	public SavePaneMimi(int x, int y, int w, int h, String text, Color color, Action action) {
+	public MimiSavePane(int x, int y, int w, int h, String text, Color color, Action action) {
 		super(x, y, w, h, text, new Color(200, 125, 10), new Action() {
 			
 			@Override
@@ -22,7 +22,7 @@ public class SavePaneMimi extends Button {
 		
 	}
 
-	public SavePaneMimi(int x, int y, int w, int h, String text, Action action) {
+	public MimiSavePane(int x, int y, int w, int h, String text, Action action) {
 		super(x, y, w, h, text, action);
 	}
 
