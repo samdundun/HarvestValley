@@ -48,6 +48,7 @@ public class CropJane extends CustomImageButton {
 				FarmScreenAll.pane.getSelect().setX(i);
 				FarmScreenAll.pane.getCancel().setX(j);
 				FarmScreenAll.pane.getSell().setVisible(b);
+				FarmScreenAll.pane.getSell().setEnabled(b);
 				
 			}
 		});
@@ -80,7 +81,6 @@ public class CropJane extends CustomImageButton {
 				PaneJenny plantPane =FarmScreenAll.plantPane;
 				CropJane currentPatch=FarmScreenAll.farmPatch.get(index);
 				String cropName = SelectionPaneJane.items[currentPatch.imageIndx+6].getName().toLowerCase();
-				System.out.println(cropName);
 				int dayLeft =currentPatch.getLength()-currentPatch.getCurrentTime();
 				setPosition();
 				plantPane.setSrc("resources/" + cropName + ".png");

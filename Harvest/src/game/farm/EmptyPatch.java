@@ -12,6 +12,7 @@ import harvest.MainMenu;
 public class EmptyPatch extends Button {
 	private int index;
 	private int patchIndex;
+	private boolean bought;
 	
 	public EmptyPatch(int x, int y, int w, int h, String text, Color color, Action action, int i, int j) {
 		super(x, y, w, h, text,color, null);
@@ -23,7 +24,7 @@ public class EmptyPatch extends Button {
 			public void act() {
 				openPane();
 				createInvent();
-				if(invent.getGold()>=1000) {
+				if(invent.getGold()>=100) {
 				FarmScreenAll.patchPane.getHarvest().setAction(new Action() {
 					
 					@Override
@@ -33,7 +34,9 @@ public class EmptyPatch extends Button {
 						FarmScreenAll.farmPatch.add(newPatch);
 						MainMenu.farmScreen.addObjectToBack(newPatch);
 						MainMenu.farmScreen.remove(EmptyPatch.this);
-						invent.setGold(invent.getGold()-1000);
+						bought=true;
+						invent.setGold(invent.getGold()-100);
+						invent.save();
 						FarmScreenAll.patchPane.setVisible(false);
 						FarmScreenAll.patchPane.getImg().setVisible(false);
 						FarmScreenAll.disableEmptyPatch(true);
@@ -63,6 +66,7 @@ public class EmptyPatch extends Button {
 				FarmScreenAll.patchPane.getItem().setText("Patch for $1000");
 				FarmScreenAll.patchPane.setX(x-250);
 				FarmScreenAll.patchPane.setY(y-120);
+				FarmScreenAll.patchPane.getHarvest().setText("Buy");
 				FarmScreenAll.patchPane.setSrc("resources/farmPatch.png");
 				FarmScreenAll.patchPane.updateImg(FarmScreenAll.getView());
 				FarmScreenAll.patchPane.setVisible(true);
@@ -86,7 +90,13 @@ public class EmptyPatch extends Button {
 		return index;
 	}
 
-
+	public boolean getBought() {
+		return bought;
+	}
+	
+	public void setBought(boolean b) {
+		bought=b;
+	}
 	
 	
 }

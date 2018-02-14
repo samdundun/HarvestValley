@@ -43,7 +43,7 @@ public class SelectionPaneJane extends Pane {
 	private static final int _HEIGHT = 210;
 	public SamInventory invent;
 
-	private static ArrayList<ErikItem> animal;
+	private ArrayList<ErikItem> animal;
 
 	private ArrayList<ErikItem> seeds;
 
@@ -101,7 +101,7 @@ public class SelectionPaneJane extends Pane {
 		invent.sort();
 		if(FarmScreenAll.getWhich().equals("crop")) {
 
-			addImages(animal, 0, 45, 55, 60, label);
+			addImages(animal, 0, 45, 60, 60, label);
 		}
 		else {
 
@@ -115,6 +115,8 @@ public class SelectionPaneJane extends Pane {
 						SelectionPaneJane.this.setSeedSelected(i);
 						FarmScreenAll.farmPatch.get(index).setTime(seeds.get(i).getTime());
 						FarmScreenAll.farmPatch.get(index).crop(seeds.get(i).getImageIndex());
+						invent.removeItem(seeds.get(i));
+						invent.save();
 						SelectionPaneJane.this.setVisible(false);
 						FarmScreenAll.disableButton(true);
 					}
@@ -126,6 +128,8 @@ public class SelectionPaneJane extends Pane {
 						System.out.println(animalIdx);
 						//setSrc(game.market.ErikItem.getGraphic()[animalIdx].getImageLocation());
 						FarmScreenAll.animalBox.get(index).changeAction(animal.get(j).getImageIndex());
+						invent.removeItem(animal.get(j));
+						invent.save();
 						SelectionPaneJane.this.setVisible(false);
 						FarmScreenAll.disableButton(true);
 					}
@@ -148,21 +152,18 @@ public class SelectionPaneJane extends Pane {
 					MainMenu.farmScreen.remove(FarmScreenAll.farmPatch.get(index));
 					FarmScreenAll.farmPatch.remove(index);
 					invent.setGold(invent.getGold()+1000);
+					invent.save();
 					MainMenu.farmScreen.addObjectToBack(FarmScreenAll.emptyFarmPatch.get(patchIndex));
+					FarmScreenAll.emptyFarmPatch.get(patchIndex).setBought(false);
 					FarmScreenAll.pane.setVisible(false);
 					FarmScreenAll.disableButton(true);
 					
 				}
 			});
 			viewObjects.add(sell);
+			sell.setVisible(false);
+			sell.setEnabled(false);
 		}
-
-		
-
-
-	public static ArrayList<ErikItem> getAnimal() {
-		return animal;
-	}
 
 	public void setAnimal(ArrayList<ErikItem> animal) {
 		this.animal = animal;
