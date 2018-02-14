@@ -75,8 +75,8 @@ public class CropJane extends CustomImageButton implements AlexLeonInterface {
 		invent = new SamInventory();
 		invent.load();
 		invent.sort();
-		FarmScreenAll.pane.setSeeds(invent.getSeedSelection());
-		invent.save();
+//		FarmScreenAll.pane.setSeeds(invent.getSeedSelection());
+//		invent.save();
 		this.setAction(new Action() {
 			
 			@Override

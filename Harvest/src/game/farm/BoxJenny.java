@@ -28,6 +28,7 @@ public class BoxJenny extends CustomImageButton implements Clickable{
 	private int currentTime;
 	private int x;
 	private int y;
+	private SamInventory invent;
 
 	public BoxJenny(int x, int y, String imageAddress, Action action, List<Visible> viewObjects, int i) {
 		super(x, y, new Graphic(0,0,imageAddress).getWidth(), new Graphic(0,0,imageAddress).getHeight(), new DrawInstructions() {
@@ -58,6 +59,9 @@ public class BoxJenny extends CustomImageButton implements Clickable{
 	}
 
 	public void changeAction(int i) {
+		invent = new SamInventory();
+		invent.load();
+		invent.sort();
 		BoxJenny animal = FarmScreenAll.animalBox.get(index);
 		imageIndx = i;
 		updateImg(index);
@@ -66,7 +70,6 @@ public class BoxJenny extends CustomImageButton implements Clickable{
 			public void act() {
 				String label = SamInventory.ITEMS[imageIndx + 6].getName().toLowerCase();
 				String name = ErikItem.getGraphic()[imageIndx + 6].getImageLocation();
-				System.out.println(name);	System.out.println(animal.index);
 				int dayLeft = animal.getLength() - animal.getCurrentTime();
 				FarmScreenAll.animalPane.setX(animal.getX() + animal.getWidth() + 10);
 				FarmScreenAll.animalPane.setY(animal.getY() - 50);
@@ -84,21 +87,13 @@ public class BoxJenny extends CustomImageButton implements Clickable{
 				else {
 					FarmScreenAll.animalPane.getLabel().setText("Ready to harvest");
 					FarmScreenAll.animalPane.getHarvest().setAction(new Action() {
+
 						public void act() {
 							FarmScreenAll.disableButton(true);
 							FarmScreenAll.animalPane.getImg().setVisible(false);
 							FarmScreenAll.animalPane.setVisible(false);
-						}
-					} );
-					animal.setAction(new Action() {
-						public void act() {
-							Graphic image = new Graphic(0,0,"resources/nothing.png");
-							FarmScreenAll.first.setX(x + image.getWidth() + 10);
-							FarmScreenAll.first.setY(y - 50);
-							FarmScreenAll.first.setVisible(true);
-							FarmScreenAll.first.update();
-							FarmScreenAll.first.setIndex(imageIndx);
-							FarmScreenAll.disableButton(false);
+							invent.addItem(SelectionPaneJane.items[imageIndx + 6]);
+							invent.save();
 						}
 					});
 				}
@@ -110,14 +105,29 @@ public class BoxJenny extends CustomImageButton implements Clickable{
 		grow();
 	}
 
+	public void test() {
+		BoxJenny animal = FarmScreenAll.animalBox.get(index);
+		animal.setAction(new Action() {
+			public void act() {
+				Graphic image = new Graphic(0,0,"resources/nothing.png");
+				FarmScreenAll.first.setX(x + image.getWidth() + 10);
+				FarmScreenAll.first.setY(y - 50);
+				FarmScreenAll.first.setVisible(true);
+				FarmScreenAll.first.update();
+				FarmScreenAll.first.setIndex(imageIndx);
+				FarmScreenAll.disableButton(false);
+			}
+		});
+
+	}
+
 	private void grow() {
 		Thread grower = new Thread(new Runnable() {
 			public void run() {
-				int stageTime = (time*3000)/length;
-				currentTime=0;
-				for(int i = 0; i< length; i++) {
+				currentTime = 0;
+				for(int i = 0; i < length; i++) {
 					try {
-						Thread.sleep(stageTime);
+						Thread.sleep(2000);
 					} catch (InterruptedException e) {
 						e.printStackTrace();
 					}
