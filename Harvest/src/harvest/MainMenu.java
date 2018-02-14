@@ -8,6 +8,7 @@ import game.mainScreen.MimiGirlCharacter;
 import game.farm.SleepAlex;
 import game.mainScreen.LubnaChooseGenderScreen;
 import game.mainScreen.LubnaMenuScreen;
+import game.mainScreen.JessiMusicPlayer;
 import game.mainScreen.JessiObjectivesScreen;
 import game.mainScreen.PlaceHolderScreen;
 import game.mainScreen.MimiSaveScreen;
@@ -35,7 +36,7 @@ public class MainMenu extends GUIApplication {
 	public static ErikSellingScreen sell;
 	public static LubnaMenuScreen screen;
 	public static JessiObjectivesScreen objectives;
-	public static JessiSoundScreen soundTracks;
+	//public static JessiSoundScreen soundTracks;
 	public static ErikInventoryScreen inventory;
 	public static PlaceHolderScreen placeHolder;
 	public static MimiSaveScreen saveMimi;
@@ -78,12 +79,11 @@ public class MainMenu extends GUIApplication {
 		objectives = new JessiObjectivesScreen(getWidth(), getHeight());
 		
 		
-		soundTracks = new JessiSoundScreen(getWidth(), getHeight());
+		//soundTracks = new JessiSoundScreen(getWidth(), getHeight());
 
 		setScreen(screen);
 
 	JessiSound.sound1.play();
-
 	}
 
 	public static void main(String[] args) {
@@ -92,6 +92,13 @@ public class MainMenu extends GUIApplication {
 		Thread runner = new Thread(game);
 
 		runner.start();
+		
+		JessiMusicPlayer player = new JessiMusicPlayer("sound","sound2","sound3","sound4","sound5");
+		//06 - Spring (The Valley Comes Alive) sound
+		//05 - Spring (It's A Big World Outside) sound2
+		//13 - Summer (Nature's Crescendo) sound3
+		//27 - Winter (Nocturne Of Ice) sound4
+		//20 - Fall (The Smell Of Mushroom) sound5
 	}
 	//
 

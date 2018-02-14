@@ -1,13 +1,5 @@
 package game.mainScreen;
 
-import javax.sound.sampled.AudioFormat;
-import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.Clip;
-import javax.sound.sampled.DataLine;
-import javax.sound.sampled.FloatControl;
-
-import java.io.File;
 import java.util.ArrayList;
 
 public class JessiMusicPlayer implements Runnable {
@@ -19,7 +11,7 @@ public class JessiMusicPlayer implements Runnable {
     public JessiMusicPlayer(String... files){
         musicFiles = new ArrayList<JessiAudioFile>();
         for(String file : files)
-            musicFiles.add(new JessiAudioFile("./resources/audio/" + file + ".wav"));
+            musicFiles.add(new JessiAudioFile("./resources/" + file + ".wav"));
     }
 
     @Override
