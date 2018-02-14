@@ -8,7 +8,7 @@ import java.util.List;
 import game.mainScreen.JessiBoyCharacter;
 import game.mainScreen.MimiGirlCharacter;
 import game.mainScreen.LubnaImageButton;
-import game.mainScreen.MovableCharacter;
+import game.mainScreen.MimiMovableCharacter;
 import game.market.SamBuyingScreen;
 import game.market.ErikInventoryScreen;
 import game.market.ErikItem;
@@ -36,8 +36,8 @@ public class FarmScreenAll extends FullFunctionScreen {
 	public static ArrayList<BoxJenny> animalBox;
 
 
-	public static MovableCharacter boy1;
-	public static MovableCharacter girl1;
+	public static MimiMovableCharacter boy1;
+	public static MimiMovableCharacter girl1;
 
 	private static final int animalLimit = 5;
 	public static AnimatedComponent boy;

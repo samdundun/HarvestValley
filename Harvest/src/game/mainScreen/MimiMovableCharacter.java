@@ -9,9 +9,9 @@ import java.awt.event.KeyEvent;
 import guiTeacher.components.AnimatedComponent;
 import guiTeacher.interfaces.KeyedComponent;
 
-public class MovableCharacter extends AnimatedComponent implements KeyedComponent {
+public class MimiMovableCharacter extends AnimatedComponent implements KeyedComponent {
 
-	public MovableCharacter(int x, int y, int w, int h) {
+	public MimiMovableCharacter(int x, int y, int w, int h) {
 		super(x, y, w, h);
 		// TODO Auto-generated constructor stub
 	}

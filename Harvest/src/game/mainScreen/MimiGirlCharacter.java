@@ -11,7 +11,7 @@ import guiTeacher.userInterfaces.Screen;
  * @author Mimi Buan
  */
 
-public class MimiGirlCharacter extends MovableCharacter{
+public class MimiGirlCharacter extends MimiMovableCharacter{
 	
 	
 	public MimiGirlCharacter(int x, int y , int w, int h) {

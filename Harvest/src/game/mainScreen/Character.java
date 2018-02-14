@@ -15,8 +15,8 @@ public class Character{
 	  *@author Mimi Buan and Lubna Khalid and Jessi Wu
 	 */
 	
-	private static MovableCharacter girl;
-	private static MovableCharacter boy;
+	private static MimiMovableCharacter girl;
+	private static MimiMovableCharacter boy;
 	private int x;
 	private int y; 
 	

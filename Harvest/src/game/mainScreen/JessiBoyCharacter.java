@@ -10,7 +10,7 @@ import guiTeacher.interfaces.Visible;
  * @author Jessi Wu.
  */
 
-public class JessiBoyCharacter extends MovableCharacter {
+public class JessiBoyCharacter extends MimiMovableCharacter {
 	
 	public JessiBoyCharacter(int x, int y, int w, int h) {
 		super(x, y, w, h);
