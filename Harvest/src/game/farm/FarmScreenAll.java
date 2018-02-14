@@ -51,17 +51,12 @@ public class FarmScreenAll extends FullFunctionScreen {
 		return viewObj;
 	}
 
-	public static ArrayList<BoxJenny> getAnimalBox() {
-		return animalBox;
-	}
-
 	public void initAllObjects(List<Visible> viewObjects) {
 		which = "";
 		viewObj = viewObjects;
 		farmPatch = new ArrayList<CropJane>();
 		emptyFarmPatch = new ArrayList<EmptyPatch>();
 		animalBox = new ArrayList<BoxJenny>();
-		//animalBox = new ArrayList<Test>();
 
 		back = new Graphic(0, 0, "resources/farm.PNG");
 		viewObjects.add(back);
@@ -147,10 +142,10 @@ public class FarmScreenAll extends FullFunctionScreen {
 			viewObjects.add(boy);
 		}
 		viewObjects.add(first);
-		viewObjects.add(animalPane);
+		viewObjects.add(pane);
 		viewObjects.add(patchPane);
 		viewObjects.add(plantPane);
-		viewObjects.add(pane);
+		viewObjects.add(animalPane);
 	}
 
 	private void addAnimalJenny(List<Visible> viewObjects) {
@@ -159,13 +154,13 @@ public class FarmScreenAll extends FullFunctionScreen {
 
 		for(int i = 0; i < animalLimit; i++) {
 			if(i < 3) {
-				BoxJenny box = new BoxJenny(start + (i * 150), 140, "resources/star.png", null, viewObjects, i);
+				BoxJenny box = new BoxJenny(start + (i * 150), 140, "resources/nothing.png", null, viewObjects, i);
 				box.update();
 				animalBox.add(box);
 				viewObjects.add(box);
 			}
 			else{
-				BoxJenny box = new BoxJenny(start + ((i - 3) * 150), 140 + space, "resources/star.png", null, viewObjects, i);
+				BoxJenny box = new BoxJenny(start + ((i - 3) * 150), 140 + space, "resources/nothing.png", null, viewObjects, i);
 				box.update();
 				animalBox.add(box);
 				viewObjects.add(box);

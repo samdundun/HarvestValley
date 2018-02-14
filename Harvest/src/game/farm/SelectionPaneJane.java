@@ -43,7 +43,7 @@ public class SelectionPaneJane extends Pane {
 	private static final int _HEIGHT = 210;
 	public SamInventory invent;
 
-	private ArrayList<ErikItem> animal;
+	private static ArrayList<ErikItem> animal;
 
 	private ArrayList<ErikItem> seeds;
 
@@ -120,12 +120,12 @@ public class SelectionPaneJane extends Pane {
 					}
 
 				}
-				for(int i=0; i<animal.size(); i++) {
-					if(animal.get(i).isSelected()) {
-						System.out.println(FarmScreenAll.getWhich());
-						animalIdx = i;
-						setSrc(game.market.ErikItem.getGraphic()[animalIdx].getImageLocation());
-						FarmScreenAll.animalBox.get(index).changeAction(animal.get(i).getImageIndex());
+				for(int j=0; j<animal.size(); j++) {
+					if(animal.get(j).isSelected()) {
+						animalIdx = j + 12;
+						System.out.println(animalIdx);
+						//setSrc(game.market.ErikItem.getGraphic()[animalIdx].getImageLocation());
+						FarmScreenAll.animalBox.get(index).changeAction(animal.get(j).getImageIndex());
 						SelectionPaneJane.this.setVisible(false);
 						FarmScreenAll.disableButton(true);
 					}
@@ -159,7 +159,7 @@ public class SelectionPaneJane extends Pane {
 		
 
 
-	public ArrayList<ErikItem> getAnimal() {
+	public static ArrayList<ErikItem> getAnimal() {
 		return animal;
 	}
 
@@ -216,7 +216,7 @@ public class SelectionPaneJane extends Pane {
 
 	}
 
-	public void setSrc(String s) {
+	public static void setSrc(String s) {
 		animalImg = s;
 	}
 
