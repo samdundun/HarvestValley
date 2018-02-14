@@ -155,6 +155,7 @@ public class SelectionPaneJane extends Pane {
 				}
 			});
 			viewObjects.add(sell);
+			sell.setVisible(false);
 		}
 
 		
