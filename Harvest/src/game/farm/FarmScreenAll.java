@@ -37,8 +37,6 @@ public class FarmScreenAll extends FullFunctionScreen {
 	public static AnimatedComponent boy;
 	public static AnimatedComponent girl;
 
-	private int currentAnimals;
-
 	public static PaneJenny animalPane;
 	public static PaneJenny plantPane;
 	public static PaneJenny patchPane;

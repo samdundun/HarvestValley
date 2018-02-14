@@ -57,70 +57,92 @@ public class BoxJenny extends CustomImageButton implements Clickable{
 		length = 5;
 	}
 
-//	public void act() {
-//		BoxJenny animal = FarmScreenAll.animalBox.get(index);
-//		String label = SamInventory.ITEMS[imageIndx + 6].getName().toLowerCase();
-//		System.out.println(index);					System.out.println(imageIndx);
-//		String name = ErikItem.getGraphic()[imageIndx + 6].getImageLocation();
-//		System.out.println(name);	System.out.println(animal.index);
-//		int dayLeft = animal.getLength() - animal.getCurrentTime();
-//		FarmScreenAll.animalPane.setX(animal.getX() + animal.getWidth() + 10);
-//		FarmScreenAll.animalPane.setY(animal.getY() - 50);
-//		FarmScreenAll.animalPane.setSrc(name);
-//		FarmScreenAll.animalPane.updateImg(FarmScreenAll.getView());
-//		FarmScreenAll.animalPane.setVisible(true);
-//		if(animal.getLength() != animal.getCurrentTime()) {
-//			FarmScreenAll.animalPane.getLabel().setText(dayLeft + " days until harvest");
-//			FarmScreenAll.animalPane.getHarvest().setAction(new Action() {
-//				public void act() {
-//					FarmScreenAll.animalPane.getLabel().setText("Can not harvest yet");
-//				}
-//			});
-//		}
-//		else {
-//			FarmScreenAll.animalPane.getLabel().setText("Ready to harvest");
-//			FarmScreenAll.animalPane.getHarvest().setAction(new Action() {
-//				public void act() {
-//					FarmScreenAll.disableButton(true);
-//					FarmScreenAll.animalPane.getImg().setVisible(false);
-//					FarmScreenAll.animalPane.setVisible(false);
-//				}
-//			} );
-//			animal.setAction(new Action() {
-//				public void act() {
-//					Graphic image = new Graphic(0,0,"resources/star.png");
-//					FarmScreenAll.first.setX(x + image.getWidth() + 10);
-//					FarmScreenAll.first.setY(y - 50);
-//					FarmScreenAll.first.setVisible(true);
-//					FarmScreenAll.first.update();
-//					FarmScreenAll.first.setIndex(imageIndx);
-//					FarmScreenAll.disableButton(false);
-//				}
-//			});
-//		}
-//		FarmScreenAll.animalPane.getItem().setText(label);
-//		FarmScreenAll.animalPane.update();
-//		FarmScreenAll.disableButton(false);
-//	}
-
 	public void changeAction(int i) {
 		imageIndx = i;
 		updateImg(index);
+		this.setEnabled(true);
+		this.setAction(new Action() {
+			
+			@Override
+			public void act() {BoxJenny animal = FarmScreenAll.animalBox.get(index);
+			String label = SamInventory.ITEMS[imageIndx + 6].getName().toLowerCase();
+			String name = ErikItem.getGraphic()[imageIndx + 6].getImageLocation();
+			System.out.println(name);	System.out.println(animal.index);
+			int dayLeft = animal.getLength() - animal.getCurrentTime();
+			FarmScreenAll.animalPane.setX(animal.getX() + animal.getWidth() + 10);
+			FarmScreenAll.animalPane.setY(animal.getY() - 50);
+			FarmScreenAll.animalPane.setSrc(name);
+			FarmScreenAll.animalPane.updateImg(FarmScreenAll.getView());
+			FarmScreenAll.animalPane.setVisible(true);
+			if(animal.getLength() != animal.getCurrentTime()) {
+				FarmScreenAll.animalPane.getLabel().setText(dayLeft + " days until harvest");
+				FarmScreenAll.animalPane.getHarvest().setAction(new Action() {
+					public void act() {
+						FarmScreenAll.animalPane.getLabel().setText("Can not harvest yet");
+					}
+				});
+			}
+			else {
+				FarmScreenAll.animalPane.getLabel().setText("Ready to harvest");
+				FarmScreenAll.animalPane.getHarvest().setAction(new Action() {
+					public void act() {
+						FarmScreenAll.disableButton(true);
+						FarmScreenAll.animalPane.getImg().setVisible(false);
+						FarmScreenAll.animalPane.setVisible(false);
+					}
+				} );
+				animal.setAction(new Action() {
+					public void act() {
+						Graphic image = new Graphic(0,0,"resources/star.png");
+						FarmScreenAll.first.setX(x + image.getWidth() + 10);
+						FarmScreenAll.first.setY(y - 50);
+						FarmScreenAll.first.setVisible(true);
+						FarmScreenAll.first.update();
+						FarmScreenAll.first.setIndex(imageIndx);
+						FarmScreenAll.disableButton(false);
+					}
+				});
+			}
+			FarmScreenAll.animalPane.getItem().setText(label);
+			FarmScreenAll.animalPane.update();
+			FarmScreenAll.disableButton(false);
+			}
+		});
+		grow();
+	}
 
+	private void grow() {
+			Thread grower = new Thread(new Runnable() {
+
+				public void run() {
+					//grows the crop base on the day and how many stage change the crop has
+					int stageTime =(time*3000)/length;
+					currentTime=0;
+					for(int i = 0; i< length; i++) {
+						try {
+							Thread.sleep(stageTime);
+						} catch (InterruptedException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+							//image.setIndex(stage++);
+							currentTime++;
+							update();
+						
+					}
+				}
+			});
+			grower.start();
+
+		}
+		
 	}
 
 	private void updateImg(int idx) {
 		SelectionPaneJane.setSrc(game.market.ErikItem.getGraphic()[imageIndx].getImageLocation());
 		String src = SelectionPaneJane.getSrc();
-		moveToBack(FarmScreenAll.animalBox.get(idx));
 		FarmScreenAll.animalBox.remove(idx);
-		BoxJenny animal = new BoxJenny(x + 25, y + 30, src, new Action() {
-
-			@Override
-			public void act() {
-				act();
-			}
-		}, FarmScreenAll.getView(), idx);
+		BoxJenny animal = new BoxJenny(x + 25, y + 30, src, null, FarmScreenAll.getView(), idx);
 		FarmScreenAll.animalBox.add(idx, animal);
 		MainMenu.farmScreen.addObjectToBack(animal);
 	}
