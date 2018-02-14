@@ -32,9 +32,10 @@ public class ErikInventoryScreen extends FullFunctionScreen {
 			new ErikItem("Wheat","Just plain old wheat",360,11,5),new ErikItem("Brown Chicken", "Cluck cluck", 250, 12,1),new ErikItem("White Chicken", "Cluck cluck", 250, 13,1),
 			new ErikItem("Black Chicken", "Cluck cluck", 250, 14,1),new ErikItem("Sheep", "BAAAAAAAAAAAH", 350, 15,2),
 			new ErikItem("Cow", "Mooooooo", 400, 16,2),new ErikItem("Pig", "SNORT SNORT", 450, 17,1),
-			new ErikItem("Brown Eggs", "", 200, 18, 0),new ErikItem("White Eggs", "", 200, 19,0),
-			new ErikItem("Black Eggs", "", 200, 20, 0),new ErikItem("Wool", "", 300, 21,0),
-			new ErikItem("Milk", "", 350, 22,0),new ErikItem("Meat", "", 500, 23,0)};
+			new ErikItem("Brown Eggs", "Organic", 200, 18, 0),new ErikItem("White Eggs", "Non-Organic", 200, 19,0),
+			new ErikItem("Black Eggs", "Does not contain egg whites", 200, 20, 0),new ErikItem("Wool", "Canada Goose", 300, 21,0),
+			new ErikItem("Milk", "An utter-disaster", 350, 22,0),new ErikItem("Meat", "Mmmmmmm tasty", 500, 23,0)};
+
 
 
 	public ErikInventoryScreen(int width, int height) {
