@@ -115,6 +115,8 @@ public class SelectionPaneJane extends Pane {
 						SelectionPaneJane.this.setSeedSelected(i);
 						FarmScreenAll.farmPatch.get(index).setTime(seeds.get(i).getTime());
 						FarmScreenAll.farmPatch.get(index).crop(seeds.get(i).getImageIndex());
+						invent.removeItem(seeds.get(i));
+						invent.save();
 						SelectionPaneJane.this.setVisible(false);
 						FarmScreenAll.disableButton(true);
 					}
@@ -126,6 +128,8 @@ public class SelectionPaneJane extends Pane {
 						System.out.println(animalIdx);
 						//setSrc(game.market.ErikItem.getGraphic()[animalIdx].getImageLocation());
 						FarmScreenAll.animalBox.get(index).changeAction(animal.get(j).getImageIndex());
+						invent.removeItem(animal.get(j));
+						invent.save();
 						SelectionPaneJane.this.setVisible(false);
 						FarmScreenAll.disableButton(true);
 					}
@@ -158,6 +162,7 @@ public class SelectionPaneJane extends Pane {
 			});
 			viewObjects.add(sell);
 			sell.setVisible(false);
+			sell.setEnabled(false);
 		}
 
 		

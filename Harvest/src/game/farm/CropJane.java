@@ -48,6 +48,7 @@ public class CropJane extends CustomImageButton {
 				FarmScreenAll.pane.getSelect().setX(i);
 				FarmScreenAll.pane.getCancel().setX(j);
 				FarmScreenAll.pane.getSell().setVisible(b);
+				FarmScreenAll.pane.getSell().setEnabled(b);
 				
 			}
 		});
