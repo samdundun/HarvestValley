@@ -27,9 +27,9 @@ public class SelectionPaneJane extends Pane {
 			new ErikItem("Black Chicken", "Cluck cluck", 250, 14,1),new ErikItem("Sheep", "BAAAAAAAAAAAH", 350, 15,2),
 			new ErikItem("Cow", "Mooooooo", 500, 16,2),new ErikItem("Pig", "SNORT SNORT", 250, 17,1),
 
-			new ErikItem("Brown Eggs", "", 300, 18, 0),new ErikItem("White Eggs", "", 50, 19,0),
-			new ErikItem("Black Eggs", "", 150, 20, 0),new ErikItem("Wool", "", 100, 21,0),
-			new ErikItem("Milk", "", 200, 22,0),new ErikItem("Meat", "", 400, 23,0)};
+			new ErikItem("Brown Eggs", "Made by white chickens", 300, 18, 5),new ErikItem("White Eggs", "Made by white chickens", 50, 19,5),
+			new ErikItem("Black Eggs", "A very special egg", 150, 20, 6),new ErikItem("Wool", "To keep you warm", 100, 21,2),
+			new ErikItem("Milk", "Fresh milk!", 200, 22,1),new ErikItem("Meat", "Yum yum", 400, 23,10)};
 
 	private Button cancel;
 	private Button select;
@@ -113,10 +113,10 @@ public class SelectionPaneJane extends Pane {
 				for(int i = 0; i < seeds.size(); i++) {
 					if(seeds.get(i).isSelected()) {
 						SelectionPaneJane.this.setSeedSelected(i);
-						FarmScreenAll.farmPatch.get(index).setTime(seeds.get(i).getTime());
-						FarmScreenAll.farmPatch.get(index).crop(seeds.get(i).getImageIndex());
 						invent.removeItem(seeds.get(i));
 						invent.save();
+						FarmScreenAll.farmPatch.get(index).setTime(seeds.get(i).getTime());
+						FarmScreenAll.farmPatch.get(index).crop(seeds.get(i).getImageIndex());
 						SelectionPaneJane.this.setVisible(false);
 						FarmScreenAll.disableButton(true);
 					}
@@ -125,11 +125,10 @@ public class SelectionPaneJane extends Pane {
 				for(int j=0; j<animal.size(); j++) {
 					if(animal.get(j).isSelected()) {
 						animalIdx = j + 12;
-						System.out.println(animalIdx);
 						//setSrc(game.market.ErikItem.getGraphic()[animalIdx].getImageLocation());
-						FarmScreenAll.animalBox.get(index).changeAction(animal.get(j).getImageIndex());
 						invent.removeItem(animal.get(j));
 						invent.save();
+						FarmScreenAll.animalBox.get(index).changeAction(animal.get(j).getImageIndex());
 						SelectionPaneJane.this.setVisible(false);
 						FarmScreenAll.disableButton(true);
 					}

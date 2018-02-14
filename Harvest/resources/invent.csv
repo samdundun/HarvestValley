@@ -1,13 +1,24 @@
 <<<<<<< HEAD
-0,false
+<<<<<<< HEAD
+100,true
+Pepper Seeds,Spicy,50,1,1
 =======
 <<<<<<< HEAD
-500,false
-Corn Seeds,Great crop to grow all year round,250,0,4
+150,true
 =======
-4200,true
+50,true
 >>>>>>> branch 'farm' of https://github.com/samdundun/HarvestValley.git
+Corn Seeds,Great crop to grow all year round,250,0,4
+<<<<<<< HEAD
+=======
+0,false
+>>>>>>> branch 'farm' of https://github.com/samdundun/HarvestValley.git
+>>>>>>> branch 'farm' of https://github.com/samdundun/HarvestValley.git
+=======
 Pepper Seeds,Spicy,50,1,1
-Potato Seeds,Just like me,150,2,3
 Strawberry Seeds,Sweeter than you,100,3,2
+White Chicken,Cluck cluck,250,13,1
+Sheep,BAAAAAAAAAAAH,350,15,2
+Wool,,100,21,0
+White Eggs,,50,19,0
 >>>>>>> branch 'farm' of https://github.com/samdundun/HarvestValley.git
