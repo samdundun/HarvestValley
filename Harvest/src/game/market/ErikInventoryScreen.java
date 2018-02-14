@@ -82,6 +82,7 @@ public class ErikInventoryScreen extends FullFunctionScreen {
 						MainMenu.game.setScreen(MainMenu.game.inventory);
 						i.setSelected(false);
 					}
+<<<<<<< HEAD
 
 				}
 
@@ -121,6 +122,47 @@ public class ErikInventoryScreen extends FullFunctionScreen {
 					i.update();
 
 
+=======
+
+				}
+
+				}
+
+			}
+		);
+		discard.setBackground(Color.red);
+		discard.setActiveBorderColor(Color.white);
+		discard.setCurve(0, 0);
+		discard.update();
+		viewObjects.add(discard);
+
+		grid = new Graphic(100,180, "resources/inventory.png");
+		viewObjects.add(grid);
+
+		int move = 1;
+		int width = 48;
+		int startingHeight = 202;
+		int height = 48;
+
+		invent.sort();
+		for(ErikItem i:invent.getItems()) {
+			i.setAction(new Action() {
+
+
+				public void act() {
+					description.setText(i.getName()+"\n"+i.getDescription()  + "\nGrowth time : " + i.getTime() + " Days");
+					amount.setText("Amount: " + Integer.toString(invent.getAmountArray()[i.getImageIndex()]));
+
+					for(int k = 0; k < items.length;k++) {
+						items[k].setSelected(false);
+					}
+
+					items[i.getImageIndex()].setSelected(true);
+
+					i.update();
+
+
+>>>>>>> refs/heads/develop
 				}
 			});
 			if(invent.getAmountArray()[i.getImageIndex()] > 0 && i.isAdded() == false) {

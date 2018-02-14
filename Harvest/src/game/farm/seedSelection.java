@@ -7,4 +7,6 @@ import game.market.ErikItem;
 
 public interface seedSelection {
 	ArrayList<ErikItem> getSeedInventory();
+
 }
+

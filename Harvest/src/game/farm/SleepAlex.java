@@ -120,7 +120,9 @@ public class SleepAlex extends FullFunctionScreen {//can use ImageTextButton, Cu
 			/*variables inside the setup part of a for loop are local -- be cautious when using them in the function -- especially in the action method of a button*/
 			int xspacer = 83;
 			int c = actionInteger;
+
 			LubnaImageButton holder = new LubnaImageButton(actionInteger*xspacer,75,90,150, imageSources.get(actionInteger), new Action() {
+
 				public void act() {
 					/*TextArea info = new TextArea(actionInteger*83, 300, 100, 100, "You have created" + 
 							cropAnimalAndProductCount.get(actionInteger) + cropAnimalAndProductNames.get(actionInteger) + "." + 

@@ -74,13 +74,15 @@ public class SelectionPaneJane extends Pane {
 				FarmScreenAll.disableButton(true);
 			}
 
+
 		});
 		viewObjects.add(cancel);
 
 
-		
+
 
 		TextLabel label = new TextLabel(15, 0, 150, 50, "Please select an item");
+
 		viewObjects.add(label);
 
 		//		int move = 0;

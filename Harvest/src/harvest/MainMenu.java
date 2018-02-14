@@ -11,9 +11,11 @@ import game.mainScreen.LubnaMenuScreen;
 import game.mainScreen.JessiMusicPlayer;
 import game.mainScreen.JessiObjectivesScreen;
 import game.mainScreen.PlaceHolderScreen;
+
 import game.mainScreen.MimiSaveScreen;
 import game.mainScreen.JessiSound;
 import game.mainScreen.JessiSoundScreen;
+
 import game.market.SamBuyingScreen;
 import game.market.ErikInventoryScreen;
 import game.market.ErikSellingScreen;
@@ -34,9 +36,11 @@ public class MainMenu extends GUIApplication {
 	public static FarmScreenAll farmScreen;
 	public static SamBuyingScreen shop;
 	public static ErikSellingScreen sell;
+
 	public static LubnaMenuScreen screen;
 	public static JessiObjectivesScreen objectives;
 	//public static JessiSoundScreen soundTracks;
+
 	public static ErikInventoryScreen inventory;
 	public static PlaceHolderScreen placeHolder;
 	public static MimiSaveScreen saveMimi;

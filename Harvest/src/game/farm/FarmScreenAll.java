@@ -5,6 +5,7 @@ import java.awt.Container;
 import java.util.ArrayList;
 import java.util.List;
 
+
 import game.mainScreen.JessiBoyCharacter;
 import game.mainScreen.MimiGirlCharacter;
 import game.mainScreen.LubnaImageButton;
@@ -32,7 +33,7 @@ public class FarmScreenAll extends FullFunctionScreen {
 	public static SelectionPaneJane first;
 
 	public static ArrayList<CropJane> farmPatch;
-	private ArrayList<EmptyPatch> emptyFarmPatch;
+	public static ArrayList<EmptyPatch> emptyFarmPatch;
 	public static ArrayList<BoxJenny> animalBox;
 
 
@@ -207,7 +208,7 @@ public class FarmScreenAll extends FullFunctionScreen {
 				viewObjects.add(patch);
 			}
 			else {
-				EmptyPatch emptyPatch= new EmptyPatch(start+((i-6)*68), 278+space+space, 63, 50, "For Sell",new Color(200, 125, 10), null,i);
+				EmptyPatch emptyPatch= new EmptyPatch(start+((i-6)*68), 278+space+space, 63, 50, "For Sale",new Color(200, 125, 10), null,i);
 				emptyPatch.update();
 				emptyFarmPatch.add(emptyPatch);
 				viewObjects.add(emptyPatch);
@@ -233,6 +234,11 @@ public class FarmScreenAll extends FullFunctionScreen {
 
 	public void setWhich(String s) {
 		which = s;
+	}
+
+	public static void disableEmptyPatch(boolean b, int i) {
+			emptyFarmPatch.get(i).setEnabled(b);
+		
 	}
 	
 }

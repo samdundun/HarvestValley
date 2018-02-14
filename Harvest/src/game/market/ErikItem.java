@@ -12,6 +12,7 @@ import guiTeacher.interfaces.Clickable;
 import guiTeacher.interfaces.DrawInstructions;
 
 public class ErikItem extends CustomImageButton implements Clickable{
+<<<<<<< HEAD
 
 	public static final Graphic[] ITEMS = {new Graphic(0,0,48,48,"resources/cornseeds.png"),
 			new Graphic(0,0,48,48,"resources/pepperseeds.png"),new Graphic(0,0,48,48,"resources/potatoseeds.png"),
@@ -28,6 +29,24 @@ public class ErikItem extends CustomImageButton implements Clickable{
 
 			new Graphic(0,0,48,48,"resources/meat.png")};
 
+=======
+
+	public static final Graphic[] ITEMS = {new Graphic(0,0,48,48,"resources/cornseeds.png"),
+			new Graphic(0,0,48,48,"resources/pepperseeds.png"),new Graphic(0,0,48,48,"resources/potatoseeds.png"),
+			new Graphic(0,0,48,48,"resources/strawberryseeds.png"),new Graphic(0,0,48,48,"resources/tomatoseeds.png"),
+			new Graphic(0,0,48,48,"resources/wheatseeds.png"), new Graphic(0,0,48,48,"resources/corn.png"),
+			new Graphic(0,0,48,48,"resources/pepper.png"),new Graphic(0,0,48,48,"resources/potato.png"),
+			new Graphic(0,0,48,48,"resources/strawberry.png"),new Graphic(0,0,48,48,"resources/tomato.png"),
+			new Graphic(0,0,48,48,"resources/wheat.png"),new Graphic(0,0,48,48,"resources/brownChicken.png"),
+			new Graphic(0,0,48,48,"resources/whiteChicken.png"),new Graphic(0,0,48,48,"resources/blackChicken.png"),
+			new Graphic(0,0,48,48,"resources/sheep.png"),new Graphic(0,0,48,48,"resources/cow.png"),
+			new Graphic(0,0,48,48,"resources/pig.png"),new Graphic(0,0,48,48,"resources/brownEgg.png"),
+			new Graphic(0,0,48,48,"resources/whiteEgg.png"),new Graphic(0,0,48,48,"resources/blackEgg.png"),
+			new Graphic(0,0,48,48,"resources/wool.png"),new Graphic(0,0,48,48,"resources/milk.png"),
+
+			new Graphic(0,0,48,48,"resources/meat.png")};
+
+>>>>>>> refs/heads/develop
 	
 	private String name;
 	private int image;
