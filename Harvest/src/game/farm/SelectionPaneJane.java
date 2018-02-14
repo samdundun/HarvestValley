@@ -148,7 +148,9 @@ public class SelectionPaneJane extends Pane {
 					MainMenu.farmScreen.remove(FarmScreenAll.farmPatch.get(index));
 					FarmScreenAll.farmPatch.remove(index);
 					invent.setGold(invent.getGold()+1000);
+					invent.save();
 					MainMenu.farmScreen.addObjectToBack(FarmScreenAll.emptyFarmPatch.get(patchIndex));
+					FarmScreenAll.emptyFarmPatch.get(patchIndex).setBought(false);
 					FarmScreenAll.pane.setVisible(false);
 					FarmScreenAll.disableButton(true);
 					
