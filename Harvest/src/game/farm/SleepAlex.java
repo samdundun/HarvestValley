@@ -221,12 +221,12 @@ public class SleepAlex extends FullFunctionScreen {//can what2 use ImageTextButt
 		cropAnimalAndProductNames.add("cows");
 		cropAnimalAndProductNames.add("pigs");*/
 		
-		cropAnimalAndProductNames.add("brown eggs");
-		cropAnimalAndProductNames.add("white eggs");
-		cropAnimalAndProductNames.add("black eggs");
-		cropAnimalAndProductNames.add("wool");
-		cropAnimalAndProductNames.add("milk");
-		cropAnimalAndProductNames.add("meat");
+		cropAnimalAndProductNames.add("Brown Eggs");
+		cropAnimalAndProductNames.add("White Eggs");
+		cropAnimalAndProductNames.add("Black Eggs");
+		cropAnimalAndProductNames.add("Wool");
+		cropAnimalAndProductNames.add("Milk");
+		cropAnimalAndProductNames.add("Meat");
 		
 		cropAnimalAndProductCount.add(corn);
 		cropAnimalAndProductCount.add(pepper);
@@ -269,27 +269,32 @@ public class SleepAlex extends FullFunctionScreen {//can what2 use ImageTextButt
 	}
 	
 
-	//call when: 
-	public static void AnimalCropIncrement() {
-		System.out.println(cropAnimalAndProductNames);
-		System.out.println(cropAnimalAndProductCount);
+	//call when:
+	//consider making two different functions for incrementing: one for crops and one for animals
+	public static void cropIncrement() {
 		int myNum = CropJane.impNum;
-		int mySecondNum = CropJane.impNum;
-		
+		System.out.println(myNum);
 		for(int i = 0; i<6;i++) {
 			if(cropAnimalAndProductNames.get(myNum-6).equals(cropAnimalAndProductNames.get(i))) {
 				cropAnimalAndProductCount.set(i, cropAnimalAndProductCount.get(i)+1);
 				//get the interface working
 			}
-			
 		}
-		/*
+	}
+	
+	public static void animalIncrement() {
+		int mySecondNum = BoxJenny.impNumAlex;
+		System.out.println(mySecondNum);		
 		for(int i =0;i<6;i++) {
-			if(cropAnimalAndProductNames.get(mySecondNum).equals(cropAnimalAndProductNames.get(i+6))) {
+			if(cropAnimalAndProductNames.get(mySecondNum-12).equals(cropAnimalAndProductNames.get(i+6))) {
 				cropAnimalAndProductCount.set(i+6, cropAnimalAndProductCount.get(i+6)+1);
 			}
 			
-		}*/
+		}
+	}
+	
+	public static void AnimalCropIncrement() {
+		
 		/*
 		for(int i = 0;i < cropAnimalAndProductNames.size();i++) {
 			if(animalCrop.equals(cropAnimalAndProductNames.get(i))) {

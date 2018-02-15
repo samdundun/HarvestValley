@@ -18,6 +18,9 @@ public class BoxJenny extends CustomImageButton implements Clickable{
 
 	private int imageIndx;
 	private int index;
+	
+	public static int impNumAlex;
+	
 	private int length;
 	private int stage;
 	private int time;
@@ -89,6 +92,10 @@ public class BoxJenny extends CustomImageButton implements Clickable{
 							FarmScreenAll.animalPane.getImg().setVisible(false);
 							FarmScreenAll.animalPane.setVisible(false);
 							invent.addItem(SelectionPaneJane.items[imageIndx + 6]);
+							
+							impNumAlex = imageIndx+6;
+							SleepAlex.animalIncrement();
+							
 							invent.save();
 							grow();
 						}
