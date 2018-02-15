@@ -8,6 +8,7 @@ import java.util.List;
 import javax.swing.JFrame;
 
 import game.farm.FarmScreenAll;
+import game.farm.SelectionPaneJane;
 import guiTeacher.components.Action;
 import guiTeacher.components.Button;
 import guiTeacher.components.Graphic;
@@ -98,7 +99,7 @@ public class SamBuyingScreen extends FullFunctionScreen implements FileRequester
 			@Override
 			public void act() {
 
-				MainMenu.game.farmScreen = new FarmScreenAll(getWidth(), getHeight());
+				MainMenu.game.farmScreen.pane = new SelectionPaneJane(MainMenu.game.farmScreen, 400, 300);
 				MainMenu.game.setScreen(MainMenu.farmScreen);
 				MainMenu.game.inventory = new ErikInventoryScreen(getWidth(),getHeight());
 

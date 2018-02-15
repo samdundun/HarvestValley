@@ -17,8 +17,13 @@ import harvest.MainMenu;
 
 public class CropJane extends CustomImageButton implements AlexLeonInterface {
 	
-	private int imageIndx;
-	private int index;
+	//private int imageIndx;
+	//private int index;
+	private static int imageIndx;
+	private static int index;
+	private static int impNum;
+	public CropJane alex;
+	
 	private int patchIndex;
 	private CropImageJane image;
 	private int length;
@@ -74,16 +79,17 @@ public class CropJane extends CustomImageButton implements AlexLeonInterface {
 		startGrowing();
 	}
 	private void changeAction() {
-		invent = new SamInventory();
-		invent.load();
-		invent.sort();
-		FarmScreenAll.pane.setSeeds(invent.getSeedSelection());
+//		invent = new SamInventory();
+//		invent.load();
+//		invent.sort();
+//		FarmScreenAll.pane.setSeeds(invent.getSeedSelection());
 		this.setAction(new Action() {
 			
 			@Override
 			public void act() {
 				PaneJenny plantPane =FarmScreenAll.plantPane;
 				CropJane currentPatch=FarmScreenAll.farmPatch.get(index);
+				
 				String cropName = SelectionPaneJane.items[currentPatch.imageIndx+6].getName().toLowerCase();
 				int dayLeft =currentPatch.getLength()-currentPatch.getCurrentTime();
 				setPosition();
@@ -111,6 +117,12 @@ public class CropJane extends CustomImageButton implements AlexLeonInterface {
 							plantPane.getImg().setVisible(false);
 							FarmScreenAll.disableButton(true);
 							invent.addItem(SelectionPaneJane.items[currentPatch.imageIndx+6]);
+							
+							SleepAlex.AnimalCropIncrement();
+							alex = currentPatch;
+							impNum = alex.imageIndx+6;
+							//Jane uses the items array
+							
 							invent.save();
 							currentPatch.setAction(new Action() {
 								
@@ -130,6 +142,7 @@ public class CropJane extends CustomImageButton implements AlexLeonInterface {
 				plantPane.getItem().setText(cropName);
 				plantPane.update();
 				FarmScreenAll.disableButton(false);
+				
 				
 			}
 
@@ -211,11 +224,13 @@ public class CropJane extends CustomImageButton implements AlexLeonInterface {
 		return patchIndex;
 	}
 
-	@Override
-	public int getCurrentPatch() {
+	public static int getCurrentPatch() {
+		return impNum;
+	}
+	/*public int getCurrentPatch() {
 		return FarmScreenAll.farmPatch.get(index).imageIndx+6;
 		
-	}
-
+	}*/
+	//break properties into many variables and get functions and see what needs to get casted
 
 }
