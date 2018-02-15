@@ -79,10 +79,10 @@ public class CropJane extends CustomImageButton implements AlexLeonInterface {
 		startGrowing();
 	}
 	private void changeAction() {
-//		invent = new SamInventory();
-//		invent.load();
-//		invent.sort();
-//		FarmScreenAll.pane.setSeeds(invent.getSeedSelection());
+		invent = new SamInventory();
+		invent.load();
+		invent.sort();
+		FarmScreenAll.pane.setSeeds(invent.getSeedSelection());
 		this.setAction(new Action() {
 			
 			@Override

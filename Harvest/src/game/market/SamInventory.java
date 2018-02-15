@@ -39,8 +39,6 @@ public class SamInventory implements game.farm.ItemSelectionJane {
 	public SamInventory() {
 		invent = new ArrayList<ErikItem>();
 		amount = new int[ITEMS.length];
-save();
-
 	}
 
 	public void addBasics() {	
