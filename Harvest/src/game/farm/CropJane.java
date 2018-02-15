@@ -62,6 +62,7 @@ public class CropJane extends CustomImageButton {
 	}
 	
 	public void crop(int i) {
+		System.out.println("i got here");
 		changeAction();
 		imageIndx=i;
 		time=SelectionPaneJane.items[i].getTime();
