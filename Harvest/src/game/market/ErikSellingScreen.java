@@ -170,7 +170,7 @@ public class ErikSellingScreen extends FullFunctionScreen implements FileRequest
 				@Override
 				public void act() {
 					description.setText(i.getName()+"\n"+i.getDescription() + "\nGrowth time : " + i.getTime() + " Days");
-					price.setText("Selling Price: "+ i.getValue());
+					price.setText("Selling Price: "+ items[i.getImageIndex()].getValue());
 					amount.setText("Amount: " + Integer.toString(invent.getAmountArray()[i.getImageIndex()]));
 
 					for(int k = 0; k < items.length;k++) {
