@@ -118,7 +118,7 @@ public class CropJane extends CustomImageButton implements AlexLeonInterface {
 							FarmScreenAll.disableButton(true);
 							invent.addItem(SelectionPaneJane.items[currentPatch.imageIndx+6]);
 							
-							SleepAlex.AnimalCropIncrement();
+							//SleepAlex.AnimalCropIncrement();
 							alex = currentPatch;
 							impNum = alex.imageIndx+6;
 							//Jane uses the items array
@@ -224,9 +224,15 @@ public class CropJane extends CustomImageButton implements AlexLeonInterface {
 		return patchIndex;
 	}
 
-	public static int getCurrentPatch() {
-		return impNum;
+	@Override
+	public int getCurrentPatch() {
+		// TODO Auto-generated method stub
+		return 0;
 	}
+
+//	public static int getCurrentPatch() {
+//		return impNum;
+//	}
 	/*public int getCurrentPatch() {
 		return FarmScreenAll.farmPatch.get(index).imageIndx+6;
 		
