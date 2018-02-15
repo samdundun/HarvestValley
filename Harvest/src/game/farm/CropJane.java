@@ -115,14 +115,14 @@ public class CropJane extends CustomImageButton {
 							plantPane.setVisible(false);
 							plantPane.getImg().setVisible(false);
 							FarmScreenAll.disableButton(true);
-							//invent.addItem(SelectionPaneJane.items[currentPatch.imageIndx+6]);
+							invent.addItem(SelectionPaneJane.items[currentPatch.imageIndx+6]);
 							
 							impNum = currentPatch.imageIndx+6;
 							SleepAlex.AnimalCropIncrement();
 							
 							//Jane uses the items array
 							
-							//invent.save();
+							invent.save();
 							currentPatch.setAction(new Action() {
 								
 								@Override

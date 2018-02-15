@@ -221,9 +221,9 @@ public class SleepAlex extends FullFunctionScreen {//can what2 use ImageTextButt
 		cropAnimalAndProductNames.add("cows");
 		cropAnimalAndProductNames.add("pigs");*/
 		
-		cropAnimalAndProductNames.add("brownEggs");
-		cropAnimalAndProductNames.add("whiteEggs");
-		cropAnimalAndProductNames.add("blackEggs");
+		cropAnimalAndProductNames.add("brown eggs");
+		cropAnimalAndProductNames.add("white eggs");
+		cropAnimalAndProductNames.add("black eggs");
 		cropAnimalAndProductNames.add("wool");
 		cropAnimalAndProductNames.add("milk");
 		cropAnimalAndProductNames.add("meat");
@@ -263,53 +263,16 @@ public class SleepAlex extends FullFunctionScreen {//can what2 use ImageTextButt
 			//System.out.println("Selling: "+sellingPriceCropAnimalProducts); -- used to check if values are being stored
 			sellingPrice+=60;
 		}
-		
-		
-		//System.out.println(cropAnimalAndProductCount);
-		//System.out.println(cashFromCropAnimalProducts);
 			//create textboxes or clickable boxes for each item of information about crops and animals
 			//have a panel that lightens all products the player can buy and darkens (perhaps an image of a lock) of all the products the user may not by.
 			//create a class that makes an image lighten or darken w/ a lock image under specific game conditions
 	}
 	
 
-	private void addCAPImages(List<Visible> viewObjects) {
-		//create an array of images AND place them strategically
-		//ensure proper spacing
-		imageSources.add("pepperSt6.png");
-		//create an ArrayList of string addresses or an ArrayList of ImageButtons, not both
-		/*
-		imagesCropAnimalProducts.add("resources/sleep.png");
-		imagesCropAnimalProducts.add("resources/sleep.png");
-		imagesCropAnimalProducts.add("resources/sleep.png");
-		imagesCropAnimalProducts.add("resources/sleep.png");
-		imagesCropAnimalProducts.add("resources/sleep.png");
-		imagesCropAnimalProducts.add("resources/sleep.png");
-		imagesCropAnimalProducts.add("resources/sleep.png");
-		imagesCropAnimalProducts.add("resources/sleep.png");
-		imagesCropAnimalProducts.add("resources/sleep.png");
-		imagesCropAnimalProducts.add("resources/sleep.png");
-		imagesCropAnimalProducts.add("resources/sleep.png");*/
-		
-		for(int i = 0; i<imageSources.size();i++) {
-			LubnaImageButton holder = new LubnaImageButton(i*75, 0, 50, 50, SleepAlex.getImageSources().get(i), new Action() {
-				
-				@Override
-				public void act() {
-					// TODO Auto-generated method stub
-					//create a text label that has a semi-defined string -- variables will include the name of the product
-					//and buying and selling price
-					//"You have created" + num + CAP. "You have made" + cash + "from" + CAP
-				}
-			});
-			viewObjects.add(holder);
-		}
-	}
-	
-
 	//call when: 
 	public static void AnimalCropIncrement() {
-		
+		System.out.println(cropAnimalAndProductNames);
+		System.out.println(cropAnimalAndProductCount);
 		int myNum = CropJane.impNum;
 		int mySecondNum = CropJane.impNum;
 		
