@@ -19,17 +19,15 @@ public class CropJane extends CustomImageButton {
 	
 	private int imageIndx;
 	private int index;
-<<<<<<< HEAD
+
 	//private static int imageIndx;
 	//private static int index;
 	//private static int impNum;
 	//public CropJane alex;
-=======
+
 	//public static int imageIndx;
 	//public static int index;
 	public static int impNum;
->>>>>>> branch 'develop' of https://github.com/samdundun/HarvestValley.git
-	
 	private int patchIndex;
 	private CropImageJane image;
 	private int length;
