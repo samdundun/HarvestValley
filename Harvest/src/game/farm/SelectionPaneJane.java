@@ -113,8 +113,8 @@ public class SelectionPaneJane extends Pane {
 				for(int i = 0; i < seeds.size(); i++) {
 					if(seeds.get(i).isSelected()) {
 						SelectionPaneJane.this.setSeedSelected(i);
-						invent.removeItem(seeds.get(i));
-						invent.save();
+//						invent.removeItem(seeds.get(i));
+//						invent.save();
 						FarmScreenAll.farmPatch.get(index).setTime(seeds.get(i).getTime());
 						FarmScreenAll.farmPatch.get(index).crop(seeds.get(i).getImageIndex());
 						SelectionPaneJane.this.setVisible(false);
@@ -133,6 +133,7 @@ public class SelectionPaneJane extends Pane {
 						FarmScreenAll.disableButton(true);
 					}
 				}
+				System.out.print(seedSelectedInd);
 				label.setText("Please select an item");
 			}
 

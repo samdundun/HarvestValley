@@ -17,12 +17,12 @@ import harvest.MainMenu;
 
 public class CropJane extends CustomImageButton implements AlexLeonInterface {
 	
-	//private int imageIndx;
-	//private int index;
-	private static int imageIndx;
-	private static int index;
-	private static int impNum;
-	public CropJane alex;
+	private int imageIndx;
+	private int index;
+	//private static int imageIndx;
+	//private static int index;
+	//private static int impNum;
+	//public CropJane alex;
 	
 	private int patchIndex;
 	private CropImageJane image;
@@ -119,8 +119,8 @@ public class CropJane extends CustomImageButton implements AlexLeonInterface {
 							invent.addItem(SelectionPaneJane.items[currentPatch.imageIndx+6]);
 							
 							//SleepAlex.AnimalCropIncrement();
-							alex = currentPatch;
-							impNum = alex.imageIndx+6;
+//							alex = currentPatch;
+//							impNum = alex.imageIndx+6;
 							//Jane uses the items array
 							
 							invent.save();

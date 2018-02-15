@@ -24,7 +24,7 @@ public class EmptyPatch extends Button {
 			public void act() {
 				openPane();
 				createInvent();
-				if(invent.getGold()>=100) {
+				if(invent.getGold()>=1000) {
 				FarmScreenAll.patchPane.getHarvest().setAction(new Action() {
 					
 					@Override
@@ -35,7 +35,7 @@ public class EmptyPatch extends Button {
 						MainMenu.farmScreen.addObjectToBack(newPatch);
 						MainMenu.farmScreen.remove(EmptyPatch.this);
 						bought=true;
-						invent.setGold(invent.getGold()-100);
+						invent.setGold(invent.getGold()-1000);
 						invent.save();
 						FarmScreenAll.patchPane.setVisible(false);
 						FarmScreenAll.patchPane.getImg().setVisible(false);
