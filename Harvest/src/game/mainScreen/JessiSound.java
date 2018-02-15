@@ -1,3 +1,5 @@
+// This class is currently not in used
+// Only used when there's a single sound track to play
 package game.mainScreen;
 
 import java.applet.Applet;

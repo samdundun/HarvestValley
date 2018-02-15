@@ -45,7 +45,7 @@ public class MainMenu extends GUIApplication {
 	public static MimiSaveScreen saveMimi;
 	public static SleepAlex sleep;
 	
-	private JessiSound sound;
+	//private JessiSound sound;
 	
 	public MainMenu(int width, int height) {
 		super(width, height);
@@ -84,6 +84,7 @@ public class MainMenu extends GUIApplication {
 
 		setScreen(screen);
 
+	//when there's only one sound file use this
 	//JessiSound.sound1.play();
 	}
 
@@ -96,11 +97,11 @@ public class MainMenu extends GUIApplication {
 		
 		JessiMusicPlayer player = new JessiMusicPlayer("sound","sound2","sound3","sound4","sound5");
 		player.run();
-		//06 - Spring (The Valley Comes Alive) sound
-		//05 - Spring (It's A Big World Outside) sound2
-		//13 - Summer (Nature's Crescendo) sound3
-		//27 - Winter (Nocturne Of Ice) sound4
-		//20 - Fall (The Smell Of Mushroom) sound5
+		//06 - Spring (The Valley Comes Alive) = sound
+		//05 - Spring (It's A Big World Outside) = sound2
+		//13 - Summer (Nature's Crescendo) = sound3
+		//27 - Winter (Nocturne Of Ice) = sound4
+		//20 - Fall (The Smell Of Mushroom) = sound5
 	}
 	//
 

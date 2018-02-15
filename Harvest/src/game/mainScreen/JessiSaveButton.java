@@ -1,3 +1,5 @@
+// class not used
+// the character and items in the inventory are auto saved
 package game.mainScreen;
 
 import java.util.List;
