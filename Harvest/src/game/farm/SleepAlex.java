@@ -162,7 +162,7 @@ public class SleepAlex extends FullFunctionScreen {//can use ImageTextButton, Cu
 //							"You have made" +cashFromCropAnimalProducts.get(c)+ "from" + 
 					info.setText("You have created " + 
 							cropAnimalAndProductCount.get(c) + " " + cropAnimalAndProductNames.get(c) + ". " + 
-							"You have made " +cashFromCropAnimalProducts.get(c)+ " from " + 
+							"Your products have enabled you to sell $ " +items[c].getValue()*cropAnimalAndProductCount.get(c)+ " worth of " + 
 							cropAnimalAndProductNames.get(c)+".");
 //					if(!infoDisplayed)
 //						viewObjects.add(info);
@@ -216,9 +216,9 @@ public class SleepAlex extends FullFunctionScreen {//can use ImageTextButton, Cu
 		cropAnimalAndProductNames.add("cows");
 		cropAnimalAndProductNames.add("pigs");*/
 		
-		cropAnimalAndProductNames.add("brownEggs");
-		cropAnimalAndProductNames.add("whiteEggs");
-		cropAnimalAndProductNames.add("blackEggs");
+		cropAnimalAndProductNames.add("brown eggs");
+		cropAnimalAndProductNames.add("white eggs");
+		cropAnimalAndProductNames.add("black eggs");
 		cropAnimalAndProductNames.add("wool");
 		cropAnimalAndProductNames.add("milk");
 		cropAnimalAndProductNames.add("meat");
@@ -268,24 +268,25 @@ public class SleepAlex extends FullFunctionScreen {//can use ImageTextButton, Cu
 	}
 	
 	//call when: 
-	public void AnimalCropIncrement() {
+	public static void AnimalCropIncrement() {
 		
-		int myNum = CropJane.getCurrentPatch()-6;
-		int mySecondNum = CropJane.getCurrentPatch()-18;
+		System.out.println(CropJane.impNumAlex);
+		int myNum = CropJane.impNumAlex;
+		int mySecondNum = CropJane.impNumAlex;
 		
 		for(int i = 0; i<6;i++) {
-			if(cropAnimalAndProductNames.get(myNum).equals(cropAnimalAndProductNames.get(i))) {
+			if(cropAnimalAndProductNames.get(myNum-6).equals(cropAnimalAndProductNames.get(i))) {
 				cropAnimalAndProductCount.set(i, cropAnimalAndProductCount.get(i)+1);
 				//get the interface working
 			}
 			
 		}
-		for(int i =0;i<6;i++) {
+		/*for(int i =0;i<6;i++) {
 			if(cropAnimalAndProductNames.get(mySecondNum).equals(cropAnimalAndProductNames.get(i+6))) {
 				cropAnimalAndProductCount.set(i+6, cropAnimalAndProductCount.get(i+6)+1);
 			}
 			
-		}
+		}*/
 		/*
 		for(int i = 0;i < cropAnimalAndProductNames.size();i++) {
 			if(animalCrop.equals(cropAnimalAndProductNames.get(i))) {

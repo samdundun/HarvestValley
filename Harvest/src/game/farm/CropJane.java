@@ -13,14 +13,12 @@ import guiTeacher.components.Graphic;
 import guiTeacher.interfaces.DrawInstructions;
 import harvest.MainMenu;
 
-public class CropJane extends CustomImageButton implements AlexLeonInterface {
+public class CropJane extends CustomImageButton {
 	
-	//private int imageIndx;
-	//private int index;
-	private static int imageIndx;
-	private static int index;
-	private static int impNum;
-	public CropJane alex;
+	private int imageIndx;
+	private int index;
+	
+	public static int impNumAlex;
 	
 	private int patchIndex;
 	private CropImageJane image;
@@ -116,9 +114,8 @@ public class CropJane extends CustomImageButton implements AlexLeonInterface {
 							FarmScreenAll.disableButton(true);
 							invent.addItem(SelectionPaneJane.items[currentPatch.imageIndx+6]);
 							
+							impNumAlex = currentPatch.imageIndx+6;
 							SleepAlex.AnimalCropIncrement();
-							alex = currentPatch;
-							impNum = alex.imageIndx+6;
 							//Jane uses the items array
 							
 							invent.save();
@@ -221,13 +218,14 @@ public class CropJane extends CustomImageButton implements AlexLeonInterface {
 		return patchIndex;
 	}
 
-	public static int getCurrentPatch() {
-		return impNum;
+	/*public static int getCurrentPatch() {
+		return impNumAlex;
 	}
-	/*public int getCurrentPatch() {
+	public int getCurrentPatch() {
 		return FarmScreenAll.farmPatch.get(index).imageIndx+6;
 		
 	}*/
 	//break properties into many variables and get functions and see what needs to get casted
+	//intended to be used by AlexLeonInterface
 
 }
