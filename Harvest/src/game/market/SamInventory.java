@@ -135,7 +135,6 @@ public class SamInventory implements game.farm.ItemSelectionJane {
 			fileName = "resources/invent.csv";
 			opened = read(new File(fileName));
 
-
 		}
 
 	}

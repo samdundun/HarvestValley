@@ -20,7 +20,7 @@ public class CropJane extends CustomImageButton {
 	private int imageIndx;
 	private int index;
 	public static int impNum;
-	
+
 	private int patchIndex;
 	private CropImageJane image;
 	private int length;

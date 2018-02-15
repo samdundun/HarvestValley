@@ -69,7 +69,7 @@ public class LubnaMenuScreen extends ClickableScreen implements Runnable {
 			public void act() {
 				MainMenu.isExit= true;
 				System.exit(0);
-				// place holder, i don't know how to exit the java program.
+				
 			}
 		});
 		viewObjects.add(exit);
