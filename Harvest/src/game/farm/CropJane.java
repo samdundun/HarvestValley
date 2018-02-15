@@ -116,7 +116,7 @@ public class CropJane extends CustomImageButton {
 							
 							impNumAlex = currentPatch.imageIndx+6;
 							SleepAlex.AnimalCropIncrement();
-							//Jane uses the items array
+							//Jane uses the items array!
 							
 							invent.save();
 							currentPatch.setAction(new Action() {
