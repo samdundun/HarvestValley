@@ -112,7 +112,7 @@ public class SelectionPaneJane extends Pane {
 			public void act() {
 				for(int i = 0; i < seeds.size(); i++) {
 					if(seeds.get(i).isSelected()) {
-						System.out.println(i);
+						System.out.println("hey hey");
 						SelectionPaneJane.this.setSeedSelected(i);
 //						invent.removeItem(seeds.get(i));
 //						invent.save();
