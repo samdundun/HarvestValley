@@ -2,13 +2,9 @@ package game.farm;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
-import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.plaf.basic.BasicInternalFrameTitlePane.MoveAction;
-
 import game.market.SamInventory;
-import game.market.ErikInventoryScreen;
 import game.market.ErikItem;
 import guiTeacher.components.Action;
 import guiTeacher.components.CustomImageButton;
