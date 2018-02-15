@@ -124,17 +124,20 @@ public class SleepAlex extends FullFunctionScreen {//can use ImageTextButton, Cu
 		Graphic backgroundTwo = new Graphic(100, 0,getWidth(),getHeight(), "resources/nightSky.png");
 		viewObjects.add(backgroundTwo);
 		
+		imageSources.add("resources/cornSt6.png");
 		imageSources.add("resources/pepperSt6.png");
+		imageSources.add("resources/potatoSt6.png");
 		imageSources.add("resources/strawberrySt6.png");
 		imageSources.add("resources/tomatoSt6.png");
-		imageSources.add("resources/cornSt6.png");
 		imageSources.add("resources/wheatSt5.png");
-		imageSources.add("resources/cow.png");
-		imageSources.add("resources/sheep.png");
-		imageSources.add("resources/pig.png");
+		
 		imageSources.add("resources/brownEgg.png");
 		imageSources.add("resources/whiteEgg.png");
 		imageSources.add("resources/blackEgg.png");
+		imageSources.add("resources/sheep.png");
+		imageSources.add("resources/cow.png");
+		imageSources.add("resources/pig.png");
+		
 		
 		actionInteger = 0;
 		addNamesAndCountToArray();
@@ -149,9 +152,9 @@ public class SleepAlex extends FullFunctionScreen {//can use ImageTextButton, Cu
 		
 		for(int actionInteger = 0; actionInteger<imageSources.size();actionInteger++) {
 			/*variables inside the setup part of a for loop are local -- be cautious when using them in the function -- especially in the action method of a button*/
-			int xspacer = 83;
+			int xspacer = 68;
 			int c = actionInteger;
-			ImageButton holder = new ImageButton(actionInteger*xspacer,75,90,150, imageSources.get(actionInteger), new Action() {
+			ImageButton holder = new ImageButton(actionInteger*xspacer,75,88,150, imageSources.get(actionInteger), new Action() {
 				public void act() {
 					System.out.println(cashFromCropAnimalProducts.get(c));
 //					TextArea info = new TextArea(c*83, 300, 200, 500, "You have created" + 
