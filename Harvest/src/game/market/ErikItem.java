@@ -13,6 +13,7 @@ import guiTeacher.interfaces.DrawInstructions;
 
 public class ErikItem extends CustomImageButton implements Clickable{
 
+
 	public static final Graphic[] ITEMS = {new Graphic(0,0,48,48,"resources/cornseeds.png"),
 			new Graphic(0,0,48,48,"resources/pepperseeds.png"),new Graphic(0,0,48,48,"resources/potatoseeds.png"),
 			new Graphic(0,0,48,48,"resources/strawberryseeds.png"),new Graphic(0,0,48,48,"resources/tomatoseeds.png"),
@@ -28,8 +29,11 @@ public class ErikItem extends CustomImageButton implements Clickable{
 			
 			new Graphic(0,0,48,48,"resources/brownEgg.png"),
 			new Graphic(0,0,48,48,"resources/whiteEgg.png"),new Graphic(0,0,48,48,"resources/blackEgg.png"),
+
 			new Graphic(0,0,48,48,"resources/wool.png"),new Graphic(0,0,48,48,"resources/milk.png"),
 			new Graphic(0,0,48,48,"resources/meat.png")};
+
+
 
 	
 	private String name;
