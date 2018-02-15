@@ -85,11 +85,12 @@ public class BoxJenny extends CustomImageButton implements Clickable{
 					FarmScreenAll.animalPane.getHarvest().setAction(new Action() {
 
 						public void act() {
-							FarmScreenAll.disableButton(true);
+							FarmScreenAll.disableButton(false);
 							FarmScreenAll.animalPane.getImg().setVisible(false);
 							FarmScreenAll.animalPane.setVisible(false);
 							invent.addItem(SelectionPaneJane.items[imageIndx + 6]);
 							invent.save();
+							grow();
 						}
 					});
 				}

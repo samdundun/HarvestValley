@@ -157,13 +157,12 @@ public class SleepAlex extends FullFunctionScreen {//can use ImageTextButton, Cu
 			int c = actionInteger;
 			LubnaImageButton holder = new LubnaImageButton(actionInteger*xspacer,75,88,150, imageSources.get(actionInteger), new Action() {
 				public void act() {
-					System.out.println(cashFromCropAnimalProducts.get(c));
 //					TextArea info = new TextArea(c*83, 300, 200, 500, "You have created" + 
 //							cropAnimalAndProductCount.get(c) + cropAnimalAndProductNames.get(c) + "." + 
 //							"You have made" +cashFromCropAnimalProducts.get(c)+ "from" + 
 					info.setText("You have created " + 
 							cropAnimalAndProductCount.get(c) + " " + cropAnimalAndProductNames.get(c) + ". " + 
-							"You have made " +cashFromCropAnimalProducts.get(c)+ " from " + 
+							"Your products have enabled you to sell $ " +/*cashFromCropAnimalProducts.get(c)*/items[c].getValue()*cropAnimalAndProductCount.get(c)+ " worth of " + 
 							cropAnimalAndProductNames.get(c)+".");
 //					if(!infoDisplayed)
 //						viewObjects.add(info);
@@ -172,17 +171,22 @@ public class SleepAlex extends FullFunctionScreen {//can use ImageTextButton, Cu
 //						
 //					}		
 					info.setTextColor(Color.white);
-				}});
+				}
+				});
 			viewObjects.add(holder);
+		};
+		
+		back = new Button(getWidth()-100, getHeight()-100,100, 100, "",Color.blue, new Action() {
+			public void act() {
+				MainMenu.game.setScreen(MainMenu.farmScreen);
+			}
+		});
+		viewObjects.add(back);
+	
 		}
 		
 		
-//		back = new Button(getWidth()-100, getHeight()-100,100, 100, "",Color.blue, new Action() {
-//			public void act() {
-//				MainMenu.game.setScreen(MainMenu.farmScreen);
-//			}
-//		});
-		viewObjects.add(back);}
+		
 		//add objects to array
 		//call method and add arrayobjects to screen in initallobjects
 	
@@ -310,18 +314,19 @@ public class SleepAlex extends FullFunctionScreen {//can use ImageTextButton, Cu
 		int mySecondNum = CropJane.impNum;
 		
 		for(int i = 0; i<6;i++) {
-			if(cropAnimalAndProductNames.get(myNum).equals(cropAnimalAndProductNames.get(i))) {
+			if(cropAnimalAndProductNames.get(myNum-6).equals(cropAnimalAndProductNames.get(i))) {
 				cropAnimalAndProductCount.set(i, cropAnimalAndProductCount.get(i)+1);
 				//get the interface working
 			}
 			
 		}
+		/*
 		for(int i =0;i<6;i++) {
 			if(cropAnimalAndProductNames.get(mySecondNum).equals(cropAnimalAndProductNames.get(i+6))) {
 				cropAnimalAndProductCount.set(i+6, cropAnimalAndProductCount.get(i+6)+1);
 			}
 			
-		}
+		}*/
 		/*
 		for(int i = 0;i < cropAnimalAndProductNames.size();i++) {
 			if(animalCrop.equals(cropAnimalAndProductNames.get(i))) {
