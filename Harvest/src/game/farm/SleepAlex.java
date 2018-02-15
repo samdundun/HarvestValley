@@ -143,7 +143,7 @@ public class SleepAlex extends FullFunctionScreen {//can use ImageTextButton, Cu
 //		for(int i = 0; i < 11;i++) {
 //			infoDisplayedArray.add(infoDisplayed);
 //		}
-		TextArea info = new TextArea(200, 400, 200, 500, "Click on an item.");
+		TextArea info = new TextArea((getWidth()/2)-100, (getHeight()/2), 200, 500, "Click on an item.");
 		info.setCustomTextColor(Color.white);
 		viewObjects.add(info);
 		
@@ -159,8 +159,8 @@ public class SleepAlex extends FullFunctionScreen {//can use ImageTextButton, Cu
 //							"You have made" +cashFromCropAnimalProducts.get(c)+ "from" + 
 					info.setText("You have created " + 
 							cropAnimalAndProductCount.get(c) + " " + cropAnimalAndProductNames.get(c) + ". " + 
-							"You have made" +cashFromCropAnimalProducts.get(c)+ "from " + 
-							cropAnimalAndProductNames.get(c));
+							"You have made " +cashFromCropAnimalProducts.get(c)+ " from " + 
+							cropAnimalAndProductNames.get(c)+".");
 //					if(!infoDisplayed)
 //						viewObjects.add(info);
 //					infoDisplayed = true;
@@ -199,26 +199,26 @@ public class SleepAlex extends FullFunctionScreen {//can use ImageTextButton, Cu
 		//First 6 items are crops -- Next 4 are animals -- Next 4 are animal products
 		
 		//use the strings from the SelectionPaneJane class
-		/*cropAnimalAndProductNames.add("corn");
+		cropAnimalAndProductNames.add("corn");
 		cropAnimalAndProductNames.add("pepper");
 		cropAnimalAndProductNames.add("potato");
 		cropAnimalAndProductNames.add("strawberry");
 		cropAnimalAndProductNames.add("tomato");
 		cropAnimalAndProductNames.add("wheat");
 		
-		cropAnimalAndProductNames.add("brownChicken");
+		/*cropAnimalAndProductNames.add("brownChicken");
 		cropAnimalAndProductNames.add("whiteChicken");
 		cropAnimalAndProductNames.add("blackChicken");
 		cropAnimalAndProductNames.add("sheep");
 		cropAnimalAndProductNames.add("cows");
-		cropAnimalAndProductNames.add("pigs");
+		cropAnimalAndProductNames.add("pigs");*/
 		
 		cropAnimalAndProductNames.add("brownEggs");
 		cropAnimalAndProductNames.add("whiteEggs");
 		cropAnimalAndProductNames.add("blackEggs");
 		cropAnimalAndProductNames.add("wool");
 		cropAnimalAndProductNames.add("milk");
-		cropAnimalAndProductNames.add("meat");*/
+		cropAnimalAndProductNames.add("meat");
 		
 		cropAnimalAndProductCount.add(corn);
 		cropAnimalAndProductCount.add(pepper);
@@ -245,14 +245,14 @@ public class SleepAlex extends FullFunctionScreen {//can use ImageTextButton, Cu
 		//try similar solution for creating different button actions
 		for(int i = 0; i < 12;i++) {
 			cashFromCropAnimalProducts.add(originalBuyingPrice);
-			System.out.println(cashFromCropAnimalProducts);
+			//System.out.println(cashFromCropAnimalProducts); -- used to check if values are being stored
 			originalBuyingPrice+=50;
 		}
 		
 		int sellingPrice = 60;
 		for(int i = 0; i < 12;i++ ) {
 			sellingPriceCropAnimalProducts.add(sellingPrice);
-			System.out.println("Selling: "+sellingPriceCropAnimalProducts);
+			//System.out.println("Selling: "+sellingPriceCropAnimalProducts); -- used to check if values are being stored
 			sellingPrice+=60;
 		}
 		
@@ -265,19 +265,25 @@ public class SleepAlex extends FullFunctionScreen {//can use ImageTextButton, Cu
 	}
 	
 	//call when: 
-	public void AnimalCropIncrement(String animalCrop) {
+	public void AnimalCropIncrement() {
 		
+		int myNum = CropJane.getCurrentPatch()-6;
+		int mySecondNum = CropJane.getCurrentPatch()-18;
 		
 		for(int i = 0; i<6;i++) {
-			if(cropAnimalAndProductNames.get(CropJane.getCurrentPatch() - 6).equals(cropAnimalAndProductNames.get(i))) {
-				
+			if(cropAnimalAndProductNames.get(myNum).equals(cropAnimalAndProductNames.get(i))) {
+				cropAnimalAndProductCount.set(i, cropAnimalAndProductCount.get(i)+1);
+				//get the interface working
 			}
-			items[i+6].getName();
+			
 		}
 		for(int i =0;i<6;i++) {
-			items[i+18].getName();
+			if(cropAnimalAndProductNames.get(mySecondNum).equals(cropAnimalAndProductNames.get(i+6))) {
+				cropAnimalAndProductCount.set(i+6, cropAnimalAndProductCount.get(i+6)+1);
+			}
+			
 		}
-		
+		/*
 		for(int i = 0;i < cropAnimalAndProductNames.size();i++) {
 			if(animalCrop.equals(cropAnimalAndProductNames.get(i))) {
 				cropAnimalAndProductCount.set(i,cropAnimalAndProductCount.get(i) + 1);
@@ -294,7 +300,7 @@ public class SleepAlex extends FullFunctionScreen {//can use ImageTextButton, Cu
 						IsProductCreated = true;
 					}
 			}
-		}
+		}*/
 		
 		//if the index is low, then the item is a fruit
 		//set the boolean IsPlanted to true AND increment total number of crops or animals purchased
