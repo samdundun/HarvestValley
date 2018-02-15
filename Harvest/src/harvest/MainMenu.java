@@ -4,13 +4,18 @@ import java.awt.Font;
 import java.io.File;
 
 import game.farm.FarmScreenAll;
-import game.mainScreen.GirlCharacter;
+import game.mainScreen.MimiGirlCharacter;
 import game.farm.SleepAlex;
-import game.mainScreen.ChooseGenderScreenLubna;
-import game.mainScreen.MenuScreenLubna;
-import game.mainScreen.ObjectivesScreenJessi;
+import game.mainScreen.LubnaChooseGenderScreen;
+import game.mainScreen.LubnaMenuScreen;
+import game.mainScreen.JessiMusicPlayer;
+import game.mainScreen.JessiObjectivesScreen;
 import game.mainScreen.PlaceHolderScreen;
-import game.mainScreen.SaveScreenMimi;
+
+import game.mainScreen.MimiSaveScreen;
+import game.mainScreen.JessiSound;
+import game.mainScreen.JessiSoundScreen;
+
 import game.market.SamBuyingScreen;
 import game.market.ErikInventoryScreen;
 import game.market.ErikSellingScreen;
@@ -27,18 +32,20 @@ public class MainMenu extends GUIApplication {
 	public static boolean isLoad;
 	public static boolean isExit;
 	public static boolean isObj;
-	public static ChooseGenderScreenLubna screen2;
+	public static LubnaChooseGenderScreen screen2;
 	public static FarmScreenAll farmScreen;
 	public static SamBuyingScreen shop;
 	public static ErikSellingScreen sell;
-	public static MenuScreenLubna screen;
-	public static ObjectivesScreenJessi objectives;
+
+	public static LubnaMenuScreen screen;
+	public static JessiObjectivesScreen objectives;
+
 	public static ErikInventoryScreen inventory;
 	public static PlaceHolderScreen placeHolder;
-	public static SaveScreenMimi saveMimi;
+	public static MimiSaveScreen saveMimi;
 	public static SleepAlex sleep;
 	
-//	public static boolean isSaved;
+	//private JessiSound sound;
 	
 	public MainMenu(int width, int height) {
 		super(width, height);
@@ -57,25 +64,28 @@ public class MainMenu extends GUIApplication {
 //			e.printStackTrace();
 //		}
 
-		screen = new MenuScreenLubna(getWidth(), getHeight());
+		screen = new LubnaMenuScreen(getWidth(), getHeight());
 		sleep = new SleepAlex(getWidth(), getHeight());
 		farmScreen = new FarmScreenAll(getWidth(),getHeight());
 		shop = new SamBuyingScreen(getWidth(),getHeight());
-		screen2 = new ChooseGenderScreenLubna(getWidth(), getHeight());
+		screen2 = new LubnaChooseGenderScreen(getWidth(), getHeight());
 		inventory = new ErikInventoryScreen(getWidth(), getHeight());
 		sell = new ErikSellingScreen(getWidth(), getHeight());
 		placeHolder = new PlaceHolderScreen(getWidth(), getHeight());
 		//don't delete the place holder please.
 
-		saveMimi = new SaveScreenMimi(getWidth(), getHeight());
+		saveMimi = new MimiSaveScreen(getWidth(), getHeight());
 		
 		
-		objectives = new ObjectivesScreenJessi(getWidth(), getHeight());
+		objectives = new JessiObjectivesScreen(getWidth(), getHeight());
+		
+		
+		//soundTracks = new JessiSoundScreen(getWidth(), getHeight());
 
 		setScreen(screen);
 
-	
-
+	//when there's only one sound file use this
+	//JessiSound.sound1.play();
 	}
 
 	public static void main(String[] args) {
@@ -84,6 +94,14 @@ public class MainMenu extends GUIApplication {
 		Thread runner = new Thread(game);
 
 		runner.start();
+		
+		JessiMusicPlayer player = new JessiMusicPlayer("sound","sound2","sound3","sound4","sound5");
+		player.run();
+		//06 - Spring (The Valley Comes Alive) = sound
+		//05 - Spring (It's A Big World Outside) = sound2
+		//13 - Summer (Nature's Crescendo) = sound3
+		//27 - Winter (Nocturne Of Ice) = sound4
+		//20 - Fall (The Smell Of Mushroom) = sound5
 	}
 	//
 

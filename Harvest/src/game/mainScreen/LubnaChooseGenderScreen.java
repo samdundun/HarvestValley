@@ -14,7 +14,7 @@ import guiTeacher.interfaces.Visible;
 import guiTeacher.userInterfaces.ClickableScreen;
 import harvest.MainMenu;
 
-public class ChooseGenderScreenLubna extends ClickableScreen implements Runnable {
+public class LubnaChooseGenderScreen extends ClickableScreen implements Runnable {
 
 
 	private LubnaImageButton girl;
@@ -25,7 +25,7 @@ public class ChooseGenderScreenLubna extends ClickableScreen implements Runnable
 	
 	private SamInventory invent;
 
-	public ChooseGenderScreenLubna(int width, int height) {
+	public LubnaChooseGenderScreen(int width, int height) {
 		super(width, height);
 		Thread app = new Thread(this);
 		app.start();

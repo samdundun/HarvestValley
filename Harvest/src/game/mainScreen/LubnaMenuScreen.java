@@ -1,16 +1,19 @@
 package game.mainScreen;
 
+import java.awt.Color;
 import java.util.List;
 
 import game.farm.FarmScreenAll;
+import game.market.SamBuyingScreen;
 import game.market.SamInventory;
 import guiTeacher.components.Action;
+import guiTeacher.components.Button;
 import guiTeacher.components.Graphic;
 import guiTeacher.interfaces.Visible;
 import guiTeacher.userInterfaces.ClickableScreen;
 import harvest.MainMenu;
 
-public class MenuScreenLubna extends ClickableScreen implements Runnable {
+public class LubnaMenuScreen extends ClickableScreen implements Runnable {
 
 	private Graphic title;
 	private LubnaImageButton newGame;
@@ -18,10 +21,11 @@ public class MenuScreenLubna extends ClickableScreen implements Runnable {
 	private LubnaImageButton exit;
 	private LubnaImageButton obj;
 //	private ImageButton save;
+	//private Button sound;
 
 	private SamInventory invent;
 	
-	public MenuScreenLubna(int width, int height) {
+	public LubnaMenuScreen(int width, int height) {
 		super(width, height);
 		Thread app = new Thread(this);
 		app.start();
@@ -65,7 +69,7 @@ public class MenuScreenLubna extends ClickableScreen implements Runnable {
 			public void act() {
 				MainMenu.isExit= true;
 				System.exit(0);
-				// place holder, i don't know how to exit the java program.
+				
 			}
 		});
 		viewObjects.add(exit);
@@ -90,6 +94,15 @@ public class MenuScreenLubna extends ClickableScreen implements Runnable {
 //			}
 //		});
 //		viewObjects.add(save);
+		
+//		sound = new Button(90, 500, 80, 30, "Sound", new Color(230, 235, 210), new Action() {
+//			public void act() {
+//				MainMenu.soundTracks = new JessiSoundScreen(getWidth(),getHeight());
+//				MainMenu.game.setScreen(MainMenu.soundTracks);
+//
+//			}
+//		});
+//		viewObjects.add(sound);
 	}
 
 	@Override

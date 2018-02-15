@@ -3,7 +3,9 @@ package game.farm;
 import java.awt.Color;
 import java.awt.Graphics2D;
 
-import game.mainScreen.ImageButton;
+
+import game.mainScreen.LubnaImageButton;
+
 import game.market.SamInventory;
 import game.market.ErikItem;
 import guiTeacher.components.Action;
@@ -13,10 +15,12 @@ import guiTeacher.components.Graphic;
 import guiTeacher.interfaces.DrawInstructions;
 import harvest.MainMenu;
 
-public class CropJane extends CustomImageButton implements AlexLeonInterface {
+public class CropJane extends CustomImageButton{
 	
 	private int imageIndx;
 	private int index;
+	public static int impNum;
+
 	private int patchIndex;
 	private CropImageJane image;
 	private int length;
@@ -75,13 +79,13 @@ public class CropJane extends CustomImageButton implements AlexLeonInterface {
 		invent = new SamInventory();
 		invent.load();
 		invent.sort();
-		FarmScreenAll.pane.setSeeds(invent.getSeedSelection());
 		this.setAction(new Action() {
 			
 			@Override
 			public void act() {
 				PaneJenny plantPane =FarmScreenAll.plantPane;
 				CropJane currentPatch=FarmScreenAll.farmPatch.get(index);
+				
 				String cropName = SelectionPaneJane.items[currentPatch.imageIndx+6].getName().toLowerCase();
 				int dayLeft =currentPatch.getLength()-currentPatch.getCurrentTime();
 				setPosition();
@@ -109,6 +113,13 @@ public class CropJane extends CustomImageButton implements AlexLeonInterface {
 							plantPane.getImg().setVisible(false);
 							FarmScreenAll.disableButton(true);
 							invent.addItem(SelectionPaneJane.items[currentPatch.imageIndx+6]);
+							
+
+							impNum = currentPatch.imageIndx+6;
+							SleepAlex.cropIncrement();
+							
+							//Jane uses the items array
+							
 							invent.save();
 							currentPatch.setAction(new Action() {
 								
@@ -128,6 +139,7 @@ public class CropJane extends CustomImageButton implements AlexLeonInterface {
 				plantPane.getItem().setText(cropName);
 				plantPane.update();
 				FarmScreenAll.disableButton(false);
+				
 				
 			}
 
@@ -209,11 +221,6 @@ public class CropJane extends CustomImageButton implements AlexLeonInterface {
 		return patchIndex;
 	}
 
-	@Override
-	public int getCurrentPatch() {
-		return FarmScreenAll.farmPatch.get(index).imageIndx+6;
-		
-	}
-
-
+	
+	
 }

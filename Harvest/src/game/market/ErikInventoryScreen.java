@@ -124,6 +124,7 @@ public class ErikInventoryScreen extends FullFunctionScreen {
 					i.update();
 
 
+
 				}
 			});
 			if(invent.getAmountArray()[i.getImageIndex()] > 0 && i.isAdded() == false) {
@@ -150,7 +151,6 @@ public class ErikInventoryScreen extends FullFunctionScreen {
 			public void act() {
 				amount.setText("Amount: ");
 				description.setText("");
-				MainMenu.game.farmScreen = new FarmScreenAll(getWidth(), getHeight());
 				MainMenu.game.setScreen(MainMenu.farmScreen);
 				MainMenu.game.shop = new SamBuyingScreen(getWidth(),getHeight());
 

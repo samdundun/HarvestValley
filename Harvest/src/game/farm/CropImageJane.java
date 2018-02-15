@@ -24,8 +24,9 @@ public class CropImageJane implements DrawInstructions {
 				//BufferedImage light = op.filter(image.getImage(), null);
 				g.setColor(new Color(0,0,0,30));
 				g.fillRect(0, 0, 63, 50);
+				// drawing the image button with different image of the crop being passed in
 					if(index==-1) {
-					g.drawImage(image.getImage(), 0, 0, null);
+					//g.drawImage(image.getImage(), 0, 0, null);
 					}	
 					else if(index==0&& index==5) {
 						g.drawImage(PlantJane.plants[index].getImage(), 35, 0, null);
@@ -38,7 +39,7 @@ public class CropImageJane implements DrawInstructions {
 			}
 			else {
 				if(index==-1) {
-					g.drawImage(image.getImage(), 0, 0, null);
+					//g.drawImage(image.getImage(), 0, 0, null);
 				}
 				else if(index==0&& index==5) {
 					g.drawImage(PlantJane.plants[index].getImage(), 35, 0, null);

@@ -2,13 +2,9 @@ package game.farm;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
-import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.plaf.basic.BasicInternalFrameTitlePane.MoveAction;
-
 import game.market.SamInventory;
-import game.market.ErikInventoryScreen;
 import game.market.ErikItem;
 import guiTeacher.components.Action;
 import guiTeacher.components.CustomImageButton;
@@ -22,6 +18,9 @@ public class BoxJenny extends CustomImageButton implements Clickable{
 
 	private int imageIndx;
 	private int index;
+	
+	public static int impNumAlex;
+	
 	private int length;
 	private int stage;
 	private int time;
@@ -89,11 +88,16 @@ public class BoxJenny extends CustomImageButton implements Clickable{
 					FarmScreenAll.animalPane.getHarvest().setAction(new Action() {
 
 						public void act() {
-							FarmScreenAll.disableButton(true);
+							FarmScreenAll.disableButton(false);
 							FarmScreenAll.animalPane.getImg().setVisible(false);
 							FarmScreenAll.animalPane.setVisible(false);
 							invent.addItem(SelectionPaneJane.items[imageIndx + 6]);
+							
+							impNumAlex = imageIndx+6;
+							SleepAlex.animalIncrement();
+							
 							invent.save();
+							grow();
 						}
 					});
 				}
