@@ -15,7 +15,7 @@ import guiTeacher.components.Graphic;
 import guiTeacher.interfaces.DrawInstructions;
 import harvest.MainMenu;
 
-public class CropJane extends CustomImageButton implements AlexLeonInterface{
+public class CropJane extends CustomImageButton{
 	
 	private int imageIndx;
 	private int index;
@@ -222,11 +222,6 @@ public class CropJane extends CustomImageButton implements AlexLeonInterface{
 		return patchIndex;
 	}
 
-	@Override
-	public int getCurrentPatch() {
-		// TODO Auto-generated method stub
-		return impNum;
-	}
 	
 	
 }
