@@ -156,7 +156,7 @@ public class SleepAlex extends FullFunctionScreen {//whattt can use ImageTextBut
 			int c = actionInteger;
 			ImageButton holder = new ImageButton(actionInteger*xspacer,75,88,150, imageSources.get(actionInteger), new Action() {
 				public void act() {
-					System.out.println(cashFromCropAnimalProducts.get(c));
+					//System.out.println(cashFromCropAnimalProducts.get(c));
 //					TextArea info = new TextArea(c*83, 300, 200, 500, "You have created" + 
 //							cropAnimalAndProductCount.get(c) + cropAnimalAndProductNames.get(c) + "." + 
 //							"You have made" +cashFromCropAnimalProducts.get(c)+ "from" + 
@@ -270,7 +270,7 @@ public class SleepAlex extends FullFunctionScreen {//whattt can use ImageTextBut
 	//call when: 
 	public static void AnimalCropIncrement() {
 		
-		System.out.println(CropJane.impNumAlex);
+		//System.out.println(CropJane.impNumAlex);
 		int myNum = CropJane.impNumAlex;
 		int mySecondNum = CropJane.impNumAlex;
 		
