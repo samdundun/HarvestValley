@@ -26,8 +26,8 @@ public class JessiAudioFile implements LineListener{
     public JessiAudioFile(String fileName) {
     	soundFile = new File(fileName);
     	try {
-			ais = AudioSystem.getAudioInputStream(soundFile);
-			format = ais.getFormat();
+    		ais = AudioSystem.getAudioInputStream(soundFile);
+		format = ais.getFormat();
 	    	info = new DataLine.Info(Clip.class, format);
 	    	clip = (Clip) AudioSystem.getLine(info);
 	    	clip.addLineListener(this);
@@ -41,11 +41,11 @@ public class JessiAudioFile implements LineListener{
    
     //default volume
     public void play() {
-    	play(-10);
+    		play(-10);
     }
    
     public void play(float volume) {
-    	gainControl.setValue(-10);
+    		gainControl.setValue(-10);
 		clip.start();
 		playing = true;
     }
@@ -58,11 +58,12 @@ public class JessiAudioFile implements LineListener{
 	public void update(LineEvent event) {
 		if(event.getType() == LineEvent.Type.START)
 			playing = true;
-		else if(event.getType() == LineEvent.Type.STOP)
+		else if(event.getType() == LineEvent.Type.STOP) {
 			clip.stop();
 			clip.flush();
 			clip.setFramePosition(0);
 			playing = false;
+		}	
 	}
     
 }

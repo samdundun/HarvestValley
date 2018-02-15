@@ -39,14 +39,11 @@ public class MainMenu extends GUIApplication {
 
 	public static LubnaMenuScreen screen;
 	public static JessiObjectivesScreen objectives;
-	//public static JessiSoundScreen soundTracks;
 
 	public static ErikInventoryScreen inventory;
 	public static PlaceHolderScreen placeHolder;
 	public static MimiSaveScreen saveMimi;
 	public static SleepAlex sleep;
-	
-//	public static boolean isSaved;
 	
 	private JessiSound sound;
 	
@@ -87,7 +84,7 @@ public class MainMenu extends GUIApplication {
 
 		setScreen(screen);
 
-	JessiSound.sound1.play();
+	//JessiSound.sound1.play();
 	}
 
 	public static void main(String[] args) {
@@ -98,6 +95,7 @@ public class MainMenu extends GUIApplication {
 		runner.start();
 		
 		JessiMusicPlayer player = new JessiMusicPlayer("sound","sound2","sound3","sound4","sound5");
+		player.run();
 		//06 - Spring (The Valley Comes Alive) sound
 		//05 - Spring (It's A Big World Outside) sound2
 		//13 - Summer (Nature's Crescendo) sound3
