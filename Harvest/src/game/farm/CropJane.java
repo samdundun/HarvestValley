@@ -15,14 +15,20 @@ import guiTeacher.components.Graphic;
 import guiTeacher.interfaces.DrawInstructions;
 import harvest.MainMenu;
 
-public class CropJane extends CustomImageButton implements AlexLeonInterface {
+public class CropJane extends CustomImageButton {
 	
 	private int imageIndx;
 	private int index;
+<<<<<<< HEAD
 	//private static int imageIndx;
 	//private static int index;
 	//private static int impNum;
 	//public CropJane alex;
+=======
+	//public static int imageIndx;
+	//public static int index;
+	public static int impNum;
+>>>>>>> branch 'develop' of https://github.com/samdundun/HarvestValley.git
 	
 	private int patchIndex;
 	private CropImageJane image;
@@ -118,9 +124,10 @@ public class CropJane extends CustomImageButton implements AlexLeonInterface {
 							FarmScreenAll.disableButton(true);
 							invent.addItem(SelectionPaneJane.items[currentPatch.imageIndx+6]);
 							
-							//SleepAlex.AnimalCropIncrement();
-//							alex = currentPatch;
-//							impNum = alex.imageIndx+6;
+
+							impNum = currentPatch.imageIndx+6;
+							SleepAlex.cropIncrement();
+							
 							//Jane uses the items array
 							
 							invent.save();
@@ -223,20 +230,4 @@ public class CropJane extends CustomImageButton implements AlexLeonInterface {
 		// TODO Auto-generated method stub
 		return patchIndex;
 	}
-
-	@Override
-	public int getCurrentPatch() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-//	public static int getCurrentPatch() {
-//		return impNum;
-//	}
-	/*public int getCurrentPatch() {
-		return FarmScreenAll.farmPatch.get(index).imageIndx+6;
-		
-	}*/
-	//break properties into many variables and get functions and see what needs to get casted
-
 }

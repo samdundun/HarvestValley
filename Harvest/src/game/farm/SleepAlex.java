@@ -25,7 +25,7 @@ import guiTeacher.interfaces.Visible;
 import guiTeacher.userInterfaces.FullFunctionScreen;
 import harvest.MainMenu;
 
-public class SleepAlex extends FullFunctionScreen {//can use ImageTextButton, CustomImageButton, ClickableGraphic
+public class SleepAlex extends FullFunctionScreen {//can what2 use ImageTextButton, CustomImageButton, ClickableGraphic
 	
 	private int numCropsPlanted;
 	private int numAnimalsPurchased;
@@ -155,18 +155,14 @@ public class SleepAlex extends FullFunctionScreen {//can use ImageTextButton, Cu
 			/*variables inside the setup part of a for loop are local -- be cautious when using them in the function -- especially in the action method of a button*/
 			int xspacer = 68;
 			int c = actionInteger;
-
-			LubnaImageButton holder = new LubnaImageButton(actionInteger*xspacer,75,90,150, imageSources.get(actionInteger), new Action() {
-
-			ImageButton holder = new ImageButton(actionInteger*xspacer,75,88,150, imageSources.get(actionInteger), new Action() {
+			LubnaImageButton holder = new LubnaImageButton(actionInteger*xspacer,75,88,150, imageSources.get(actionInteger), new Action() {
 				public void act() {
-					System.out.println(cashFromCropAnimalProducts.get(c));
 //					TextArea info = new TextArea(c*83, 300, 200, 500, "You have created" + 
 //							cropAnimalAndProductCount.get(c) + cropAnimalAndProductNames.get(c) + "." + 
 //							"You have made" +cashFromCropAnimalProducts.get(c)+ "from" + 
 					info.setText("You have created " + 
 							cropAnimalAndProductCount.get(c) + " " + cropAnimalAndProductNames.get(c) + ". " + 
-							"You have made " +cashFromCropAnimalProducts.get(c)+ " from " + 
+							"Your products have enabled you to sell $ " +/*cashFromCropAnimalProducts.get(c)*/items[c].getValue()*cropAnimalAndProductCount.get(c)+ " worth of " + 
 							cropAnimalAndProductNames.get(c)+".");
 //					if(!infoDisplayed)
 //						viewObjects.add(info);
@@ -178,16 +174,19 @@ public class SleepAlex extends FullFunctionScreen {//can use ImageTextButton, Cu
 				}
 				});
 			viewObjects.add(holder);
+		};
+		
+		back = new Button(getWidth()-100, getHeight()-100,100, 100, "",Color.blue, new Action() {
+			public void act() {
+				MainMenu.game.setScreen(MainMenu.farmScreen);
+			}
 		});
+		viewObjects.add(back);
+	
 		}
 		
 		
-//		back = new Button(getWidth()-100, getHeight()-100,100, 100, "",Color.blue, new Action() {
-//			public void act() {
-//				MainMenu.game.setScreen(MainMenu.farmScreen);
-//			}
-//		});
-		viewObjects.add(back);}
+		
 		//add objects to array
 		//call method and add arrayobjects to screen in initallobjects
 	
@@ -222,12 +221,12 @@ public class SleepAlex extends FullFunctionScreen {//can use ImageTextButton, Cu
 		cropAnimalAndProductNames.add("cows");
 		cropAnimalAndProductNames.add("pigs");*/
 		
-		cropAnimalAndProductNames.add("brownEggs");
-		cropAnimalAndProductNames.add("whiteEggs");
-		cropAnimalAndProductNames.add("blackEggs");
-		cropAnimalAndProductNames.add("wool");
-		cropAnimalAndProductNames.add("milk");
-		cropAnimalAndProductNames.add("meat");
+		cropAnimalAndProductNames.add("Brown Eggs");
+		cropAnimalAndProductNames.add("White Eggs");
+		cropAnimalAndProductNames.add("Black Eggs");
+		cropAnimalAndProductNames.add("Wool");
+		cropAnimalAndProductNames.add("Milk");
+		cropAnimalAndProductNames.add("Meat");
 		
 		cropAnimalAndProductCount.add(corn);
 		cropAnimalAndProductCount.add(pepper);
@@ -264,69 +263,38 @@ public class SleepAlex extends FullFunctionScreen {//can use ImageTextButton, Cu
 			//System.out.println("Selling: "+sellingPriceCropAnimalProducts); -- used to check if values are being stored
 			sellingPrice+=60;
 		}
-		
-		
-		//System.out.println(cropAnimalAndProductCount);
-		//System.out.println(cashFromCropAnimalProducts);
 			//create textboxes or clickable boxes for each item of information about crops and animals
 			//have a panel that lightens all products the player can buy and darkens (perhaps an image of a lock) of all the products the user may not by.
 			//create a class that makes an image lighten or darken w/ a lock image under specific game conditions
 	}
 	
 
-	private void addCAPImages(List<Visible> viewObjects) {
-		//create an array of images AND place them strategically
-		//ensure proper spacing
-		imageSources.add("pepperSt6.png");
-		//create an ArrayList of string addresses or an ArrayList of ImageButtons, not both
-		/*
-		imagesCropAnimalProducts.add("resources/sleep.png");
-		imagesCropAnimalProducts.add("resources/sleep.png");
-		imagesCropAnimalProducts.add("resources/sleep.png");
-		imagesCropAnimalProducts.add("resources/sleep.png");
-		imagesCropAnimalProducts.add("resources/sleep.png");
-		imagesCropAnimalProducts.add("resources/sleep.png");
-		imagesCropAnimalProducts.add("resources/sleep.png");
-		imagesCropAnimalProducts.add("resources/sleep.png");
-		imagesCropAnimalProducts.add("resources/sleep.png");
-		imagesCropAnimalProducts.add("resources/sleep.png");
-		imagesCropAnimalProducts.add("resources/sleep.png");*/
-		
-		for(int i = 0; i<imageSources.size();i++) {
-			LubnaImageButton holder = new LubnaImageButton(i*75, 0, 50, 50, SleepAlex.getImageSources().get(i), new Action() {
-				
-				@Override
-				public void act() {
-					// TODO Auto-generated method stub
-					//create a text label that has a semi-defined string -- variables will include the name of the product
-					//and buying and selling price
-					//"You have created" + num + CAP. "You have made" + cash + "from" + CAP
-				}
-			});
-			viewObjects.add(holder);
-		}
-	}
-	
-
-	//call when: 
-	public void AnimalCropIncrement() {
-		
-		int myNum = CropJane.getCurrentPatch()-6;
-		int mySecondNum = CropJane.getCurrentPatch()-18;
-		
+	//call when:
+	//consider making two different functions for incrementing: one for crops and one for animals
+	public static void cropIncrement() {
+		int myNum = CropJane.impNum;
+		System.out.println(myNum);
 		for(int i = 0; i<6;i++) {
-			if(cropAnimalAndProductNames.get(myNum).equals(cropAnimalAndProductNames.get(i))) {
+			if(cropAnimalAndProductNames.get(myNum-6).equals(cropAnimalAndProductNames.get(i))) {
 				cropAnimalAndProductCount.set(i, cropAnimalAndProductCount.get(i)+1);
 				//get the interface working
 			}
-			
 		}
+	}
+	
+	public static void animalIncrement() {
+		int mySecondNum = BoxJenny.impNumAlex;
+		System.out.println(mySecondNum);		
 		for(int i =0;i<6;i++) {
-			if(cropAnimalAndProductNames.get(mySecondNum).equals(cropAnimalAndProductNames.get(i+6))) {
+			if(cropAnimalAndProductNames.get(mySecondNum-12).equals(cropAnimalAndProductNames.get(i+6))) {
 				cropAnimalAndProductCount.set(i+6, cropAnimalAndProductCount.get(i+6)+1);
 			}
 			
 		}
+	}
+	
+	public static void AnimalCropIncrement() {
+		
 		/*
 		for(int i = 0;i < cropAnimalAndProductNames.size();i++) {
 			if(animalCrop.equals(cropAnimalAndProductNames.get(i))) {
