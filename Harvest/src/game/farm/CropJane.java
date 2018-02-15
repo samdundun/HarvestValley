@@ -15,13 +15,13 @@ import guiTeacher.components.Graphic;
 import guiTeacher.interfaces.DrawInstructions;
 import harvest.MainMenu;
 
-public class CropJane extends CustomImageButton implements AlexLeonInterface {
+public class CropJane extends CustomImageButton {
 	
 	//private int imageIndx;
 	//private int index;
-	private static int imageIndx;
-	private static int index;
-	private static int impNum;
+	public static int imageIndx;
+	public static int index;
+	public static int impNum;
 	public CropJane alex;
 	
 	private int patchIndex;
@@ -224,9 +224,9 @@ public class CropJane extends CustomImageButton implements AlexLeonInterface {
 		return patchIndex;
 	}
 
-	public static int getCurrentPatch() {
+	/*public static int getCurrentPatch() {
 		return impNum;
-	}
+	}*/
 	/*public int getCurrentPatch() {
 		return FarmScreenAll.farmPatch.get(index).imageIndx+6;
 		

@@ -155,13 +155,7 @@ public class SleepAlex extends FullFunctionScreen {//can use ImageTextButton, Cu
 			/*variables inside the setup part of a for loop are local -- be cautious when using them in the function -- especially in the action method of a button*/
 			int xspacer = 68;
 			int c = actionInteger;
-<<<<<<< HEAD
-
-			LubnaImageButton holder = new LubnaImageButton(actionInteger*xspacer,75,90,150, imageSources.get(actionInteger), new Action() {
-
-=======
-			ImageButton holder = new ImageButton(actionInteger*xspacer,75,88,150, imageSources.get(actionInteger), new Action() {
->>>>>>> refs/heads/farm
+			LubnaImageButton holder = new LubnaImageButton(actionInteger*xspacer,75,88,150, imageSources.get(actionInteger), new Action() {
 				public void act() {
 					System.out.println(cashFromCropAnimalProducts.get(c));
 //					TextArea info = new TextArea(c*83, 300, 200, 500, "You have created" + 
@@ -310,10 +304,10 @@ public class SleepAlex extends FullFunctionScreen {//can use ImageTextButton, Cu
 	
 
 	//call when: 
-	public void AnimalCropIncrement() {
+	public static void AnimalCropIncrement() {
 		
-		int myNum = CropJane.getCurrentPatch()-6;
-		int mySecondNum = CropJane.getCurrentPatch()-18;
+		int myNum = CropJane.impNum;
+		int mySecondNum = CropJane.impNum;
 		
 		for(int i = 0; i<6;i++) {
 			if(cropAnimalAndProductNames.get(myNum).equals(cropAnimalAndProductNames.get(i))) {
