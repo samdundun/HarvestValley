@@ -46,6 +46,7 @@ public class FarmScreenAll extends FullFunctionScreen {
 	public static PaneJenny animalPane;
 	public static PaneJenny plantPane;
 	public static PaneJenny patchPane;
+	public static FarmScreenAll farm;
 
 	public FarmScreenAll(int width, int height) {
 		super(width, height);
@@ -59,7 +60,7 @@ public class FarmScreenAll extends FullFunctionScreen {
 		//		game.mainScreen.Character c = new game.mainScreen.Character(0,0);
 		which = "";
 		viewObj = viewObjects;
-
+		farm=this;
 		farmPatch = new ArrayList<CropJane>();
 		emptyFarmPatch = new ArrayList<EmptyPatch>();
 		animalBox = new ArrayList<BoxJenny>();
@@ -244,8 +245,6 @@ public class FarmScreenAll extends FullFunctionScreen {
 			emptyFarmPatch.get(j).setEnabled(b);
 		}
 
-
-
 	}
-
+	
 }

@@ -49,6 +49,8 @@ public class SelectionPaneJane extends Pane {
 
 	private int patchIndex;
 
+	private TextLabel label;
+
 	public SelectionPaneJane(FocusController focusController, int x, int y) {
 		super(focusController, x, y, _WIDTH, _HEIGHT);
 
@@ -90,14 +92,9 @@ public class SelectionPaneJane extends Pane {
 
 
 
-		TextLabel label = new TextLabel(15, 0, 150, 50, "Please select an item");
+		 label = new TextLabel(15, 0, 150, 50, "Please select an item");
 
 		viewObjects.add(label);
-
-		//		int move = 0;
-		//		int width = 55;
-		//		int startingHeight =40 ;
-		//		int height = 60;
 		invent.sort();
 		if(FarmScreenAll.getWhich().equals("crop")) {
 
@@ -112,10 +109,10 @@ public class SelectionPaneJane extends Pane {
 			public void act() {
 				for(int i = 0; i < seeds.size(); i++) {
 					if(seeds.get(i).isSelected()) {
-						System.out.println("hey hey");
 						SelectionPaneJane.this.setSeedSelected(i);
-//						invent.removeItem(seeds.get(i));
-//						invent.save();
+						invent.removeItem(seeds.get(i));
+						invent.save();
+						update();
 						FarmScreenAll.farmPatch.get(index).setTime(seeds.get(i).getTime());
 						FarmScreenAll.farmPatch.get(index).crop(seeds.get(i).getImageIndex());
 						SelectionPaneJane.this.setVisible(false);
@@ -174,28 +171,35 @@ public class SelectionPaneJane extends Pane {
 	public void addImages(ArrayList<ErikItem> item,int move, int startingHeight, int width, int height,TextLabel label) {
 		for(int i = 0; i < item.size(); i++) {
 			ErikItem z=item.get(i);
-
-			z.setAction(new Action() {
-
-				@Override
-				public void act() {
-					for(int i = 0; i < item.size();i++) {
-						item.get(i).setSelected(false);
+			if(invent.getAmountArray()[z.getImageIndex()] > 0 && z.isAdded() == false) {
+				z.setAdded(true);
+				for(ErikItem it:item) {
+					if(it.getImageIndex() == z.getImageIndex()) {
+						it.setAdded(true);
 					}
-					System.out.println(z.getName());
-					z.setSelected(true);
-					label.setText(z.getName());
 				}
-			});
+				z.setAction(new Action() {
 
-			z.setX(35+move*width);
-			z.setY(startingHeight);
-			move++;
-			if(move == 3){
-				move = 0;
-				startingHeight = startingHeight+height;
+					@Override
+					public void act() {
+						for(int i = 0; i < item.size();i++) {
+							item.get(i).setSelected(false);
+						}
+						System.out.println(z.getName());
+						z.setSelected(true);
+						label.setText(z.getName());
+					}
+				});
+
+				z.setX(35+move*width);
+				z.setY(startingHeight);
+				move++;
+				if(move == 3){
+					move = 0;
+					startingHeight = startingHeight+height;
+				}
+				viewObjects.add(z);
 			}
-			viewObjects.add(z);
 		}
 	}
 

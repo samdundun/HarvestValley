@@ -98,8 +98,7 @@ public class SamBuyingScreen extends FullFunctionScreen implements FileRequester
 
 			@Override
 			public void act() {
-
-				MainMenu.game.farmScreen= new FarmScreenAll(getWidth(), getHeight());
+				MainMenu.game.farmScreen = new FarmScreenAll(getWidth(), getHeight());
 				MainMenu.game.setScreen(MainMenu.farmScreen);
 				MainMenu.game.inventory = new ErikInventoryScreen(getWidth(),getHeight());
 
