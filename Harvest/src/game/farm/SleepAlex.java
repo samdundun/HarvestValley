@@ -25,7 +25,7 @@ import guiTeacher.interfaces.Visible;
 import guiTeacher.userInterfaces.FullFunctionScreen;
 import harvest.MainMenu;
 
-public class SleepAlex extends FullFunctionScreen {//can use ImageTextButton, CustomImageButton, ClickableGraphic
+public class SleepAlex extends FullFunctionScreen {//can what2 use ImageTextButton, CustomImageButton, ClickableGraphic
 	
 	private int numCropsPlanted;
 	private int numAnimalsPurchased;
