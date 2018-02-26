@@ -15,6 +15,7 @@ import javax.sound.sampled.LineListener;
 public class JessiAudioFile implements LineListener{
 
 	private File soundFile;
+    private String soundName;
     private AudioInputStream ais;
     private AudioFormat format;
     private DataLine.Info info;
@@ -23,16 +24,17 @@ public class JessiAudioFile implements LineListener{
     private boolean playing;
    // private volatile boolean playing;
     
-    public JessiAudioFile(String fileName) {
-    	soundFile = new File(fileName);
-    	try {
-    		ais = AudioSystem.getAudioInputStream(soundFile);
-		format = ais.getFormat();
-	    	info = new DataLine.Info(Clip.class, format);
-	    	clip = (Clip) AudioSystem.getLine(info);
-	    	clip.addLineListener(this);
-	    	clip.open(ais);
-	    	gainControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
+    public JessiAudioFile(String fileName, String name) {
+    		soundFile = new File(fileName);
+    		soundName = name;
+    		try {
+    			ais = AudioSystem.getAudioInputStream(soundFile);
+    			format = ais.getFormat();
+    			info = new DataLine.Info(Clip.class, format);
+    			clip = (Clip) AudioSystem.getLine(info);
+    			clip.addLineListener(this);
+    			clip.open(ais);
+    			gainControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.exit(1);
@@ -43,7 +45,15 @@ public class JessiAudioFile implements LineListener{
     public void play() {
     		play(-10);
     }
+    
+    public void stop() {
+    		clip.stop();
+    }
    
+    public String getName() {
+    		return soundName;
+    }
+    	
     public void play(float volume) {
     		gainControl.setValue(-10);
 		clip.start();

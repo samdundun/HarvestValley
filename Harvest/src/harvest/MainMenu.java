@@ -39,11 +39,14 @@ public class MainMenu extends GUIApplication {
 
 	public static LubnaMenuScreen screen;
 	public static JessiObjectivesScreen objectives;
+	public static JessiSoundScreen sound;
 
 	public static ErikInventoryScreen inventory;
 	public static PlaceHolderScreen placeHolder;
 	public static MimiSaveScreen saveMimi;
 	public static SleepAlex sleep;
+	
+	public static JessiMusicPlayer player;
 	
 	//private JessiSound sound;
 	
@@ -80,7 +83,7 @@ public class MainMenu extends GUIApplication {
 		objectives = new JessiObjectivesScreen(getWidth(), getHeight());
 		
 		
-		//soundTracks = new JessiSoundScreen(getWidth(), getHeight());
+		sound = new JessiSoundScreen(getWidth(), getHeight());
 
 		setScreen(screen);
 
@@ -90,12 +93,12 @@ public class MainMenu extends GUIApplication {
 
 	public static void main(String[] args) {
 
+		player = new JessiMusicPlayer("sound","sound2","sound3","sound4","sound5");
 		game = new MainMenu(870,550);
 		Thread runner = new Thread(game);
 
 		runner.start();
 		
-		JessiMusicPlayer player = new JessiMusicPlayer("sound","sound2","sound3","sound4","sound5");
 		player.run();
 		//06 - Spring (The Valley Comes Alive) = sound
 		//05 - Spring (It's A Big World Outside) = sound2
