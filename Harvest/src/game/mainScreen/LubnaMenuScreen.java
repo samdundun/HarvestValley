@@ -21,7 +21,7 @@ public class LubnaMenuScreen extends ClickableScreen implements Runnable {
 	private LubnaImageButton exit;
 	private LubnaImageButton obj;
 //	private ImageButton save;
-	//private Button sound;
+	private LubnaImageButton music;
 
 	private SamInventory invent;
 	
@@ -95,14 +95,13 @@ public class LubnaMenuScreen extends ClickableScreen implements Runnable {
 //		});
 //		viewObjects.add(save);
 		
-//		sound = new Button(90, 500, 80, 30, "Sound", new Color(230, 235, 210), new Action() {
-//			public void act() {
-//				MainMenu.soundTracks = new JessiSoundScreen(getWidth(),getHeight());
-//				MainMenu.game.setScreen(MainMenu.soundTracks);
-//
-//			}
-//		});
-//		viewObjects.add(sound);
+		music = new LubnaImageButton(810,485, 60,60, "resources/music.png", new Action() {
+		public void act() {
+//			MainMenu.sound = new JessiSoundScreen(getWidth(),getHeight());
+				MainMenu.game.setScreen(MainMenu.sound);
+			}
+		});
+		viewObjects.add(music);
 	}
 
 	@Override

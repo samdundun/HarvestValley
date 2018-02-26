@@ -6,7 +6,8 @@ package game.mainScreen;
  */
 public interface JessiPlayable {
 	
-	public String getName();
-	public void play();
-	public void play(double seconds);
+	public void pause();
+	public void resume();
+	public void mute();
+	public void unmute();
 }
