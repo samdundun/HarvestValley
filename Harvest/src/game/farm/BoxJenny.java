@@ -91,6 +91,7 @@ public class BoxJenny extends CustomImageButton implements Clickable{
 							FarmScreenAll.disableButton(false);
 							FarmScreenAll.animalPane.getImg().setVisible(false);
 							FarmScreenAll.animalPane.setVisible(false);
+							invent.load();
 							invent.addItem(SelectionPaneJane.items[imageIndx + 6]);
 							
 							impNumAlex = imageIndx+6;
