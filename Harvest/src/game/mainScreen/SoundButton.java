@@ -9,17 +9,18 @@ import guiTeacher.components.Button;
 
 public class SoundButton extends LubnaImageButton{
 
-
-	private LubnaImageButton addVolume;
-	private LubnaImageButton mute;
-	private LubnaImageButton decVolume;
 	
 	public SoundButton(int x, int y, int w, int h, String text, Action action, int vol) {
 		super(x, y, w, h, text, new Action() {
 			
 			@Override
 			public void act() {
-				JessiAudioFile.gainControl.setValue(vol);
+//				if(vol==0) {
+//					JessiAudioFile.clip.stop();
+//					JessiAudioFile.clip.close();
+//				}
+				JessiAudioFile.gainControl.setValue(6);
+				
 			}
 		});
 		

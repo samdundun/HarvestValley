@@ -24,7 +24,8 @@ public class JessiAudioFile implements LineListener{
     private boolean playing;
    // private volatile boolean playing;
     
-    public JessiAudioFile(String fileName, String name) {
+ 
+	public JessiAudioFile(String fileName, String name) {
     		soundFile = new File(fileName);
     		soundName = name;
     		try {
@@ -76,5 +77,7 @@ public class JessiAudioFile implements LineListener{
 			playing = false;
 		}	
 	}
+	
+	
     
 }

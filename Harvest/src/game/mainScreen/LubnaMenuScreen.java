@@ -1,6 +1,7 @@
 package game.mainScreen;
 
 import java.awt.Color;
+import java.util.ArrayList;
 import java.util.List;
 
 import game.farm.FarmScreenAll;
@@ -22,7 +23,8 @@ public class LubnaMenuScreen extends ClickableScreen implements Runnable {
 	private LubnaImageButton obj;
 //	private ImageButton save;
 	private LubnaImageButton music;
-
+	
+	private ArrayList<SoundButton> volumeButtons;
 	private SamInventory invent;
 	
 	public LubnaMenuScreen(int width, int height) {
@@ -33,6 +35,7 @@ public class LubnaMenuScreen extends ClickableScreen implements Runnable {
 
 	@Override
 	public void initAllObjects(List<Visible> viewObjects) {
+		volumeButtons = new ArrayList<SoundButton> ();
 		invent = new SamInventory();
 		Graphic back = new Graphic(0,0,getWidth(),getHeight(),"resources/background.png");
 		viewObjects.add(back);
@@ -102,6 +105,12 @@ public class LubnaMenuScreen extends ClickableScreen implements Runnable {
 			}
 		});
 		viewObjects.add(music);
+		
+		SoundButton add = new SoundButton(800, 200, 60, 60, "resources/addvolume.png", null, 5);
+		add.update();
+		volumeButtons.add(add);
+		viewObjects.add(add);
+		
 	}
 
 	@Override
