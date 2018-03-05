@@ -20,7 +20,7 @@ public class JessiAudioFile implements LineListener{
     private AudioFormat format;
     private DataLine.Info info;
     private Clip clip;
-    private FloatControl gainControl;
+    public static FloatControl gainControl;
     private boolean playing;
    // private volatile boolean playing;
     
@@ -60,7 +60,8 @@ public class JessiAudioFile implements LineListener{
 		playing = true;
     }
     
-    public  boolean isPlaying() {
+
+	public  boolean isPlaying() {
     	return playing;
     }
 
