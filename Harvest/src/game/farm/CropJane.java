@@ -112,6 +112,7 @@ public class CropJane extends CustomImageButton{
 							plantPane.setVisible(false);
 							plantPane.getImg().setVisible(false);
 							FarmScreenAll.disableButton(true);
+							invent.load();
 							invent.addItem(SelectionPaneJane.items[currentPatch.imageIndx+6]);
 							
 

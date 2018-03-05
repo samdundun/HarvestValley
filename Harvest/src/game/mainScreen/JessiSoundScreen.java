@@ -11,10 +11,11 @@ import guiTeacher.components.Action;
 import guiTeacher.components.Button;
 import guiTeacher.components.Graphic;
 import guiTeacher.components.TextArea;
+import guiTeacher.components.TextBox;
 import guiTeacher.interfaces.Visible;
 import guiTeacher.userInterfaces.ClickableScreen;
 
-public class JessiSoundScreen extends ClickableScreen  {
+public class JessiSoundScreen extends ClickableScreen {
 	
 	private Button exit;
 	
@@ -29,6 +30,8 @@ public class JessiSoundScreen extends ClickableScreen  {
 	private boolean sound3Selected;
 	private boolean sound4Selected;
 	private boolean sound5Selected;	
+	
+	private TextBox description;
 
 	public JessiSoundScreen(int width, int height) {
 		super(width, height);
@@ -246,6 +249,13 @@ public class JessiSoundScreen extends ClickableScreen  {
 		sound5.update();
 		viewObjects.add(sound5);
 		
+		description = new TextBox(500, 150, 250, 250, "The sound screen displays the five different songs. By default the 5 songs "
+				+ "is added and will play in the order that it's listed in. To remove a song from the list click on the button for"
+				+ " that specific song. To add you would simply do the same. When you add a song it's moved to the back of the "
+				+ "arraylist.");
+		viewObjects.add(description);
 		
 	}
+	
+
 }
