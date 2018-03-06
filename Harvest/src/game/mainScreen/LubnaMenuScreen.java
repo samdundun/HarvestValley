@@ -106,11 +106,20 @@ public class LubnaMenuScreen extends ClickableScreen implements Runnable {
 		});
 		viewObjects.add(music);
 		
-		SoundButton add = new SoundButton(800, 200, 60, 60, "resources/addvolume.png", null, 5);
-		add.update();
-		volumeButtons.add(add);
+		SoundButton add = new SoundButton(800, 30, 60, 60, "resources/addvolume.png", null, 5);
+//		add.update();
+//		volumeButtons.add(add);
 		viewObjects.add(add);
 		
+		SoundButton minus = new SoundButton(750, 30, 60, 60, "resources/minusvolume.png", null, 3);
+//		minus.update();
+//		volumeButtons.add(minus);
+		viewObjects.add(minus);
+		
+		SoundButton mute = new SoundButton(700, 30, 60, 60, "resources/mute.png", null, 0);
+//		mute.update();
+//		volumeButtons.add(mute);
+		viewObjects.add(mute);
 	}
 
 	@Override
