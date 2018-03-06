@@ -39,7 +39,7 @@ public class SelectionPaneJane extends Pane {
 	private int index;
 	private static final int _WIDTH = 235;
 	private static final int _HEIGHT = 210;
-	public SamInventory invent;
+	public static SamInventory invent;
 
 	private ArrayList<ErikItem> animal;
 
@@ -49,7 +49,7 @@ public class SelectionPaneJane extends Pane {
 
 	private int patchIndex;
 
-	private TextLabel label;
+	private static TextLabel label;
 
 	public SelectionPaneJane(FocusController focusController, int x, int y) {
 		super(focusController, x, y, _WIDTH, _HEIGHT);
@@ -201,6 +201,10 @@ public class SelectionPaneJane extends Pane {
 				viewObjects.add(z);
 			}
 		}
+	}
+
+	public static TextLabel getLabel() {
+		return label;
 	}
 
 	public ArrayList<ErikItem> getSeeds() {

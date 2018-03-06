@@ -2,7 +2,7 @@ package game.farm;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
-
+import java.util.ArrayList;
 
 import game.mainScreen.LubnaImageButton;
 
@@ -33,6 +33,7 @@ public class CropJane extends CustomImageButton{
 	public CropJane(int x, int y, int w, int h, String text, Color color, Action action, int i, CropImageJane image, int j) {
 		super(x, y, w, h,image, new Action() {
 			public void act() {
+				updatePane();
 				FarmScreenAll.pane.setX(x-250);
 				FarmScreenAll.pane.setY(y-120);
 				FarmScreenAll.pane.setIndex(i);
@@ -46,6 +47,43 @@ public class CropJane extends CustomImageButton{
 				FarmScreenAll.pane.update();
 				FarmScreenAll.pane.setVisible(true);
 				FarmScreenAll.disableButton(false);
+			}
+
+			private void updatePane() {
+				ArrayList<ErikItem> seeds = SelectionPaneJane.invent.getSeedSelection();
+//				for(int i = 0; i < seeds.size(); i++) {
+//					ErikItem z=seeds.get(i);
+//					if(SelectionPaneJane.invent.getAmountArray()[z.getImageIndex()] > 0 && z.isAdded() == false) {
+//						z.setAdded(true);
+//						for(ErikItem it:seeds) {
+//							if(it.getImageIndex() == z.getImageIndex()) {
+//								it.setAdded(true);
+//							}
+//						}
+//						z.setAction(new Action() {
+//
+//							@Override
+//							public void act() {
+//								for(int i = 0; i < seeds.size();i++) {
+//									seeds.get(i).setSelected(false);
+//								}
+//								System.out.println(z.getName());
+//								z.setSelected(true);
+//								SelectionPaneJane.getLabel().setText(z.getName());
+//							}
+//						});
+//
+//						z.setX(35+40*60);
+//						z.setY(55);
+//						move++;
+//						if(move == 3){
+//							move = 0;
+//							startingHeight = 55+60;
+//						}
+//						viewObjects.add(z);
+//					}
+//				}
+				
 			}
 
 			private void changeSetting(int i, int j, boolean b) {
@@ -76,9 +114,6 @@ public class CropJane extends CustomImageButton{
 		startGrowing();
 	}
 	private void changeAction() {
-		invent = new SamInventory();
-		invent.load();
-		invent.sort();
 		this.setAction(new Action() {
 			
 			@Override
@@ -112,8 +147,8 @@ public class CropJane extends CustomImageButton{
 							plantPane.setVisible(false);
 							plantPane.getImg().setVisible(false);
 							FarmScreenAll.disableButton(true);
-							invent.load();
-							invent.addItem(SelectionPaneJane.items[currentPatch.imageIndx+6]);
+							SelectionPaneJane.invent.load();
+							SelectionPaneJane.invent.addItem(SelectionPaneJane.items[currentPatch.imageIndx+6]);
 							
 
 							impNum = currentPatch.imageIndx+6;
@@ -121,7 +156,7 @@ public class CropJane extends CustomImageButton{
 							
 							//Jane uses the items array
 							
-							invent.save();
+							SelectionPaneJane.invent.save();
 							currentPatch.setAction(new Action() {
 								
 								@Override
