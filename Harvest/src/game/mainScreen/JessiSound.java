@@ -8,7 +8,7 @@ import java.applet.AudioClip;
 public class JessiSound {
 	
 	public static final JessiSound sound1 = new JessiSound("/sound.wav");
-
+//
 	private AudioClip clip;
 	
 	public JessiSound(String filename) {
