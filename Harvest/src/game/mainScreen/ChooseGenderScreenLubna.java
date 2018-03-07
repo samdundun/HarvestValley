@@ -41,6 +41,7 @@ public class ChooseGenderScreenLubna extends ClickableScreen implements Runnable
 //		super.resize(w, h);
 //	}
 
+	//trying to push through android studios
 	@Override
 	public void initAllObjects(List<Visible> viewObjects) {
 		invent = new SamInventory();
