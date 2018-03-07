@@ -51,38 +51,40 @@ public class CropJane extends CustomImageButton{
 
 			private void updatePane() {
 				ArrayList<ErikItem> seeds = SelectionPaneJane.invent.getSeedSelection();
-//				for(int i = 0; i < seeds.size(); i++) {
-//					ErikItem z=seeds.get(i);
-//					if(SelectionPaneJane.invent.getAmountArray()[z.getImageIndex()] > 0 && z.isAdded() == false) {
-//						z.setAdded(true);
-//						for(ErikItem it:seeds) {
-//							if(it.getImageIndex() == z.getImageIndex()) {
-//								it.setAdded(true);
-//							}
-//						}
-//						z.setAction(new Action() {
-//
-//							@Override
-//							public void act() {
-//								for(int i = 0; i < seeds.size();i++) {
-//									seeds.get(i).setSelected(false);
-//								}
-//								System.out.println(z.getName());
-//								z.setSelected(true);
-//								SelectionPaneJane.getLabel().setText(z.getName());
-//							}
-//						});
-//
-//						z.setX(35+40*60);
-//						z.setY(55);
-//						move++;
-//						if(move == 3){
-//							move = 0;
-//							startingHeight = 55+60;
-//						}
-//						viewObjects.add(z);
-//					}
-//				}
+				int move=0;
+				int startingHeight=40;
+				for(int i = 0; i < seeds.size(); i++) {
+					ErikItem z=seeds.get(i);
+					if(SelectionPaneJane.invent.getAmountArray()[z.getImageIndex()] > 0 && z.isAdded() == false) {
+						z.setAdded(true);
+						for(ErikItem it:seeds) {
+							if(it.getImageIndex() == z.getImageIndex()) {
+								it.setAdded(true);
+							}
+						}
+						z.setAction(new Action() {
+
+							@Override
+							public void act() {
+								for(int i = 0; i < seeds.size();i++) {
+									seeds.get(i).setSelected(false);
+								}
+								System.out.println(z.getName());
+								z.setSelected(true);
+								SelectionPaneJane.getLabel().setText(z.getName());
+							}
+						});
+
+						z.setX(35+40*60);
+						z.setY(55);
+						move++;
+						if(move == 3){
+							move = 0;
+							startingHeight = 55+60;
+						}
+						MainMenu.farmScreen.pane.addObject(z);
+					}
+				}
 				
 			}
 
@@ -161,11 +163,51 @@ public class CropJane extends CustomImageButton{
 								
 								@Override
 								public void act() {
+									updatePane();
 									FarmScreenAll.pane.setVisible(true);
 									FarmScreenAll.pane.setIndex(index);
 									FarmScreenAll.pane.setPatchIndex(patchIndex);
 									FarmScreenAll.pane.update();
 									FarmScreenAll.disableButton(false);
+									
+								}
+
+								private void updatePane() {
+									ArrayList<ErikItem> seeds = SelectionPaneJane.invent.getSeedSelection();
+									int move=0;
+									int startingHeight=40;
+									for(int i = 0; i < seeds.size(); i++) {
+										ErikItem z=seeds.get(i);
+										if(SelectionPaneJane.invent.getAmountArray()[z.getImageIndex()] > 0 && z.isAdded() == false) {
+											z.setAdded(true);
+											for(ErikItem it:seeds) {
+												if(it.getImageIndex() == z.getImageIndex()) {
+													it.setAdded(true);
+												}
+											}
+											z.setAction(new Action() {
+
+												@Override
+												public void act() {
+													for(int i = 0; i < seeds.size();i++) {
+														seeds.get(i).setSelected(false);
+													}
+													System.out.println(z.getName());
+													z.setSelected(true);
+													SelectionPaneJane.getLabel().setText(z.getName());
+												}
+											});
+
+											z.setX(35+40*60);
+											z.setY(55);
+											move++;
+											if(move == 3){
+												move = 0;
+												startingHeight = 55+60;
+											}
+											MainMenu.farmScreen.pane.addObject(z);
+										}
+									}
 									
 								}
 							});
