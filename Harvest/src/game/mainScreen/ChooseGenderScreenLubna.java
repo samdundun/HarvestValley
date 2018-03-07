@@ -42,6 +42,7 @@ public class ChooseGenderScreenLubna extends ClickableScreen implements Runnable
 //	}
 
 	//trying to push through android studios
+    //trying again
 	@Override
 	public void initAllObjects(List<Visible> viewObjects) {
 		invent = new SamInventory();
@@ -60,6 +61,7 @@ public class ChooseGenderScreenLubna extends ClickableScreen implements Runnable
 				
 			}
 		});
+
 		viewObjects.add(girl);
 		boy = new LubnaImageButton(470,350, 150,150,"resources/boyButton.png", new Action() {
 			
