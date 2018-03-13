@@ -111,6 +111,7 @@ public class SelectionPaneJane extends Pane {
 					if(seeds.get(i).isSelected()) {
 						SelectionPaneJane.this.setSeedSelected(i);
 						invent.removeItem(seeds.get(i));
+						System.out.println(seeds.get(i).getName());
 						invent.save();
 						update();
 						FarmScreenAll.farmPatch.get(index).setTime(seeds.get(i).getTime());
@@ -123,7 +124,6 @@ public class SelectionPaneJane extends Pane {
 				for(int j=0; j<animal.size(); j++) {
 					if(animal.get(j).isSelected()) {
 						animalIdx = j + 12;
-						//setSrc(game.market.ErikItem.getGraphic()[animalIdx].getImageLocation());
 						invent.removeItem(animal.get(j));
 						invent.save();
 						FarmScreenAll.animalBox.get(index).changeAction(animal.get(j).getImageIndex());
