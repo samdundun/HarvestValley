@@ -15,7 +15,7 @@ import guiTeacher.components.Graphic;
 import guiTeacher.interfaces.DrawInstructions;
 import harvest.MainMenu;
 
-public class CropJane extends CustomImageButton{
+public class CropJane extends CustomImageButton implements Action{ 
 	
 	private int imageIndx;
 	private int index;
@@ -31,9 +31,13 @@ public class CropJane extends CustomImageButton{
 	private Action orginAction;
 	
 	public CropJane(int x, int y, int w, int h, String text, Color color, Action action, int i, CropImageJane image, int j) {
-		super(x, y, w, h,image, new Action() {
+		super(x, y, w, h,image,new Action() {
+			
+			@Override
 			public void act() {
-				updatePane();
+				//FarmScreenAll.pane = new SelectionPaneJane(FarmScreenAll.farm, 400, 300);
+//				FarmScreenAll.farm.setWhich("crop");
+//				MainMenu.farmScreen.addObject(FarmScreenAll.pane);
 				FarmScreenAll.pane.setX(x-250);
 				FarmScreenAll.pane.setY(y-120);
 				FarmScreenAll.pane.setIndex(i);
@@ -47,44 +51,6 @@ public class CropJane extends CustomImageButton{
 				FarmScreenAll.pane.update();
 				FarmScreenAll.pane.setVisible(true);
 				FarmScreenAll.disableButton(false);
-			}
-
-			private void updatePane() {
-				ArrayList<ErikItem> seeds = SelectionPaneJane.invent.getSeedSelection();
-				int move=0;
-				int startingHeight=40;
-				for(int i = 0; i < seeds.size(); i++) {
-					ErikItem z=seeds.get(i);
-					if(SelectionPaneJane.invent.getAmountArray()[z.getImageIndex()] > 0 && z.isAdded() == false) {
-						z.setAdded(true);
-						for(ErikItem it:seeds) {
-							if(it.getImageIndex() == z.getImageIndex()) {
-								it.setAdded(true);
-							}
-						}
-						z.setAction(new Action() {
-
-							@Override
-							public void act() {
-								for(int i = 0; i < seeds.size();i++) {
-									seeds.get(i).setSelected(false);
-								}
-								System.out.println(z.getName());
-								z.setSelected(true);
-								SelectionPaneJane.getLabel().setText(z.getName());
-							}
-						});
-
-						z.setX(35+40*60);
-						z.setY(55);
-						move++;
-						if(move == 3){
-							move = 0;
-							startingHeight = 55+60;
-						}
-						MainMenu.farmScreen.pane.addObject(z);
-					}
-				}
 				
 			}
 
@@ -99,6 +65,80 @@ public class CropJane extends CustomImageButton{
 		index=i;
 		this.patchIndex=j;
 		this.image=image;
+		invent = new SamInventory();
+		invent.load();
+		invent.sort();
+		
+	}
+	
+	
+//	public void act() {
+////		FarmScreenAll.pane = new SelectionPaneJane(FarmScreenAll.farm, 400, 300);
+////		FarmScreenAll.farm.setWhich("crop");
+//		FarmScreenAll.pane.update();
+//		FarmScreenAll.pane.setVisible(true);
+////		MainMenu.farmScreen.addObject(FarmScreenAll.pane);
+//		FarmScreenAll.pane.setX(getX()-250);
+//		FarmScreenAll.pane.setY(getY()-120);
+//		FarmScreenAll.pane.setIndex(index);
+//		FarmScreenAll.pane.setPatchIndex(patchIndex);
+//		if(index>5) {
+//			changeSetting(7,78,true);
+//		}
+//		else {
+//			changeSetting(35,120,false);
+//		}
+//		FarmScreenAll.pane.update();
+//		FarmScreenAll.pane.setVisible(true);
+//		FarmScreenAll.disableButton(false);
+//		
+//	}
+//
+////	private void updatePane() {
+////		ArrayList<ErikItem> seeds = SelectionPaneJane.invent.getSeedSelection();
+////		int move=0;
+////		int startingHeight=40;
+////		for(int i = 0; i < seeds.size(); i++) {
+////			ErikItem z=seeds.get(i);
+////			if(SelectionPaneJane.invent.getAmountArray()[z.getImageIndex()] > 0 && z.isAdded() == false) {
+////				z.setAdded(true);
+////				for(ErikItem it:seeds) {
+////					if(it.getImageIndex() == z.getImageIndex()) {
+////						it.setAdded(true);
+////					}
+////				}
+////				z.setAction(new Action() {
+////
+////					@Override
+////					public void act() {
+////						for(int i = 0; i < seeds.size();i++) {
+////							seeds.get(i).setSelected(false);
+////						}
+////						System.out.println(z.getName());
+////						z.setSelected(true);
+////						SelectionPaneJane.getLabel().setText(z.getName());
+////					}
+////				});
+////
+////				z.setX(35+40*60);
+////				z.setY(55);
+////				move++;
+////				if(move == 3){
+////					move = 0;
+////					startingHeight = 55+60;
+////				}
+////				MainMenu.farmScreen.pane.addObject(z);
+////			}
+////		}
+////		
+////	}
+//
+	private void changeSetting(int i, int j, boolean b) {
+		FarmScreenAll.pane.getSelect().setX(i);
+		FarmScreenAll.pane.getCancel().setX(j);
+		FarmScreenAll.pane.getSell().setVisible(b);
+		FarmScreenAll.pane.getSell().setEnabled(b);
+		
 	}
 	
 	public void crop(int i) {
@@ -149,8 +189,8 @@ public class CropJane extends CustomImageButton{
 							plantPane.setVisible(false);
 							plantPane.getImg().setVisible(false);
 							FarmScreenAll.disableButton(true);
-							SelectionPaneJane.invent.load();
-							SelectionPaneJane.invent.addItem(SelectionPaneJane.items[currentPatch.imageIndx+6]);
+							invent.load();
+							invent.addItem(SelectionPaneJane.items[currentPatch.imageIndx+6]);
 							
 
 							impNum = currentPatch.imageIndx+6;
@@ -173,12 +213,12 @@ public class CropJane extends CustomImageButton{
 								}
 
 								private void updatePane() {
-									ArrayList<ErikItem> seeds = SelectionPaneJane.invent.getSeedSelection();
+									ArrayList<ErikItem> seeds = invent.getSeedSelection();
 									int move=0;
 									int startingHeight=40;
 									for(int i = 0; i < seeds.size(); i++) {
 										ErikItem z=seeds.get(i);
-										if(SelectionPaneJane.invent.getAmountArray()[z.getImageIndex()] > 0 && z.isAdded() == false) {
+										if(invent.getAmountArray()[z.getImageIndex()] > 0 && z.isAdded() == false) {
 											z.setAdded(true);
 											for(ErikItem it:seeds) {
 												if(it.getImageIndex() == z.getImageIndex()) {
